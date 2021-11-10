@@ -2,4 +2,5 @@
 
 Group 7's project for DIT094
 
-fsdsdfs
+## TODO
+- List simple tasks for the repository here, not specific work tasks
