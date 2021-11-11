@@ -26,6 +26,7 @@
       <scope>test</scope>
     </dependency>
     
+    <!-- Reason for this library: open-source, from a trusted company and correct functionality -->
     <dependency>
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
