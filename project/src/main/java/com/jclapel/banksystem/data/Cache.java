@@ -5,11 +5,11 @@ import com.google.gson.*;
 import java.io.Serializable;
 import java.util.HashMap;
 
-public class Stream implements Serializable {
+public class Cache implements Serializable {
 	/*
 
-	Stream
-	A class to manage data streams between the system and an assumed existing database.
+	Cache
+	A class to manage data and streams between the system and an assumed existing database.
 
 	*/
 	private HashMap<String, Object> dataCache; // PLACEHOLDER
