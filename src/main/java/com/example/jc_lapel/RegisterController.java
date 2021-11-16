@@ -1,29 +1,27 @@
 package com.example.jc_lapel;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
+import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
+
+import java.io.File;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.Statement;
 
 import java.io.IOException;
 
-public class HelloController {
+public class RegisterController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-    @FXML
-    private Label welcomeText;
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
 
     public void switchToLoginCustomer(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("loginCustomer.fxml"));
@@ -39,21 +37,5 @@ public class HelloController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }
-    public void switchToRegisterCustomer(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("registerCustomer.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    //Hej Erik... Update jaooow
-    @FXML
-    public Button closeButton;
-
-    @FXML
-    public void handelCloseButtonAction(ActionEvent event){
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
     }
 }
