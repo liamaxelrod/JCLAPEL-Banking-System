@@ -26,7 +26,7 @@
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                     </children>
                 </Pane>
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToHelloView" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MAIN MENU" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MAIN MENU" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>

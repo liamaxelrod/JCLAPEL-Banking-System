@@ -26,7 +26,7 @@
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                     </children>
                 </Pane>
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToHelloView" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="HOME" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToCustomerMenu" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="User main menu" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -40,7 +40,7 @@
                         <Glow />
                     </effect>
                 </Button>
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="BANK STATEMENT" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToBankStatement" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="BANK STATEMENT" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -54,7 +54,7 @@
                         <Glow />
                     </effect>
                 </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="PORTFOLIO" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="232.0" mnemonicParsing="false" onAction="#switchToFinanceProject" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="PORTFOLIO" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -68,7 +68,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToHelloView" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="SIGN OUT" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="SIGN OUT" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -107,7 +107,7 @@
             <Font name="Garamond Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="myChoiceBox" layoutX="384.0" layoutY="251.0" prefHeight="26.0" prefWidth="353.0" />
+      <ChoiceBox fx:id="fromAccount" layoutX="384.0" layoutY="251.0" prefHeight="26.0" prefWidth="353.0" />
       <Label layoutX="384.0" layoutY="285.0" prefHeight="26.0" prefWidth="397.0" text="To Acccount:">
          <font>
             <Font name="Garamond Bold" size="16.0" />
@@ -121,12 +121,12 @@
       <TextField layoutX="384.0" layoutY="469.0" prefHeight="26.0" prefWidth="354.0" promptText="SEK" />
       <Button layoutX="384.0" layoutY="568.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="166.0" text="Transfer" />
       <Button layoutX="571.0" layoutY="568.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="166.0" text="Cancel" />
-      <ChoiceBox fx:id="myChoiceBox1" layoutX="384.0" layoutY="311.0" prefHeight="26.0" prefWidth="353.0" />
+      <ChoiceBox fx:id="toAccount" layoutX="384.0" layoutY="311.0" prefHeight="26.0" prefWidth="353.0" />
       <Label layoutX="384.0" layoutY="348.0" prefHeight="26.0" prefWidth="397.0" text="Other Acccounts:">
          <font>
             <Font name="Garamond Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="myChoiceBox2" layoutX="384.0" layoutY="374.0" prefHeight="26.0" prefWidth="353.0" />
+      <ChoiceBox fx:id="otherAccount" layoutX="384.0" layoutY="374.0" prefHeight="26.0" prefWidth="353.0" />
     </children>
 </AnchorPane>

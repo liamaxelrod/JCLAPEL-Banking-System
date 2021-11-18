@@ -17,12 +17,10 @@ public class startController {
     private Scene scene;
 
     @FXML
-    private Label welcomeText;
+    public Button closeButton;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
+    private Label welcomeText;
 
     public void switchToLoginCustomer(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("loginCustomer.fxml"));
@@ -39,9 +37,6 @@ public class startController {
         stage.setScene(scene);
         stage.show();
     }
-    //Hej Erik... Update jaooow
-    @FXML
-    public Button closeButton;
 
     @FXML
     public void handelCloseButtonAction(ActionEvent event){

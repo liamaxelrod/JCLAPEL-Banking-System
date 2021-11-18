@@ -12,8 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +19,6 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     @FXML
     private Button cancelButton;
@@ -60,7 +57,7 @@ public class LoginController implements Initializable {
         stage.show();
     }
 
-    public void switchToHelloView(ActionEvent event) throws IOException {
+    public void switchToStart(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("start.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -77,7 +74,6 @@ public class LoginController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }
-
     }
 
 
