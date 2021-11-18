@@ -1,4 +1,4 @@
-package com.jclapel.banksystem;
+package com.jclapel.banksystem.frontend;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
