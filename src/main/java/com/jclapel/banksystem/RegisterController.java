@@ -1,4 +1,4 @@
-package com.example.jc_lapel;
+package com.jclapel.banksystem;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
