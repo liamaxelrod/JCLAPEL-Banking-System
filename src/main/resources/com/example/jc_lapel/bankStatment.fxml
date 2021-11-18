@@ -43,7 +43,7 @@
                         <Glow />
                     </effect>
                 </Button>
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToTransfer" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="BANK TRANSFER" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToTransferHistory" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="BANK TRANSFER" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>

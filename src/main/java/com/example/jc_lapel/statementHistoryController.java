@@ -6,27 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class TransferController {
+public class statementHistoryController {
+
     private Stage stage;
     private Scene scene;
-
-    @FXML
-    private Button closeButton;
-
-    @FXML
-    private ChoiceBox<?> fromAccount;
-
-    @FXML
-    private ChoiceBox<?> otherAccount;
-
-    @FXML
-    private ChoiceBox<?> toAccount;
 
     @FXML
     void switchToCustomerMenu(ActionEvent event) throws IOException {
@@ -36,32 +23,25 @@ public class TransferController {
         stage.setScene(scene);
         stage.show();
     }
-
     @FXML
-    void switchToBankStatement(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(""));
+    void switchToTransferHistory(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("bankStatment.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    void switchToFinanceProject(ActionEvent event) {
+
+    }
 
     @FXML
-    void switchToFinanceProject(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(""));
+    void switchToTransfer(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("transferCustomer.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-
-    @FXML
-    void switchToStart(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("start.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
 }
