@@ -1,4 +1,4 @@
-module com.example.jc_lapel {
+module com.jclapel.banksystem {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
