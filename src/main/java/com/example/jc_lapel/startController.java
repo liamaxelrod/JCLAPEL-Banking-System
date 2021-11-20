@@ -1,4 +1,4 @@
-package com.jclapel.banksystem.frontend;
+package com.example.jc_lapel;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,18 +12,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloController {
+public class startController {
     private Stage stage;
     private Scene scene;
-    private Parent root;
+
+    @FXML
+    public Button closeButton;
 
     @FXML
     private Label welcomeText;
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
 
     public void switchToLoginCustomer(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("loginCustomer.fxml"));
@@ -33,13 +30,6 @@ public class HelloController {
         stage.show();
     }
 
-    public void switchToHelloView(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
     public void switchToRegisterCustomer(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("registerCustomer.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -47,9 +37,6 @@ public class HelloController {
         stage.setScene(scene);
         stage.show();
     }
-    //Hej Erik... Update jaooow
-    @FXML
-    public Button closeButton;
 
     @FXML
     public void handelCloseButtonAction(ActionEvent event){
