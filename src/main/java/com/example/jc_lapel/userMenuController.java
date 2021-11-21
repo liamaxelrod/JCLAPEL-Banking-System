@@ -76,7 +76,11 @@ public class userMenuController implements Initializable {
 
     @FXML//on interface button = profile
     void switchToProfile(ActionEvent event) throws IOException {
-
+        Parent root = FXMLLoader.load(getClass().getResource("profile.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML//on interface button = financial projects loan, portfolio, etc.
