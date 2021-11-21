@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jc_lapel.statementHistoryController">
+<AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jc_lapel.bankStatementController">
     <children>
         <VBox prefHeight="675.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;">
             <children>
@@ -29,7 +29,7 @@
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                     </children>
                 </Pane>
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToCustomerMenu" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MAIN MENU" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToCustomerMenu" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="USER MENU" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>

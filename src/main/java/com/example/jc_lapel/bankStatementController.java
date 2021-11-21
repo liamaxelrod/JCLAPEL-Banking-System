@@ -10,12 +10,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class statementHistoryController {
+public class bankStatementController {
 
     private Stage stage;
     private Scene scene;
 
-    @FXML
+    @FXML//on interface button = user menu
     void switchToCustomerMenu(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("userMenuController.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -23,7 +23,7 @@ public class statementHistoryController {
         stage.setScene(scene);
         stage.show();
     }
-    @FXML
+    @FXML//on interface button = bank transfer
     void switchToTransferHistory(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("bankStatment.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -31,12 +31,13 @@ public class statementHistoryController {
         stage.setScene(scene);
         stage.show();
     }
-    @FXML
+
+    @FXML//on interface button = portfolio
     void switchToFinanceProject(ActionEvent event) {
 
     }
 
-    @FXML
+    @FXML//on interface button = ??
     void switchToTransfer(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("transferCustomer.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
