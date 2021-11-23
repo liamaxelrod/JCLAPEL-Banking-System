@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -34,9 +35,17 @@ public class TransferController implements Initializable {
     @FXML//to interface label = next to current balance
     private Label fromAccountCurrentBalance; //(to be connected with the account)
 
-    @FXML
-    void onActionButtonTotal(ActionEvent event) {
+    @FXML//on interface text field = below to account
+    private TextField transferAmount;
+
+    @FXML//on interface button = total
+    private void onActionButtonTotal(ActionEvent event) {
         fromAccountCurrentBalance.setText(fromAccount.getValue());
+    }
+
+    @FXML//on interface button = transfer
+    private void onActionTransfer(ActionEvent event) {
+
     }
 
     @Override//this method takes effect when the scene is loaded

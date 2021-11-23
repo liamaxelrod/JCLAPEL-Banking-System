@@ -34,13 +34,13 @@ public class profileController implements Initializable {
     private PasswordField confirmNewPassword;
 
     @FXML//on interface Label = Top left corner
-    private Label currentFirstName;
+    public Label currentFirstName;
     @FXML
-    private Label currentLasName;
+    public Label currentLasName;
     @FXML
-    private Label currentUsername;
+    public Label currentUsername;
     @FXML
-    private Label currentPassword;
+    public Label currentPassword;
 
     @FXML//on interface Text field = Right bottom corner
     private TextField newUsername;
@@ -48,8 +48,6 @@ public class profileController implements Initializable {
     private TextField newFirstName;
     @FXML
     private TextField newLastName;
-
-
 
     @FXML
     private void onActionChangePassword(ActionEvent event) {
@@ -73,7 +71,6 @@ public class profileController implements Initializable {
         currentFirstName.setText(theNewFirstName);
         newFirstName.setText("");
     }
-
     @FXML
     void onActionChangeLastName(ActionEvent event) {
         String theNewLastName = newLastName.getText();
@@ -87,10 +84,11 @@ public class profileController implements Initializable {
         newUsername.setText("");
     }
 
-    @FXML
-    private void onActionChangeProfileImage(ActionEvent event) {
-        getFilenameFilter();
-    }
+//    @FXML
+//    private void onActionChangeProfileImage(ActionEvent event) {
+//        getFilenameFilter();
+//    }
+
 
     ////all methods below are for switching scenes, or you could say interfaces
 

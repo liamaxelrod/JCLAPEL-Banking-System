@@ -118,9 +118,9 @@
             <Font name="Garamond Bold" size="16.0" />
          </font>
       </Label>
-      <TextField layoutX="384.0" layoutY="494.0" prefHeight="26.0" prefWidth="354.0" promptText="SEK" />
-      <Button layoutX="384.0" layoutY="568.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="166.0" text="Transfer" />
-      <Button layoutX="571.0" layoutY="568.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="166.0" text="Cancel" />
+      <TextField fx:id="transferAmount" layoutX="384.0" layoutY="494.0" prefHeight="26.0" prefWidth="354.0" promptText="SEK" />
+      <Button layoutX="384.0" layoutY="568.0" mnemonicParsing="false" onAction="#onActionTransfer" prefHeight="26.0" prefWidth="166.0" text="Transfer" />
+      <Button layoutX="571.0" layoutY="568.0" mnemonicParsing="false" onAction="#switchToStart" prefHeight="26.0" prefWidth="166.0" text="Cancel" />
       <ChoiceBox fx:id="toAccount" layoutX="384.0" layoutY="338.0" prefHeight="26.0" prefWidth="353.0" />
       <Label layoutX="384.0" layoutY="277.0" prefHeight="26.0" prefWidth="118.0" text="Current balance:">
          <font>

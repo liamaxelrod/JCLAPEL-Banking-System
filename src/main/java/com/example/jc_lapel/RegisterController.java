@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -17,9 +16,6 @@ public class RegisterController {
     private Stage stage;
     private Scene scene;
 
-    @FXML//on interface button = cancel
-    private Button closeButton;
-
     @FXML//on interface password field = confirm password
     private PasswordField confirmPasswordField;
 
@@ -29,14 +25,18 @@ public class RegisterController {
     @FXML//on interface text field = Lastname
     private TextField lastnameTextField;
 
-    @FXML//on interface button = create account
-    private Button createAccount;
-
     @FXML//on interface password field = password
     private PasswordField setPasswordField;
 
     @FXML//on interface text field = username
     private TextField usernameTextField;
+
+    @FXML//on interface button = create account
+    private void onActionCreateAccount(ActionEvent event){
+
+    }
+
+    ////all methods below are for switching scenes, or you could say interfaces
 
     @FXML//on interface button = login
     public void switchToLoginCustomer(ActionEvent event) throws IOException {
@@ -55,4 +55,5 @@ public class RegisterController {
         stage.setScene(scene);
         stage.show();
     }
+
 }

@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -20,14 +19,10 @@ public class LoginController implements Initializable {
     private Stage stage;
     private Scene scene;
 
-
-    @FXML//on interface button = password( text field )
+    @FXML//on interface password field = password
     private PasswordField enterPasswordField;
 
-    @FXML//on interface button = login
-    private Button loginButton;
-
-    @FXML//on interface button = username( text field )
+    @FXML//on interface text field = username
     private TextField usernameTextField;
 
     @Override//this method takes effect when the scene is loaded
