@@ -68,12 +68,12 @@
       <TextField fx:id="usernameTextField" layoutX="384.0" layoutY="339.0" prefHeight="26.0" prefWidth="232.0" promptText="Username" />
         <PasswordField fx:id="setPasswordField" layoutX="384.0" layoutY="393.0" prefHeight="26.0" prefWidth="232.0" promptText="Password" />
       <PasswordField fx:id="confirmPasswordField" layoutX="384.0" layoutY="450.0" prefHeight="26.0" prefWidth="232.0" promptText="Confirm Password" />
-        <Button fx:id="registerButton" layoutX="382.0" layoutY="501.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Create Account" textFill="WHITE">
+        <Button layoutX="382.0" layoutY="501.0" mnemonicParsing="false" onAction="#onActionCreateAccount" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Create Account" textFill="WHITE">
             <font>
                 <Font size="13.0" />
             </font>
         </Button>
-        <Button fx:id="closeButton" layoutX="382.0" layoutY="541.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Cancel" textFill="WHITE">
+        <Button layoutX="382.0" layoutY="541.0" mnemonicParsing="false" onAction="#switchToStart" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Cancel" textFill="WHITE">
             <font>
                 <Font size="13.0" />
             </font>

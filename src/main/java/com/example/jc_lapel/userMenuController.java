@@ -2,9 +2,7 @@ package com.example.jc_lapel;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,51 +10,67 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class userMenuController {
+public class userMenuController extends allSwitchScenes implements Initializable {
     private Stage stage;
     private Scene scene;
 
-    @FXML
+    @FXML//on interface button = exit
     private Button closeButton;
 
-    @FXML
+    @FXML//on interface image view = upper far right position
     private ImageView ImageProfile;
 
-    @FXML
-    private Label Username;
+    @FXML//on interface label = username
+    private Label userName;
 
+    @FXML//on interface label = next to name:
+    private Label fullRealName;
+
+    @FXML//on interface label = bottom left corner
+    private Label CheckingTotal;
     @FXML
+    private Label OtherTotal;
+    @FXML
+    private Label SavingTotal;
+
+
+    @Override//this method takes effect when the scene is loaded
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+
+    ////all methods below are for switching scenes, or you could say interfaces
+    @FXML//on interface button = transfer
     void switchToTransfer(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("transferCustomer.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        theSwitchToTransfer(event);
     }
-
-    @FXML//Not made yet
+    @FXML//on interface button = profile
     void switchToProfile(ActionEvent event) throws IOException {
-
+        theSwitchToProfile(event);
     }
-
-    @FXML
+    @FXML//on interface button = financial projects loan, portfolio, etc.
     void switchToFinanceProject(ActionEvent event) {
-
+        theSwitchToFinanceProject(event);
     }
-
-    @FXML//In SceneBuilder it says logout for the button
+    @FXML//on interface button = logout
     void switchToStart(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("start.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        theSwitchToStart(event);
+    }
+    @FXML//on interface button = exit
+    void handelCloseButtonAction(ActionEvent event) throws IOException {
+        theHandelCloseButtonAction(event);
+    }
+    @FXML//on interface button = transfer history
+    void switchToBankStatement(ActionEvent event) throws IOException {
+        theSwitchToBankStatement(event);
+    }
+    @FXML
+    void switchToManual(ActionEvent event) throws IOException {
+
     }
 
-    @FXML
-    void handelCloseButtonAction(ActionEvent event) throws IOException {
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
-    }
 }
