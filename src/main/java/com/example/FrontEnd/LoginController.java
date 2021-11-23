@@ -1,4 +1,4 @@
-package com.example.jc_lapel;
+package com.example.FrontEnd;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,5 +70,6 @@ public class LoginController implements Initializable {
         }
     }
 
+// Albin
 
 }

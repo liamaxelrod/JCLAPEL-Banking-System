@@ -1,4 +1,4 @@
-package com.example.jc_lapel;
+package com.example.FrontEnd;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -89,7 +89,8 @@ public class profileController implements Initializable {
 //        getFilenameFilter();
 //    }
 
-
+    public void onActionChangeProfileImage(ActionEvent event) {
+    }
     ////all methods below are for switching scenes, or you could say interfaces
 
     @FXML//on interface button = user menu
@@ -110,4 +111,5 @@ public class profileController implements Initializable {
         stage.show();
 
     }
+
 }

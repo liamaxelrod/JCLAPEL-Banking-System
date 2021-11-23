@@ -1,4 +1,4 @@
-package com.example.jc_lapel;
+package com.example.FrontEnd;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,7 +42,6 @@ public class userMenuController extends allSwitchScenes implements Initializable
 
     }
 
-
     ////all methods below are for switching scenes, or you could say interfaces
     @FXML//on interface button = transfer
     void switchToTransfer(ActionEvent event) throws IOException {
@@ -72,5 +71,6 @@ public class userMenuController extends allSwitchScenes implements Initializable
     void switchToManual(ActionEvent event) throws IOException {
 
     }
+
 
 }

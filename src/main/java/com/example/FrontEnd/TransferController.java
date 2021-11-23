@@ -1,4 +1,4 @@
-package com.example.jc_lapel;
+package com.example.FrontEnd;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -61,7 +61,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.jc_lapel/com.example.jc_lapel.startApplication</mainClass>
+                            <mainClass>com.example.jc_lapel/com.example.FrontEnd.startApplication</mainClass>
                         </configuration>
                     </execution>
                 </executions>
