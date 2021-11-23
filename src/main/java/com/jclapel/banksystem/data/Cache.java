@@ -20,8 +20,21 @@ public class Cache implements Serializable {
 		// Executes initial procedure on program start
 	}
 
-	public void addObjectToData(String key, Object object) {
+	public void appendData(String key, Object object) {
 		// Adds object to cache
+		if (dataCache.get(key) != null) {
+			return;
+		}
+
+		dataCache.put(key, object);
+	}
+
+	public void updateData(String key, Object object) {
+		// Updates object to cache
+		if (dataCache.get(key) == null) {
+			return;
+		}
+
 		dataCache.put(key, object);
 	}
 
