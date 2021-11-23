@@ -1,4 +1,4 @@
-package com.example.jc_lapel;
+package com.example.FrontEnd;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
