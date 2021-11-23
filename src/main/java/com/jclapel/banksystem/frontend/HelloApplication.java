@@ -26,11 +26,13 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 938, 675);
         stage.setScene(scene);
         stage.show();
-
     }
 
-
-    public static void main(String[] args) {
-        launch();
+    public static void main(String[] args) throws Exception {
+        try {
+            launch();
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
