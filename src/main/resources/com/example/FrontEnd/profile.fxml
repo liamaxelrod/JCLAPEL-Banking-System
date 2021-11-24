@@ -72,10 +72,10 @@
          <children>
             <AnchorPane prefHeight="563.0" prefWidth="620.0">
                <children>
-                  <Pane layoutX="14.0" layoutY="327.0" prefHeight="231.0" prefWidth="290.0">
+                  <Pane layoutX="12.0" layoutY="282.0" prefHeight="247.0" prefWidth="596.0">
                      <children>
-                        <PasswordField fx:id="checkCurrentPassword" layoutY="64.0" />
-                        <Label layoutY="38.0" prefHeight="25.0" prefWidth="149.0" text="Current password">
+                        <PasswordField fx:id="checkCurrentPassword" layoutY="52.0" />
+                        <Label layoutY="27.0" prefHeight="25.0" prefWidth="149.0" text="Current password">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -85,81 +85,77 @@
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <Label layoutY="172.0" prefHeight="26.0" prefWidth="176.0" text="Confirm new password">
+                        <Label layoutY="179.0" prefHeight="26.0" prefWidth="176.0" text="Confirm new password">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </Label>
                         <PasswordField fx:id="newPassword" layoutY="124.0" />
-                        <PasswordField fx:id="confirmNewPassword" layoutY="198.0" />
-                        <Button layoutX="149.0" layoutY="198.0" mnemonicParsing="false" onAction="#onActionChangePassword" prefHeight="25.0" prefWidth="140.0" text="Change password" />
-                        <Label layoutY="1.0" prefHeight="25.0" prefWidth="149.0" text="Change password">
+                        <PasswordField fx:id="confirmNewPassword" layoutY="205.0" />
+                        <Button layoutX="149.0" layoutY="205.0" mnemonicParsing="false" onAction="#onActionChangePassword" prefHeight="25.0" prefWidth="140.0" text="Change password" />
+                        <Label alignment="CENTER" layoutY="1.0" prefHeight="26.0" prefWidth="290.0" text="Change password">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="456.0" layoutY="205.0" mnemonicParsing="false" onAction="#onActionChangeLastName" prefHeight="25.0" prefWidth="140.0" text="Change Last name" />
+                        <TextField fx:id="newLastName" layoutX="305.0" layoutY="205.0" />
+                        <Label layoutX="305.0" layoutY="179.0" prefHeight="26.0" prefWidth="176.0" text="New Last name">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="305.0" layoutY="153.0" prefHeight="26.0" prefWidth="290.0" text="Change Last name">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="newFirstName" layoutX="305.0" layoutY="124.0" />
+                        <Button layoutX="456.0" layoutY="124.0" mnemonicParsing="false" onAction="#onActionChangeFirstName" prefHeight="25.0" prefWidth="140.0" text="Change First name" />
+                        <Label layoutX="305.0" layoutY="98.0" prefHeight="25.0" prefWidth="176.0" text="New First name">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="305.0" layoutY="76.0" prefHeight="26.0" prefWidth="290.0" text="Change First name">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="newUsername" layoutX="305.0" layoutY="52.0" />
+                        <Button layoutX="456.0" layoutY="52.0" mnemonicParsing="false" onAction="#onActionChangeUsername" prefHeight="25.0" prefWidth="140.0" text="Change Username" />
+                        <Label layoutX="305.0" layoutY="25.0" prefHeight="26.0" prefWidth="176.0" text="New username">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="305.0" layoutY="1.0" prefHeight="26.0" prefWidth="290.0" text="Change username">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Pane layoutX="316.0" layoutY="318.0" prefHeight="231.0" prefWidth="290.0">
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="383.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button layoutX="383.0" layoutY="187.0" mnemonicParsing="false" onAction="#onActionChangeProfileImage" prefHeight="25.0" prefWidth="200.0" text="Upload user profile image" />
+                  <Pane layoutX="20.0" layoutY="50.0" prefHeight="150.0" prefWidth="290.0">
                      <children>
-                        <Label layoutY="1.0" prefHeight="25.0" prefWidth="149.0" text="Change username">
+                        <Label layoutY="7.0" prefHeight="26.0" prefWidth="85.0" text="First name">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <Label layoutY="180.0" prefHeight="26.0" prefWidth="176.0" text="New Last name">
+                        <Label layoutY="33.0" prefHeight="26.0" prefWidth="85.0" text="Last name">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <Button layoutX="149.0" layoutY="53.0" mnemonicParsing="false" onAction="#onActionChangeUsername" prefHeight="25.0" prefWidth="140.0" text="Change Username" />
-                        <TextField fx:id="newUsername" layoutY="53.0" />
-                        <Label layoutY="78.0" prefHeight="25.0" prefWidth="149.0" text="Change First name">
+                        <Label layoutY="59.0" prefHeight="26.0" prefWidth="140.0" text="Current username">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <Label layoutY="154.0" prefHeight="25.0" prefWidth="149.0" text="Change Last name">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutY="104.0" prefHeight="26.0" prefWidth="176.0" text="New First name">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutY="27.0" prefHeight="26.0" prefWidth="176.0" text="New username">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="newFirstName" layoutY="129.0" />
-                        <TextField fx:id="newLastName" layoutY="206.0" />
-                        <Button layoutX="149.0" layoutY="129.0" mnemonicParsing="false" onAction="#onActionChangeFirstName" prefHeight="25.0" prefWidth="140.0" text="Change First name" />
-                        <Button layoutX="149.0" layoutY="206.0" mnemonicParsing="false" onAction="#onActionChangeLastName" prefHeight="25.0" prefWidth="140.0" text="Change Last name" />
-                     </children>
-                  </Pane>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="406.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button layoutX="406.0" layoutY="164.0" mnemonicParsing="false" onAction="#onActionChangeProfileImage" prefHeight="25.0" prefWidth="200.0" text="Upload user profile image" />
-                  <Pane layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="290.0">
-                     <children>
-                        <Label layoutY="7.0" prefHeight="26.0" prefWidth="85.0" text="First name:">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutY="33.0" prefHeight="26.0" prefWidth="85.0" text="Last name:">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutY="59.0" prefHeight="26.0" prefWidth="140.0" text="Current username:">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutY="85.0" prefHeight="25.0" prefWidth="149.0" text="Current password:">
+                        <Label layoutY="85.0" prefHeight="25.0" prefWidth="149.0" text="Current password">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -169,17 +165,17 @@
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <Label fx:id="currentUsername" layoutX="149.0" layoutY="59.0" prefHeight="26.0" prefWidth="140.0" text="liam">
+                        <Label fx:id="currentUsername" layoutX="149.0" layoutY="59.0" prefHeight="26.0" prefWidth="140.0" text="jason">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <Label fx:id="currentFirstName" layoutX="85.0" layoutY="7.0" prefHeight="26.0" prefWidth="200.0" text="liam">
+                        <Label fx:id="currentFirstName" layoutX="145.0" layoutY="7.0" prefHeight="26.0" prefWidth="140.0" text="liam">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <Label fx:id="currentLasName" layoutX="85.0" layoutY="33.0" prefHeight="26.0" prefWidth="200.0" text="axelrod">
+                        <Label fx:id="currentLasName" layoutX="145.0" layoutY="33.0" prefHeight="26.0" prefWidth="140.0" text="axelrod">
                            <font>
                               <Font size="17.0" />
                            </font>

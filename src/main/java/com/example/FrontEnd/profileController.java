@@ -84,13 +84,10 @@ public class profileController implements Initializable {
         newUsername.setText("");
     }
 
-//    @FXML
-//    private void onActionChangeProfileImage(ActionEvent event) {
-//        getFilenameFilter();
-//    }
-
+    @FXML
     public void onActionChangeProfileImage(ActionEvent event) {
     }
+
     ////all methods below are for switching scenes, or you could say interfaces
 
     @FXML//on interface button = user menu
