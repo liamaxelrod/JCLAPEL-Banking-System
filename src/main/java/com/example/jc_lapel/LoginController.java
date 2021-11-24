@@ -65,7 +65,7 @@ public class LoginController implements Initializable {
         stage.show();
     }
 
-    // login is used to access
+    //SceneBuilder interface login button
     public void switchToCustomerMenu(ActionEvent event) throws IOException{
         if (usernameTextField.getText() == "" && enterPasswordField.getText() == ""){
             Parent root = FXMLLoader.load(getClass().getResource("userMenuController.fxml"));
