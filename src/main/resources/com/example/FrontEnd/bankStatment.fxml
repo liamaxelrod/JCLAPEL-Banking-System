@@ -37,7 +37,7 @@
                         <Insets left="50.0" />
                     </padding>
                     <font>
-                        <Font size="17.0" />
+                        <Font name="Arial" size="17.0" />
                     </font>
                     <effect>
                         <Glow />
@@ -51,7 +51,7 @@
                         <Insets left="50.0" />
                     </padding>
                     <font>
-                        <Font size="17.0" />
+                        <Font name="Arial" size="17.0" />
                     </font>
                     <effect>
                         <Glow />
@@ -65,7 +65,7 @@
                         <Insets left="50.0" />
                     </padding>
                     <font>
-                        <Font size="17.0" />
+                        <Font name="Arial" size="17.0" />
                     </font>
                     <effect>
                         <Glow />
