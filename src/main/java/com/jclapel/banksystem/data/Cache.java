@@ -12,12 +12,18 @@ public class Cache implements Serializable {
 	A class to manage data and streams between the system and an assumed existing database.
 
 	*/
-	private HashMap<String, Object> dataCache = new HashMap<String, Object>();
+	private HashMap<String, Object> dataCache;
 	
 	Gson gson = new Gson();
 
 	public void initialize() {
 		// Executes initial procedure on program start
+		dataCache = new HashMap<String, Object>();
+	}
+
+	public void initialize(HashMap<String, Object> presetCache) {
+		// Executes initial procedure on program start
+		dataCache = presetCache;
 	}
 
 	public void appendData(String key, Object object) {
