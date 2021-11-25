@@ -63,11 +63,11 @@
                 <Font name="Arial" size="13.0" />
             </font>
         </Label>
-        <TextField fx:id="firstnameTextField" layoutX="384.0" layoutY="228.0" prefHeight="26.0" prefWidth="232.0" promptText="Firstname" />
-      <TextField fx:id="lastnameTextField" layoutX="384.0" layoutY="282.0" prefHeight="26.0" prefWidth="232.0" promptText="Lastname" />
-      <TextField fx:id="usernameTextField" layoutX="384.0" layoutY="339.0" prefHeight="26.0" prefWidth="232.0" promptText="Username" />
-        <PasswordField fx:id="setPasswordField" layoutX="384.0" layoutY="393.0" prefHeight="26.0" prefWidth="232.0" promptText="Password" />
-      <PasswordField fx:id="confirmPasswordField" layoutX="384.0" layoutY="450.0" prefHeight="26.0" prefWidth="232.0" promptText="Confirm Password" />
+        <TextField font="Arial Bold"fx:id="firstnameTextField" layoutX="384.0" layoutY="228.0" prefHeight="26.0" prefWidth="232.0" promptText="Firstname" />
+      <TextField font="Arial Bold"fx:id="lastnameTextField" layoutX="384.0" layoutY="282.0" prefHeight="26.0" prefWidth="232.0" promptText="Lastname" />
+      <TextField font="Arial Bold"fx:id="usernameTextField" layoutX="384.0" layoutY="339.0" prefHeight="26.0" prefWidth="232.0" promptText="Username" />
+        <PasswordField font="Arial Bold"fx:id="setPasswordField" layoutX="384.0" layoutY="393.0" prefHeight="26.0" prefWidth="232.0" promptText="Password" />
+      <PasswordField font="Arial Bold"fx:id="confirmPasswordField" layoutX="384.0" layoutY="450.0" prefHeight="26.0" prefWidth="232.0" promptText="Confirm Password" />
         <Button fx:id="createAccountButton" layoutX="382.0" layoutY="501.0" mnemonicParsing="false" onAction="#onActionCreateAccount" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Create Account" textFill="WHITE">
             <font>
                 <Font name="Arial" size="13.0" />

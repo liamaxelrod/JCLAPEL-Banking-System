@@ -21,7 +21,7 @@
                     <children>
                         <Label layoutX="49.0" layoutY="41.0" prefHeight="31.0" prefWidth="221.0" text="JC. LAPEL United Bank" textFill="WHITE">
                             <font>
-                                <Font name="System Bold" size="20.0" />
+                                <Font name="Arial Bold" size="20.0" />
                             </font>
                         </Label>
                     </children>
@@ -34,7 +34,7 @@
                         <Insets left="50.0" />
                     </padding>
                     <font>
-                        <Font size="17.0" />
+                        <Font name="Arial Bold" size="17.0" />
                     </font>
                     <effect>
                         <Glow />
@@ -48,7 +48,7 @@
                         <Insets left="50.0" />
                     </padding>
                     <font>
-                        <Font size="17.0" />
+                        <Font name="Arial Bold" size="17.0" />
                     </font>
                     <effect>
                         <Glow />
@@ -60,7 +60,7 @@
             <children>
                 <Label layoutX="144.0" layoutY="40.0" text="THE BANK YOU DESERVE" textAlignment="CENTER" textFill="WHITE">
                     <font>
-                        <Font name="Garamond Italic" size="27.0" />
+                        <Font name="Arial Bold" size="27.0" />
                     </font>
                     <effect>
                         <DropShadow />
@@ -74,64 +74,64 @@
                <children>
                   <Pane layoutX="12.0" layoutY="282.0" prefHeight="247.0" prefWidth="596.0">
                      <children>
-                        <PasswordField fx:id="checkCurrentPassword" layoutY="52.0" />
+                        <PasswordField font="Arial Bold" fx:id="checkCurrentPassword" layoutY="52.0" />
                         <Label layoutY="27.0" prefHeight="25.0" prefWidth="149.0" text="Current password">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
                         <Label layoutY="98.0" prefHeight="25.0" prefWidth="149.0" text="New password">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold"size="17.0" />
                            </font>
                         </Label>
                         <Label layoutY="179.0" prefHeight="26.0" prefWidth="176.0" text="Confirm new password">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold"size="17.0" />
                            </font>
                         </Label>
-                        <PasswordField fx:id="newPassword" layoutY="124.0" />
-                        <PasswordField fx:id="confirmNewPassword" layoutY="205.0" />
+                        <PasswordField font="Arial Bold" fx:id="newPassword" layoutY="124.0" />
+                        <PasswordField font="Arial Bold" fx:id="confirmNewPassword" layoutY="205.0" />
                         <Button layoutX="149.0" layoutY="205.0" mnemonicParsing="false" onAction="#onActionChangePassword" prefHeight="25.0" prefWidth="140.0" text="Change password" />
                         <Label alignment="CENTER" layoutY="1.0" prefHeight="26.0" prefWidth="290.0" text="Change password">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
                         <Button layoutX="456.0" layoutY="205.0" mnemonicParsing="false" onAction="#onActionChangeLastName" prefHeight="25.0" prefWidth="140.0" text="Change Last name" />
-                        <TextField fx:id="newLastName" layoutX="305.0" layoutY="205.0" />
+                        <TextField font="Arial Bold"fx:id="newLastName" layoutX="305.0" layoutY="205.0" />
                         <Label layoutX="305.0" layoutY="179.0" prefHeight="26.0" prefWidth="176.0" text="New Last name">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
                         <Label alignment="CENTER" layoutX="305.0" layoutY="153.0" prefHeight="26.0" prefWidth="290.0" text="Change Last name">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold"size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="newFirstName" layoutX="305.0" layoutY="124.0" />
+                        <TextField font="Arial Bold"fx:id="newFirstName" layoutX="305.0" layoutY="124.0" />
                         <Button layoutX="456.0" layoutY="124.0" mnemonicParsing="false" onAction="#onActionChangeFirstName" prefHeight="25.0" prefWidth="140.0" text="Change First name" />
                         <Label layoutX="305.0" layoutY="98.0" prefHeight="25.0" prefWidth="176.0" text="New First name">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold"size="17.0" />
                            </font>
                         </Label>
                         <Label alignment="CENTER" layoutX="305.0" layoutY="76.0" prefHeight="26.0" prefWidth="290.0" text="Change First name">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold"size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="newUsername" layoutX="305.0" layoutY="52.0" />
+                        <TextField font="Arial Bold"fx:id="newUsername" layoutX="305.0" layoutY="52.0" />
                         <Button layoutX="456.0" layoutY="52.0" mnemonicParsing="false" onAction="#onActionChangeUsername" prefHeight="25.0" prefWidth="140.0" text="Change Username" />
                         <Label layoutX="305.0" layoutY="25.0" prefHeight="26.0" prefWidth="176.0" text="New username">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold"size="17.0" />
                            </font>
                         </Label>
                         <Label alignment="CENTER" layoutX="305.0" layoutY="1.0" prefHeight="26.0" prefWidth="290.0" text="Change username">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold"size="17.0" />
                            </font>
                         </Label>
                      </children>
@@ -142,42 +142,42 @@
                      <children>
                         <Label layoutY="7.0" prefHeight="26.0" prefWidth="85.0" text="First name">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
                         <Label layoutY="33.0" prefHeight="26.0" prefWidth="85.0" text="Last name">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold"size="17.0" />
                            </font>
                         </Label>
                         <Label layoutY="59.0" prefHeight="26.0" prefWidth="140.0" text="Current username">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold"size="17.0" />
                            </font>
                         </Label>
                         <Label layoutY="85.0" prefHeight="25.0" prefWidth="149.0" text="Current password">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold"size="17.0" />
                            </font>
                         </Label>
                         <Label fx:id="currentPassword" layoutX="149.0" layoutY="85.0" prefHeight="26.0" prefWidth="140.0" text="12345">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold"size="17.0" />
                            </font>
                         </Label>
                         <Label fx:id="currentUsername" layoutX="149.0" layoutY="59.0" prefHeight="26.0" prefWidth="140.0" text="jason">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold"size="17.0" />
                            </font>
                         </Label>
                         <Label fx:id="currentFirstName" layoutX="145.0" layoutY="7.0" prefHeight="26.0" prefWidth="140.0" text="liam">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold"size="17.0" />
                            </font>
                         </Label>
                         <Label fx:id="currentLasName" layoutX="145.0" layoutY="33.0" prefHeight="26.0" prefWidth="140.0" text="axelrod">
                            <font>
-                              <Font size="17.0" />
+                              <Font name="Arial Bold"size="17.0" />
                            </font>
                         </Label>
                      </children>
