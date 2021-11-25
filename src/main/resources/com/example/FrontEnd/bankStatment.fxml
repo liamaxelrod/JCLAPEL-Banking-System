@@ -102,8 +102,11 @@
          <children>
             <TableView onSort="#switchToCustomerMenu" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
               <columns>
+
+
                 <TableColumn prefWidth="67.20001220703125" style="-fx-background-color: #81A1C3;" text="ID:" />
-                <TableColumn prefWidth="104.0" style="-fx-background-color: #81A1C3;" text="Date:" />
+
+                <TableColumn prefWidth="104.0" style="-fx-background-color: #81A1C3;" styleClass="Arial Bold" text="Date:" />
                   <TableColumn prefWidth="110.4000244140625" style="-fx-background-color: #81A1C3;" text="Source:" />
                   <TableColumn prefWidth="140.7999267578125" style="-fx-background-color: #81A1C3;" text="Transfer:" />
                   <TableColumn prefWidth="156.800048828125" style="-fx-background-color: #81A1C3;" text="Total:" />
