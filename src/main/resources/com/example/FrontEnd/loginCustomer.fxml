@@ -63,13 +63,13 @@
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <TextField font ="Arial Bold" fx:id="usernameTextField" layoutX="542.0" layoutY="262.0" prefHeight="26.0" prefWidth="173.0" promptText="Username" />
+      <TextField fx:id="usernameTextField" layoutX="542.0" layoutY="262.0" prefHeight="26.0" prefWidth="173.0" promptText="Username" />
       <Label layoutX="469.0" layoutY="309.0" text="Password">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
-      <PasswordField font="Arial Bold" fx:id="enterPasswordField" layoutX="542.0" layoutY="306.0" prefHeight="26.0" prefWidth="173.0" promptText="Password" />
+      <PasswordField fx:id="enterPasswordField" layoutX="542.0" layoutY="306.0" prefHeight="26.0" prefWidth="173.0" promptText="Password" />
       <Button fx:id="loginButton" layoutX="542.0" layoutY="366.0" mnemonicParsing="false" onAction="#switchToCustomerMenu" prefHeight="26.0" prefWidth="173.0" style="-fx-background-color: #474B4D;" text="Login" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="13.0" />
