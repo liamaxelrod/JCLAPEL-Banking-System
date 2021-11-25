@@ -1,10 +1,11 @@
-module com.jclapel.banksystem {
-    requires transitive javafx.controls;
-    requires transitive javafx.fxml;
-    requires transitive javafx.graphics;
-    requires transitive java.sql;
+module com.example.jc_lapel {
 
-    requires com.google.gson;
+    requires javafx.controls;
+    requires javafx.fxml;
+    requires java.sql;
+
+    opens com.example.FrontEnd to javafx.fxml;
+    exports com.example.FrontEnd;
 
     opens com.jclapel.banksystem to javafx.fxml;
     exports com.jclapel.banksystem.data;

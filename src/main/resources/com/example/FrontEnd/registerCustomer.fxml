@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jc_lapel.RegisterController">
+<AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.RegisterController">
     <children>
         <VBox prefHeight="675.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;">
             <children>
@@ -26,7 +26,7 @@
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                     </children>
                 </Pane>
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToHelloView" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MAIN MENU" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MAIN MENU" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -68,12 +68,12 @@
       <TextField fx:id="usernameTextField" layoutX="384.0" layoutY="339.0" prefHeight="26.0" prefWidth="232.0" promptText="Username" />
         <PasswordField fx:id="setPasswordField" layoutX="384.0" layoutY="393.0" prefHeight="26.0" prefWidth="232.0" promptText="Password" />
       <PasswordField fx:id="confirmPasswordField" layoutX="384.0" layoutY="450.0" prefHeight="26.0" prefWidth="232.0" promptText="Confirm Password" />
-        <Button fx:id="registerButton" layoutX="382.0" layoutY="501.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Create Account" textFill="WHITE">
+        <Button fx:id="createAccountButton" layoutX="382.0" layoutY="501.0" mnemonicParsing="false" onAction="#onActionCreateAccount" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Create Account" textFill="WHITE">
             <font>
                 <Font size="13.0" />
             </font>
         </Button>
-        <Button fx:id="closeButton" layoutX="382.0" layoutY="541.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Cancel" textFill="WHITE">
+        <Button fx:id="cancelButton" layoutX="382.0" layoutY="541.0" mnemonicParsing="false" onAction="#switchToStart" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Cancel" textFill="WHITE">
             <font>
                 <Font size="13.0" />
             </font>

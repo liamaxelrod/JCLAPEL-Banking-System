@@ -1,4 +1,4 @@
-package com.jclapel.banksystem.frontend;
+package com.example.FrontEnd;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,24 +7,19 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloController {
+public class startController {
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     @FXML
-    private Label welcomeText;
+    public Button closeButton;
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
 
+    @FXML//on interface button = main menu
     public void switchToLoginCustomer(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("loginCustomer.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -33,13 +28,7 @@ public class HelloController {
         stage.show();
     }
 
-    public void switchToHelloView(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+    @FXML//on interface button = create account
     public void switchToRegisterCustomer(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("registerCustomer.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -47,11 +36,8 @@ public class HelloController {
         stage.setScene(scene);
         stage.show();
     }
-    //Hej Erik... Update jaooow
-    @FXML
-    public Button closeButton;
 
-    @FXML
+    @FXML//on interface button = exit
     public void handelCloseButtonAction(ActionEvent event){
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
