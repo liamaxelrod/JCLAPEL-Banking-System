@@ -70,6 +70,7 @@ public class LoginController implements Initializable {
         }
     }
 
-// Albin
+// Albin Karlsson
+    //Is awesome
 
 }
