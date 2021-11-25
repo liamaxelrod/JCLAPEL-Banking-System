@@ -61,7 +61,7 @@ public class LoginController implements Initializable {
 
     @FXML//on interface button = login
     public void switchToCustomerMenu(ActionEvent event) throws IOException{
-        if (usernameTextField.getText() == "" && enterPasswordField.getText() == ""){
+        if (usernameTextField.getText().toString().equals("") && enterPasswordField.getText().toString().equals("")){
             Parent root = FXMLLoader.load(getClass().getResource("userMenu.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -69,7 +69,5 @@ public class LoginController implements Initializable {
             stage.show();
         }
     }
-
-// Albin
-
+    
 }

@@ -17,7 +17,6 @@ public class startApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 938, 675);
         stage.setScene(scene);
         stage.show();
-
     }
 
     public static void main(String[] args) {
