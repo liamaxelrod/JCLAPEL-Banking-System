@@ -17,7 +17,7 @@
          <children>
             <Pane prefHeight="112.0" prefWidth="319.0">
                <children>
-                  <Label layoutX="49.0" layoutY="41.0" prefHeight="31.0" prefWidth="221.0" text="JC. LAPEL United Bank" textFill="WHITE">
+                  <Label layoutX="49.0" layoutY="41.0" prefHeight="31.0" prefWidth="230.0" text="JC. LAPEL United Bank" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="20.0" />
                      </font>
@@ -75,7 +75,7 @@
                   <Insets left="50.0" />
                </padding>
                <font>
-                  <Font name="Arial Bold" size="16.0" />
+                  <Font name="Arial Bold" size="14.0" />
                </font>
                <effect>
                   <Glow />
@@ -131,12 +131,12 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="13.0" layoutY="71.0" prefHeight="35.0" prefWidth="80.0" text="Name: " textAlignment="CENTER">
+            <Label alignment="CENTER_RIGHT" layoutX="13.0" layoutY="71.0" prefHeight="35.0" prefWidth="90.0" text="Name: " textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="fullRealName" layoutX="93.0" layoutY="71.0" prefHeight="35.0" prefWidth="371.0" text="Full name" textAlignment="CENTER">
+            <Label fx:id="fullRealName" layoutX="99.0" layoutY="71.0" prefHeight="35.0" prefWidth="365.0" text="Full name" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
@@ -148,17 +148,17 @@
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="14.0" layoutY="49.0" prefHeight="35.0" prefWidth="141.0" text="Checking     " textAlignment="CENTER">
+                  <Label layoutX="14.0" layoutY="49.0" prefHeight="35.0" prefWidth="147.0" text="Checking     " textAlignment="CENTER">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="SavingTotal" layoutX="155.0" layoutY="14.0" prefHeight="35.0" prefWidth="432.0" text="Total" textAlignment="CENTER">
+                  <Label fx:id="SavingTotal" layoutX="174.0" layoutY="14.0" prefHeight="35.0" prefWidth="413.0" text="Total" textAlignment="CENTER">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="CheckingTotal" layoutX="155.0" layoutY="49.0" prefHeight="35.0" prefWidth="432.0" text="Total" textAlignment="CENTER">
+                  <Label fx:id="CheckingTotal" layoutX="174.0" layoutY="49.0" prefHeight="35.0" prefWidth="413.0" text="Total" textAlignment="CENTER">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
@@ -168,7 +168,7 @@
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="OtherTotal" layoutX="155.0" layoutY="84.0" prefHeight="35.0" prefWidth="432.0" text="Total" textAlignment="CENTER">
+                  <Label fx:id="OtherTotal" layoutX="174.0" layoutY="84.0" prefHeight="35.0" prefWidth="413.0" text="Total" textAlignment="CENTER">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>

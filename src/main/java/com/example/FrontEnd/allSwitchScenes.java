@@ -7,13 +7,31 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class allSwitchScenes {
     private Stage stage;
     private Scene scene;
+
+    private FileChooser fileChoice;
+    private File filePath;
+    private Image theImage;
+
+    public ImageView saveImage = null;
+
+    public void theSavingOfImage(ImageView event){
+        saveImage = event;
+    }
+
+    public ImageView getSaveImage() {
+        return saveImage;
+    }
 
     @FXML
     public Button closeButton;
