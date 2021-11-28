@@ -168,18 +168,18 @@
                         </Label>
                      </children>
                   </Pane>
-                  <ImageView fx:id="currentImage" accessibleRole="INCREMENT_BUTTON" fitHeight="150.0" fitWidth="200.0" layoutX="383.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="currentImage" accessibleRole="INCREMENT_BUTTON" fitHeight="150.0" fitWidth="200.0" layoutX="383.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                      <viewport>
                         <Rectangle2D />
                      </viewport></ImageView>
-                  <Button layoutX="383.0" layoutY="187.0" mnemonicParsing="false" onAction="#onActionChangeProfileImage" prefHeight="25.0" prefWidth="200.0" text="Upload user profile image">
+                  <Button layoutX="383.0" layoutY="200.0" mnemonicParsing="false" onAction="#onActionChangeProfileImage" prefHeight="25.0" prefWidth="200.0" text="Upload user profile image">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font></Button>
-                  <Pane layoutX="20.0" layoutY="50.0" prefHeight="150.0" prefWidth="311.0">
+                  <Pane layoutX="20.0" layoutY="50.0" prefHeight="150.0" prefWidth="342.0">
                      <children>
                         <Label layoutY="7.0" prefHeight="26.0" prefWidth="149.0" text="First name">
                            <font>

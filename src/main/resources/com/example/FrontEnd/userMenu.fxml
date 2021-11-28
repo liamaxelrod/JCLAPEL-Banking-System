@@ -125,23 +125,23 @@
       </Pane>
       <Pane layoutX="319.0" layoutY="116.0" prefHeight="563.0" prefWidth="620.0">
          <children>
-            <ImageView fx:id="ImageProfile" fitHeight="127.0" fitWidth="141.0" layoutX="466.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="userName" alignment="BASELINE_CENTER" layoutY="18.0" prefHeight="35.0" prefWidth="461.0" text="Username" textAlignment="CENTER">
+            <ImageView fx:id="ImageProfile" fitHeight="147.0" fitWidth="166.0" layoutX="441.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="userName" alignment="BASELINE_CENTER" layoutY="18.0" prefHeight="35.0" prefWidth="413.0" text="Username" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="13.0" layoutY="71.0" prefHeight="35.0" prefWidth="90.0" text="Name: " textAlignment="CENTER">
+            <Label alignment="CENTER_RIGHT" layoutX="13.0" layoutY="89.0" prefHeight="35.0" prefWidth="90.0" text="Name: " textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="fullRealName" layoutX="99.0" layoutY="71.0" prefHeight="35.0" prefWidth="365.0" text="Full name" textAlignment="CENTER">
+            <Label fx:id="fullRealName" layoutX="96.0" layoutY="89.0" prefHeight="35.0" prefWidth="319.0" text="Full name" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Pane layoutX="13.0" layoutY="147.0" prefHeight="135.0" prefWidth="594.0">
+            <Pane layoutX="13.0" layoutY="161.0" prefHeight="135.0" prefWidth="594.0">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="141.0" text="Saving         " textAlignment="CENTER">
                      <font>

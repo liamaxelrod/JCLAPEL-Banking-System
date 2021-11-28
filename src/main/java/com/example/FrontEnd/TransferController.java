@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.testProfile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TransferController implements Initializable {
+public class TransferController extends accessToTheTalkToBack implements Initializable {
     private Stage stage;
     private Scene scene;
 
@@ -48,6 +49,17 @@ public class TransferController implements Initializable {
 
     }
 
+    //The set-up Methods
+    public testProfile userProfile;
+
+    public void setUserProfile(testProfile newTestProfile){
+        userProfile = newTestProfile;
+    }
+    public void setUpProfile(){
+
+    }
+    //End of set-up Methods
+
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fromAccount.setValue("choose account");//not working don't know how to make it show?????????
@@ -57,43 +69,56 @@ public class TransferController implements Initializable {
         toAccount.setItems(differentAccounts);
     }
 
-    ////all methods below are for switching scenes, or you could say interfaces
+    //all methods below are for switching scenes, or you could say interfaces
 
     @FXML//on interface button = user menu
     void switchToCustomerMenu(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("userMenu.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("userMenu.fxml"));
+        Parent root = loader.load();
         scene = new Scene(root);
+
+//        userMenuController thisController = loader.getController();
+//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//        thisController.setUpProfile();
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
-
     @FXML//on interface button = bank statement
     void switchToBankStatement(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(""));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("bankStatment.fxml"));
+        Parent root = loader.load();
         scene = new Scene(root);
+
+//        userMenuController thisController = loader.getController();
+//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//        thisController.setUpProfile();
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
-
     @FXML//on interface button = portfolio
     void switchToFinanceProject(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(""));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 
+    }
     @FXML//on interface button = sign out
     public void switchToStart(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("start.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("start.fxml"));
+        Parent root = loader.load();
         scene = new Scene(root);
+
+//        userMenuController thisController = loader.getController();
+//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//        thisController.setUpProfile();
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-
     }
 
 }

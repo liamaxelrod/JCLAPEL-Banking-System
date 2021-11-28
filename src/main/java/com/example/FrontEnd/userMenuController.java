@@ -1,8 +1,12 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.testProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class userMenuController extends allSwitchScenes implements Initializable {
+public class userMenuController extends accessToTheTalkToBack implements Initializable {
     private Stage stage;
     private Scene scene;
 
@@ -21,7 +25,7 @@ public class userMenuController extends allSwitchScenes implements Initializable
     private Button closeButton;
 
     @FXML//on interface image view = upper far right position
-    private ImageView ImageProfile;
+    private ImageView imageProfile;
 
     @FXML//on interface label = username
     private Label userName;
@@ -36,6 +40,24 @@ public class userMenuController extends allSwitchScenes implements Initializable
     @FXML
     private Label SavingTotal;
 
+    //The set-up Methods
+    public testProfile userProfile;
+
+    public void setUserProfile(testProfile newTestProfile){
+        userProfile = newTestProfile;
+    }
+    public void setUpProfile(){
+        fullRealName.setText(userProfile.getFirstName() + " " + userProfile.getLastName());
+        userName.setText(userProfile.getUserName());
+        if (userProfile.saveImage != null){//When I load up the image there's a problem???????
+            imageProfile.setImage(userProfile.getSaveImage().getImage());
+        }
+    }
+    public testProfile getUserProfile() {
+        return userProfile;
+    }
+    //End of set-up Methods
+
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -43,29 +65,76 @@ public class userMenuController extends allSwitchScenes implements Initializable
     }
 
     ////all methods below are for switching scenes, or you could say interfaces
+
     @FXML//on interface button = transfer
     void switchToTransfer(ActionEvent event) throws IOException {
-        theSwitchToTransfer(event);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("transferCustomer.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+        TransferController thisController = loader.getController();
+        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//      thisController.setUpProfile();
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
     @FXML//on interface button = profile
     void switchToProfile(ActionEvent event) throws IOException {
-        theSwitchToProfile(event);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("profile.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+        profileController thisController = loader.getController();
+        thisController.setUserProfile(getUserProfile());
+        thisController.setUpProfile();
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
     @FXML//on interface button = financial projects loan, portfolio, etc.
     void switchToFinanceProject(ActionEvent event) {
-        theSwitchToFinanceProject(event);
+
     }
     @FXML//on interface button = logout
     void switchToStart(ActionEvent event) throws IOException {
-        theSwitchToStart(event);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("start.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+//        userMenuController thisController = loader.getController();
+//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//        thisController.setUpProfile();
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
     @FXML//on interface button = exit
     void handelCloseButtonAction(ActionEvent event) throws IOException {
-        theHandelCloseButtonAction(event);
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+
     }
     @FXML//on interface button = transfer history
     void switchToBankStatement(ActionEvent event) throws IOException {
-        theSwitchToBankStatement(event);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("bankStatment.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+//        userMenuController thisController = loader.getController();
+//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//        thisController.setUpProfile();
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
     @FXML
     void switchToManual(ActionEvent event) throws IOException {

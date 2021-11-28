@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.testProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,18 +21,22 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class profileController extends allSwitchScenes implements Initializable {
+public class profileController extends accessToTheTalkToBack implements Initializable {
+    public static LoginController object = new LoginController();
     private Stage stage;
     private Scene scene;
 
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (getSaveImage() != null){
-            currentImage = getSaveImage();
-        }
 
     }
+
+    private FileChooser fileChoice;
+    private File filePath;
+    @FXML//on interface image view = right above upload a user profile image
+    private ImageView currentImage;//this is the one actually holds the image for the interface
+    private Image theImage;
 
     @FXML//on interface Password field = Bottom left corner
     private PasswordField checkCurrentPassword;
@@ -55,6 +60,23 @@ public class profileController extends allSwitchScenes implements Initializable 
     private TextField newFirstName;
     @FXML
     private TextField newLastName;
+
+    //The set-up Methods
+    public testProfile userProfile;
+
+    public void setUserProfile(testProfile newTestProfile){
+        userProfile = newTestProfile;
+    }
+    public void setUpProfile(){
+        currentFirstName.setText(userProfile.getFirstName());
+        currentLasName.setText(userProfile.getLastName());
+        currentUsername.setText(userProfile.getUserName());
+        currentPassword.setText(userProfile.getPassword());
+    }
+    public testProfile getUserProfile() {
+        return userProfile;
+    }
+    //End of set-up Methods
 
     @FXML
     private void onActionChangePassword(ActionEvent event) {
@@ -91,12 +113,6 @@ public class profileController extends allSwitchScenes implements Initializable 
         newUsername.setText("");
     }
 
-    private FileChooser fileChoice;
-    private File filePath;
-    @FXML//on interface image view = right above upload a user profile image
-    private ImageView currentImage;
-    private Image theImage;
-
     @FXML//Still trying to figure out save the image
     public void onActionChangeProfileImage(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -106,29 +122,42 @@ public class profileController extends allSwitchScenes implements Initializable 
         this.filePath = fileChoice.showOpenDialog(stage);
         theImage = new Image(String.valueOf(filePath.toURI()));
         currentImage.setImage(theImage);
-        theSavingOfImage(currentImage);
-        System.out.println(saveImage.getImage());
+
+        userProfile.setSaveImage(currentImage);
+
     }
 
-    ////all methods below are for switching scenes, or you could say interfaces
+    //all methods below are for switching scenes, or you could say interfaces
 
     @FXML//on interface button = user menu
     void switchToCustomerMenu(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("userMenu.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("userMenu.fxml"));
+        Parent root = loader.load();
         scene = new Scene(root);
+
+        userMenuController thisController = loader.getController();
+        thisController.setUserProfile(getUserProfile());
+        thisController.setUpProfile();
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
-
     @FXML//on interface button = sign out
     public void switchToStart(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("start.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("start.fxml"));
+        Parent root = loader.load();
         scene = new Scene(root);
+
+//        userMenuController thisController = loader.getController();
+//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//        thisController.setUpProfile();
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-
     }
 
 }
