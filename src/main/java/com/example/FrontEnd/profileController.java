@@ -123,7 +123,7 @@ public class profileController extends accessToTheTalkToBack implements Initiali
         theImage = new Image(String.valueOf(filePath.toURI()));
         currentImage.setImage(theImage);
 
-        userProfile.setSaveImage(currentImage);
+        userProfile.setTheImageView(currentImage);
 
     }
 

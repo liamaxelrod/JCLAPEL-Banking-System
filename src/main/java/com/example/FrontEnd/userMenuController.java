@@ -49,9 +49,8 @@ public class userMenuController extends accessToTheTalkToBack implements Initial
     public void setUpProfile(){
         fullRealName.setText(userProfile.getFirstName() + " " + userProfile.getLastName());
         userName.setText(userProfile.getUserName());
-        if (userProfile.saveImage != null){//When I load up the image there's a problem???????
-            imageProfile.setImage(userProfile.getSaveImage().getImage());
-        }
+//        imageProfile.setImage(userProfile.getTheImageView().getImage());
+//still not loading image
     }
     public testProfile getUserProfile() {
         return userProfile;

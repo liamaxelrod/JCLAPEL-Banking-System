@@ -1,6 +1,5 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
 import com.example.easyGoBetween.frontEndTalkToObjects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,14 +43,14 @@ public class LoginController extends accessToTheTalkToBack implements Initializa
     }
 
     //The set-up Methods
-    public testProfile userProfile;
-
-    public void setUserProfile(testProfile newTestProfile){
-        userProfile = newTestProfile;
-    }
-    public void setUpProfile(){
-
-    }
+//    public testProfile userProfile;
+//
+//    public void setUserProfile(testProfile newTestProfile){
+//        userProfile = newTestProfile;
+//    }
+//    public void setUpProfile(){
+//
+//    }
     //End of set-up Methods
 
     //all methods below are for switching scenes, or you could say interfaces

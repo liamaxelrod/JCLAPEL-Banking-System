@@ -175,7 +175,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="357.0" layoutY="402.0" prefHeight="147.0" prefWidth="250.0">
+            <Pane layoutX="350.0" layoutY="402.0" prefHeight="147.0" prefWidth="257.0">
                <children>
                   <Button alignment="BASELINE_LEFT" layoutX="42.0" layoutY="73.0" mnemonicParsing="false" onAction="#switchToManual" prefHeight="55.0" prefWidth="166.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MANUAL" textFill="WHITE">
                      <opaqueInsets>
@@ -191,7 +191,7 @@
                         <Glow />
                      </effect>
                   </Button>
-                  <Label layoutX="19.0" layoutY="14.0" prefHeight="35.0" prefWidth="213.0" text="Questions and help" textAlignment="CENTER">
+                  <Label layoutX="19.0" layoutY="14.0" prefHeight="35.0" prefWidth="230.0" text="Questions and help" textAlignment="CENTER">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
