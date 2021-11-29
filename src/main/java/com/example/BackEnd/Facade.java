@@ -27,8 +27,16 @@ public class Facade {
         return true;
     }
 
-    public void addTransfer(){
+    public void transferBetweenAccounts(){
         //create a new transfer
+    }
+
+    public void deposit(){
+        //deposit to the account
+    }
+
+    public void withdraw(){
+        //withdraw from the account
     }
 
     public void createAccount(){
@@ -50,4 +58,18 @@ public class Facade {
     public void loadAllTransactions(){
         //load all transactions for an account
     }
+
+    public void resetCredentials(){
+        //reset user credentials
+    }
+
+    public void retrieveUserStatistics(){
+        //retrieve data to be displayed by user statistics
+    }
+
+    public void createEmployee(){
+        //create employee account
+    }
+
+
 }
