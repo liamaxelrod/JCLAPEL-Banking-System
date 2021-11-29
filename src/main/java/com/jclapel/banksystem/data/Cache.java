@@ -1,7 +1,7 @@
 package com.jclapel.banksystem.data;
 
 // Imports
-import com.google.gson.*;
+//import com.google.gson.*;
 import java.io.Serializable;
 import java.util.HashMap;
 
@@ -14,7 +14,7 @@ public class Cache implements Serializable {
 	*/
 	private HashMap<String, Object> dataCache;
 	
-	Gson gson = new Gson();
+	//Gson gson = new Gson();
 
 	public void initialize() {
 		// Executes initial procedure on program start
@@ -52,9 +52,9 @@ public class Cache implements Serializable {
 	public void saveData() {
 		// Serializes and sends data to database
 		// TODO: Send data with this string
-		String serializedData = gson.toJson(dataCache);
+		//String serializedData = gson.toJson(dataCache);
 
-		System.out.println(serializedData); // Needs further testing
+		//System.out.println(serializedData); // Needs further testing
 	}
 
 	public void loadData(String serializedData) {
