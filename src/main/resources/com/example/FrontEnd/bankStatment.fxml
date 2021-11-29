@@ -37,7 +37,7 @@
                         <Insets left="50.0" />
                     </padding>
                     <font>
-                        <Font size="17.0" />
+                        <Font name="Arial" size="17.0" />
                     </font>
                     <effect>
                         <Glow />
@@ -51,7 +51,7 @@
                         <Insets left="50.0" />
                     </padding>
                     <font>
-                        <Font size="17.0" />
+                        <Font name="Arial" size="17.0" />
                     </font>
                     <effect>
                         <Glow />
@@ -65,7 +65,7 @@
                         <Insets left="50.0" />
                     </padding>
                     <font>
-                        <Font size="17.0" />
+                        <Font name="Arial" size="17.0" />
                     </font>
                     <effect>
                         <Glow />
@@ -76,14 +76,14 @@
         <Pane layoutX="10.0" layoutY="2.0" prefHeight="120.0" prefWidth="319.0" />
         <Label layoutX="384.0" layoutY="122.0" prefHeight="79.0" prefWidth="383.0" text="Bank Statement" textFill="#5d84a4">
             <font>
-                <Font name="System Bold" size="47.0" />
+                <Font name="Arial Bold" size="47.0" />
             </font>
         </Label>
         <Pane layoutX="319.0" prefHeight="112.0" prefWidth="620.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.bottomAnchor="563.0" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label layoutX="144.0" layoutY="40.0" text="THE BANK YOU DESERVE" textAlignment="CENTER" textFill="WHITE">
+                <Label layoutX="131.0" layoutY="40.0" prefHeight="32.0" prefWidth="350.0" text="THE BANK YOU DESERVE" textAlignment="CENTER" textFill="WHITE">
                     <font>
-                        <Font name="Garamond Italic" size="27.0" />
+                        <Font name="Arial Bold" size="27.0" />
                     </font>
                     <effect>
                         <DropShadow />
@@ -102,8 +102,11 @@
          <children>
             <TableView onSort="#switchToCustomerMenu" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
               <columns>
+
+
                 <TableColumn prefWidth="67.20001220703125" style="-fx-background-color: #81A1C3;" text="ID:" />
-                <TableColumn prefWidth="104.0" style="-fx-background-color: #81A1C3;" text="Date:" />
+
+                <TableColumn prefWidth="104.0" style="-fx-background-color: #81A1C3;" styleClass="Arial Bold" text="Date:" />
                   <TableColumn prefWidth="110.4000244140625" style="-fx-background-color: #81A1C3;" text="Source:" />
                   <TableColumn prefWidth="140.7999267578125" style="-fx-background-color: #81A1C3;" text="Transfer:" />
                   <TableColumn prefWidth="156.800048828125" style="-fx-background-color: #81A1C3;" text="Total:" />
@@ -111,7 +114,7 @@
             </TableView>
             <Label text="Transfer history of 30 days:">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Arial Bold" size="12.0" />
                </font>
             </Label>
          </children>
