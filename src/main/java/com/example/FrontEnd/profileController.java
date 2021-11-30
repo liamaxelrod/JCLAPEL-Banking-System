@@ -68,10 +68,10 @@ public class profileController extends accessToTheTalkToBack implements Initiali
         userProfile = newTestProfile;
     }
     public void setUpProfile(){
-        currentFirstName.setText(userProfile.getFirstName());
-        currentLasName.setText(userProfile.getLastName());
-        currentUsername.setText(userProfile.getUserName());
-        currentPassword.setText(userProfile.getPassword());
+        currentFirstName.setText(RegisterController.firstName);
+        currentLasName.setText(RegisterController.secondName);
+        currentUsername.setText(RegisterController.userName);
+        currentPassword.setText(RegisterController.password);
     }
     public testProfile getUserProfile() {
         return userProfile;

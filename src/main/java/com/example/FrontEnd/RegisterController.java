@@ -1,6 +1,5 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +13,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class RegisterController extends accessToTheTalkToBack {
+
+
+    public static String firstName;
+    public static String secondName;
+    public static String userName;
+    public static String password;
+    public static double money = 10000.00;
+
     private Stage stage;
     private Scene scene;
 
@@ -32,23 +39,23 @@ public class RegisterController extends accessToTheTalkToBack {
     @FXML//on interface text field = username
     private TextField usernameTextField;
 
-    //The set-up Methods
-    public testProfile userProfile;
 
-    public void setUserProfile(testProfile newTestProfile){
-        userProfile = newTestProfile;
-    }
-    public void setUpProfile(){
-
-    }
-    //End of set-up Methods
-
+    //Upon pressing the button "create account" you save all data
     @FXML//on interface button = create account
     private void onActionCreateAccount(ActionEvent event){
-
+    createAccount();
     }
 
-    ////all methods below are for switching scenes, or you could say interfaces
+    // Creating Variables for the account
+    public void createAccount(){
+        firstName = firstnameTextField.getText();
+        secondName = lastnameTextField.getText();
+        userName = usernameTextField.getText();
+        password = setPasswordField.getText();
+        }
+
+
+
 
     @FXML//on interface button = login
     public void switchToLoginCustomer(ActionEvent event) throws IOException {

@@ -47,8 +47,9 @@ public class userMenuController extends accessToTheTalkToBack implements Initial
         userProfile = newTestProfile;
     }
     public void setUpProfile(){
-        fullRealName.setText(userProfile.getFirstName() + " " + userProfile.getLastName());
-        userName.setText(userProfile.getUserName());
+        fullRealName.setText(" " + RegisterController.firstName + " " + RegisterController.secondName);
+        userName.setText(RegisterController.userName);
+        SavingTotal.setText(String.valueOf(RegisterController.money));
 //        imageProfile.setImage(userProfile.getTheImageView().getImage());
 //still not loading image
     }

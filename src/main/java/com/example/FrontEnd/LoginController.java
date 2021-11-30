@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.testProfile;
 import com.example.easyGoBetween.frontEndTalkToObjects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +22,8 @@ public class LoginController extends accessToTheTalkToBack implements Initializa
 
     private Stage stage;
     private Scene scene;
+    //The set-up Methods
+    public testProfile userProfile;
 
     @FXML//on interface password field = password
     private PasswordField enterPasswordField;
@@ -86,11 +89,10 @@ public class LoginController extends accessToTheTalkToBack implements Initializa
         stage.setScene(scene);
         stage.show();
     }
-
+// Successfully made the code look for the username and password created
     @FXML//on interface button = login  //Need the unique version is your logging into your profile for the first time
     public void switchToCustomerMenu(ActionEvent event) throws IOException{
-        if (usernameTextField.getText().toString().equals("") && enterPasswordField.getText().toString().equals("")){
-
+        if (usernameTextField.getText().toString().equals(RegisterController.userName) && enterPasswordField.getText().toString().equals(RegisterController.password)){
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("userMenu.fxml"));
             Parent root = loader.load();
