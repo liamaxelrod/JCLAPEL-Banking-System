@@ -1,4 +1,4 @@
-module com.example.jc_lapel {
+module com.example.jclapel {
 
 	requires javafx.controls;
 	requires javafx.fxml;
