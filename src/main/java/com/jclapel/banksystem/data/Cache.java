@@ -4,6 +4,7 @@ package com.jclapel.banksystem.data;
 // import com.google.code.gson;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Set;
 
 public class Cache implements Serializable {
 	/*
@@ -19,6 +20,15 @@ public class Cache implements Serializable {
 	public void initialize() {
 		// Executes initial procedure on program start
 		dataCache = new HashMap<String, Object>();
+	}
+
+	public void initialize(Set<String> keySet) {
+		// Executes initial procedure on program start
+		dataCache = new HashMap<String, Object>();
+
+		for (String key : keySet) {
+			dataCache.put(key, "");
+		}
 	}
 
 	public void initialize(HashMap<String, Object> presetCache) {
