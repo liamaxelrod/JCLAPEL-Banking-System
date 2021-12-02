@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RegisterController extends accessToTheTalkToBack {
+public class RegisterController extends AccessToTheTalkToBack {
 
     public static int id;
     public static String firstName;
@@ -45,6 +45,7 @@ public class RegisterController extends accessToTheTalkToBack {
     //Upon pressing the button "create account" you save all data
     @FXML//on interface button = create account
     private void onActionCreateAccount(ActionEvent event){
+        createAccount();
     StartApplication.facade.createAccount(usernameTextField.getText(), setPasswordField.getText());
     }
 

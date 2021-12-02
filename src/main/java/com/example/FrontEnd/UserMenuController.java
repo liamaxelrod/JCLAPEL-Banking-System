@@ -1,6 +1,5 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class userMenuController extends accessToTheTalkToBack implements Initializable {
+public class UserMenuController extends AccessToTheTalkToBack implements Initializable {
     private Stage stage;
     private Scene scene;
 
@@ -88,7 +87,7 @@ public class userMenuController extends accessToTheTalkToBack implements Initial
         Parent root = loader.load();
         scene = new Scene(root);
 
-        profileController thisController = loader.getController();
+        ProfileController thisController = loader.getController();
         thisController.setUserProfile(getUserProfile());
         thisController.setUpProfile();
 

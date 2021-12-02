@@ -2,7 +2,7 @@ package com.example.FrontEnd;
 
 import com.example.easyGoBetween.frontEndTalkToObjects;
 
-public class accessToTheTalkToBack {
+public class AccessToTheTalkToBack {
     public static frontEndTalkToObjects talkToGoBetween = new frontEndTalkToObjects();
 //
 //    private Stage stage;
