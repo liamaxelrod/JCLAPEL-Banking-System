@@ -7,35 +7,37 @@ import java.util.Random;
 public class Facade {
     private HashMap<Integer, Customer> customers = new HashMap<>();
 
-    public ArrayList<Customer> loadCustomers() {
+    public HashMap<Integer, Customer> loadCustomers() {
         //method to load the customers from external storage upon starting the application
-        return new ArrayList<>();
+        return new HashMap<>();
     }
 
     public void storeCustomers() {
         //method to store customers to external storage before closing the app
     }
 
-    public void createCustomer(String name, String password){
+    public void createCustomer(String name, String password){ //Patrik, Karar , Julia, Erik
         int ID;
         Random rn = new Random();
         do{ //generate random customer ID number
-            int range = 999999 - 100000 +1;
+            int range = 999999 - 100000 +1; //generate 6 digit random number
             ID = rn.nextInt(range) + 100000;
         } while (customers.containsKey(ID));//ensure the id is not in use
 
         Customer customer = new Customer(ID, name, password);
         customers.put(ID, customer);
-
     }
 
-    public void removeCustomer(){
-        //method for removing a customer
+    public void removeCustomer(int ID){
+        customers.remove(ID);
     }
 
-    public boolean checkLogin(Customer customer, String userName, String password){
-        //check the credentials of a user trying to log in
-        return true;
+    public boolean checkLogin(int ID, String password){
+        if(customers.containsKey(ID) && customers.get(ID).getPassword().equals(password)){//checks if the id exists, and the password of the customer with that id is equal to the input password
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void transferBetweenAccounts(int senderId, int receiverId){

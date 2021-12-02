@@ -3,7 +3,7 @@ package com.example.BackEnd;
 import java.util.ArrayList;
 
 public class Customer {
-    private int ID;
+    private final int ID;
     private String name;
     private String password;
     private ArrayList<Account> accounts = new ArrayList<Account>();
@@ -29,10 +29,6 @@ public class Customer {
 
     public String getPassword(){
         return password;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 
     public void setName(String name) {
