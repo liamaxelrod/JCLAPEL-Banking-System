@@ -1,12 +1,13 @@
 package com.example.BackEnd;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Customer {
     private final int ID;
     private String name;
     private String password;
-    private ArrayList<Account> accounts = new ArrayList<Account>();
+    private HashMap<Integer, Account> accounts = new HashMap<>();
 
     public Customer(int ID, String name, String password){
         this.ID=ID;
@@ -16,7 +17,7 @@ public class Customer {
     }
 
     public void addAccount(Account account){
-        accounts.add(account);
+        accounts.put(account.getID(), account);
     }
 
     public int getID() {
@@ -34,8 +35,13 @@ public class Customer {
     public void setName(String name) {
         this.name = name;
     }
+    
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public HashMap<Integer, Account> getAccounts(){
+        return accounts;
     }
 }

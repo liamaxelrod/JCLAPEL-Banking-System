@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Facade {
     private HashMap<Integer, Customer> customers = new HashMap<>();
+    private HashMap<Integer, Account> accounts = new HashMap<>();
 
     public HashMap<Integer, Customer> loadCustomers() {
         //method to load the customers from external storage upon starting the application
@@ -40,32 +41,40 @@ public class Facade {
         }
     }
 
-    public void transferBetweenAccounts(int senderId, int receiverId){
-        //create a new transfer
+    public void createAccount(int customerId){ // adds an account to a given customer
+        int ID;
+        Random rn = new Random();
+        do{ //generate random customer ID number
+            int range = 999999 - 100000 +1; //generate 6 digit random number
+            ID = rn.nextInt(range) + 100000;
+        } while (customers.get(customerId).getAccounts().containsKey(ID));//ensure the id is not in use
+        Account account = new Account(ID);
+        customers.get(customerId).addAccount(account);
+        accounts.put(account.getID(), account);
     }
 
-    public void deposit(){
-        //deposit to the account
+    public boolean transferBetweenAccounts(int senderId, int receiverId, double amount) {
+        if (withdraw(senderId, amount) && deposit(receiverId, amount)) {
+            return true;
+        }
+        return false;
     }
 
-    public void withdraw(){
-        //withdraw from the account
+    public boolean deposit(int accountID, double amount){ //add amount, return true if the transaction is valid, or false if it is invald
+        if(amount>0){
+            accounts.get(accountID).setBalance(accounts.get(accountID).getBalance() + amount);
+            return true;
+        }
+        return false;
     }
 
-    public void createAccount(){
-        //create a new account
-    }
-
-    public void findCustomer(){
-        //locate a single customer
-    }
-
-    public void findAccount(){
-        //locate a single account
-    }
-
-    public void findTransaction(){
-        //locate a single transaction
+    public boolean withdraw(int accountID, double amount) {//subtracts amount from balance, returns true for a valid transaction, false for an invalid one
+        if (amount > 0 && accounts.get(accountID).getBalance() >= amount) {
+            Account account = accounts.get(accountID);
+            account.setBalance(account.getBalance() - amount);
+            return true;
+        }
+        return false;
     }
 
     public void loadAllTransactions(){
