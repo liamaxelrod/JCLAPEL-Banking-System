@@ -100,4 +100,6 @@ public class RegisterController extends AccessToTheTalkToBack {
         stage.show();
     }
 
+
+
 }

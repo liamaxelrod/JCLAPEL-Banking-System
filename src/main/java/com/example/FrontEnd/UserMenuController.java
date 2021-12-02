@@ -71,6 +71,7 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         if(RegisterController.num == 1){
             userName.setText(String.valueOf(RegisterController.idNum));
         }else{

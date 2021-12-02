@@ -51,7 +51,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="ABOUT US" textFill="WHITE">
+            <Button fx:id="createEmployee" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToRegisterEmployee" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="CREATE EMPLOYEE" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
