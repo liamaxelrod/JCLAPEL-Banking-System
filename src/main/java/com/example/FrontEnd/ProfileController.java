@@ -1,6 +1,6 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
+import com.example.BackEnd.TestProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class profileController extends accessToTheTalkToBack implements Initializable {
+public class ProfileController extends AccessToTheTalkToBack implements Initializable {
     public static LoginController object = new LoginController();
     private Stage stage;
     private Scene scene;
@@ -62,18 +62,18 @@ public class profileController extends accessToTheTalkToBack implements Initiali
     private TextField newLastName;
 
     //The set-up Methods
-    public testProfile userProfile;
+    public TestProfile userProfile;
 
-    public void setUserProfile(testProfile newTestProfile){
+    public void setUserProfile(TestProfile newTestProfile){
         userProfile = newTestProfile;
     }
     public void setUpProfile(){
-        currentFirstName.setText(userProfile.getFirstName());
-        currentLasName.setText(userProfile.getLastName());
-        currentUsername.setText(userProfile.getUserName());
-        currentPassword.setText(userProfile.getPassword());
+        currentFirstName.setText(RegisterController.firstName);
+        currentLasName.setText(RegisterController.secondName);
+        currentUsername.setText(RegisterController.userName);
+        currentPassword.setText(RegisterController.password);
     }
-    public testProfile getUserProfile() {
+    public TestProfile getUserProfile() {
         return userProfile;
     }
     //End of set-up Methods
@@ -90,6 +90,8 @@ public class profileController extends accessToTheTalkToBack implements Initiali
                 checkCurrentPassword.setText("");
                 newPassword.setText("");
                 confirmNewPassword.setText("");
+
+                userProfile.setPassword(currentPassword.getText());
             }
         }
     }
@@ -99,18 +101,24 @@ public class profileController extends accessToTheTalkToBack implements Initiali
         String theNewFirstName = newFirstName.getText();
         currentFirstName.setText(theNewFirstName);
         newFirstName.setText("");
+
+        userProfile.setFirstName(currentFirstName.getText());
     }
     @FXML
     void onActionChangeLastName(ActionEvent event) {
         String theNewLastName = newLastName.getText();
         currentLasName.setText(theNewLastName);
         newFirstName.setText("");
+
+        userProfile.setLastName(currentLasName.getText());
     }
     @FXML
     private void onActionChangeUsername(ActionEvent event) {
         String theNewUsername = newUsername.getText();
         currentUsername.setText(theNewUsername);
         newUsername.setText("");
+
+        userProfile.setUserName(currentUsername.getText());
     }
 
     @FXML//Still trying to figure out save the image
@@ -136,7 +144,7 @@ public class profileController extends accessToTheTalkToBack implements Initiali
         Parent root = loader.load();
         scene = new Scene(root);
 
-        userMenuController thisController = loader.getController();
+        UserMenuController thisController = loader.getController();
         thisController.setUserProfile(getUserProfile());
         thisController.setUpProfile();
 
@@ -150,10 +158,6 @@ public class profileController extends accessToTheTalkToBack implements Initiali
         loader.setLocation(getClass().getResource("start.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);

@@ -1,6 +1,6 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
+import com.example.BackEnd.TestProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +17,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class userMenuController extends accessToTheTalkToBack implements Initializable {
+public class UserMenuController extends AccessToTheTalkToBack implements Initializable {
+
     private Stage stage;
     private Scene scene;
 
@@ -41,18 +42,21 @@ public class userMenuController extends accessToTheTalkToBack implements Initial
     private Label SavingTotal;
 
     //The set-up Methods
-    public testProfile userProfile;
+    public TestProfile userProfile;
 
-    public void setUserProfile(testProfile newTestProfile){
+    public void setUserProfile(TestProfile newTestProfile){
         userProfile = newTestProfile;
     }
     public void setUpProfile(){
-        fullRealName.setText(userProfile.getFirstName() + " " + userProfile.getLastName());
-        userName.setText(userProfile.getUserName());
+
+        fullRealName.setText(" " + RegisterController.firstName + " " + RegisterController.secondName);
+        userName.setText(RegisterController.userName);
+        SavingTotal.setText(String.valueOf(RegisterController.money));
+
 //        imageProfile.setImage(userProfile.getTheImageView().getImage());
-//still not loading image
+//        still not loading image
     }
-    public testProfile getUserProfile() {
+    public TestProfile getUserProfile() {
         return userProfile;
     }
     //End of set-up Methods
@@ -73,21 +77,21 @@ public class userMenuController extends accessToTheTalkToBack implements Initial
         scene = new Scene(root);
 
         TransferController thisController = loader.getController();
-        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//      thisController.setUpProfile();
+        thisController.setUserProfile(StartApplication.goBetween.createTestProfile());
+        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
     @FXML//on interface button = profile
-    void switchToProfile(ActionEvent event) throws IOException {
+    void switchToProfile(ActionEvent event) throws IOException {//Test profile Connected
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("profile.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
 
-        profileController thisController = loader.getController();
+        ProfileController thisController = loader.getController();
         thisController.setUserProfile(getUserProfile());
         thisController.setUpProfile();
 
@@ -114,12 +118,7 @@ public class userMenuController extends accessToTheTalkToBack implements Initial
         stage.setScene(scene);
         stage.show();
     }
-    @FXML//on interface button = exit
-    void handelCloseButtonAction(ActionEvent event) throws IOException {
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
 
-    }
     @FXML//on interface button = transfer history
     void switchToBankStatement(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -137,6 +136,13 @@ public class userMenuController extends accessToTheTalkToBack implements Initial
     }
     @FXML
     void switchToManual(ActionEvent event) throws IOException {
+
+    }
+
+    @FXML//on interface button = exit
+    void handelCloseButtonAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
 
     }
 

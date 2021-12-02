@@ -2,7 +2,7 @@ package com.example.BackEnd;
 
 import javafx.scene.image.ImageView;
 
-public class testProfile {
+public class TestProfile {
 
 //    public Image theDefaultImage = new Image(String.valueOf(url));
 //
@@ -14,9 +14,9 @@ public class testProfile {
     public String userName;
     public String password;
 
-    public testProfile(String firstName, String lastName, String userName, String password){
+    public TestProfile(String firstName, String lastName, String userName, String password){
 //        this.theImageView.setImage(theDefaultImage);
-//trying save default image
+//        trying save default image
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
