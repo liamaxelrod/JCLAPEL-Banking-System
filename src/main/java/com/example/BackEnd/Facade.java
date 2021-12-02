@@ -1,9 +1,11 @@
 package com.example.BackEnd;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
 
 public class Facade {
-    private ArrayList<Customer> customers = new ArrayList<Customer>();
+    private HashMap<Integer, Customer> customers = new HashMap<>();
 
     public ArrayList<Customer> loadCustomers() {
         //method to load the customers from external storage upon starting the application
@@ -14,8 +16,17 @@ public class Facade {
         //method to store customers to external storage before closing the app
     }
 
-    public void createCustomer(){
-        //method for creating a new customer
+    public void createCustomer(String name, String password){
+        int ID;
+        Random rn = new Random();
+        do{ //generate random customer ID number
+            int range = 999999 - 100000 +1;
+            ID = rn.nextInt(range) + 100000;
+        } while (customers.containsKey(ID));//ensure the id is not in use
+
+        Customer customer = new Customer(ID, name, password);
+        customers.put(ID, customer);
+
     }
 
     public void removeCustomer(){
@@ -27,7 +38,7 @@ public class Facade {
         return true;
     }
 
-    public void transferBetweenAccounts(){
+    public void transferBetweenAccounts(int senderId, int receiverId){
         //create a new transfer
     }
 
@@ -70,6 +81,4 @@ public class Facade {
     public void createEmployee(){
         //create employee account
     }
-
-
 }
