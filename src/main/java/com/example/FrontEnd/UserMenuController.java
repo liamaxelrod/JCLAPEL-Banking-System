@@ -1,6 +1,7 @@
 package com.example.FrontEnd;
 
 
+import com.example.BackEnd.Facade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+
 
 public class UserMenuController extends AccessToTheTalkToBack implements Initializable {
 
@@ -42,6 +45,9 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
     @FXML
     private Label SavingTotal;
 
+    @FXML//on interface text field = username
+    private TextField usernameTextField;
+
 //    //The set-up Methods
 //    public TestProfile userProfile;
 //
@@ -65,7 +71,11 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        userName.setText(String.valueOf(RegisterController.id));
+        if(RegisterController.num == 1){
+            userName.setText(String.valueOf(RegisterController.idNum));
+        }else{
+            userName.setText(String.valueOf(LoginController.logNum));
+        }
     }
 
     ////all methods below are for switching scenes, or you could say interfaces

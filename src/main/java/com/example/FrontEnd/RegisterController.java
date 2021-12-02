@@ -21,6 +21,13 @@ public class RegisterController extends AccessToTheTalkToBack {
     public static String iD;
     public static String password;
     public static double money = 10000.00;
+    public static int idNum;
+    public int id;
+    public static int num;
+
+    static Facade facade = new Facade();
+
+
 
     private Stage stage;
     private Scene scene;
@@ -41,12 +48,12 @@ public class RegisterController extends AccessToTheTalkToBack {
     private TextField usernameTextField;
 
     //Upon pressing the button "create account" you save all data
-    public static int id;
 
     @FXML
     private void onActionCreateAccount(ActionEvent event) throws IOException {
-        Facade facade = new Facade();
         id = facade.createCustomer(firstnameTextField.getText(), setPasswordField.getText());
+        idNum = id;
+        num = 1;
         System.out.println(id);
 
         FXMLLoader loader = new FXMLLoader();
