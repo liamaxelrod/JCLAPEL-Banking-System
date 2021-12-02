@@ -1,6 +1,5 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,23 +31,12 @@ public class RegisterController extends accessToTheTalkToBack {
     @FXML//on interface text field = username
     private TextField usernameTextField;
 
-    //The set-up Methods
-    public testProfile userProfile;
-
-    public void setUserProfile(testProfile newTestProfile){
-        userProfile = newTestProfile;
-    }
-    public void setUpProfile(){
-
-    }
-    //End of set-up Methods
-
     @FXML//on interface button = create account
     private void onActionCreateAccount(ActionEvent event){
 
     }
 
-    ////all methods below are for switching scenes, or you could say interfaces
+    //all methods below are for switching scenes, or you could say interfaces
 
     @FXML//on interface button = login
     public void switchToLoginCustomer(ActionEvent event) throws IOException {
@@ -56,10 +44,6 @@ public class RegisterController extends accessToTheTalkToBack {
         loader.setLocation(getClass().getResource("loginCustomer.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -71,10 +55,6 @@ public class RegisterController extends accessToTheTalkToBack {
         loader.setLocation(getClass().getResource("start.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);

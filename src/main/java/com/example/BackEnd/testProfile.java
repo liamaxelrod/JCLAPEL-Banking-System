@@ -16,7 +16,7 @@ public class testProfile {
 
     public testProfile(String firstName, String lastName, String userName, String password){
 //        this.theImageView.setImage(theDefaultImage);
-//trying save default image
+//        trying save default image
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;

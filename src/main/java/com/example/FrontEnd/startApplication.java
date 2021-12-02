@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.easyGoBetween.goBetween;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,6 +10,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class startApplication extends Application {
+    public static goBetween goBetween = new goBetween();
 
     @Override
     public void start(Stage stage) throws IOException {
