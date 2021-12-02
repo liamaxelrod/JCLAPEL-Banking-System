@@ -48,8 +48,8 @@ public class userMenuController extends accessToTheTalkToBack implements Initial
     }
     public void setUpProfile(){
         fullRealName.setText(" " + RegisterController.firstName + " " + RegisterController.secondName);
-        userName.setText(RegisterController.idNum);
-        SavingTotal.setText(String.valueOf(RegisterController.money));
+        userName.setText(String.valueOf(RegisterController.idNum));
+        SavingTotal.setText(String.valueOf(RegisterController.CheckingMoney));
 //        imageProfile.setImage(userProfile.getTheImageView().getImage());
 //still not loading image
     }
