@@ -1,6 +1,5 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,19 +12,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class startController extends accessToTheTalkToBack {
+
     private Stage stage;
     private Scene scene;
-
-    //The set-up Methods
-    public testProfile userProfile;
-
-    public void setUserProfile(testProfile newTestProfile){
-        userProfile = newTestProfile;
-    }
-    public void setUpProfile(){
-
-    }
-    //End of set-up Methods
 
     @FXML
     public Button closeButton;
@@ -39,10 +28,6 @@ public class startController extends accessToTheTalkToBack {
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -53,10 +38,6 @@ public class startController extends accessToTheTalkToBack {
         loader.setLocation(getClass().getResource("registerCustomer.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
