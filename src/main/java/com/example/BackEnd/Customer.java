@@ -36,7 +36,6 @@ public class Customer {
         this.name = name;
     }
     
-
     public void setPassword(String password) {
         this.password = password;
     }

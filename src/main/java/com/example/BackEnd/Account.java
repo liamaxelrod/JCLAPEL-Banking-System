@@ -11,6 +11,10 @@ public class Account {
         this.balance=0;
         this.ID=ID;
     }
+    
+    public void addTransaction(Transaction transaction){
+        transactions.push(transaction);
+    }
 
     public double getBalance() {
         return balance;

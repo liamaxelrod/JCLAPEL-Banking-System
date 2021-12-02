@@ -17,7 +17,11 @@ public class Facade {
         //method to store customers to external storage before closing the app
     }
 
-    public void createCustomer(String name, String password){ //Patrik, Karar , Julia, Erik
+    public Customer loadCustomer(int customerId){
+        return customers.get(customerId);
+    }
+
+    public int createCustomer(String name, String password){ //Patrik, Karar , Julia, Erik, returns customer id;
         int ID;
         Random rn = new Random();
         do{ //generate random customer ID number
@@ -27,6 +31,7 @@ public class Facade {
 
         Customer customer = new Customer(ID, name, password);
         customers.put(ID, customer);
+        return ID;
     }
 
     public void removeCustomer(int ID){
@@ -55,6 +60,8 @@ public class Facade {
 
     public boolean transferBetweenAccounts(int senderId, int receiverId, double amount) {
         if (withdraw(senderId, amount) && deposit(receiverId, amount)) {
+            accounts.get(senderId).addTransaction(new TransferTransaction(amount, senderId, receiverId));
+            accounts.get(receiverId).addTransaction(new TransferTransaction(amount, senderId, receiverId));
             return true;
         }
         return false;
@@ -63,6 +70,7 @@ public class Facade {
     public boolean deposit(int accountID, double amount){ //add amount, return true if the transaction is valid, or false if it is invald
         if(amount>0){
             accounts.get(accountID).setBalance(accounts.get(accountID).getBalance() + amount);
+            accounts.get(accountID).addTransaction(new DepositTransaction(amount, accountID));
             return true;
         }
         return false;
@@ -72,6 +80,7 @@ public class Facade {
         if (amount > 0 && accounts.get(accountID).getBalance() >= amount) {
             Account account = accounts.get(accountID);
             account.setBalance(account.getBalance() - amount);
+            account.addTransaction(new WithdrawalTransaction(amount, accountID));
             return true;
         }
         return false;
