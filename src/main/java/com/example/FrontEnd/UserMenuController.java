@@ -1,6 +1,6 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.TestProfile;
+import com.example.TestingInterface.TestProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -77,7 +77,7 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
         scene = new Scene(root);
 
         TransferController thisController = loader.getController();
-        thisController.setUserProfile(StartApplication.goBetween.createTestProfile());
+        thisController.setUserProfile(StartApplication.goBetween.defaultTestProfile());
         thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

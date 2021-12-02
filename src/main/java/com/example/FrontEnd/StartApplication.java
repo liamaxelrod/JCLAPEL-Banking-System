@@ -1,7 +1,7 @@
 package com.example.FrontEnd;
 
 import com.example.BackEnd.Facade;
-import com.example.easyGoBetween.FrontEndTalkToObjects;
+import com.example.TestingInterface.TestingInterface;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,7 +11,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class StartApplication extends Application {
-    public static FrontEndTalkToObjects goBetween = new FrontEndTalkToObjects();
+    public static TestingInterface goBetween = new TestingInterface();//Get rid of later when no longer needed
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -24,7 +24,7 @@ public class StartApplication extends Application {
 
     public static Facade facade;
     public static void main(String[] args) {
-        facade = new Facade();
         launch();
+        facade = new Facade();
     }
 }
