@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="love" />
         <module name="jclapel-banking-system" />
+        <module name="Gitlab Local" />
         <module name="JC_LAPEL" />
       </profile>
     </annotationProcessing>
