@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.Facade;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,7 +20,9 @@ public class startApplication extends Application {
         stage.show();
     }
 
+    public static Facade facade;
     public static void main(String[] args) {
+        facade = new Facade();
         launch();
     }
 }

@@ -39,7 +39,8 @@ public class Facade {
         //withdraw from the account
     }
 
-    public void createAccount(){
+    public void createAccount(String text, String setPasswordFieldText){
+
         //create a new account
     }
 
