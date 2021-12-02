@@ -1,6 +1,6 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TransferController extends accessToTheTalkToBack implements Initializable {
+public class TransferController extends AccessToTheTalkToBack implements Initializable {
     private Stage stage;
     private Scene scene;
 
@@ -39,6 +39,26 @@ public class TransferController extends accessToTheTalkToBack implements Initial
     @FXML//on interface text field = below to account
     private TextField transferAmount;
 
+    @Override//this method takes effect when the scene is loaded
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        fromAccount.setValue("choose account");//not working don't know how to make it show?????????
+        fromAccount.setItems(differentAccounts);
+
+        toAccount.setValue("choose account");
+        toAccount.setItems(differentAccounts);
+    }
+
+//    //The set-up Methods
+//    public TestProfile userProfile;
+//
+//    public void setUserProfile(TestProfile newTestProfile){
+//        userProfile = newTestProfile;
+//    }
+//    public void setUpProfile(){
+//
+//    }
+//    //End of set-up Methods
+
     @FXML//on interface button = total
     private void onActionButtonTotal(ActionEvent event) {
         fromAccountCurrentBalance.setText(fromAccount.getValue());
@@ -47,26 +67,6 @@ public class TransferController extends accessToTheTalkToBack implements Initial
     @FXML//on interface button = transfer
     private void onActionTransfer(ActionEvent event) {
 
-    }
-
-    //The set-up Methods
-    public testProfile userProfile;
-
-    public void setUserProfile(testProfile newTestProfile){
-        userProfile = newTestProfile;
-    }
-    public void setUpProfile(){
-
-    }
-    //End of set-up Methods
-
-    @Override//this method takes effect when the scene is loaded
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        fromAccount.setValue("choose account");//not working don't know how to make it show?????????
-        fromAccount.setItems(differentAccounts);
-
-        toAccount.setValue("choose account");
-        toAccount.setItems(differentAccounts);
     }
 
     //all methods below are for switching scenes, or you could say interfaces
@@ -78,8 +78,8 @@ public class TransferController extends accessToTheTalkToBack implements Initial
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//        UserMenuController thisController = loader.getController();
+//        thisController.setUserProfile(StartApplication.goBetween.defaultTestProfile());
 //        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -94,7 +94,7 @@ public class TransferController extends accessToTheTalkToBack implements Initial
         scene = new Scene(root);
 
 //        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//        thisController.setUserProfile(startApplication.goBetween.createTestProfile());
 //        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -113,7 +113,7 @@ public class TransferController extends accessToTheTalkToBack implements Initial
         scene = new Scene(root);
 
 //        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//        thisController.setUserProfile(startApplication.goBetween.createTestProfile());
 //        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

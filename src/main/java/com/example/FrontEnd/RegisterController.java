@@ -12,12 +12,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RegisterController extends accessToTheTalkToBack {
+public class RegisterController extends AccessToTheTalkToBack {
 
-
+    //For testing purposes will be removed later
     public static String firstName;
     public static String secondName;
-    public static String userName;
+    public static String iD;
     public static String password;
     public static double money = 10000.00;
 
@@ -39,23 +39,28 @@ public class RegisterController extends accessToTheTalkToBack {
     @FXML//on interface text field = username
     private TextField usernameTextField;
 
-
     //Upon pressing the button "create account" you save all data
     @FXML//on interface button = create account
     private void onActionCreateAccount(ActionEvent event){
-    createAccount();
+        createAccount();//For testing purposes only will be removed later
+
+        firstnameTextField.setText("");
+
+    StartApplication.facade.createAccount(usernameTextField.getText(), setPasswordField.getText());
     }
 
-    // Creating Variables for the account
+    // Creating Variables for the account For testing purposes
     public void createAccount(){
         firstName = firstnameTextField.getText();
         secondName = lastnameTextField.getText();
-        userName = usernameTextField.getText();
         password = setPasswordField.getText();
+        iD = usernameTextField.getText();
         }
 
 
 
+
+    //all methods below are for switching scenes, or you could say interfaces
 
     @FXML//on interface button = login
     public void switchToLoginCustomer(ActionEvent event) throws IOException {
@@ -63,10 +68,6 @@ public class RegisterController extends accessToTheTalkToBack {
         loader.setLocation(getClass().getResource("loginCustomer.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -78,10 +79,6 @@ public class RegisterController extends accessToTheTalkToBack {
         loader.setLocation(getClass().getResource("start.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
