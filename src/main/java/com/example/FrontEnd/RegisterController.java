@@ -3,22 +3,26 @@ package com.example.FrontEnd;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class RegisterController extends AccessToTheTalkToBack {
+public class RegisterController implements Initializable {
 
 
     //For testing purposes will be removed later
     public static String firstName;
     public static String secondName;
-    public static String iD;
+    public static int iD;
 
     public static String password;
     public static double savingMoney = 20000.00;
@@ -43,25 +47,35 @@ public class RegisterController extends AccessToTheTalkToBack {
     @FXML//on interface text field = username
     private TextField usernameTextField;
 
+    @FXML
+    private Label idNum;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
+
     //Upon pressing the button "create account" you save all data
     @FXML//on interface button = create account
-    private void onActionCreateAccount(ActionEvent event){
+    private void onActionCreateAccount(ActionEvent event) throws IOException {
 
-        createAccount();//For testing purposes only will be removed later
+        int id = StartApplication.facade.createAccount(usernameTextField.getText(), setPasswordField.getText());
 
-        firstnameTextField.setText("");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("userMenu.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
 
 
-    StartApplication.facade.createAccount(usernameTextField.getText(), setPasswordField.getText());
     }
 
     // Creating Variables for the account For testing purposes
     public void createAccount(){
         firstName = firstnameTextField.getText();
         secondName = lastnameTextField.getText();
-
         password = setPasswordField.getText();
-        iD = usernameTextField.getText();
         }
 
 
@@ -91,5 +105,6 @@ public class RegisterController extends AccessToTheTalkToBack {
         stage.setScene(scene);
         stage.show();
     }
+
 
 }
