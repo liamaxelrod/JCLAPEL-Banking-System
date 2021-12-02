@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -29,7 +30,7 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
     private ImageView imageProfile;
 
     @FXML//on interface label = username
-    private Label userName;
+    private TextField userName;
 
     @FXML//on interface label = next to name:
     private Label fullRealName;
@@ -64,7 +65,7 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        userName.setText(String.valueOf(RegisterController.id));
     }
 
     ////all methods below are for switching scenes, or you could say interfaces

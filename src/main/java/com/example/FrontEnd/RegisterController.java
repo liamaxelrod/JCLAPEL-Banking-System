@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.Facade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,13 +41,21 @@ public class RegisterController extends AccessToTheTalkToBack {
     private TextField usernameTextField;
 
     //Upon pressing the button "create account" you save all data
-    @FXML//on interface button = create account
-    private void onActionCreateAccount(ActionEvent event){
-        createAccount();//For testing purposes only will be removed later
+    public static int id;
 
-        firstnameTextField.setText("");
+    @FXML
+    private void onActionCreateAccount(ActionEvent event) throws IOException {
+        Facade facade = new Facade();
+        id = facade.createCustomer(firstnameTextField.getText(), setPasswordField.getText());
+        System.out.println(id);
 
-    StartApplication.facade.createAccount(usernameTextField.getText(), setPasswordField.getText());
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("userMenu.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     // Creating Variables for the account For testing purposes
@@ -54,7 +63,6 @@ public class RegisterController extends AccessToTheTalkToBack {
         firstName = firstnameTextField.getText();
         secondName = lastnameTextField.getText();
         password = setPasswordField.getText();
-        iD = usernameTextField.getText();
         }
 
 
