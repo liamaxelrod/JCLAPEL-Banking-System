@@ -36,8 +36,10 @@ public class createAccount {
 
     @FXML
     void onActionCreateAccount(ActionEvent event) {
-
+    registerUser();
     }
+    //The set-up Methods
+    public testProfile userProfile;
 
     public void registerUser(){
         String firstname = firstnameTextField.getText();
@@ -48,6 +50,15 @@ public class createAccount {
         String insertFields = "";
         String insertValues = "";
         String insertToRegister = insertFields + insertValues;
+    }
+
+
+    // Trying to save whatever input user puts
+    public void createAccount(){
+        firstnameTextField.setText(userProfile.getFirstName());
+        lastnameTextField.setText(userProfile.getLastName());
+        usernameTextField.setText(userProfile.getUserName());
+        setPasswordField.setText(userProfile.getPassword());
     }
 
 }

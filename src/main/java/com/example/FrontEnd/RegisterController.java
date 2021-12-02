@@ -12,7 +12,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RegisterController {
+public class RegisterController extends accessToTheTalkToBack {
+
+
+    public static String firstName;
+    public static String secondName;
+    public static String userName;
+    public static String password;
+    public static double money = 10000.00;
+
     private Stage stage;
     private Scene scene;
 
@@ -31,27 +39,51 @@ public class RegisterController {
     @FXML//on interface text field = username
     private TextField usernameTextField;
 
+
+    //Upon pressing the button "create account" you save all data
     @FXML//on interface button = create account
     private void onActionCreateAccount(ActionEvent event){
-
+    createAccount();
     }
 
-    ////all methods below are for switching scenes, or you could say interfaces
+    // Creating Variables for the account
+    public void createAccount(){
+        firstName = firstnameTextField.getText();
+        secondName = lastnameTextField.getText();
+        userName = usernameTextField.getText();
+        password = setPasswordField.getText();
+        }
+
+
+
 
     @FXML//on interface button = login
     public void switchToLoginCustomer(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("loginCustomer.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("loginCustomer.fxml"));
+        Parent root = loader.load();
         scene = new Scene(root);
+
+//        userMenuController thisController = loader.getController();
+//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//        thisController.setUpProfile();
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
-
     @FXML//on interface button = main menu
     public void switchToStart(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("start.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("start.fxml"));
+        Parent root = loader.load();
         scene = new Scene(root);
+
+//        userMenuController thisController = loader.getController();
+//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//        thisController.setUpProfile();
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
