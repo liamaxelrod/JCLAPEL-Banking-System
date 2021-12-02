@@ -1,6 +1,6 @@
 package com.example.FrontEnd;
 
-import com.example.TestingInterface.TestProfile;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,25 +41,25 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
     @FXML
     private Label SavingTotal;
 
-    //The set-up Methods
-    public TestProfile userProfile;
-
-    public void setUserProfile(TestProfile newTestProfile){
-        userProfile = newTestProfile;
-    }
-    public void setUpProfile(){
-
-        fullRealName.setText(" " + RegisterController.firstName + " " + RegisterController.secondName);
-        userName.setText(RegisterController.iD);
-        SavingTotal.setText(String.valueOf(RegisterController.money));
-
-//        imageProfile.setImage(userProfile.getTheImageView().getImage());
-//        still not loading image
-    }
-    public TestProfile getUserProfile() {
-        return userProfile;
-    }
-    //End of set-up Methods
+//    //The set-up Methods
+//    public TestProfile userProfile;
+//
+//    public void setUserProfile(TestProfile newTestProfile){
+//        userProfile = newTestProfile;
+//    }
+//    public void setUpProfile(){
+//
+//        fullRealName.setText(" " + RegisterController.firstName + " " + RegisterController.secondName);
+//        userName.setText(RegisterController.iD);
+//        SavingTotal.setText(String.valueOf(RegisterController.money));
+//
+////        imageProfile.setImage(userProfile.getTheImageView().getImage());
+////        still not loading image
+//    }
+//    public TestProfile getUserProfile() {
+//        return userProfile;
+//    }
+//    //End of set-up Methods
 
 
     @Override//this method takes effect when the scene is loaded
@@ -76,9 +76,9 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
         Parent root = loader.load();
         scene = new Scene(root);
 
-        TransferController thisController = loader.getController();
-        thisController.setUserProfile(StartApplication.goBetween.defaultTestProfile());
-        thisController.setUpProfile();
+//        TransferController thisController = loader.getController();
+//        thisController.setUserProfile(StartApplication.goBetween.defaultTestProfile());
+//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -91,9 +91,9 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
         Parent root = loader.load();
         scene = new Scene(root);
 
-        ProfileController thisController = loader.getController();
-        thisController.setUserProfile(getUserProfile());
-        thisController.setUpProfile();
+//        ProfileController thisController = loader.getController();
+//        thisController.setUserProfile(getUserProfile());
+//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);

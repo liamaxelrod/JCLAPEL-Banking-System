@@ -1,6 +1,6 @@
 package com.example.FrontEnd;
 
-import com.example.TestingInterface.TestProfile;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,16 +15,16 @@ public class BankStatementController extends AccessToTheTalkToBack {
     private Stage stage;
     private Scene scene;
 
-    //The set-up Methods
-    public TestProfile userProfile;
-
-    public void setUserProfile(TestProfile newTestProfile){
-        userProfile = newTestProfile;
-    }
-    public void setUpProfile(){
-
-    }
-    //End of set-up Methods
+//    //The set-up Methods
+//    public TestProfile userProfile;
+//
+//    public void setUserProfile(TestProfile newTestProfile){
+//        userProfile = newTestProfile;
+//    }
+//    public void setUpProfile(){
+//
+//    }
+//    //End of set-up Methods
 
     //all methods below are for switching scenes, or you could say interfaces
 

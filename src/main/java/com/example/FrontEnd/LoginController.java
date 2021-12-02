@@ -1,6 +1,6 @@
 package com.example.FrontEnd;
 
-import com.example.TestingInterface.TestProfile;
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,8 +20,6 @@ import java.util.ResourceBundle;
 public class LoginController extends AccessToTheTalkToBack implements Initializable {
     private Stage stage;
     private Scene scene;
-    //The set-up Methods
-    public TestProfile userProfile;
 
     @FXML//on interface password field = password
     private PasswordField enterPasswordField;
@@ -79,9 +77,9 @@ public class LoginController extends AccessToTheTalkToBack implements Initializa
             Parent root = loader.load();
             scene = new Scene(root);
 
-            UserMenuController thisController = loader.getController();
-            thisController.setUserProfile(StartApplication.goBetween.defaultTestProfile());
-            thisController.setUpProfile();
+//            UserMenuController thisController = loader.getController();
+//            thisController.setUserProfile(StartApplication.goBetween.defaultTestProfile());
+//            thisController.setUpProfile();
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(scene);

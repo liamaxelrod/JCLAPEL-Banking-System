@@ -17,7 +17,7 @@ public class RegisterController extends AccessToTheTalkToBack {
     //For testing purposes will be removed later
     public static String firstName;
     public static String secondName;
-    public static int iD;
+    public static String iD;
     public static String password;
     public static double money = 10000.00;
 
@@ -43,7 +43,7 @@ public class RegisterController extends AccessToTheTalkToBack {
     @FXML//on interface button = create account
     private void onActionCreateAccount(ActionEvent event){
         createAccount();//For testing purposes only will be removed later
-        StartApplication.goBetween.createTestProfile(firstName,secondName, iD,password);
+
         firstnameTextField.setText("");
 
     StartApplication.facade.createAccount(usernameTextField.getText(), setPasswordField.getText());
@@ -54,6 +54,7 @@ public class RegisterController extends AccessToTheTalkToBack {
         firstName = firstnameTextField.getText();
         secondName = lastnameTextField.getText();
         password = setPasswordField.getText();
+        iD = usernameTextField.getText();
         }
 
 
