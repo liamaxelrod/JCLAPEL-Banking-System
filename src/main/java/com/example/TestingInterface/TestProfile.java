@@ -11,15 +11,15 @@ public class TestProfile {
     public ImageView theImageView;
     public String firstName;
     public String lastName;
-    public String userName;
+    public String ID;
     public String password;
 
-    public TestProfile(String firstName, String lastName, String userName, String password){
+    public TestProfile(String firstName, String lastName, String ID, String password){
 //        this.theImageView.setImage(theDefaultImage);
 //        trying save default image
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userName = userName;
+        this.ID = ID;
         this.password = password;
 //        System.out.println(url);
     }
@@ -35,7 +35,7 @@ public class TestProfile {
         return lastName;
     }
     public String getUserName() {
-        return userName;
+        return ID;
     }
     public String getPassword() {
         return password;
@@ -51,7 +51,7 @@ public class TestProfile {
         this.lastName = lastName;
     }
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.ID = userName;
     }
     public void setPassword(String password) {
         this.password = password;

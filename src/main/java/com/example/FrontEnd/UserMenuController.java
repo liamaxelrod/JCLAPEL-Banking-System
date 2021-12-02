@@ -50,7 +50,7 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
     public void setUpProfile(){
 
         fullRealName.setText(" " + RegisterController.firstName + " " + RegisterController.secondName);
-        userName.setText(RegisterController.userName);
+        userName.setText(RegisterController.iD);
         SavingTotal.setText(String.valueOf(RegisterController.money));
 
 //        imageProfile.setImage(userProfile.getTheImageView().getImage());
