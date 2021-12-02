@@ -42,6 +42,7 @@ public class RegisterController extends AccessToTheTalkToBack {
     //Upon pressing the button "create account" you save all data
     @FXML//on interface button = create account
     private void onActionCreateAccount(ActionEvent event){
+        createAccount();
     StartApplication.facade.createAccount(userName = usernameTextField.getText(), setPasswordField.getText());
     }
 
