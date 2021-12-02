@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 
 import com.jclapel.banksystem.back_end.TestProfile;
 
-public class userMenuController extends Listener implements Initializable {
+public class UserMenuController extends Listener implements Initializable {
     private Stage stage;
     private Scene scene;
 
