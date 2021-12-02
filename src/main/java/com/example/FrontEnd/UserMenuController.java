@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UserMenuController extends AccessToTheTalkToBack implements Initializable {
+
     private Stage stage;
     private Scene scene;
 
@@ -39,23 +40,27 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
     @FXML
     private Label SavingTotal;
 
-    //The set-up Methods
-    public testProfile userProfile;
 
-    public void setUserProfile(testProfile newTestProfile){
-        userProfile = newTestProfile;
-    }
-    public void setUpProfile(){
-        fullRealName.setText(" " + RegisterController.firstName + " " + RegisterController.secondName);
-        userName.setText(String.valueOf(RegisterController.idNum));
-        SavingTotal.setText(String.valueOf(RegisterController.CheckingMoney));
-//        imageProfile.setImage(userProfile.getTheImageView().getImage());
-//still not loading image
-    }
-    public testProfile getUserProfile() {
-        return userProfile;
-    }
-    //End of set-up Methods
+//    //The set-up Methods
+//    public TestProfile userProfile;
+//
+//    public void setUserProfile(TestProfile newTestProfile){
+//        userProfile = newTestProfile;
+//    }
+//    public void setUpProfile(){
+//
+//        fullRealName.setText(" " + RegisterController.firstName + " " + RegisterController.secondName);
+//        userName.setText(RegisterController.iD);
+//        SavingTotal.setText(String.valueOf(RegisterController.money));
+//
+////        imageProfile.setImage(userProfile.getTheImageView().getImage());
+////        still not loading image
+//    }
+//    public TestProfile getUserProfile() {
+//        return userProfile;
+//    }
+//    //End of set-up Methods
+
 
 
     @Override//this method takes effect when the scene is loaded
@@ -72,24 +77,25 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
         Parent root = loader.load();
         scene = new Scene(root);
 
-        TransferController thisController = loader.getController();
-        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//      thisController.setUpProfile();
+//        TransferController thisController = loader.getController();
+//        thisController.setUserProfile(StartApplication.goBetween.defaultTestProfile());
+//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
     @FXML//on interface button = profile
-    void switchToProfile(ActionEvent event) throws IOException {
+    void switchToProfile(ActionEvent event) throws IOException {//Test profile Connected
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("profile.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
 
-        ProfileController thisController = loader.getController();
-        thisController.setUserProfile(getUserProfile());
-        thisController.setUpProfile();
+
+//        ProfileController thisController = loader.getController();
+//        thisController.setUserProfile(getUserProfile());
+//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -114,12 +120,7 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
         stage.setScene(scene);
         stage.show();
     }
-    @FXML//on interface button = exit
-    void handelCloseButtonAction(ActionEvent event) throws IOException {
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
 
-    }
     @FXML//on interface button = transfer history
     void switchToBankStatement(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -137,6 +138,13 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
     }
     @FXML
     void switchToManual(ActionEvent event) throws IOException {
+
+    }
+
+    @FXML//on interface button = exit
+    void handelCloseButtonAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
 
     }
 

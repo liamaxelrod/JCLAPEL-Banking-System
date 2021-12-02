@@ -15,17 +15,6 @@ public class StartController extends AccessToTheTalkToBack {
     private Stage stage;
     private Scene scene;
 
-    //The set-up Methods
-    public testProfile userProfile;
-
-    public void setUserProfile(testProfile newTestProfile){
-        userProfile = newTestProfile;
-    }
-    public void setUpProfile(){
-
-    }
-    //End of set-up Methods
-
     @FXML
     public Button closeButton;
 
@@ -38,10 +27,6 @@ public class StartController extends AccessToTheTalkToBack {
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -52,10 +37,6 @@ public class StartController extends AccessToTheTalkToBack {
         loader.setLocation(getClass().getResource("registerCustomer.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);

@@ -1,6 +1,6 @@
 package com.example.FrontEnd;
 
-import com.example.easyGoBetween.frontEndTalkToObjects;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,12 +17,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginController extends AccessToTheTalkToBack implements Initializable {
-    public static frontEndTalkToObjects talkToGoBetween = new frontEndTalkToObjects();
 
     private Stage stage;
     private Scene scene;
-    //The set-up Methods
-    public testProfile userProfile;
 
     @FXML//on interface password field = password
     private PasswordField enterPasswordField;
@@ -44,16 +41,7 @@ public class LoginController extends AccessToTheTalkToBack implements Initializa
         }
     }
 
-    //The set-up Methods
-//    public testProfile userProfile;
-//
-//    public void setUserProfile(testProfile newTestProfile){
-//        userProfile = newTestProfile;
-//    }
-//    public void setUpProfile(){
-//
-//    }
-    //End of set-up Methods
+
 
     //all methods below are for switching scenes, or you could say interfaces
 
@@ -63,10 +51,6 @@ public class LoginController extends AccessToTheTalkToBack implements Initializa
         loader.setLocation(getClass().getResource("registerCustomer.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -80,10 +64,6 @@ public class LoginController extends AccessToTheTalkToBack implements Initializa
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -91,15 +71,19 @@ public class LoginController extends AccessToTheTalkToBack implements Initializa
 // Successfully made the code look for the username and password created
     @FXML//on interface button = login  //Need the unique version is your logging into your profile for the first time
     public void switchToCustomerMenu(ActionEvent event) throws IOException{
-        if (usernameTextField.getText().toString().equals(RegisterController.idNum) && enterPasswordField.getText().toString().equals(RegisterController.password)){
+
+        if (usernameTextField.getText().toString().equals(RegisterController.iD) && enterPasswordField.getText().toString().equals(RegisterController.password)){
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("userMenu.fxml"));
             Parent root = loader.load();
             scene = new Scene(root);
 
-            UserMenuController thisController = loader.getController();
-            thisController.setUserProfile(talkToGoBetween.createTestProfile());
-            thisController.setUpProfile();
+
+//            UserMenuController thisController = loader.getController();
+//            thisController.setUserProfile(StartApplication.goBetween.defaultTestProfile());
+//            thisController.setUpProfile();
+
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(scene);

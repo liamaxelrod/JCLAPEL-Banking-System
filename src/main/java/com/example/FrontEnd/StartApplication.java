@@ -1,6 +1,7 @@
 package com.example.FrontEnd;
 
 import com.example.BackEnd.Facade;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,9 +23,9 @@ public class StartApplication extends Application {
 
     public static Facade facade;
     public static void main(String[] args) {
-        facade = new Facade();
         launch();
-        facade = new Facade(); // Initializing facade
+
+        facade = new Facade();
 
     }
 }

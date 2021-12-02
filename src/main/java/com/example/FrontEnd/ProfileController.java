@@ -60,22 +60,24 @@ public class ProfileController extends AccessToTheTalkToBack implements Initiali
     @FXML
     private TextField newLastName;
 
-    //The set-up Methods
-    public testProfile userProfile;
 
-    public void setUserProfile(testProfile newTestProfile){
-        userProfile = newTestProfile;
-    }
-    public void setUpProfile(){
-        currentFirstName.setText(RegisterController.firstName);
-        currentLasName.setText(RegisterController.secondName);
-        currentUsername.setText(String.valueOf(RegisterController.idNum));
-        currentPassword.setText(RegisterController.password);
-    }
-    public testProfile getUserProfile() {
-        return userProfile;
-    }
-    //End of set-up Methods
+//    //The set-up Methods
+//    public TestProfile userProfile;
+//
+//    public void setUserProfile(TestProfile newTestProfile){
+//        userProfile = newTestProfile;
+//    }
+//    public void setUpProfile(){
+//        currentFirstName.setText(RegisterController.firstName);
+//        currentLasName.setText(RegisterController.secondName);
+//        currentUsername.setText(RegisterController.iD);
+//        currentPassword.setText(RegisterController.password);
+//    }
+//    public TestProfile getUserProfile() {
+//        return userProfile;
+//    }
+//    //End of set-up Methods
+
 
     @FXML
     private void onActionChangePassword(ActionEvent event) {
@@ -89,6 +91,8 @@ public class ProfileController extends AccessToTheTalkToBack implements Initiali
                 checkCurrentPassword.setText("");
                 newPassword.setText("");
                 confirmNewPassword.setText("");
+
+//                userProfile.setPassword(currentPassword.getText());
             }
         }
     }
@@ -98,18 +102,24 @@ public class ProfileController extends AccessToTheTalkToBack implements Initiali
         String theNewFirstName = newFirstName.getText();
         currentFirstName.setText(theNewFirstName);
         newFirstName.setText("");
+
+//        userProfile.setFirstName(currentFirstName.getText());
     }
     @FXML
     void onActionChangeLastName(ActionEvent event) {
         String theNewLastName = newLastName.getText();
         currentLasName.setText(theNewLastName);
         newFirstName.setText("");
+
+//        userProfile.setLastName(currentLasName.getText());
     }
     @FXML
     private void onActionChangeUsername(ActionEvent event) {
         String theNewUsername = newUsername.getText();
         currentUsername.setText(theNewUsername);
         newUsername.setText("");
+
+//        userProfile.setUserName(currentUsername.getText());
     }
 
     @FXML//Still trying to figure out save the image
@@ -122,7 +132,7 @@ public class ProfileController extends AccessToTheTalkToBack implements Initiali
         theImage = new Image(String.valueOf(filePath.toURI()));
         currentImage.setImage(theImage);
 
-        userProfile.setTheImageView(currentImage);
+//        userProfile.setTheImageView(currentImage);
 
     }
 
@@ -135,9 +145,11 @@ public class ProfileController extends AccessToTheTalkToBack implements Initiali
         Parent root = loader.load();
         scene = new Scene(root);
 
-        UserMenuController thisController = loader.getController();
-        thisController.setUserProfile(getUserProfile());
-        thisController.setUpProfile();
+
+//        UserMenuController thisController = loader.getController();
+//        thisController.setUserProfile(getUserProfile());
+//        thisController.setUpProfile();
+
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -149,10 +161,6 @@ public class ProfileController extends AccessToTheTalkToBack implements Initiali
         loader.setLocation(getClass().getResource("start.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
