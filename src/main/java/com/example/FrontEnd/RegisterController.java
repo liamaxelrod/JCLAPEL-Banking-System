@@ -41,7 +41,6 @@ public class RegisterController extends accessToTheTalkToBack {
     @FXML//on interface text field = username
     private TextField usernameTextField;
 
-
     //Upon pressing the button "create account" you save all data
     @FXML//on interface button = create account
     private void onActionCreateAccount(ActionEvent event){
@@ -59,16 +58,14 @@ public class RegisterController extends accessToTheTalkToBack {
 
 
 
+    //all methods below are for switching scenes, or you could say interfaces
+
     @FXML//on interface button = login
     public void switchToLoginCustomer(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("loginCustomer.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -80,10 +77,6 @@ public class RegisterController extends accessToTheTalkToBack {
         loader.setLocation(getClass().getResource("start.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);

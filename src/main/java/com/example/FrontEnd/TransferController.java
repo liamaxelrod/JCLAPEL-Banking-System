@@ -39,14 +39,13 @@ public class TransferController extends accessToTheTalkToBack implements Initial
     @FXML//on interface text field = below to account
     private TextField transferAmount;
 
-    @FXML//on interface button = total
-    private void onActionButtonTotal(ActionEvent event) {
-        fromAccountCurrentBalance.setText(fromAccount.getValue());
-    }
+    @Override//this method takes effect when the scene is loaded
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        fromAccount.setValue("choose account");//not working don't know how to make it show?????????
+        fromAccount.setItems(differentAccounts);
 
-    @FXML//on interface button = transfer
-    private void onActionTransfer(ActionEvent event) {
-
+        toAccount.setValue("choose account");
+        toAccount.setItems(differentAccounts);
     }
 
     //The set-up Methods
@@ -60,13 +59,14 @@ public class TransferController extends accessToTheTalkToBack implements Initial
     }
     //End of set-up Methods
 
-    @Override//this method takes effect when the scene is loaded
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        fromAccount.setValue("choose account");//not working don't know how to make it show?????????
-        fromAccount.setItems(differentAccounts);
+    @FXML//on interface button = total
+    private void onActionButtonTotal(ActionEvent event) {
+        fromAccountCurrentBalance.setText(fromAccount.getValue());
+    }
 
-        toAccount.setValue("choose account");
-        toAccount.setItems(differentAccounts);
+    @FXML//on interface button = transfer
+    private void onActionTransfer(ActionEvent event) {
+
     }
 
     //all methods below are for switching scenes, or you could say interfaces
@@ -78,9 +78,9 @@ public class TransferController extends accessToTheTalkToBack implements Initial
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
+        userMenuController thisController = loader.getController();
+        thisController.setUserProfile(startApplication.goBetween.createTestProfile());
+        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -94,7 +94,7 @@ public class TransferController extends accessToTheTalkToBack implements Initial
         scene = new Scene(root);
 
 //        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//        thisController.setUserProfile(startApplication.goBetween.createTestProfile());
 //        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -113,7 +113,7 @@ public class TransferController extends accessToTheTalkToBack implements Initial
         scene = new Scene(root);
 
 //        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//        thisController.setUserProfile(startApplication.goBetween.createTestProfile());
 //        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

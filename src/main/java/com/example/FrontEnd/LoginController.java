@@ -2,6 +2,7 @@ package com.example.FrontEnd;
 
 import com.example.BackEnd.testProfile;
 import com.example.easyGoBetween.frontEndTalkToObjects;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,8 +19,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginController extends accessToTheTalkToBack implements Initializable {
-    public static frontEndTalkToObjects talkToGoBetween = new frontEndTalkToObjects();
-
     private Stage stage;
     private Scene scene;
     //The set-up Methods
@@ -45,16 +44,7 @@ public class LoginController extends accessToTheTalkToBack implements Initializa
         }
     }
 
-    //The set-up Methods
-//    public testProfile userProfile;
-//
-//    public void setUserProfile(testProfile newTestProfile){
-//        userProfile = newTestProfile;
-//    }
-//    public void setUpProfile(){
-//
-//    }
-    //End of set-up Methods
+
 
     //all methods below are for switching scenes, or you could say interfaces
 
@@ -64,10 +54,6 @@ public class LoginController extends accessToTheTalkToBack implements Initializa
         loader.setLocation(getClass().getResource("registerCustomer.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -80,10 +66,6 @@ public class LoginController extends accessToTheTalkToBack implements Initializa
         loader.setLocation(getClass().getResource("start.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -99,7 +81,7 @@ public class LoginController extends accessToTheTalkToBack implements Initializa
             scene = new Scene(root);
 
             userMenuController thisController = loader.getController();
-            thisController.setUserProfile(talkToGoBetween.createTestProfile());
+            thisController.setUserProfile(startApplication.goBetween.createTestProfile());
             thisController.setUpProfile();
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
