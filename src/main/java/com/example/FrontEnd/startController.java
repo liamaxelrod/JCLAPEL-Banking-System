@@ -1,6 +1,6 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
+import com.example.BackEnd.TestProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,14 +12,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class startController extends accessToTheTalkToBack {
+public class StartController extends Listener {
     private Stage stage;
     private Scene scene;
 
     //The set-up Methods
-    public testProfile userProfile;
+    public TestProfile userProfile;
 
-    public void setUserProfile(testProfile newTestProfile){
+    public void setUserProfile(TestProfile newTestProfile){
         userProfile = newTestProfile;
     }
     public void setUpProfile(){

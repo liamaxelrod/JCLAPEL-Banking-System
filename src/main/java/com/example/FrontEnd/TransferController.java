@@ -1,6 +1,6 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
+import com.example.BackEnd.TestProfile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TransferController extends accessToTheTalkToBack implements Initializable {
+public class TransferController extends Listener implements Initializable {
     private Stage stage;
     private Scene scene;
 
@@ -50,9 +50,9 @@ public class TransferController extends accessToTheTalkToBack implements Initial
     }
 
     //The set-up Methods
-    public testProfile userProfile;
+    public TestProfile userProfile;
 
-    public void setUserProfile(testProfile newTestProfile){
+    public void setUserProfile(TestProfile newTestProfile){
         userProfile = newTestProfile;
     }
     public void setUpProfile(){

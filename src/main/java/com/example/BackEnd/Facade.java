@@ -3,7 +3,7 @@ package com.example.BackEnd;
 import java.util.ArrayList;
 
 public class Facade {
-    private ArrayList<Customer> customers = new ArrayList<Customer>();
+    private ArrayList<Customer> customerList = new ArrayList<Customer>();
 
     public ArrayList<Customer> loadCustomers() {
         //method to load the customers from external storage upon starting the application

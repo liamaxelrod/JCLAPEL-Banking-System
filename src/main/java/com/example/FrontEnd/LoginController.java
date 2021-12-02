@@ -1,7 +1,7 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
-import com.example.easyGoBetween.frontEndTalkToObjects;
+import com.example.BackEnd.TestProfile;
+import com.example.easyGoBetween.Remote;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,13 +17,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController extends accessToTheTalkToBack implements Initializable {
-    public static frontEndTalkToObjects talkToGoBetween = new frontEndTalkToObjects();
+public class LoginController extends Listener implements Initializable {
+    public static Remote remote = new Remote();
 
     private Stage stage;
     private Scene scene;
     //The set-up Methods
-    public testProfile userProfile;
+    public TestProfile userProfile;
 
     @FXML//on interface password field = password
     private PasswordField enterPasswordField;
@@ -46,9 +46,9 @@ public class LoginController extends accessToTheTalkToBack implements Initializa
     }
 
     //The set-up Methods
-//    public testProfile userProfile;
+//    public TestProfile userProfile;
 //
-//    public void setUserProfile(testProfile newTestProfile){
+//    public void setUserProfile(TestProfile newTestProfile){
 //        userProfile = newTestProfile;
 //    }
 //    public void setUpProfile(){
@@ -66,7 +66,7 @@ public class LoginController extends accessToTheTalkToBack implements Initializa
         scene = new Scene(root);
 
 //        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//        thisController.setUserProfile(remote.createTestProfile());
 //        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -82,7 +82,7 @@ public class LoginController extends accessToTheTalkToBack implements Initializa
         scene = new Scene(root);
 
 //        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
+//        thisController.setUserProfile(remote.createTestProfile());
 //        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -99,7 +99,7 @@ public class LoginController extends accessToTheTalkToBack implements Initializa
             scene = new Scene(root);
 
             userMenuController thisController = loader.getController();
-            thisController.setUserProfile(talkToGoBetween.createTestProfile());
+            thisController.setUserProfile(remote.createTestProfile());
             thisController.setUpProfile();
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();

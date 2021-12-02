@@ -1,9 +1,9 @@
 package com.example.FrontEnd;
 
-import com.example.easyGoBetween.frontEndTalkToObjects;
+import com.example.easyGoBetween.Remote;
 
-public class accessToTheTalkToBack {
-    public static frontEndTalkToObjects talkToGoBetween = new frontEndTalkToObjects();
+public class Listener {
+    public static Remote talkToGoBetween = new Remote();
 //
 //    private Stage stage;
 //    private Scene scene;

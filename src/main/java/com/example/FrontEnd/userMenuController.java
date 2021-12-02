@@ -1,6 +1,6 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
+import com.example.BackEnd.TestProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class userMenuController extends accessToTheTalkToBack implements Initializable {
+public class userMenuController extends Listener implements Initializable {
     private Stage stage;
     private Scene scene;
 
@@ -41,9 +41,9 @@ public class userMenuController extends accessToTheTalkToBack implements Initial
     private Label SavingTotal;
 
     //The set-up Methods
-    public testProfile userProfile;
+    public TestProfile userProfile;
 
-    public void setUserProfile(testProfile newTestProfile){
+    public void setUserProfile(TestProfile newTestProfile){
         userProfile = newTestProfile;
     }
     public void setUpProfile(){
@@ -53,7 +53,7 @@ public class userMenuController extends accessToTheTalkToBack implements Initial
 //        imageProfile.setImage(userProfile.getTheImageView().getImage());
 //still not loading image
     }
-    public testProfile getUserProfile() {
+    public TestProfile getUserProfile() {
         return userProfile;
     }
     //End of set-up Methods
@@ -88,7 +88,7 @@ public class userMenuController extends accessToTheTalkToBack implements Initial
         Parent root = loader.load();
         scene = new Scene(root);
 
-        profileController thisController = loader.getController();
+        ProfileController thisController = loader.getController();
         thisController.setUserProfile(getUserProfile());
         thisController.setUpProfile();
 

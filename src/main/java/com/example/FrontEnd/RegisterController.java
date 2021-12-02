@@ -12,9 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RegisterController extends accessToTheTalkToBack {
-
-
+public class RegisterController extends Listener {
     public static String firstName;
     public static String secondName;
     public static String userName;
@@ -52,12 +50,9 @@ public class RegisterController extends accessToTheTalkToBack {
         secondName = lastnameTextField.getText();
         userName = usernameTextField.getText();
         password = setPasswordField.getText();
-        }
+    }
 
-
-
-
-    @FXML//on interface button = login
+    @FXML //on interface button = login
     public void switchToLoginCustomer(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("loginCustomer.fxml"));

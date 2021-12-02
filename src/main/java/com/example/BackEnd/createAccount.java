@@ -8,9 +8,9 @@ import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 
-public class createAccount {
+public class CreateAccount {
 
-    static ArrayList<createAccount> listAccounts = new ArrayList<createAccount>(); // creating the list of accounts
+    static ArrayList<CreateAccount> listAccounts = new ArrayList<CreateAccount>(); // creating the list of accounts
 
 
     @FXML
@@ -39,9 +39,9 @@ public class createAccount {
     registerUser();
     }
     //The set-up Methods
-    public testProfile userProfile;
+    public TestProfile userProfile;
 
-    public void registerUser(){
+    public void registerUser() {
         String firstname = firstnameTextField.getText();
         String lastname = lastnameTextField.getText();
         String username = usernameTextField.getText();
@@ -54,7 +54,7 @@ public class createAccount {
 
 
     // Trying to save whatever input user puts
-    public void createAccount(){
+    public CreateAccount() {
         firstnameTextField.setText(userProfile.getFirstName());
         lastnameTextField.setText(userProfile.getLastName());
         usernameTextField.setText(userProfile.getUserName());

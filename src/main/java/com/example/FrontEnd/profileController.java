@@ -1,6 +1,6 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
+import com.example.BackEnd.TestProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class profileController extends accessToTheTalkToBack implements Initializable {
+public class ProfileController extends Listener implements Initializable {
     public static LoginController object = new LoginController();
     private Stage stage;
     private Scene scene;
@@ -62,9 +62,9 @@ public class profileController extends accessToTheTalkToBack implements Initiali
     private TextField newLastName;
 
     //The set-up Methods
-    public testProfile userProfile;
+    public TestProfile userProfile;
 
-    public void setUserProfile(testProfile newTestProfile){
+    public void setUserProfile(TestProfile newTestProfile){
         userProfile = newTestProfile;
     }
     public void setUpProfile(){
@@ -73,7 +73,7 @@ public class profileController extends accessToTheTalkToBack implements Initiali
         currentUsername.setText(RegisterController.userName);
         currentPassword.setText(RegisterController.password);
     }
-    public testProfile getUserProfile() {
+    public TestProfile getUserProfile() {
         return userProfile;
     }
     //End of set-up Methods
