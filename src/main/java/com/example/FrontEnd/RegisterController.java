@@ -1,7 +1,5 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.Facade;
-import com.jclapel.banksystem.facade.facade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RegisterController extends accessToTheTalkToBack {
+public class RegisterController extends AccessToTheTalkToBack {
 
 
     public static String firstName;
@@ -44,7 +42,7 @@ public class RegisterController extends accessToTheTalkToBack {
     //Upon pressing the button "create account" you save all data
     @FXML//on interface button = create account
     private void onActionCreateAccount(ActionEvent event){
-    startApplication.facade.createAccount(userName = usernameTextField.getText(), setPasswordField.getText());
+    StartApplication.facade.createAccount(userName = usernameTextField.getText(), setPasswordField.getText());
     }
 
     // Creating Variables for the account

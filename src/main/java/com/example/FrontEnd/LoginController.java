@@ -1,7 +1,6 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
-import com.example.easyGoBetween.frontEndTalkToObjects;
+import com.example.BackEnd.TestProfile;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,11 +17,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController extends accessToTheTalkToBack implements Initializable {
+public class LoginController extends AccessToTheTalkToBack implements Initializable {
     private Stage stage;
     private Scene scene;
     //The set-up Methods
-    public testProfile userProfile;
+    public TestProfile userProfile;
 
     @FXML//on interface password field = password
     private PasswordField enterPasswordField;
@@ -80,8 +79,8 @@ public class LoginController extends accessToTheTalkToBack implements Initializa
             Parent root = loader.load();
             scene = new Scene(root);
 
-            userMenuController thisController = loader.getController();
-            thisController.setUserProfile(startApplication.goBetween.createTestProfile());
+            UserMenuController thisController = loader.getController();
+            thisController.setUserProfile(StartApplication.goBetween.createTestProfile());
             thisController.setUpProfile();
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();

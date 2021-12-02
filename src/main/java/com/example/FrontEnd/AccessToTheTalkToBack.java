@@ -1,6 +1,6 @@
 package com.example.FrontEnd;
 
-public class accessToTheTalkToBack {
+public class AccessToTheTalkToBack {
 
 //
 //    private Stage stage;

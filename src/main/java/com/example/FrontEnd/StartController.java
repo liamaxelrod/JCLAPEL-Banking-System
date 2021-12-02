@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class startController extends accessToTheTalkToBack {
+public class StartController extends AccessToTheTalkToBack {
 
     private Stage stage;
     private Scene scene;
