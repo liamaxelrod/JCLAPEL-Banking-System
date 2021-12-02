@@ -7,6 +7,7 @@ import java.util.Random;
 public class Facade {
     private HashMap<Integer, Customer> customers = new HashMap<>();
     private HashMap<Integer, Account> accounts = new HashMap<>();
+    private HashMap<Integer, Employee> employees=new HashMap<>();
 
     public HashMap<Integer, Customer> loadCustomers() {
         //method to load the customers from external storage upon starting the application
@@ -69,7 +70,7 @@ public class Facade {
 
     public boolean deposit(int accountID, double amount){ //add amount, return true if the transaction is valid, or false if it is invald
         if(amount>0){
-            accounts.get(accountID).setBalance(accounts.get(accountID).getBalance() + amount);
+            accounts.get(accountID).setBalance(accounts.get(accountID).getBalance() + amount*0.99);
             accounts.get(accountID).addTransaction(new DepositTransaction(amount, accountID));
             return true;
         }
@@ -79,7 +80,7 @@ public class Facade {
     public boolean withdraw(int accountID, double amount) {//subtracts amount from balance, returns true for a valid transaction, false for an invalid one
         if (amount > 0 && accounts.get(accountID).getBalance() >= amount) {
             Account account = accounts.get(accountID);
-            account.setBalance(account.getBalance() - amount);
+            account.setBalance(account.getBalance() - amount*1.01);
             account.addTransaction(new WithdrawalTransaction(amount, accountID));
             return true;
         }
@@ -90,15 +91,24 @@ public class Facade {
         //load all transactions for an account
     }
 
-    public void resetCredentials(){
-        //reset user credentials
+    public void resetPassword(int customerId, String newPassword){
+        Customer customer = customers.get(customerId);
+        customer.setPassword(newPassword);
     }
 
     public void retrieveUserStatistics(){
         //retrieve data to be displayed by user statistics
     }
 
-    public void createEmployee(){
-        //create employee account
+    public void createEmployee(String name){
+        int ID;
+        Random rn = new Random();
+        do{ //generate random employee ID number
+            int range = 999999 - 100000 +1; //generate 6 digit random number
+            ID = rn.nextInt(range) + 100000;
+        } while (employees.containsKey(ID));
+
+        Employee employee = new Employee(ID, name);
+        employees.put(ID, employee);
     }
 }
