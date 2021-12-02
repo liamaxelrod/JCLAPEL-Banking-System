@@ -1,6 +1,6 @@
-package com.example.easyGoBetween;
+package com.jclapel.banksystem.connection;
 
-import com.example.BackEnd.TestProfile;
+import com.jclapel.banksystem.back_end.TestProfile;
 
 public class Remote {
 

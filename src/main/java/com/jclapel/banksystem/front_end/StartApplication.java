@@ -1,4 +1,4 @@
-package com.example.FrontEnd;
+package com.jclapel.banksystem.front_end;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

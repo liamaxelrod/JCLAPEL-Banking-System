@@ -1,6 +1,6 @@
-package com.example.FrontEnd;
+package com.jclapel.banksystem.front_end;
 
-import com.example.easyGoBetween.Remote;
+import com.jclapel.banksystem.connection.Remote;
 
 public class Listener {
     public static Remote talkToGoBetween = new Remote();

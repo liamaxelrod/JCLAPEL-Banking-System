@@ -1,4 +1,4 @@
-package com.example.BackEnd;
+package com.jclapel.banksystem.back_end;
 
 import javafx.scene.image.ImageView;
 

@@ -1,7 +1,8 @@
-package com.example.FrontEnd;
+package com.jclapel.banksystem.front_end;
 
-import com.example.BackEnd.TestProfile;
-import com.example.easyGoBetween.Remote;
+import com.jclapel.banksystem.back_end.TestProfile;
+import com.jclapel.banksystem.connection.Remote;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

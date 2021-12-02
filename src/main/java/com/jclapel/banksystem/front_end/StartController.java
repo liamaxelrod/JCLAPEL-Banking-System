@@ -1,6 +1,5 @@
-package com.example.FrontEnd;
+package com.jclapel.banksystem.front_end;
 
-import com.example.BackEnd.TestProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import com.jclapel.banksystem.back_end.TestProfile;
 
 public class StartController extends Listener {
     private Stage stage;

@@ -1,6 +1,5 @@
-package com.example.FrontEnd;
+package com.jclapel.banksystem.front_end;
 
-import com.example.BackEnd.TestProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +19,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.jclapel.banksystem.back_end.TestProfile;
 
 public class ProfileController extends Listener implements Initializable {
     public static LoginController object = new LoginController();
