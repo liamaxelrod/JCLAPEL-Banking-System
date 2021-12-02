@@ -19,7 +19,10 @@ public class startApplication extends Application {
         stage.show();
     }
 
+    public static Facade facade;
     public static void main(String[] args) {
         launch();
+        facade = new Facade(); // Initializing facade
+
     }
 }

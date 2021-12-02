@@ -14,12 +14,14 @@ import java.io.IOException;
 
 public class RegisterController extends accessToTheTalkToBack {
 
-
+    public static int id;
     public static String firstName;
     public static String secondName;
-    public static String userName;
+    public static int idNum;
     public static String password;
-    public static double money = 10000.00;
+    public static double savingMoney = 20000.00;
+    public static double CheckingMoney = 10000.00;
+
 
     private Stage stage;
     private Scene scene;
@@ -50,7 +52,8 @@ public class RegisterController extends accessToTheTalkToBack {
     public void createAccount(){
         firstName = firstnameTextField.getText();
         secondName = lastnameTextField.getText();
-        userName = usernameTextField.getText();
+        //Make sure it works
+        idNum = usernameTextField.getPrefColumnCount();
         password = setPasswordField.getText();
         }
 

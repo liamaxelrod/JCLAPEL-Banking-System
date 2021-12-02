@@ -70,7 +70,7 @@ public class profileController extends accessToTheTalkToBack implements Initiali
     public void setUpProfile(){
         currentFirstName.setText(RegisterController.firstName);
         currentLasName.setText(RegisterController.secondName);
-        currentUsername.setText(RegisterController.userName);
+        currentUsername.setText(RegisterController.idNum);
         currentPassword.setText(RegisterController.password);
     }
     public testProfile getUserProfile() {
