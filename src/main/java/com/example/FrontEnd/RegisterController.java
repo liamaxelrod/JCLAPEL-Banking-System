@@ -63,6 +63,7 @@ public class RegisterController extends AccessToTheTalkToBack {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+
     }
 
     // Creating Variables for the account For testing purposes
