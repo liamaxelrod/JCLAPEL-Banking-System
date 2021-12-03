@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class StartController extends AccessToTheTalkToBack {
-
     private Stage stage;
     private Scene scene;
 
@@ -36,6 +35,17 @@ public class StartController extends AccessToTheTalkToBack {
     public void switchToRegisterCustomer(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("registerCustomer.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML//on interface button = create account
+    public void switchToRegisterEmployee(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("registerEmployee.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
 

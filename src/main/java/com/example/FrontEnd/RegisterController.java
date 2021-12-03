@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.Facade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,12 +15,19 @@ import java.io.IOException;
 
 public class RegisterController extends AccessToTheTalkToBack {
 
-
+    //For testing purposes will be removed later
     public static String firstName;
     public static String secondName;
-    public static String userName;
+    public static String iD;
     public static String password;
     public static double money = 10000.00;
+    public static int idNum;
+    public int id;
+    public static int num;
+
+    static Facade facade = new Facade();
+
+
 
     private Stage stage;
     private Scene scene;
@@ -40,17 +48,28 @@ public class RegisterController extends AccessToTheTalkToBack {
     private TextField usernameTextField;
 
     //Upon pressing the button "create account" you save all data
-    @FXML//on interface button = create account
-    private void onActionCreateAccount(ActionEvent event){
-        createAccount();
-    StartApplication.facade.createAccount(userName = usernameTextField.getText(), setPasswordField.getText());
+
+    @FXML
+    private void onActionCreateAccount(ActionEvent event) throws IOException {
+        id = facade.createCustomer(firstnameTextField.getText(), setPasswordField.getText());
+        idNum = id;
+        num = 1;
+        System.out.println(id);
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("userMenu.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+
     }
 
-    // Creating Variables for the account
+    // Creating Variables for the account For testing purposes
     public void createAccount(){
         firstName = firstnameTextField.getText();
         secondName = lastnameTextField.getText();
-        userName = usernameTextField.getText();
         password = setPasswordField.getText();
         }
 
@@ -81,5 +100,7 @@ public class RegisterController extends AccessToTheTalkToBack {
         stage.setScene(scene);
         stage.show();
     }
+
+
 
 }
