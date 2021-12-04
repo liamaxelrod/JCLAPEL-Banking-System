@@ -59,6 +59,10 @@ public class Facade {
         accounts.put(account.getID(), account);
     }
 
+    public void removeAccount(int accountID){
+        accounts.remove(accountID);
+    }
+
     public boolean transferBetweenAccounts(int senderId, int receiverId, double amount) {
         if (withdraw(senderId, amount) && deposit(receiverId, amount)) {
             accounts.get(senderId).addTransaction(new TransferTransaction(amount, senderId, receiverId));
