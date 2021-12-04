@@ -1,8 +1,8 @@
 package com.example.BackEnd;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Stack;
 
 public class Facade {
     private HashMap<Integer, Customer> customers = new HashMap<>();
@@ -87,8 +87,8 @@ public class Facade {
         return false;
     }
 
-    public void loadAllTransactions(){
-        //load all transactions for an account
+    public Stack<Transaction> loadAllTransactions(int accountID){
+         return accounts.get(accountID).getTransactions();
     }
 
     public void resetPassword(int customerId, String newPassword){
