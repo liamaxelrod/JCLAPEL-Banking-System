@@ -46,7 +46,7 @@ public class RegisterController extends AccessToTheTalkToBack {
 
         firstnameTextField.setText("");
 
-    StartApplication.facade.createAccount(usernameTextField.getText(), setPasswordField.getText());
+    StartApplication.facade.createCustomer(usernameTextField.getText(), setPasswordField.getText());
     }
 
     // Creating Variables for the account For testing purposes
