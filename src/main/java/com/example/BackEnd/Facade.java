@@ -18,6 +18,14 @@ public class Facade {
         //method to store customers to external storage before closing the app
     }
 
+    public boolean CheckIfCustomerExists(int ID){
+        if(customers.containsKey(ID)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public Customer loadCustomer(int customerId){
         return customers.get(customerId);
     }
@@ -47,7 +55,7 @@ public class Facade {
         }
     }
 
-    public void createAccount(int customerId){ // adds an account to a given customer
+    public int createAccount(int customerId){ // adds an account to a given customer
         int ID;
         Random rn = new Random();
         do{ //generate random customer ID number
@@ -57,10 +65,19 @@ public class Facade {
         Account account = new Account(ID);
         customers.get(customerId).addAccount(account);
         accounts.put(account.getID(), account);
+        return account.getID();
     }
 
     public void removeAccount(int accountID){
         accounts.remove(accountID);
+    }
+
+    public boolean CheckIfAccountExists(int ID){
+        if(accounts.containsKey(ID)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public boolean transferBetweenAccounts(int senderId, int receiverId, double amount) {

@@ -12,8 +12,9 @@ public class Account {
         this.ID=ID;
     }
     
-    public void addTransaction(Transaction transaction){
+    public boolean addTransaction(Transaction transaction){
         transactions.push(transaction);
+        return true;
     }
 
     public double getBalance() {
