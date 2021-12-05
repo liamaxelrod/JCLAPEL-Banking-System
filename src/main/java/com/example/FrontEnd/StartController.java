@@ -42,6 +42,19 @@ public class StartController extends AccessToTheTalkToBack {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    void switchToLoginEmployee(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("employeeLogin.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
     @FXML//on interface button = create account
     public void switchToRegisterEmployee(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();

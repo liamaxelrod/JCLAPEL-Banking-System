@@ -51,8 +51,6 @@ public class RegisterEmployeeController implements Initializable{
 
     }
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         titleChoice.setValue("choose title");
@@ -73,9 +71,9 @@ public class RegisterEmployeeController implements Initializable{
 
 
     @FXML//on interface button = login
-    public void switchToLoginCustomer(ActionEvent event) throws IOException {
+    public void switchToLoginEmployee(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("loginCustomer.fxml"));
+        loader.setLocation(getClass().getResource("employeeLogin.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
 
