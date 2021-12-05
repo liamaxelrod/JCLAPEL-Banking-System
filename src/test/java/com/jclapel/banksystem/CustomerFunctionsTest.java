@@ -3,29 +3,49 @@ package com.jclapel.banksystem;
 import com.example.BackEnd.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.util.HashMap;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomerFunctionsTest {
 
-    public Facade facade = new Facade();
+   private Facade facade;
+
 
     @BeforeEach
-    void setUp(){
+    public void setUp(){
+        facade = new Facade();
+
+        String name = "Erik";
+        String password = "Password123";
+
+        facade.createCustomer(name, password);
+    }
+
+    @Test
+    public void shouldCreateCustomer(){
+        String name = "Erik";
+        String password = "Password123";
+
+        int ActualResult = facade.createCustomer(name, password);
+        int ExpectedResult = facade.CheckIfCustomerExists(ActualResult);
+
+        assertEquals(ActualResult, ExpectedResult);
     }
 
     @Test
     public void itShouldDepositMoney() {
         //given
+        //creating Customer and account
         Customer underTest = new Customer(111111, "Erik", "test");
-        Account account = new Account(222222);
-        Transaction transaction = new DepositTransaction(100, 222222);
+
+        //
+        int accountID = facade.createAccount(underTest.getID());
+        Transaction transaction = new DepositTransaction(100, accountID);
 
         //when
-        boolean expected = facade.deposit(underTest.getID(), transaction.getAmount());
-        boolean result = account.addTransaction(transaction);
+        boolean expected = facade.deposit(accountID, transaction.getAmount());
+        boolean result = true;
 
         //then
         assertThat(expected).isEqualTo(result);
@@ -40,8 +60,8 @@ public class CustomerFunctionsTest {
         facade.removeCustomer(ID);
 
         //then
-        boolean check = facade.CheckIfCustomerExists(ID);
-        assertThat(check).isEqualTo(false);
+        int check = facade.CheckIfCustomerExists(ID);
+        assertEquals(check, 0);
     }
 
     @Test
