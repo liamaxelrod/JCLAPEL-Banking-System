@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Stack;
 
 public class Facade {
-    private HashMap<Integer, Customer> customers = new HashMap<>();
+    HashMap<Integer, Customer> customers = new HashMap<>();
     private HashMap<Integer, Account> accounts = new HashMap<>();
     private HashMap<Integer, Employee> employees=new HashMap<>();
     final static String customersOutputFilePath = "F:/Serialisation/customers.txt";
@@ -85,11 +85,13 @@ public class Facade {
     }
 
     public boolean checkLogin(int ID, String password){
-        if(customers.containsKey(ID) && customers.get(ID).getPassword().equals(password)){//checks if the id exists, and the password of the customer with that id is equal to the input password
-            return true;
-        }else{
-            return false;
+        if(customers.containsKey(ID)){
+            if(customers.get(ID).getPassword().equals(password)) {
+                //checks if the id exists, and the password of the customer with that id is equal to the input password
+                return true;
+            }
         }
+        return false;
     }
 
     public int createAccount(int customerId){ // adds an account to a given customer
