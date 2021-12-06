@@ -70,7 +70,7 @@ public class Facade {
         Customer customer = new Customer(ID, name, password);
         customers.put(ID, customer);
         return ID;
-    }//patrik, labi, julia
+    } // Patrik, Labi, Julia, Erik
 
     public int CheckIfCustomerExists(int ID){
         if(customers.containsKey(ID)){
@@ -78,7 +78,7 @@ public class Facade {
         }else{
             return 0;
         }
-    }
+    } // Erik
 
     public void removeCustomer(int ID){
         customers.remove(ID);
@@ -92,33 +92,33 @@ public class Facade {
             }
         }
         return false;
-    } //patrik, labi, julia
+    } // Patrik, Labi, Julia
 
     public int createAccount(int customerId){ // adds an account to a given customer
         Account account = new Account(generateId(customers.get(customerId).getAccounts()), false);
         customers.get(customerId).addAccount(account);
         accounts.put(account.getID(), account);
         return account.getID();
-    } //patrik, labi
+    } // Patrik, Labi
 
     public int createSavingsAccount(int customerId){
         Account account = new Account(generateId(customers.get(customerId).getAccounts()), true);
         customers.get(customerId).addAccount(account);
         accounts.put(account.getID(), account);
         return account.getID();
-    } //patrik, labi
+    } // Patrik, Labi
 
     public void removeAccount(int accountID){
         accounts.remove(accountID);
-    }
+    } // Erik
 
     public boolean CheckIfAccountExists(int ID){
-        if(accounts.containsKey(ID)){
+        if (accounts.containsKey(ID)){
             return true;
-        }else{
+        } else {
             return false;
         }
-    }
+    } // Erik
 
     public boolean transferBetweenAccounts(int senderId, int receiverId, double amount) {
         if (withdraw(senderId, amount) && deposit(receiverId, amount)) {
@@ -127,16 +127,16 @@ public class Facade {
             return true;
         }
         return false;
-    } //patrik, labi, julia
+    } // Patrik, Labi, Julia, Erik
 
     public boolean deposit(int accountID, double amount){ //add amount, return true if the transaction is valid, or false if it is invald
-        if(amount>0){
+        if(amount > 0){
             accounts.get(accountID).setBalance(accounts.get(accountID).getBalance() + amount*0.99);
             accounts.get(accountID).addTransaction(new DepositTransaction(amount, accountID));
             return true;
         }
         return false;
-    } //patrik, labi, julia
+    } // Patrik, Labi, Julia, Erik
 
     public boolean withdraw(int accountID, double amount) {//subtracts amount from balance, returns true for a valid transaction, false for an invalid one
         if (amount > 0 && accounts.get(accountID).getBalance() >= amount) {
@@ -146,7 +146,7 @@ public class Facade {
             return true;
         }
         return false;
-    } //patrik, labi, julia
+    } // Patrik, Labi, Julia, Erik
 
     public Stack<Transaction> loadAllTransactions(int accountID){
          return accounts.get(accountID).getTransactions();
@@ -179,5 +179,5 @@ public class Facade {
             ID = rn.nextInt(range) + 100000;
         } while (hashMap.containsKey(ID));//ensure the id is not in use
         return ID;
-    } //patrik
+    } // Patrik
 }

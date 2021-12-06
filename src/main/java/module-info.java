@@ -8,7 +8,6 @@ module com.jclapel.banksystem {
 
 	opens com.jclapel.banksystem to javafx.fxml;
 	exports com.jclapel.banksystem.data;
-	exports com.jclapel.banksystem.facade;
 	exports com.jclapel.banksystem.front_end;
 	exports com.jclapel.banksystem.back_end;
 }
