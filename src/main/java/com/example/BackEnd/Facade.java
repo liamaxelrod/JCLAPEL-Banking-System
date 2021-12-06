@@ -18,13 +18,6 @@ public class Facade {
         //method to store customers to external storage before closing the app
     }
 
-    public int CheckIfCustomerExists(int ID){
-        if(customers.containsKey(ID)){
-            return ID;
-        }else{
-            return 0;
-        }
-    }
 
     public Customer loadCustomer(int customerId){
         return customers.get(customerId);
@@ -41,6 +34,14 @@ public class Facade {
         Customer customer = new Customer(ID, name, password);
         customers.put(ID, customer);
         return ID;
+    }
+
+    public int CheckIfCustomerExists(int ID){
+        if(customers.containsKey(ID)){
+            return ID;
+        }else{
+            return 0;
+        }
     }
 
     public void removeCustomer(int ID){

@@ -1,16 +1,14 @@
 package com.jclapel.banksystem;
-
 import com.example.BackEnd.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomerFunctionsTest {
 
    private Facade facade;
-
+   private Customer underTest;
 
     @BeforeEach
     public void setUp(){
@@ -20,6 +18,8 @@ public class CustomerFunctionsTest {
         String password = "Password123";
 
         facade.createCustomer(name, password);
+
+        underTest = new Customer(111111, "Erik", "test");
     }
 
     @Test
@@ -35,11 +35,10 @@ public class CustomerFunctionsTest {
 
     @Test
     public void itShouldDepositMoney() {
-        //given
-        //creating Customer and account
-        Customer underTest = new Customer(111111, "Erik", "test");
 
-        //
+        //WORK IN PROGRESS
+        //given
+
         int accountID = facade.createAccount(underTest.getID());
         Transaction transaction = new DepositTransaction(100, accountID);
 
