@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ProfileController extends AccessToTheTalkToBack implements Initializable {//Albin and Liam, worked together on this
+public class ProfileController extends AccessToTheTalkToBack implements Initializable {//Albin Worked on this Liam worked more on this
     public static LoginController object = new LoginController();
     private Stage stage;
     private Scene scene;
