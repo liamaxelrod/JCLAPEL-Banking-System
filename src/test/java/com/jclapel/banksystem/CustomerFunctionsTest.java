@@ -23,7 +23,7 @@ public class CustomerFunctionsTest {
     }
 
     @Test
-    public void shouldCreateCustomer(){
+    public void shouldCreateCustomer(){ // this can be removed
         String name = "Erik";
         String password = "Password123";
 
@@ -34,7 +34,7 @@ public class CustomerFunctionsTest {
     }
 
     @Test
-    public void itShouldDepositMoney() {
+    public void itShouldDepositMoney() { //Erik, new version in transfer test
 
         //WORK IN PROGRESS
         //given
@@ -51,7 +51,7 @@ public class CustomerFunctionsTest {
     }
 
     @Test
-    public void itShouldRemoveCustomer() {
+    public void itShouldRemoveCustomer() { //Erik
         //given
         int ID = facade.createCustomer("Erik", "password123");
 
@@ -64,7 +64,7 @@ public class CustomerFunctionsTest {
     }
 
     @Test
-    public void itShouldRemoveAccount() {
+    public void itShouldRemoveAccount() { //Erik
         //given
         int ID = facade.createCustomer("Erik", "password123");
         int ID2 = facade.createAccount(ID);
