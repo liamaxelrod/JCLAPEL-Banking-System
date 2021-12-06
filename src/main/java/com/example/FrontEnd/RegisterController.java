@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.Facade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,8 +26,13 @@ public class RegisterController implements Initializable {
     public static int iD;
 
     public static String password;
-    public static double savingMoney = 20000.00;
-    public static double CheckingMoney = 10000.00;
+    public static double money = 10000.00;
+    public static int idNum;
+    public int id;
+    public static int num;
+
+    static Facade facade = new Facade();
+
 
 
     private Stage stage;
@@ -55,10 +61,13 @@ public class RegisterController implements Initializable {
     }
 
     //Upon pressing the button "create account" you save all data
-    @FXML//on interface button = create account
-    private void onActionCreateAccount(ActionEvent event) throws IOException {
 
-        int id = StartApplication.facade.createAccount(usernameTextField.getText(), setPasswordField.getText());
+    @FXML
+    private void onActionCreateAccount(ActionEvent event) throws IOException {
+        id = facade.createCustomer(firstnameTextField.getText(), setPasswordField.getText());
+        idNum = id;
+        num = 1;
+        System.out.println(id);
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("userMenu.fxml"));
@@ -67,7 +76,6 @@ public class RegisterController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-
 
     }
 
@@ -105,6 +113,7 @@ public class RegisterController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
 
 
 }
