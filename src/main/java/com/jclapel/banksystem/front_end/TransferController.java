@@ -79,7 +79,7 @@ public class TransferController extends Listener implements Initializable {
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        userMenuController thisController = loader.getController();
+//        UserMenuController thisController = loader.getController();
 //        thisController.setUserProfile(talkToGoBetween.createTestProfile());
 //        thisController.setUpProfile();
 
@@ -94,7 +94,7 @@ public class TransferController extends Listener implements Initializable {
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        userMenuController thisController = loader.getController();
+//        UserMenuController thisController = loader.getController();
 //        thisController.setUserProfile(talkToGoBetween.createTestProfile());
 //        thisController.setUpProfile();
 
@@ -113,7 +113,7 @@ public class TransferController extends Listener implements Initializable {
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        userMenuController thisController = loader.getController();
+//        UserMenuController thisController = loader.getController();
 //        thisController.setUserProfile(talkToGoBetween.createTestProfile());
 //        thisController.setUpProfile();
 

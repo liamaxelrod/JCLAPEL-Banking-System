@@ -137,7 +137,7 @@ public class ProfileController extends Listener implements Initializable {
         Parent root = loader.load();
         scene = new Scene(root);
 
-        _UserMenuController thisController = loader.getController();
+        UserMenuController thisController = loader.getController();
         thisController.setUserProfile(getUserProfile());
         thisController.setUpProfile();
 
@@ -152,7 +152,7 @@ public class ProfileController extends Listener implements Initializable {
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        userMenuController thisController = loader.getController();
+//        UserMenuController thisController = loader.getController();
 //        thisController.setUserProfile(talkToGoBetween.createTestProfile());
 //        thisController.setUpProfile();
 
