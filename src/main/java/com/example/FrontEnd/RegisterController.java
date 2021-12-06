@@ -4,21 +4,27 @@ import com.example.BackEnd.Facade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class RegisterController extends AccessToTheTalkToBack {
+public class RegisterController implements Initializable {
+
 
     //For testing purposes will be removed later
     public static String firstName;
     public static String secondName;
-    public static String iD;
+    public static int iD;
+
     public static String password;
     public static double money = 10000.00;
     public static int idNum;
@@ -46,6 +52,13 @@ public class RegisterController extends AccessToTheTalkToBack {
 
     @FXML//on interface text field = username
     private TextField usernameTextField;
+
+    @FXML
+    private Label idNum;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
 
     //Upon pressing the button "create account" you save all data
 

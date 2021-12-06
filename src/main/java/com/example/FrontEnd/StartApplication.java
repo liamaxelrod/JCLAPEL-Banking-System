@@ -24,6 +24,8 @@ public class StartApplication extends Application {
     public static Facade facade;
     public static void main(String[] args) {
         launch();
+
         facade = new Facade();
+
     }
 }

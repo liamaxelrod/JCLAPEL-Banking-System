@@ -1,6 +1,5 @@
 package com.example.FrontEnd;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,6 +45,7 @@ public class UserMenuController implements Initializable {
 
     @FXML//on interface text field = username
     private TextField usernameTextField;
+
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
