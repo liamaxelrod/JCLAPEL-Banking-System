@@ -70,7 +70,7 @@ public class Facade {
         Customer customer = new Customer(ID, name, password);
         customers.put(ID, customer);
         return ID;
-    }//patrik, labi, julia
+    }//patrik, labi, julia erik
 
     public int CheckIfCustomerExists(int ID){
         if(customers.containsKey(ID)){
@@ -78,7 +78,7 @@ public class Facade {
         }else{
             return 0;
         }
-    }
+    } //Erik
 
     public void removeCustomer(int ID){
         customers.remove(ID);
@@ -110,7 +110,7 @@ public class Facade {
 
     public void removeAccount(int accountID){
         accounts.remove(accountID);
-    }
+    } //Erik
 
     public boolean CheckIfAccountExists(int ID){
         if(accounts.containsKey(ID)){
@@ -118,7 +118,7 @@ public class Facade {
         }else{
             return false;
         }
-    }
+    } //Erik
 
     public boolean transferBetweenAccounts(int senderId, int receiverId, double amount) {
         if (withdraw(senderId, amount) && deposit(receiverId, amount)) {
@@ -127,7 +127,7 @@ public class Facade {
             return true;
         }
         return false;
-    } //patrik, labi, julia
+    } //patrik, labi, julia, erik
 
     public boolean deposit(int accountID, double amount){ //add amount, return true if the transaction is valid, or false if it is invald
         if(amount>0){
@@ -136,7 +136,7 @@ public class Facade {
             return true;
         }
         return false;
-    } //patrik, labi, julia
+    } //patrik, labi, julia, erik
 
     public boolean withdraw(int accountID, double amount) {//subtracts amount from balance, returns true for a valid transaction, false for an invalid one
         if (amount > 0 && accounts.get(accountID).getBalance() >= amount) {
@@ -146,7 +146,7 @@ public class Facade {
             return true;
         }
         return false;
-    } //patrik, labi, julia
+    } //patrik, labi, julia, erik
 
     public Stack<Transaction> loadAllTransactions(int accountID){
          return accounts.get(accountID).getTransactions();
