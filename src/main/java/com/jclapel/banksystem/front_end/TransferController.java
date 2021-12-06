@@ -18,7 +18,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TransferController extends Listener implements Initializable {//Albin worked on this, Liam worked partly on this
+public class TransferController extends Listener implements Initializable {
+    /*
+
+	Transfer history controller for controlling user interface, specifically for transfer history UI.
+
+	Main Contributor(s): Albin
+	Contributor(s): Liam
+
+	*/
+
     private Stage stage;
     private Scene scene;
 

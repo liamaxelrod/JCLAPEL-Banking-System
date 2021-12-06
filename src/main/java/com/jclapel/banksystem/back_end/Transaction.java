@@ -6,7 +6,10 @@ import java.time.LocalTime;
 public class Transaction {
 	/*
 
-	
+	Transaction class, an immutable object to represent records of transactions. Possibly could be an abstract class.
+
+	Main Contributor(s):
+	Contributor(s):
 
 	*/
 
@@ -16,7 +19,7 @@ public class Transaction {
 	private final int accountId;
 
 	public Transaction(double amount, int accountId) {
-		// Constructor for transaction, sets the amount for the transaction and the associated account ID
+		// Creates a transaction, sets the amount for the transaction and the associated account ID
 		this.amount = amount;
 		this.accountId = accountId;
 

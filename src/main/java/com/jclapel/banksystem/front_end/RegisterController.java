@@ -14,6 +14,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class RegisterController extends Listener {//Albin worked on this, Liam partly worked on this
+    /*
+
+	Register controller for controlling user interface, specifically for register UI.
+
+	Main Contributor(s): Albin
+	Contributor(s): Liam
+
+	*/
 
     //For testing purposes will be removed later
     public static String firstName;

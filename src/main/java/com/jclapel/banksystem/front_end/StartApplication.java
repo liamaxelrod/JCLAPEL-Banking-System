@@ -11,6 +11,14 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class StartApplication extends Application { // Albin worked on this
+    /*
+
+	Application starting class, starts the application.
+
+	Main Contributor(s): Albin
+	Contributor(s): 
+
+	*/
 
     @Override
     public void start(Stage stage) throws IOException {

@@ -29,7 +29,7 @@ public class CustomerFunctionsTest {
         String password = "Password123";
 
         int ActualResult = facade.createCustomer(name, password);
-        int ExpectedResult = facade.CheckIfCustomerExists(ActualResult);
+        int ExpectedResult = facade.customerExists(ActualResult);
 
         assertEquals(ActualResult, ExpectedResult);
     }
@@ -40,7 +40,7 @@ public class CustomerFunctionsTest {
         //WORK IN PROGRESS
         //given
 
-        int accountID = facade.createAccount(underTest.getID());
+        int accountID = facade.createAccount(underTest.getId());
         Transaction transaction = new DepositTransaction(100, accountID);
 
         //when
@@ -60,7 +60,7 @@ public class CustomerFunctionsTest {
         facade.removeCustomer(ID);
 
         //then
-        int check = facade.CheckIfCustomerExists(ID);
+        int check = facade.customerExists(ID);
         assertEquals(check, 0);
     }
 
@@ -74,7 +74,7 @@ public class CustomerFunctionsTest {
         facade.removeAccount(ID2);
 
         //then
-        boolean check = facade.CheckIfAccountExists(ID2);
+        boolean check = facade.accountExists(ID2);
         assertThat(check).isEqualTo(false);
     }
 

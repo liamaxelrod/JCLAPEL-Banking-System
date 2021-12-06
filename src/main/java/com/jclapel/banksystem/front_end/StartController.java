@@ -11,7 +11,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class StartController extends Listener {//Albin worked on this, Liam worked partly on this
+public class StartController extends Listener {
+    /*
+
+	Start controller for controlling user interface, specifically for start UI.
+
+	Main Contributor(s): Albin
+	Contributor(s): Liam
+
+	*/
+
     private Stage stage;
     private Scene scene;
 

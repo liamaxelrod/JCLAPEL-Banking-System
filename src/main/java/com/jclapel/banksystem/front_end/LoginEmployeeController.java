@@ -18,14 +18,25 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginEmployeeController implements Initializable {//Liam did this
+public class LoginEmployeeController implements Initializable {
+    /*
+
+	Login employee controller for controlling user interface, specifically for employee login UI.
+
+	Main Contributor(s): Liam
+	Contributor(s): 
+
+    Hey, wouldn't it be better if it was named EmployeeLoginController?
+    - Conny
+
+	*/
     private Stage stage;
     private Scene scene;
     public static String logNum;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // Initializes the controller
     }
 
 

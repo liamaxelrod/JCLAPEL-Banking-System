@@ -1,7 +1,14 @@
 package com.jclapel.banksystem.front_end;
 
 public class Listener {
+	/*
 
+	Listener intended to connect front-end and back-end, deprecated.
+
+	Main Contributor(s): Liam
+	Contributor(s): 
+
+	*/	
 //
 //    private Stage stage;
 //    private Scene scene;

@@ -8,29 +8,32 @@ public class Customer {
 
 	Customer class, intended to hold unique IDs, a name and password
 
+	Main Contributor(s):
+	Contributor(s):
+
 	*/
 
-	private final int ID;
+	private final int id;
 	private String name;
 	private String password;
 	private HashMap<Integer, Account> accounts = new HashMap<>();
 
-	public Customer(int ID, String name, String password) {
+	public Customer(int id, String name, String password) {
 		// Constructor for customer, creates a customer account with unique ID, a name and password
 		// TODO: No duplicate IDs should exist within the system.
-		this.ID = ID;
+		this.id = id;
 		this.name = name;
 		this.password = password;
 	}
 
 	public void addAccount(Account account) {
 		// Adds account to customer
-		accounts.put(account.getID(), account);
+		accounts.put(account.getId(), account);
 	}
 
-	public int getID() {
+	public int getId() {
 		// Returns the customer's ID
-		return ID;
+		return id;
 	}
 
 	public String getName() {
