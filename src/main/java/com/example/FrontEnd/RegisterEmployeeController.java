@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RegisterEmployeeController implements Initializable{
+public class RegisterEmployeeController implements Initializable{ // Albin worked on this
     private Stage stage;
     private Scene scene;
 

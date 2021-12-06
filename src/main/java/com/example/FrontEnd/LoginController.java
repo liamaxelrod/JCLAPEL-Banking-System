@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 
 //import static com.example.FrontEnd.StartApplication.facade;
 
-public class LoginController implements Initializable {//Liam Partly worked on this
+public class LoginController implements Initializable {//Albin worked on this partly Liam Partly worked on this
     private Stage stage;
     private Scene scene;
     public static String logNum;
