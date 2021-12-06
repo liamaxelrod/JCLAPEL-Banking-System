@@ -1,8 +1,8 @@
 package com.example.BackEnd;
 
-import java.io.*;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Stack;
 
 public class Facade {
     private HashMap<Integer, Customer> customers = new HashMap<>();
@@ -59,6 +59,7 @@ public class Facade {
         }
     } // Done by Julia Ayvazian, temporary solution until the database works
 
+
     public Customer loadCustomer(int customerId){
         return customers.get(customerId);
     }
@@ -68,6 +69,14 @@ public class Facade {
         Customer customer = new Customer(ID, name, password);
         customers.put(ID, customer);
         return ID;
+    }
+
+    public int CheckIfCustomerExists(int ID){
+        if(customers.containsKey(ID)){
+            return ID;
+        }else{
+            return 0;
+        }
     }
 
     public void removeCustomer(int ID){
@@ -92,6 +101,19 @@ public class Facade {
         Account account = new Account(generateId(customers.get(customerId).getAccounts()), true);
         customers.get(customerId).addAccount(account);
         accounts.put(account.getID(), account);
+        return account.getID();
+    }
+
+    public void removeAccount(int accountID){
+        accounts.remove(accountID);
+    }
+
+    public boolean CheckIfAccountExists(int ID){
+        if(accounts.containsKey(ID)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public boolean transferBetweenAccounts(int senderId, int receiverId, double amount) {
@@ -122,8 +144,8 @@ public class Facade {
         return false;
     }
 
-    public void loadAllTransactions(){
-        //load all transactions for an account
+    public Stack<Transaction> loadAllTransactions(int accountID){
+         return accounts.get(accountID).getTransactions();
     }
 
     public boolean resetPassword(int customerId, String originalPassword, String newPassword){ //returns a boolean indicating whether the change went through
