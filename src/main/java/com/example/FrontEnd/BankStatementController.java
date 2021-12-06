@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class BankStatementController extends AccessToTheTalkToBack {//Liam worked a little bit on this
+public class BankStatementController extends AccessToTheTalkToBack {//Albin worked on this, Liam worked a little bit on this
     private Stage stage;
     private Scene scene;
 
