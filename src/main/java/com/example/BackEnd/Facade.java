@@ -6,9 +6,9 @@ import java.util.Random;
 import java.util.Stack;
 
 public class Facade {
-    HashMap<Integer, Customer> customers = new HashMap<>();
-    private HashMap<Integer, Account> accounts = new HashMap<>();
-    private HashMap<Integer, Employee> employees=new HashMap<>();
+    public HashMap<Integer, Customer> customers = new HashMap<>();
+    public HashMap<Integer, Account> accounts = new HashMap<>();
+    public HashMap<Integer, Employee> employees=new HashMap<>();
     final static String customersOutputFilePath = "F:/Serialisation/customers.txt";
     final static String accountsOutputFilePath = "F:/Serialisation/accounts.txt";
     final static String employeesOutputFilePath = "F:/Serialisation/employees.txt";

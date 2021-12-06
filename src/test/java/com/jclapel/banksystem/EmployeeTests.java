@@ -1,2 +1,4 @@
-package com.jclapel.banksystem;public class EmployeeTests {
+package com.jclapel.banksystem;
+
+public class EmployeeTests {
 }
