@@ -1,10 +1,14 @@
 package com.jclapel.banksystem.data;
 
 // Imports
-// import com.google.code.gson;
+import com.google.code.gson;
+import com.mongodb.MongoClient;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Set;
+
+
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -21,6 +25,8 @@ public class Cache implements Serializable {
 	Contributor(s): 
 
 	*/
+	MongoClient mongoClient = new MongoClient()
+
 	private final boolean USE_LOCAL_STORAGE = true;
 	private final boolean USE_DATABASE = false;
 
