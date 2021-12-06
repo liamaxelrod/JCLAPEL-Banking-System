@@ -92,13 +92,14 @@ public class Facade {
         }
     }
 
-    public void createAccount(int customerId){ // adds an account to a given customer
+    public int createAccount(int customerId){ // adds an account to a given customer
         Account account = new Account(generateId(customers.get(customerId).getAccounts()), false);
         customers.get(customerId).addAccount(account);
         accounts.put(account.getID(), account);
+        return account.getID();
     }
 
-    public void createSavingsAccount(int customerId){
+    public int createSavingsAccount(int customerId){
         Account account = new Account(generateId(customers.get(customerId).getAccounts()), true);
         customers.get(customerId).addAccount(account);
         accounts.put(account.getID(), account);
