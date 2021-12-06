@@ -1,7 +1,5 @@
 package com.example.FrontEnd;
 
-
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,9 +15,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController extends AccessToTheTalkToBack implements Initializable {
+//import static com.example.FrontEnd.StartApplication.facade;
+
+public class LoginController implements Initializable {
     private Stage stage;
     private Scene scene;
+    public static String logNum;
 
     @FXML//on interface password field = password
     private PasswordField enterPasswordField;
@@ -29,6 +30,7 @@ public class LoginController extends AccessToTheTalkToBack implements Initializa
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 
     public void createAccountStageForm(){
@@ -68,23 +70,25 @@ public class LoginController extends AccessToTheTalkToBack implements Initializa
         stage.setScene(scene);
         stage.show();
     }
+
 // Successfully made the code look for the username and password created
     @FXML//on interface button = login  //Need the unique version is your logging into your profile for the first time
     public void switchToCustomerMenu(ActionEvent event) throws IOException{
-        if (usernameTextField.getText().toString().equals(RegisterController.iD) && enterPasswordField.getText().toString().equals(RegisterController.password)){
+        RegisterController.num = 0;
+        logNum = usernameTextField.getText();
+        System.out.println(logNum);
+        //System.out.println(facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText()));
+        if (RegisterController.facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText())){
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("userMenu.fxml"));
             Parent root = loader.load();
             scene = new Scene(root);
-
-//            UserMenuController thisController = loader.getController();
-//            thisController.setUserProfile(StartApplication.goBetween.defaultTestProfile());
-//            thisController.setUpProfile();
-
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         }
     }
-    
+    //usernameTextField.getText().toString().equals(RegisterController.id) Check ID
+    // enterPasswordField.getText().toString().equals(RegisterController.password check password
+
 }

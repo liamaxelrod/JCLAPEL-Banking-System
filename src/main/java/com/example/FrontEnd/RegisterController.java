@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.Facade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,13 @@ public class RegisterController extends AccessToTheTalkToBack {
     public static String iD;
     public static String password;
     public static double money = 10000.00;
+    public static int idNum;
+    public int id;
+    public static int num;
+
+    static Facade facade = new Facade();
+
+
 
     private Stage stage;
     private Scene scene;
@@ -40,13 +48,25 @@ public class RegisterController extends AccessToTheTalkToBack {
     private TextField usernameTextField;
 
     //Upon pressing the button "create account" you save all data
-    @FXML//on interface button = create account
-    private void onActionCreateAccount(ActionEvent event){
-        createAccount();//For testing purposes only will be removed later
 
-        firstnameTextField.setText("");
+    @FXML
+    private void onActionCreateAccount(ActionEvent event) throws IOException {
+        id = facade.createCustomer(firstnameTextField.getText(), setPasswordField.getText());
+        idNum = id;
+        num = 1;
+        System.out.println(id);
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("userMenu.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+
 
     StartApplication.facade.createCustomer(usernameTextField.getText(), setPasswordField.getText());
+
     }
 
     // Creating Variables for the account For testing purposes
@@ -54,7 +74,6 @@ public class RegisterController extends AccessToTheTalkToBack {
         firstName = firstnameTextField.getText();
         secondName = lastnameTextField.getText();
         password = setPasswordField.getText();
-        iD = usernameTextField.getText();
         }
 
 
@@ -84,5 +103,7 @@ public class RegisterController extends AccessToTheTalkToBack {
         stage.setScene(scene);
         stage.show();
     }
+
+
 
 }

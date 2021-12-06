@@ -15,18 +15,7 @@ public class BankStatementController extends AccessToTheTalkToBack {
     private Stage stage;
     private Scene scene;
 
-//    //The set-up Methods
-//    public TestProfile userProfile;
-//
-//    public void setUserProfile(TestProfile newTestProfile){
-//        userProfile = newTestProfile;
-//    }
-//    public void setUpProfile(){
-//
-//    }
-//    //End of set-up Methods
 
-    //all methods below are for switching scenes, or you could say interfaces
 
     @FXML//on interface button = user menu
     void switchToCustomerMenu(ActionEvent event) throws IOException {
@@ -34,10 +23,6 @@ public class BankStatementController extends AccessToTheTalkToBack {
         loader.setLocation(getClass().getResource("userMenu.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -49,10 +34,6 @@ public class BankStatementController extends AccessToTheTalkToBack {
         loader.setLocation(getClass().getResource("bankStatment.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
