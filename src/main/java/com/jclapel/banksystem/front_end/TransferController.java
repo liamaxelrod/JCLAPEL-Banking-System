@@ -18,9 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.jclapel.banksystem.back_end.TestProfile;
-
-public class TransferController extends Listener implements Initializable {
+public class TransferController extends Listener implements Initializable {//Albin worked on this, Liam worked partly on this
     private Stage stage;
     private Scene scene;
 
@@ -40,6 +38,26 @@ public class TransferController extends Listener implements Initializable {
     @FXML//on interface text field = below to account
     private TextField transferAmount;
 
+    @Override//this method takes effect when the scene is loaded
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        fromAccount.setValue("choose account");//not working don't know how to make it show?????????
+        fromAccount.setItems(differentAccounts);
+
+        toAccount.setValue("choose account");
+        toAccount.setItems(differentAccounts);
+    }
+
+//    //The set-up Methods
+//    public TestProfile userProfile;
+//
+//    public void setUserProfile(TestProfile newTestProfile){
+//        userProfile = newTestProfile;
+//    }
+//    public void setUpProfile(){
+//
+//    }
+//    //End of set-up Methods
+
     @FXML//on interface button = total
     private void onActionButtonTotal(ActionEvent event) {
         fromAccountCurrentBalance.setText(fromAccount.getValue());
@@ -48,26 +66,6 @@ public class TransferController extends Listener implements Initializable {
     @FXML//on interface button = transfer
     private void onActionTransfer(ActionEvent event) {
 
-    }
-
-    //The set-up Methods
-    public TestProfile userProfile;
-
-    public void setUserProfile(TestProfile newTestProfile){
-        userProfile = newTestProfile;
-    }
-    public void setUpProfile(){
-
-    }
-    //End of set-up Methods
-
-    @Override//this method takes effect when the scene is loaded
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        fromAccount.setValue("choose account");//not working don't know how to make it show?????????
-        fromAccount.setItems(differentAccounts);
-
-        toAccount.setValue("choose account");
-        toAccount.setItems(differentAccounts);
     }
 
     //all methods below are for switching scenes, or you could say interfaces
@@ -79,10 +77,6 @@ public class TransferController extends Listener implements Initializable {
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        UserMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -93,10 +87,6 @@ public class TransferController extends Listener implements Initializable {
         loader.setLocation(getClass().getResource("bankStatment.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        UserMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -113,13 +103,8 @@ public class TransferController extends Listener implements Initializable {
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        UserMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
-
 }

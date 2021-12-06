@@ -20,9 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.jclapel.banksystem.back_end.TestProfile;
-
-public class ProfileController extends Listener implements Initializable {
+public class ProfileController extends Listener implements Initializable {//Albin Worked on this Liam worked more on this
     public static LoginController object = new LoginController();
     private Stage stage;
     private Scene scene;
@@ -61,23 +59,6 @@ public class ProfileController extends Listener implements Initializable {
     private TextField newFirstName;
     @FXML
     private TextField newLastName;
-
-    //The set-up Methods
-    public TestProfile userProfile;
-
-    public void setUserProfile(TestProfile newTestProfile){
-        userProfile = newTestProfile;
-    }
-    public void setUpProfile(){
-        currentFirstName.setText(RegisterController.firstName);
-        currentLasName.setText(RegisterController.secondName);
-        currentUsername.setText(RegisterController.userName);
-        currentPassword.setText(RegisterController.password);
-    }
-    public TestProfile getUserProfile() {
-        return userProfile;
-    }
-    //End of set-up Methods
 
     @FXML
     private void onActionChangePassword(ActionEvent event) {
@@ -124,8 +105,6 @@ public class ProfileController extends Listener implements Initializable {
         theImage = new Image(String.valueOf(filePath.toURI()));
         currentImage.setImage(theImage);
 
-        userProfile.setTheImageView(currentImage);
-
     }
 
     //all methods below are for switching scenes, or you could say interfaces
@@ -137,10 +116,6 @@ public class ProfileController extends Listener implements Initializable {
         Parent root = loader.load();
         scene = new Scene(root);
 
-        UserMenuController thisController = loader.getController();
-        thisController.setUserProfile(getUserProfile());
-        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -151,10 +126,6 @@ public class ProfileController extends Listener implements Initializable {
         loader.setLocation(getClass().getResource("start.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        UserMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);

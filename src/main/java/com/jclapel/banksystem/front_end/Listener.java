@@ -1,9 +1,7 @@
 package com.jclapel.banksystem.front_end;
 
-import com.jclapel.banksystem.connection.Remote;
-
 public class Listener {
-    public static Remote talkToGoBetween = new Remote();
+
 //
 //    private Stage stage;
 //    private Scene scene;
