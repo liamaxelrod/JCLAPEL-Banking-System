@@ -137,7 +137,7 @@ public class ProfileController extends Listener implements Initializable {
         Parent root = loader.load();
         scene = new Scene(root);
 
-        UserMenuController thisController = loader.getController();
+        _UserMenuController thisController = loader.getController();
         thisController.setUserProfile(getUserProfile());
         thisController.setUpProfile();
 
