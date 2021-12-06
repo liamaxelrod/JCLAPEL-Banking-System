@@ -9,12 +9,13 @@ public class Facade {
     public HashMap<Integer, Customer> customers = new HashMap<>();
     public HashMap<Integer, Account> accounts = new HashMap<>();
     public HashMap<Integer, Employee> employees=new HashMap<>();
+
     final static String customersOutputFilePath = "F:/Serialisation/customers.txt";
     final static String accountsOutputFilePath = "F:/Serialisation/accounts.txt";
     final static String employeesOutputFilePath = "F:/Serialisation/employees.txt";
-    File customersFile = new File(customersOutputFilePath);
-    File accountsFile = new File(accountsOutputFilePath);
-    File employeesFile = new File(employeesOutputFilePath);
+    File customersFile = new File(customersOutputFilePath); //File to save customer data
+    File accountsFile = new File(accountsOutputFilePath); //File to save account data
+    File employeesFile = new File(employeesOutputFilePath); //File to save employee data
 
     public void storeData() { //stores data to file when the app is closed.
         try {
@@ -22,11 +23,11 @@ public class Facade {
             FileOutputStream accountsOutput = new FileOutputStream(accountsFile);
             FileOutputStream employeesOutput = new FileOutputStream(employeesFile);
 
-            ObjectOutputStream customersStream = new ObjectOutputStream(customersOutput);
+            ObjectOutputStream customersStream = new ObjectOutputStream(customersOutput); //Allows to store objects into file
             ObjectOutputStream accountsStream = new ObjectOutputStream(accountsOutput);
             ObjectOutputStream employeesStream = new ObjectOutputStream(employeesOutput);
 
-            customersStream.writeObject(customers);
+            customersStream.writeObject(customers); //Actually storing the data to file
             accountsStream.writeObject(accounts);
             employeesStream.writeObject(employees);
 
@@ -44,11 +45,11 @@ public class Facade {
             FileInputStream accountsInput = new FileInputStream(accountsFile);
             FileInputStream employeesInput = new FileInputStream(employeesFile);
 
-            ObjectInputStream customersStream = new ObjectInputStream(customersInput);
+            ObjectInputStream customersStream = new ObjectInputStream(customersInput); //Object input stream allows to read objects from file
             ObjectInputStream accountsStream = new ObjectInputStream(accountsInput);
             ObjectInputStream employeesStream = new ObjectInputStream(employeesInput);
 
-            customers = (HashMap<Integer, Customer>) customersStream.readObject();
+            customers = (HashMap<Integer, Customer>) customersStream.readObject(); //Loading the hashmap from the file
             accounts = (HashMap<Integer, Account>) accountsStream.readObject();
             employees = (HashMap<Integer, Employee>) employeesStream.readObject();
 
@@ -60,7 +61,6 @@ public class Facade {
         }
     } // Done by Julia Ayvazian, temporary solution until the database works
 
-
     public Customer loadCustomer(int customerId){
         return customers.get(customerId);
     }
@@ -70,7 +70,7 @@ public class Facade {
         Customer customer = new Customer(ID, name, password);
         customers.put(ID, customer);
         return ID;
-    }
+    }//patrik, labi, julia
 
     public int CheckIfCustomerExists(int ID){
         if(customers.containsKey(ID)){
@@ -92,21 +92,21 @@ public class Facade {
             }
         }
         return false;
-    }
+    } //patrik, labi, julia
 
     public int createAccount(int customerId){ // adds an account to a given customer
         Account account = new Account(generateId(customers.get(customerId).getAccounts()), false);
         customers.get(customerId).addAccount(account);
         accounts.put(account.getID(), account);
         return account.getID();
-    }
+    } //patrik, labi
 
     public int createSavingsAccount(int customerId){
         Account account = new Account(generateId(customers.get(customerId).getAccounts()), true);
         customers.get(customerId).addAccount(account);
         accounts.put(account.getID(), account);
         return account.getID();
-    }
+    } //patrik, labi
 
     public void removeAccount(int accountID){
         accounts.remove(accountID);
@@ -127,7 +127,7 @@ public class Facade {
             return true;
         }
         return false;
-    }
+    } //patrik, labi, julia
 
     public boolean deposit(int accountID, double amount){ //add amount, return true if the transaction is valid, or false if it is invald
         if(amount>0){
@@ -136,7 +136,7 @@ public class Facade {
             return true;
         }
         return false;
-    }
+    } //patrik, labi, julia
 
     public boolean withdraw(int accountID, double amount) {//subtracts amount from balance, returns true for a valid transaction, false for an invalid one
         if (amount > 0 && accounts.get(accountID).getBalance() >= amount) {
@@ -146,7 +146,7 @@ public class Facade {
             return true;
         }
         return false;
-    }
+    } //patrik, labi, julia
 
     public Stack<Transaction> loadAllTransactions(int accountID){
          return accounts.get(accountID).getTransactions();
@@ -159,7 +159,7 @@ public class Facade {
             return true;
         }
         return false;
-    }
+    } // By Julia Ayvazian
 
     public void retrieveUserStatistics(){
         //retrieve data to be displayed by user statistics
@@ -179,5 +179,5 @@ public class Facade {
             ID = rn.nextInt(range) + 100000;
         } while (hashMap.containsKey(ID));//ensure the id is not in use
         return ID;
-    }
+    } //patrik
 }

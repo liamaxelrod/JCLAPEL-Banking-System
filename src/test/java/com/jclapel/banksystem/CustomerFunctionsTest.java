@@ -77,5 +77,4 @@ public class CustomerFunctionsTest {
         assertThat(check).isEqualTo(false);
     }
 
-
 }
