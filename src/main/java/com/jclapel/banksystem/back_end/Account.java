@@ -17,7 +17,8 @@ public class Account {
 
     public Account(int ID, boolean isSavings) {
 		// Constructor for account, creates an account from ID and a boolean of determining account type
-		// TODO: Resolve ID conflicts, i.e. duplicates. Is there only two types of accounts?
+		// TODO: Resolve ID conflicts, i.e. duplicates. Is there only two types of accounts? And how about the ID? 
+        // Is it incremental from 0 through X per customer?
         this.isSavings = isSavings;
         this.balance = 0;
         this.ID = ID;
