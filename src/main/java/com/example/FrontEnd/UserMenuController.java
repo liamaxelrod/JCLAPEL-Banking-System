@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 
 
 
-public class UserMenuController implements Initializable {
+public class UserMenuController implements Initializable {//Liam was most responsible for this
 
     private Stage stage;
     private Scene scene;

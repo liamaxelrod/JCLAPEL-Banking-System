@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TransferController extends AccessToTheTalkToBack implements Initializable {
+public class TransferController extends AccessToTheTalkToBack implements Initializable {//Liam worked partly on this
     private Stage stage;
     private Scene scene;
 

@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RegisterController extends AccessToTheTalkToBack {
+public class RegisterController extends AccessToTheTalkToBack {//Liam partly worked on this
 
     //For testing purposes will be removed later
     public static String firstName;
