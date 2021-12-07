@@ -1,7 +1,8 @@
 package com.jclapel.banksystem.data;
 
 // Imports
-import com.google.code.gson;
+import com.google.gson.*;
+import com.mongodb.DB;
 import com.mongodb.MongoClient;
 
 import java.io.Serializable;
@@ -25,7 +26,6 @@ public class Cache implements Serializable {
 	Contributor(s): 
 
 	*/
-	MongoClient mongoClient = new MongoClient()
 
 	private final boolean USE_LOCAL_STORAGE = true;
 	private final boolean USE_DATABASE = false;
@@ -35,14 +35,18 @@ public class Cache implements Serializable {
 
 	private HashMap<String, Object> dataCache;
 	
-	// Gson gson = new Gson();
+	Gson gson = new Gson();
+
+	MongoClient mongoClient;
+	DB primaryDatabase;
 
 	private void setupLocalStorage() throws Exception {
 		try {
 			cacheSource = new FileInputStream("data.json");
 			cacheTarget = new FileOutputStream("data.json");
-		} catch(Exception e) {
+		} catch(Exception exception) {
 			// Error handling here
+			exception.printStackTrace();
 		} finally {
 			if (cacheSource != null) {
 				cacheSource.close();
@@ -54,11 +58,22 @@ public class Cache implements Serializable {
 		}
 	}
 
+	private void setupDatabase() throws Exception {
+		try {
+			mongoClient = new MongoClient();
+
+			primaryDatabase = mongoClient.getDB("");
+		} catch(Exception exception) {
+			exception.printStackTrace();
+		}
+	}
+
 	public void initialize() throws Exception {
 		// Executes initial procedure on program start
 		dataCache = new HashMap<String, Object>();
 
 		setupLocalStorage();
+		setupDatabase();
 	}
 
 	public void initialize(Set<String> keySet) throws Exception {
@@ -66,6 +81,7 @@ public class Cache implements Serializable {
 		dataCache = new HashMap<String, Object>();
 
 		setupLocalStorage();
+		setupDatabase();
 	}
 
 	public void initialize(HashMap<String, Object> presetCache) throws Exception {
@@ -73,6 +89,7 @@ public class Cache implements Serializable {
 		dataCache = presetCache;
 
 		setupLocalStorage();
+		setupDatabase();
 	}
 
 	public void appendData(String key, Object object) {
