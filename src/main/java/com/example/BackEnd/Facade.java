@@ -65,6 +65,10 @@ public class Facade {
         return customers.get(customerId);
     }
 
+    public Account loadAccount(int accountId){
+        return accounts.get(accountId);
+    }
+
     public int createCustomer(String name, String password){ //Patrik, Karar , Julia, Erik, returns customer id;
         int ID = generateId(customers);
         Customer customer = new Customer(ID, name, password);
@@ -150,7 +154,7 @@ public class Facade {
 
     public Stack<Transaction> loadAllTransactions(int accountID){
          return accounts.get(accountID).getTransactions();
-    }
+    } //Erik
 
     public boolean resetPassword(int customerId, String originalPassword, String newPassword){ //returns a boolean indicating whether the change went through
         if(checkLogin(customerId, originalPassword)) {
