@@ -26,6 +26,8 @@ public class Cache implements Serializable {
 	Contributor(s): 
 
 	TODO: Read the documents as follows:
+	https://www.mongodb.com/blog/post/getting-started-with-mongodb-and-java-part-i
+	https://docs.mongodb.com/mongodb-vscode/
 	https://docs.mongodb.com/manual/reference/bson-types/
 	
 
