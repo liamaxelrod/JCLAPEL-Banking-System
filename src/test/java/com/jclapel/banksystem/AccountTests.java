@@ -57,4 +57,17 @@ public class AccountTests { //By Erik Lindmaa
         //then
         Assertions.assertThat(testAccount).isEqualTo(null);
     }
+
+
+    @Test
+    public void checkIfAccountExists(){
+        //given
+        int accountID = facade.createAccount(ID);
+        //then
+        boolean testAccount = facade.CheckIfAccountExists(accountID);
+
+        assertThat(!testAccount);
+        assertThat(testAccount);
+
+    }
 }
