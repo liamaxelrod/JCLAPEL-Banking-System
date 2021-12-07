@@ -25,6 +25,10 @@ public class Cache implements Serializable {
 	Main Contributor(s): Conny
 	Contributor(s): 
 
+	TODO: Read the documents as follows:
+	https://docs.mongodb.com/manual/reference/bson-types/
+	
+
 	*/
 
 	private final boolean USE_LOCAL_STORAGE = true;
@@ -62,7 +66,7 @@ public class Cache implements Serializable {
 		try {
 			mongoClient = new MongoClient();
 
-			primaryDatabase = mongoClient.getDB("");
+			primaryDatabase = mongoClient.getDB("myFirstDatabase");
 		} catch(Exception exception) {
 			exception.printStackTrace();
 		}
