@@ -74,6 +74,7 @@ public class Facade {
         Customer customer = new Customer(ID, name, password);
         customers.put(ID, customer);
         return ID;
+
     }//patrik, labi, julia erik
 
     public int CheckIfCustomerExists(int ID){
@@ -169,11 +170,20 @@ public class Facade {
         //retrieve data to be displayed by user statistics
     }
 
-    public void createEmployee(String name){
+    public int createEmployee(String name){
         int ID = generateId(employees);
         Employee employee = new Employee(ID, name);
         employees.put(ID, employee);
+        return ID; //changed void to int, returned ID
     }
+
+    public void removeEmployee(int ID){
+        employees.remove(ID);
+    } //Erik and Labi
+
+    public Employee loadEmployee(int ID){
+        return employees.get(ID);
+    }  //Labi
 
     public int generateId(HashMap hashMap){ //takes the hashmap in which the resulting object will be stored as an argument
         int ID;

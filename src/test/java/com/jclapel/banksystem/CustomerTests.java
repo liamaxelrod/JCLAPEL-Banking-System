@@ -20,7 +20,7 @@ public class CustomerTests { //By patrik and Labi
     }
 
     @Test
-    public void testAccountCreation(){
+    public void testCustomerCreation(){ //changed Account to customer
         int ID = facade.createCustomer("John Smith", "Password"); //setting up customer
         Customer johnSmith = facade.customers.get(ID);
 
