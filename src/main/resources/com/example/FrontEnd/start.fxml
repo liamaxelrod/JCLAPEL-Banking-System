@@ -79,7 +79,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MANUAL" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToManual" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MANUAL" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

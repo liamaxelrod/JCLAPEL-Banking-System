@@ -110,7 +110,14 @@ public class UserMenuController implements Initializable {//Liam was most respon
     }
     @FXML
     void switchToManual(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("manual.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
 
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML//on interface button = exit
