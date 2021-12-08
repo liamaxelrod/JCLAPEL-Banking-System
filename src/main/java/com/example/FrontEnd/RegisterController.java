@@ -17,7 +17,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RegisterController implements Initializable {
+
+public class RegisterController implements Initializable {//Albin worked on this, Liam partly worked on this
 
 
     //For testing purposes will be removed later
@@ -32,8 +33,6 @@ public class RegisterController implements Initializable {
     public static int num;
 
     static Facade facade = new Facade();
-
-
 
     private Stage stage;
     private Scene scene;
@@ -54,7 +53,7 @@ public class RegisterController implements Initializable {
     private TextField usernameTextField;
 
     @FXML
-    private Label idNum;
+//    private Label idNum;??????
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -76,6 +75,9 @@ public class RegisterController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+
+
+    StartApplication.facade.createCustomer(usernameTextField.getText(), setPasswordField.getText());
 
     }
 

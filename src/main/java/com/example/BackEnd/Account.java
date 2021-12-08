@@ -5,15 +5,18 @@ import java.util.Stack;
 public class Account {
     private final int ID;
     private double balance;
+    private final boolean isSavings;
     private Stack<Transaction> transactions = new Stack<>();
 
-    public Account(int ID){
+    public Account(int ID, boolean isSavings){
+        this.isSavings=isSavings;
         this.balance=0;
         this.ID=ID;
     }
     
-    public void addTransaction(Transaction transaction){
+    public boolean addTransaction(Transaction transaction){
         transactions.push(transaction);
+        return true;
     }
 
     public double getBalance() {
@@ -32,4 +35,7 @@ public class Account {
         return transactions;
     }
 
+    public boolean isSavings() {
+        return isSavings;
+    }
 }

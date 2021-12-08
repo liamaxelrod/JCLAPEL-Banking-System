@@ -10,7 +10,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class StartApplication extends Application {
+public class StartApplication extends Application { // Albin worked on this
 
     @Override
     public void start(Stage stage) throws IOException {

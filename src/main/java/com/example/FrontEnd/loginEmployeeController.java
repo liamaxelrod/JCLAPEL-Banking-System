@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class loginEmployeeController implements Initializable {
+public class loginEmployeeController implements Initializable {//Liam did this
     private Stage stage;
     private Scene scene;
     public static String logNum;
