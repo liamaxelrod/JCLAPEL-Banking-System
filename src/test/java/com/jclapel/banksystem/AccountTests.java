@@ -66,7 +66,6 @@ public class AccountTests { //By Erik Lindmaa
         //then
         boolean testAccount = facade.CheckIfAccountExists(accountID);
 
-        assertThat(!testAccount);
         assertThat(testAccount);
 
     }

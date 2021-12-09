@@ -8,6 +8,7 @@ import java.util.Stack;
 public class Facade {
     public HashMap<Integer, Customer> customers = new HashMap<>();
     public HashMap<Integer, Account> accounts = new HashMap<>();
+    public HashMap<Integer, Account> employeeAccounts = new HashMap<>();
     public HashMap<Integer, Employee> employees=new HashMap<>();
 
     final static String customersOutputFilePath = "F:/Serialisation/customers.txt";
@@ -77,11 +78,11 @@ public class Facade {
 
     }//patrik, labi, julia erik
 
-    public int CheckIfCustomerExists(int ID){
+    public boolean CheckIfCustomerExists(int ID){
         if(customers.containsKey(ID)){
-            return ID;
+            return true;
         }else{
-            return 0;
+            return false;
         }
     } //Erik
 
@@ -146,8 +147,9 @@ public class Facade {
     public boolean withdraw(int accountID, double amount) {//subtracts amount from balance, returns true for a valid transaction, false for an invalid one
         if (amount > 0 && accounts.get(accountID).getBalance() >= amount) {
             Account account = accounts.get(accountID);
-            account.setBalance(account.getBalance() - amount*1.01);
-            account.addTransaction(new WithdrawalTransaction(amount, accountID));
+            WithdrawalTransaction transaction = new WithdrawalTransaction(amount, accountID);
+            account.addTransaction(transaction);
+            account.setBalance(account.getBalance() - generateFee(accountID, transaction, amount));
             return true;
         }
         return false;
@@ -185,6 +187,14 @@ public class Facade {
         return employees.get(ID);
     }  //Labi
 
+    public int createEmployeeAccount(int employeeID){ // adds an account to a given customer
+        Account account = new Account(generateId(employees.get(employeeID).getAccounts()), false);
+        customers.get(employeeID).addAccount(account);
+        accounts.put(account.getID(), account);
+        return account.getID();
+
+    } //patrik, labi
+
     public int generateId(HashMap hashMap){ //takes the hashmap in which the resulting object will be stored as an argument
         int ID;
         Random rn = new Random();
@@ -194,4 +204,27 @@ public class Facade {
         } while (hashMap.containsKey(ID));//ensure the id is not in use
         return ID;
     } //patrik
+
+    public double generateFee(int accountID, Transaction transaction, double amount){
+
+        double generatedFee = 0;
+
+        //Customer
+        if(accounts.containsKey(accountID) && transaction instanceof WithdrawalTransaction){
+            double customerFee = 1.01;
+            generatedFee += customerFee * amount;
+        } else if (accounts.containsKey(accountID) && transaction instanceof DepositTransaction){
+            double customerFee = 0.99;
+            generatedFee += customerFee * amount;
+        }
+        //Employee
+        if(employeeAccounts.containsKey(accountID) && transaction instanceof WithdrawalTransaction){
+            double employeeFee = 1.005;
+            generatedFee += employeeFee * amount;
+        } else if(employeeAccounts.containsKey(accountID) && transaction instanceof DepositTransaction){
+            double employeeFee = 0.995;
+            generatedFee += employeeFee * amount;
+        }
+        return generatedFee;
+    }
 }
