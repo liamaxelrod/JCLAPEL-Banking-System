@@ -82,12 +82,14 @@ public class ProfileController extends AccessToTheTalkToBack implements Initiali
         currentFirstName.setText(theNewFirstName);
         newFirstName.setText("");
     }
+
     @FXML
     void onActionChangeLastName(ActionEvent event) {
         String theNewLastName = newLastName.getText();
         currentLasName.setText(theNewLastName);
         newFirstName.setText("");
     }
+
     @FXML
     private void onActionChangeUsername(ActionEvent event) {
         String theNewUsername = newUsername.getText();
@@ -104,7 +106,6 @@ public class ProfileController extends AccessToTheTalkToBack implements Initiali
         this.filePath = fileChoice.showOpenDialog(stage);
         theImage = new Image(String.valueOf(filePath.toURI()));
         currentImage.setImage(theImage);
-
     }
 
     //all methods below are for switching scenes, or you could say interfaces
