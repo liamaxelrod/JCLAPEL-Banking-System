@@ -42,7 +42,7 @@ public class Manual implements Initializable {//Liam created
             checkIfLoggedIn.setText("you are not logged in");
         } else {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("loginCustomer.fxml"));
+            loader.setLocation(getClass().getResource("userMenu.fxml"));
             Parent root = loader.load();
             scene = new Scene(root);
 
