@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,10 +20,12 @@ import java.util.ResourceBundle;
 
 
 
+
 public class UserMenuController implements Initializable {//Liam was most responsible for this, Albin Worked on this
 
     private Stage stage;
     private Scene scene;
+
 
     @FXML//on interface button = exit
     private Button closeButton;
@@ -34,7 +37,7 @@ public class UserMenuController implements Initializable {//Liam was most respon
     private TextField userName;
 
     @FXML//on interface label = next to name:
-    private Label fullRealName;
+    private String fullRealName;
 
     @FXML//on interface label = bottom left corner
     private Label CheckingTotal;
@@ -43,8 +46,12 @@ public class UserMenuController implements Initializable {//Liam was most respon
     @FXML
     private Label SavingTotal;
 
+    @FXML
+    private Label fullName;
+
     @FXML//on interface text field = username
-    private TextField usernameTextField;
+    private int usernameTextField;
+
 
 
     @Override//this method takes effect when the scene is loaded
@@ -55,6 +62,8 @@ public class UserMenuController implements Initializable {//Liam was most respon
         }else{
             userName.setText(String.valueOf(LoginController.logNum));
         }
+        String name = (RegisterController.facade.loadCustomer(Integer.parseInt(userName.getText())).getName());
+        fullName.setText(name);
     }
 
     ////all methods below are for switching scenes, or you could say interfaces

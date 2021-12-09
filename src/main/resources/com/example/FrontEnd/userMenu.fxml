@@ -146,7 +146,7 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="fullRealName" layoutX="96.0" layoutY="89.0" prefHeight="35.0" prefWidth="319.0" text="Full name" textAlignment="CENTER">
+            <Label fx:id="fullName" layoutX="96.0" layoutY="89.0" prefHeight="35.0" prefWidth="319.0" text="Full name" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
@@ -209,6 +209,11 @@
                </children>
             </Pane>
             <TextField fx:id="userName" layoutX="195.0" layoutY="32.0" />
+            <Label layoutX="96.0" layoutY="33.0" text="USER ID:">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
