@@ -74,9 +74,7 @@ public class RegisterController implements Initializable {//Albin worked on this
         num = 1;
 
         if (id != 0){
-
-            
-
+            System.out.println(id);
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("userMenu.fxml"));
         Parent root = loader.load();
@@ -87,7 +85,8 @@ public class RegisterController implements Initializable {//Albin worked on this
 
         StartApplication.facade.createCustomer(usernameTextField.getText(), setPasswordField.getText());
     }else{
-        warningText.setText("The password is incorrect");
+            System.out.println(id);
+        warningText.setText("The password must have: \n - At least 8 characters \n - Must consist of 'a-z, A-Z, 0 -9' \n - Special character ex. '!' '&' '?' ");
     }
 
 }

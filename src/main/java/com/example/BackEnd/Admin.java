@@ -1,3 +1,4 @@
+/*
 package com.example.BackEnd;
 
 public class Admin extends Employee {
@@ -9,3 +10,4 @@ public class Admin extends Employee {
         // see customer name, id, password, all transaction, all accounts
     }
 }
+*/
