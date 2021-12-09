@@ -9,9 +9,10 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
-import com.jclapel.banksystem.back_end.*;
-
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.Serializable;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -19,8 +20,7 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.Stack;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import com.jclapel.banksystem.back_end.*;
 
 public class Cache implements Serializable {
 	/*
@@ -55,6 +55,7 @@ public class Cache implements Serializable {
 	// TODO: More collections for later...
 
 	private Document toBSONDocument(Customer customer) {
+		// Serializes a customer object into a BSON document
 		return new Document("_id", new ObjectId())
 			.append("customer_id", customer.getId())
 			.append("name", customer.getName())
@@ -63,20 +64,19 @@ public class Cache implements Serializable {
 	}
 
 	private List<Document> getAccountsDocumentList(Map<Integer, Account> accounts) {
+		// Serializes a list of accounts into a BSON document containing only the IDs to the accounts
 		List<Document> accountsDocumentList = new ArrayList<Document>();
 
 		for (Account account : accounts.values()) {
 			// TODO: isSavings needs to redefined, could it possibly be more than 1 type? Also transactions.
-			accountsDocumentList.add(new Document("type", "default")
-				.append("account_id", account.getId())
-				.append("balance", account.getBalance())
-				.append("transactions", getTransactionsDocumentList(account.getTransactions())));
+			accountsDocumentList.add(new Document("account_id", account.getId()));
 		}
 
 		return accountsDocumentList;
 	} 
 
 	private Document toBSONDocument(Account account) {
+		// Serializes an account object into a BSON document
 		return new Document("_id", new ObjectId())
 			.append("type", "default")
 			.append("account_id", account.getId())
@@ -85,6 +85,7 @@ public class Cache implements Serializable {
 	}
 
 	private List<Document> getTransactionsDocumentList(Stack<Transaction> transactions) {
+		// Serializes a list of transaction object into a BSON document
 		List<Document> transactionsDocumentList = new ArrayList<Document>();
 
 		for (Transaction transaction : transactions) {
@@ -98,6 +99,7 @@ public class Cache implements Serializable {
 	}
 
 	private Document toBSONDocument(Transaction transaction) {
+		// Serializes a transaction object into a BSON document
 		return new Document("_id", new ObjectId())
 			.append("type", "default")
 			.append("date", transaction.getDate())
@@ -123,25 +125,6 @@ public class Cache implements Serializable {
 			}
 		}
 	}
-
-//	private void setupDatabase() throws Exception {
-//		// Sets up the database client and connection, if applicable
-//		try {
-//			mongoClient = MongoClients.create(System.getProperty(DATABASE_CONNECTION));
-//			database = mongoClient.getDatabase(DEFAULT_DATABASE);
-//		} catch(Exception exception) {
-//			exception.printStackTrace();
-//		}
-//	}
-
-//	private void setupDatabase(String database) throws Exception {
-//		try {
-//			mongoClient = MongoClients.create(System.getProperty(DATABASE_CONNECTION));
-//			database = mongoClient.getDatabase(DEFAULT_DATABASE);
-//		} catch(Exception exception) {
-//			exception.printStackTrace();
-//		}
-//	}
 
 	public void initialize() throws Exception {
 		// Executes initial procedure on program start
@@ -182,13 +165,64 @@ public class Cache implements Serializable {
 		}
 	}
 
-	public void appendData(String key, Object object) {
-		// Adds object to cache
+	public void appendData(String key, Customer customer) {
+		// Creates an entry to the database for one customer
 		if (dataCache.get(key) != null) {
 			return;
 		}
 
-		dataCache.put(key, object);
+		if (USE_DATABASE) {
+			try {
+				MongoClient mongoClient = MongoClients.create(System.getProperty(DATABASE_CONNECTION));
+				MongoDatabase database = mongoClient.getDatabase(DEFAULT_DATABASE);
+				MongoCollection<Document> dataCollection = database.getCollection("customers");			
+				Document customerDocument = toBSONDocument(customer);
+
+				dataCollection.insertOne(customerDocument);
+			} catch(Exception exception) {
+				exception.printStackTrace();
+			}
+		}
+	}
+
+	public void appendData(String key, Account account) {
+		// Creates an entry to the database for one account
+		if (dataCache.get(key) != null) {
+			return;
+		}
+
+		if (USE_DATABASE) {
+			try {
+				MongoClient mongoClient = MongoClients.create(System.getProperty(DATABASE_CONNECTION));
+				MongoDatabase database = mongoClient.getDatabase(DEFAULT_DATABASE);
+				MongoCollection<Document> dataCollection = database.getCollection("accounts");			
+				Document accountDocument = toBSONDocument(account);
+
+				dataCollection.insertOne(accountDocument);
+			} catch(Exception exception) {
+				exception.printStackTrace();
+			}
+		}
+	}
+
+	public void appendData(String key, Transaction transaction) {
+		// Adds object to cache TODO: UPDATE!!!
+		if (dataCache.get(key) != null) {
+			return;
+		}
+
+		if (USE_DATABASE) {
+			try {
+				MongoClient mongoClient = MongoClients.create(System.getProperty(DATABASE_CONNECTION));
+				MongoDatabase database = mongoClient.getDatabase(DEFAULT_DATABASE);
+				MongoCollection<Document> dataCollection = database.getCollection("transactions");			
+				Document transactionDocument = toBSONDocument(transaction);
+
+				dataCollection.insertOne(transactionDocument);
+			} catch(Exception exception) {
+				exception.printStackTrace();
+			}
+		}
 	}
 
 	public void updateData(String key, Object object) {
@@ -239,6 +273,10 @@ public class Cache implements Serializable {
 		if (USE_DATABASE) {
 			// Get data on database
 		}
+	}
+
+	public void syncData() {
+		// Synchronizes data from database to local
 	}
 
 	public void close() {
