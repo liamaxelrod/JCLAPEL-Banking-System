@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TransferController extends AccessToTheTalkToBack implements Initializable {
+public class TransferController extends AccessToTheTalkToBack implements Initializable {//Albin worked on this, Liam worked partly on this
     private Stage stage;
     private Scene scene;
 
@@ -78,10 +78,6 @@ public class TransferController extends AccessToTheTalkToBack implements Initial
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        UserMenuController thisController = loader.getController();
-//        thisController.setUserProfile(StartApplication.goBetween.defaultTestProfile());
-//        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -92,10 +88,6 @@ public class TransferController extends AccessToTheTalkToBack implements Initial
         loader.setLocation(getClass().getResource("bankStatment.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(startApplication.goBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -111,10 +103,6 @@ public class TransferController extends AccessToTheTalkToBack implements Initial
         loader.setLocation(getClass().getResource("start.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(startApplication.goBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);

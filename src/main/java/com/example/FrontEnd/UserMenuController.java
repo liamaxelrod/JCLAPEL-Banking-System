@@ -1,8 +1,7 @@
 package com.example.FrontEnd;
 
 
-import com.example.BackEnd.Customer;
-import com.example.BackEnd.Facade;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,10 +20,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class UserMenuController extends AccessToTheTalkToBack implements Initializable {
+
+
+public class UserMenuController implements Initializable {//Liam was most responsible for this, Albin Worked on this
 
     private Stage stage;
     private Scene scene;
+
 
     @FXML//on interface button = exit
     private Button closeButton;
@@ -36,7 +38,7 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
     private TextField userName;
 
     @FXML//on interface label = next to name:
-    private Label fullRealName;
+    private String fullRealName;
 
     @FXML//on interface label = bottom left corner
     private Label CheckingTotal;
@@ -45,28 +47,11 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
     @FXML
     private Label SavingTotal;
 
-    @FXML//on interface text field = username
-    private TextField usernameTextField;
+    @FXML
+    private Label fullName;
 
-//    //The set-up Methods
-//    public TestProfile userProfile;
-//
-//    public void setUserProfile(TestProfile newTestProfile){
-//        userProfile = newTestProfile;
-//    }
-//    public void setUpProfile(){
-//
-//        fullRealName.setText(" " + RegisterController.firstName + " " + RegisterController.secondName);
-//        userName.setText(RegisterController.iD);
-//        SavingTotal.setText(String.valueOf(RegisterController.money));
-//
-////        imageProfile.setImage(userProfile.getTheImageView().getImage());
-////        still not loading image
-//    }
-//    public TestProfile getUserProfile() {
-//        return userProfile;
-//    }
-//    //End of set-up Methods
+    @FXML//on interface text field = username
+    private int usernameTextField;
 
 
     @Override//this method takes effect when the scene is loaded
@@ -77,6 +62,8 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
         }else{
             userName.setText(String.valueOf(LoginController.logNum));
         }
+        String name = (RegisterController.facade.loadCustomer(Integer.parseInt(userName.getText())).getName());
+        fullName.setText(name);
     }
 
     ////all methods below are for switching scenes, or you could say interfaces
@@ -88,10 +75,6 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        TransferController thisController = loader.getController();
-//        thisController.setUserProfile(StartApplication.goBetween.defaultTestProfile());
-//        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -102,10 +85,6 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
         loader.setLocation(getClass().getResource("profile.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        ProfileController thisController = loader.getController();
-//        thisController.setUserProfile(getUserProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -122,10 +101,6 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -137,10 +112,6 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
         loader.setLocation(getClass().getResource("bankStatment.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);

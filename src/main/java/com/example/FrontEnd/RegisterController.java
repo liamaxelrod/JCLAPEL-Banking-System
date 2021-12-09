@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RegisterController extends AccessToTheTalkToBack {
+public class RegisterController extends AccessToTheTalkToBack {//Albin worked on this, Liam partly worked on this
 
     //For testing purposes will be removed later
     public static String firstName;
@@ -63,6 +63,9 @@ public class RegisterController extends AccessToTheTalkToBack {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+
+
+    StartApplication.facade.createCustomer(usernameTextField.getText(), setPasswordField.getText());
 
     }
 

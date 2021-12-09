@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 
 //import static com.example.FrontEnd.StartApplication.facade;
 
-public class LoginController extends AccessToTheTalkToBack implements Initializable {
+public class LoginController implements Initializable {//Albin worked on this more Liam Partly worked on this
     private Stage stage;
     private Scene scene;
     public static String logNum;
@@ -30,6 +30,7 @@ public class LoginController extends AccessToTheTalkToBack implements Initializa
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 
     public void createAccountStageForm(){
@@ -69,6 +70,7 @@ public class LoginController extends AccessToTheTalkToBack implements Initializa
         stage.setScene(scene);
         stage.show();
     }
+
 // Successfully made the code look for the username and password created
     @FXML//on interface button = login  //Need the unique version is your logging into your profile for the first time
     public void switchToCustomerMenu(ActionEvent event) throws IOException{
