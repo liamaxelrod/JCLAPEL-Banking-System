@@ -71,7 +71,7 @@ public class Cache implements Serializable {
 		for (Account account : accounts.values()) {
 			// TODO: isSavings needs to redefined, could it possibly be more than 1 type? Also transactions.
 			accountsDocumentList.add(new Document("type", "default")
-				.append("accountId", account.getId())
+				.append("account_id", account.getId())
 				.append("balance", account.getBalance())
 				.append("transactions", getTransactionsDocumentList(account.getTransactions())));
 		}
@@ -79,11 +79,19 @@ public class Cache implements Serializable {
 		return accountsDocumentList;
 	} 
 
+	private Document toBSONDocument(Account account) {
+		return new Document("_id", new ObjectId())
+			.append("type", "default")
+			.append("account_id", account.getId())
+			.append("balance", account.getBalance())
+			.append("transactions", getTransactionsDocumentList(account.getTransactions()));
+	}
+
 	private List<Document> getTransactionsDocumentList(Stack<Transaction> transactions) {
 		List<Document> transactionsDocumentList = new ArrayList<Document>();
 
 		for (Transaction transaction : transactions) {
-			transactionsDocumentList.add(new Document("type", "")
+			transactionsDocumentList.add(new Document("type", "default")
 				.append("date", transaction.getDate())
 				.append("time", transaction.getTime())
 				.append("amount", transaction.getAmount()));
@@ -92,12 +100,12 @@ public class Cache implements Serializable {
 		return transactionsDocumentList;
 	}
 
-	private Document toBSONDocument(Account account) {
-		return null;
-	}
-
 	private Document toBSONDocument(Transaction transaction) {
-		return null;
+		return new Document("_id", new ObjectId())
+			.append("type", "default")
+			.append("date", transaction.getDate())
+			.append("time", transaction.getTime())
+			.append("amount", transaction.getAmount());
 	}
 
 	private void setupLocalStorage() throws Exception {
