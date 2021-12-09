@@ -2,9 +2,10 @@ package com.jclapel.banksystem.data;
 
 // Imports
 import com.google.gson.*;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
@@ -33,16 +34,15 @@ public class Cache implements Serializable {
 	Contributor(s): 
 
 	TODO: Read the documents as follows:
-	https://www.mongodb.com/blog/post/getting-started-with-mongodb-and-java-part-i
+	https://www.mongodb.com/developer/quickstart/java-setup-crud-operations/
 	https://docs.mongodb.com/mongodb-vscode/
 	https://docs.mongodb.com/manual/reference/bson-types/
 	
-
 	*/
-
 	private final boolean USE_LOCAL_STORAGE = true;
 	private final boolean USE_DATABASE = false;
 	private final String DEFAULT_DATABASE = "test";
+	private final String DATABASE_CONNECTION = "mongodb+srv://JCLAPEL:IuXyiBQNVp40FVM8@clusterjclapel.5onkg.mongodb.net/test?authSource=admin&replicaSet=atlas-9p5bw4-shard-0&readPreference=primary&ssl=true";
 
 	private FileInputStream cacheSource;
 	private FileOutputStream cacheTarget;
@@ -51,10 +51,7 @@ public class Cache implements Serializable {
 	
 	Gson gson = new Gson();
 
-	MongoClient mongoClient;
-	DB database;
-
-	DBCollection accounts;
+	MongoCollection<Document> accounts;
 	// TODO: More collections for later...
 
 	private Document toBSONDocument(Customer customer) {
@@ -127,22 +124,20 @@ public class Cache implements Serializable {
 		}
 	}
 
-	private void setupDatabase() throws Exception {
-		// Sets up the database client and connection, if applicable
-		try {
-			mongoClient = new MongoClient();
-
-			database = mongoClient.getDB(DEFAULT_DATABASE);
-		} catch(Exception exception) {
-			exception.printStackTrace();
-		}
-	}
+//	private void setupDatabase() throws Exception {
+//		// Sets up the database client and connection, if applicable
+//		try {
+//			mongoClient = MongoClients.create(System.getProperty(DATABASE_CONNECTION));
+//			database = mongoClient.getDatabase(DEFAULT_DATABASE);
+//		} catch(Exception exception) {
+//			exception.printStackTrace();
+//		}
+//	}
 
 //	private void setupDatabase(String database) throws Exception {
 //		try {
-//			mongoClient = new MongoClient();
-//
-//			this.database = mongoClient.gseetDB(database);
+//			mongoClient = MongoClients.create(System.getProperty(DATABASE_CONNECTION));
+//			database = mongoClient.getDatabase(DEFAULT_DATABASE);
 //		} catch(Exception exception) {
 //			exception.printStackTrace();
 //		}
@@ -157,9 +152,7 @@ public class Cache implements Serializable {
 		}
 
 		if (USE_DATABASE) {
-			setupDatabase();
-			
-			accounts = database.getCollection("accounts");
+			// setupDatabase();
 		}
 	}
 
@@ -172,7 +165,7 @@ public class Cache implements Serializable {
 		}
 
 		if (USE_DATABASE) {
-			setupDatabase();
+			// setupDatabase();
 		}
 	}
 
@@ -185,7 +178,7 @@ public class Cache implements Serializable {
 		}
 
 		if (USE_DATABASE) {
-			setupDatabase();
+			// setupDatabase();
 		}
 	}
 
@@ -215,17 +208,25 @@ public class Cache implements Serializable {
 	public void saveData() {
 		// Serializes and sends data to database
 		// TODO: Send data with this string
-		String serializedData = gson.toJson(dataCache);
-
 		if (USE_LOCAL_STORAGE) {
 			// Save data locally
 		}
 
 		if (USE_DATABASE) {
 			// Save data on database
-		}
+			try {
+				MongoClient mongoClient = MongoClients.create(System.getProperty(DATABASE_CONNECTION));
+				MongoDatabase database = mongoClient.getDatabase(DEFAULT_DATABASE);
 
-		System.out.println(serializedData); // Needs further testing
+				MongoCollection<Document> customerCollection = database.getCollection("customers");
+				MongoCollection<Document> accountCollection = database.getCollection("accounts");
+				MongoCollection<Document> transactionsCollection = database.getCollection("transactions");
+
+				// TODO: Iterate through the cache. Insert to the collections.
+			} catch(Exception exception) {
+				exception.printStackTrace();
+			}
+		}
 	}
 
 	public void loadData(String serializedData) {
