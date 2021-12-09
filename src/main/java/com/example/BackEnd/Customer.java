@@ -20,6 +20,10 @@ public class Customer {
         accounts.put(account.getID(), account);
     }
 
+    public double calculateFee(double amount){
+        return amount * 0.01;
+    }
+
     public int getID() {
         return ID;
     }
