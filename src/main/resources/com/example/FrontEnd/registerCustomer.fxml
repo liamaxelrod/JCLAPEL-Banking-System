@@ -121,5 +121,10 @@
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
+      <Label fx:id="warningText" layoutX="653.0" layoutY="347.0">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
