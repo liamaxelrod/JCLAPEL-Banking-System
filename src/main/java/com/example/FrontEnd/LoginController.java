@@ -25,7 +25,7 @@ public class LoginController extends AccessToTheTalkToBack implements Initializa
     private PasswordField enterPasswordField;
 
     @FXML//on interface text field = username
-    private TextField usernameTextField;
+    private TextField IDTextField;
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -71,7 +71,7 @@ public class LoginController extends AccessToTheTalkToBack implements Initializa
 // Successfully made the code look for the username and password created
     @FXML//on interface button = login  //Need the unique version is your logging into your profile for the first time
     public void switchToCustomerMenu(ActionEvent event) throws IOException{
-        if (usernameTextField.getText().toString().equals(RegisterController.iD) && enterPasswordField.getText().toString().equals(RegisterController.password)){
+        if (IDTextField.getText().toString().equals(RegisterController.iD) && enterPasswordField.getText().toString().equals(RegisterController.password)){
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("userMenu.fxml"));
             Parent root = loader.load();

@@ -48,17 +48,6 @@ public class TransferController extends AccessToTheTalkToBack implements Initial
         toAccount.setItems(differentAccounts);
     }
 
-//    //The set-up Methods
-//    public TestProfile userProfile;
-//
-//    public void setUserProfile(TestProfile newTestProfile){
-//        userProfile = newTestProfile;
-//    }
-//    public void setUpProfile(){
-//
-//    }
-//    //End of set-up Methods
-
     @FXML//on interface button = total
     private void onActionButtonTotal(ActionEvent event) {
         fromAccountCurrentBalance.setText(fromAccount.getValue());
@@ -78,10 +67,6 @@ public class TransferController extends AccessToTheTalkToBack implements Initial
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        UserMenuController thisController = loader.getController();
-//        thisController.setUserProfile(StartApplication.goBetween.defaultTestProfile());
-//        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -92,10 +77,6 @@ public class TransferController extends AccessToTheTalkToBack implements Initial
         loader.setLocation(getClass().getResource("bankStatment.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(startApplication.goBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -111,10 +92,6 @@ public class TransferController extends AccessToTheTalkToBack implements Initial
         loader.setLocation(getClass().getResource("start.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(startApplication.goBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);

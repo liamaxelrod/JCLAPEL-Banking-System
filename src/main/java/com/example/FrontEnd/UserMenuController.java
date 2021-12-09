@@ -17,8 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserMenuController extends AccessToTheTalkToBack implements Initializable {
-
+public class UserMenuController implements Initializable {
     private Stage stage;
     private Scene scene;
 
@@ -29,7 +28,7 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
     private ImageView imageProfile;
 
     @FXML//on interface label = username
-    private Label userName;
+    private Label ID;
 
     @FXML//on interface label = next to name:
     private Label fullRealName;
@@ -40,26 +39,6 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
     private Label OtherTotal;
     @FXML
     private Label SavingTotal;
-
-//    //The set-up Methods
-//    public TestProfile userProfile;
-//
-//    public void setUserProfile(TestProfile newTestProfile){
-//        userProfile = newTestProfile;
-//    }
-//    public void setUpProfile(){
-//
-//        fullRealName.setText(" " + RegisterController.firstName + " " + RegisterController.secondName);
-//        userName.setText(RegisterController.iD);
-//        SavingTotal.setText(String.valueOf(RegisterController.money));
-//
-////        imageProfile.setImage(userProfile.getTheImageView().getImage());
-////        still not loading image
-//    }
-//    public TestProfile getUserProfile() {
-//        return userProfile;
-//    }
-//    //End of set-up Methods
 
 
     @Override//this method takes effect when the scene is loaded
@@ -76,10 +55,6 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        TransferController thisController = loader.getController();
-//        thisController.setUserProfile(StartApplication.goBetween.defaultTestProfile());
-//        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -90,10 +65,6 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
         loader.setLocation(getClass().getResource("profile.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        ProfileController thisController = loader.getController();
-//        thisController.setUserProfile(getUserProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -110,10 +81,6 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -125,10 +92,6 @@ public class UserMenuController extends AccessToTheTalkToBack implements Initial
         loader.setLocation(getClass().getResource("bankStatment.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);

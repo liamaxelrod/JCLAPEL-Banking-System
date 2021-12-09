@@ -20,16 +20,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ProfileController extends AccessToTheTalkToBack implements Initializable {
+public class ProfileController implements Initializable {
     public static LoginController object = new LoginController();
     private Stage stage;
     private Scene scene;
-
-
-    @Override//this method takes effect when the scene is loaded
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
 
     private FileChooser fileChoice;
     private File filePath;
@@ -49,33 +43,19 @@ public class ProfileController extends AccessToTheTalkToBack implements Initiali
     @FXML
     public Label currentLasName;
     @FXML
-    public Label currentUsername;
-    @FXML
     public Label currentPassword;
 
     @FXML//on interface Text field = Right bottom corner
-    private TextField newUsername;
+    private Label ID;
     @FXML
     private TextField newFirstName;
     @FXML
     private TextField newLastName;
 
-//    //The set-up Methods
-//    public TestProfile userProfile;
-//
-//    public void setUserProfile(TestProfile newTestProfile){
-//        userProfile = newTestProfile;
-//    }
-//    public void setUpProfile(){
-//        currentFirstName.setText(RegisterController.firstName);
-//        currentLasName.setText(RegisterController.secondName);
-//        currentUsername.setText(RegisterController.iD);
-//        currentPassword.setText(RegisterController.password);
-//    }
-//    public TestProfile getUserProfile() {
-//        return userProfile;
-//    }
-//    //End of set-up Methods
+    @Override//this method takes effect when the scene is loaded
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 
     @FXML
     private void onActionChangePassword(ActionEvent event) {
@@ -111,14 +91,7 @@ public class ProfileController extends AccessToTheTalkToBack implements Initiali
 
 //        userProfile.setLastName(currentLasName.getText());
     }
-    @FXML
-    private void onActionChangeUsername(ActionEvent event) {
-        String theNewUsername = newUsername.getText();
-        currentUsername.setText(theNewUsername);
-        newUsername.setText("");
 
-//        userProfile.setUserName(currentUsername.getText());
-    }
 
     @FXML//Still trying to figure out save the image
     public void onActionChangeProfileImage(ActionEvent event) throws IOException {
@@ -143,10 +116,6 @@ public class ProfileController extends AccessToTheTalkToBack implements Initiali
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        UserMenuController thisController = loader.getController();
-//        thisController.setUserProfile(getUserProfile());
-//        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -162,5 +131,4 @@ public class ProfileController extends AccessToTheTalkToBack implements Initiali
         stage.setScene(scene);
         stage.show();
     }
-
 }
