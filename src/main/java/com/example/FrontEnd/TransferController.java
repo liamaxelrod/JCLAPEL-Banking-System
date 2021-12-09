@@ -48,17 +48,6 @@ public class TransferController extends Listener implements Initializable {//Alb
         toAccount.setItems(differentAccounts);
     }
 
-//    //The set-up Methods
-//    public TestProfile userProfile;
-//
-//    public void setUserProfile(TestProfile newTestProfile){
-//        userProfile = newTestProfile;
-//    }
-//    public void setUpProfile(){
-//
-//    }
-//    //End of set-up Methods
-
     @FXML//on interface button = total
     private void onActionButtonTotal(ActionEvent event) {
         fromAccountCurrentBalance.setText(fromAccount.getValue());
@@ -82,21 +71,7 @@ public class TransferController extends Listener implements Initializable {//Alb
         stage.setScene(scene);
         stage.show();
     }
-    @FXML//on interface button = bank statement
-    void switchToBankStatement(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("bankStatment.fxml"));
-        Parent root = loader.load();
-        scene = new Scene(root);
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-    @FXML//on interface button = portfolio
-    void switchToFinanceProject(ActionEvent event) throws IOException {
-
-    }
     @FXML//on interface button = sign out
     public void switchToStart(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();

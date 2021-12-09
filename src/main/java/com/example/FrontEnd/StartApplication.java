@@ -24,6 +24,8 @@ public class StartApplication extends Application { // Albin worked on this
     public static Facade facade;
     public static void main(String[] args) {
         launch();
+
         facade = new Facade();
+
     }
 }

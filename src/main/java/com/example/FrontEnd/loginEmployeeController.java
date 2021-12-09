@@ -53,7 +53,7 @@ public class loginEmployeeController implements Initializable {//Liam did this
 //System.out.println(facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText()));
         if (RegisterController.facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText())){
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("userMenu.fxml"));//Change to employer menu later
+            loader.setLocation(getClass().getResource("employeeMenu.fxml"));
             Parent root = loader.load();
             scene = new Scene(root);
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();

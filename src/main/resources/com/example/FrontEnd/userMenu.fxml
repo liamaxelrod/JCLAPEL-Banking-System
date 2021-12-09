@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.UserMenuController">
    <children>
-      <VBox prefHeight="679.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;">
+      <VBox layoutX="-14.0" prefHeight="679.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;">
          <children>
             <Pane prefHeight="112.0" prefWidth="319.0">
                <children>
@@ -96,6 +96,20 @@
                   <Glow />
                </effect>
             </Button>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToManual" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MANUAL" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="Arial Bold" size="17.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
             <Button fx:id="closeButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handelCloseButtonAction" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Exit" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
@@ -112,7 +126,7 @@
             </Button>
          </children>
       </VBox>
-      <Pane layoutX="319.0" prefHeight="112.0" prefWidth="620.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.bottomAnchor="563.0" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="304.0" prefHeight="116.0" prefWidth="636.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.bottomAnchor="563.0" AnchorPane.leftAnchor="304.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="144.0" layoutY="40.0" text="Thank you for banking with us" textAlignment="CENTER" textFill="WHITE">
                <font>
@@ -132,7 +146,7 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="fullRealName" layoutX="96.0" layoutY="89.0" prefHeight="35.0" prefWidth="319.0" text="Full name" textAlignment="CENTER">
+            <Label fx:id="fullName" layoutX="96.0" layoutY="89.0" prefHeight="35.0" prefWidth="319.0" text="Full name" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
@@ -195,6 +209,11 @@
                </children>
             </Pane>
             <TextField fx:id="userName" layoutX="195.0" layoutY="32.0" />
+            <Label layoutX="96.0" layoutY="33.0" text="USER ID:">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
