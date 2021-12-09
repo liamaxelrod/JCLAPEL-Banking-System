@@ -1,6 +1,5 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,20 +11,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class startController extends accessToTheTalkToBack {
+public class StartController extends Listener {//Albin worked on this, Liam worked partly on this
     private Stage stage;
     private Scene scene;
-
-    //The set-up Methods
-    public testProfile userProfile;
-
-    public void setUserProfile(testProfile newTestProfile){
-        userProfile = newTestProfile;
-    }
-    public void setUpProfile(){
-
-    }
-    //End of set-up Methods
 
     @FXML
     public Button closeButton;
@@ -39,10 +27,6 @@ public class startController extends accessToTheTalkToBack {
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -54,14 +38,47 @@ public class startController extends accessToTheTalkToBack {
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void switchToLoginEmployee(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("employeeLogin.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML//on interface button = create account
+    public void switchToRegisterEmployee(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("registerEmployee.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void switchToManual(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("manual.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
     @FXML//on interface button = exit
     public void handelCloseButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) closeButton.getScene().getWindow();

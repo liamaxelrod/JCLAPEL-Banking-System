@@ -40,34 +40,6 @@
                         <Glow />
                     </effect>
                 </Button>
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToBankStatement" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="BANK STATEMENT" textFill="WHITE">
-                    <opaqueInsets>
-                        <Insets />
-                    </opaqueInsets>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                    <font>
-                        <Font name="Arial" size="17.0" />
-                    </font>
-                    <effect>
-                        <Glow />
-                    </effect>
-                </Button>
-            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="232.0" mnemonicParsing="false" onAction="#switchToFinanceProject" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="PORTFOLIO" textFill="WHITE">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-               <font>
-                  <Font name="Arial" size="17.0" />
-               </font>
-               <effect>
-                  <Glow />
-               </effect>
-            </Button>
             <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="SIGN OUT" textFill="WHITE">
                <opaqueInsets>
                   <Insets />

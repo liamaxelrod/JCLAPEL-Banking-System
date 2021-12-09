@@ -1,6 +1,5 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.testProfile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class profileController extends accessToTheTalkToBack implements Initializable {
+public class ProfileController extends Listener implements Initializable {//Albin Worked on this Liam worked more on this
     public static LoginController object = new LoginController();
     private Stage stage;
     private Scene scene;
@@ -60,23 +59,6 @@ public class profileController extends accessToTheTalkToBack implements Initiali
     private TextField newFirstName;
     @FXML
     private TextField newLastName;
-
-    //The set-up Methods
-    public testProfile userProfile;
-
-    public void setUserProfile(testProfile newTestProfile){
-        userProfile = newTestProfile;
-    }
-    public void setUpProfile(){
-        currentFirstName.setText(userProfile.getFirstName());
-        currentLasName.setText(userProfile.getLastName());
-        currentUsername.setText(userProfile.getUserName());
-        currentPassword.setText(userProfile.getPassword());
-    }
-    public testProfile getUserProfile() {
-        return userProfile;
-    }
-    //End of set-up Methods
 
     @FXML
     private void onActionChangePassword(ActionEvent event) {
@@ -123,8 +105,6 @@ public class profileController extends accessToTheTalkToBack implements Initiali
         theImage = new Image(String.valueOf(filePath.toURI()));
         currentImage.setImage(theImage);
 
-        userProfile.setTheImageView(currentImage);
-
     }
 
     //all methods below are for switching scenes, or you could say interfaces
@@ -136,10 +116,6 @@ public class profileController extends accessToTheTalkToBack implements Initiali
         Parent root = loader.load();
         scene = new Scene(root);
 
-        userMenuController thisController = loader.getController();
-        thisController.setUserProfile(getUserProfile());
-        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -150,10 +126,6 @@ public class profileController extends accessToTheTalkToBack implements Initiali
         loader.setLocation(getClass().getResource("start.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
-
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
