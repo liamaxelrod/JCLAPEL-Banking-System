@@ -132,7 +132,7 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="fullRealName" layoutX="96.0" layoutY="89.0" prefHeight="35.0" prefWidth="319.0" text="Full name" textAlignment="CENTER">
+            <Label fx:id="fullName" layoutX="96.0" layoutY="89.0" prefHeight="35.0" prefWidth="319.0" text="Full name" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
