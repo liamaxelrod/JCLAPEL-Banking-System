@@ -30,6 +30,8 @@ public class Cache implements Serializable {
 	This will serialize Java objects into JSON objects and upload the JSON objects into a database(temporarily will be locally stored).
 	Also will deserialize JSON objects after requesting from the same database.
 
+	Additionally, Cache should be running asynchronously to the software, and only synchronize changes upon conditions of opening and closing.
+
 	Main Contributor(s): Conny
 	Contributor(s): 
 
