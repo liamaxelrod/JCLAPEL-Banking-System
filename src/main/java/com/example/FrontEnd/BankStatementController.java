@@ -11,22 +11,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class BankStatementController extends AccessToTheTalkToBack {
+
+public class BankStatementController {//Albin worked on this, Liam worked a little bit on this
+
     private Stage stage;
     private Scene scene;
 
-//    //The set-up Methods
-//    public TestProfile userProfile;
-//
-//    public void setUserProfile(TestProfile newTestProfile){
-//        userProfile = newTestProfile;
-//    }
-//    public void setUpProfile(){
-//
-//    }
-//    //End of set-up Methods
 
-    //all methods below are for switching scenes, or you could say interfaces
 
     @FXML//on interface button = user menu
     void switchToCustomerMenu(ActionEvent event) throws IOException {
@@ -35,39 +26,20 @@ public class BankStatementController extends AccessToTheTalkToBack {
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
     @FXML//on interface button = bank transfer
-    void switchToTransferHistory(ActionEvent event) throws IOException {
+    void switchToStart(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("bankStatment.fxml"));
+        loader.setLocation(getClass().getResource("start.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
 
-//        userMenuController thisController = loader.getController();
-//        thisController.setUserProfile(talkToGoBetween.createTestProfile());
-//        thisController.setUpProfile();
-
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
-    @FXML//on interface button = portfolio
-    void switchToFinanceProject(ActionEvent event) {
 
-    }
-    @FXML//on interface button = ??
-    void switchToTransfer(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("transferCustomer.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 }

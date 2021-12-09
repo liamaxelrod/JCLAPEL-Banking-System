@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TransferController extends AccessToTheTalkToBack implements Initializable {
+public class TransferController extends Listener implements Initializable {//Albin worked on this, Liam worked partly on this
     private Stage stage;
     private Scene scene;
 
@@ -71,21 +71,7 @@ public class TransferController extends AccessToTheTalkToBack implements Initial
         stage.setScene(scene);
         stage.show();
     }
-    @FXML//on interface button = bank statement
-    void switchToBankStatement(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("bankStatment.fxml"));
-        Parent root = loader.load();
-        scene = new Scene(root);
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-    @FXML//on interface button = portfolio
-    void switchToFinanceProject(ActionEvent event) throws IOException {
-
-    }
     @FXML//on interface button = sign out
     public void switchToStart(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();

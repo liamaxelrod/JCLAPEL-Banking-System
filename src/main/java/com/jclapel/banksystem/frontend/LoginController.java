@@ -55,11 +55,23 @@ public class LoginController implements Initializable {
         stage.show();
     }
 
+<<<<<<< HEAD:src/main/java/com/example/jc_lapel/LoginController.java
+    //SceneBuilder interface login button
+    public void switchToCustomerMenu(ActionEvent event) throws IOException{
+        if (usernameTextField.getText() == "" && enterPasswordField.getText() == ""){
+            Parent root = FXMLLoader.load(getClass().getResource("userMenuController.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+=======
     public void switchToTransferCustomer(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("transferCustomer.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+>>>>>>> cd679941ca1289713410482b5906fd23c843cc3d:src/main/java/com/jclapel/banksystem/frontend/LoginController.java
     }
 }

@@ -20,7 +20,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ProfileController implements Initializable {
+public class ProfileController implements Initializable {//Albin Worked on this Liam worked more on this
+
     public static LoginController object = new LoginController();
     private Stage stage;
     private Scene scene;
@@ -52,6 +53,7 @@ public class ProfileController implements Initializable {
     @FXML
     private TextField newLastName;
 
+
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -69,8 +71,6 @@ public class ProfileController implements Initializable {
                 checkCurrentPassword.setText("");
                 newPassword.setText("");
                 confirmNewPassword.setText("");
-
-//                userProfile.setPassword(currentPassword.getText());
             }
         }
     }
@@ -80,18 +80,13 @@ public class ProfileController implements Initializable {
         String theNewFirstName = newFirstName.getText();
         currentFirstName.setText(theNewFirstName);
         newFirstName.setText("");
-
-//        userProfile.setFirstName(currentFirstName.getText());
     }
     @FXML
     void onActionChangeLastName(ActionEvent event) {
         String theNewLastName = newLastName.getText();
         currentLasName.setText(theNewLastName);
         newFirstName.setText("");
-
-//        userProfile.setLastName(currentLasName.getText());
     }
-
 
     @FXML//Still trying to figure out save the image
     public void onActionChangeProfileImage(ActionEvent event) throws IOException {
@@ -102,8 +97,6 @@ public class ProfileController implements Initializable {
         this.filePath = fileChoice.showOpenDialog(stage);
         theImage = new Image(String.valueOf(filePath.toURI()));
         currentImage.setImage(theImage);
-
-//        userProfile.setTheImageView(currentImage);
 
     }
 
