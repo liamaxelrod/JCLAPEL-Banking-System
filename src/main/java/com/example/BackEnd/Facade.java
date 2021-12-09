@@ -4,6 +4,8 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Stack;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class Facade {
     public HashMap<Integer, Customer> customers = new HashMap<>();
@@ -70,13 +72,41 @@ public class Facade {
         return accounts.get(accountId);
     }
 
-    public int createCustomer(String name, String password){ //Patrik, Karar , Julia, Erik, returns customer id;
-        int ID = generateId(customers);
-        Customer customer = new Customer(ID, name, password);
-        customers.put(ID, customer);
-        return ID;
-
+    public int createCustomer(String name, String password){
+        if(validateName(name) && validatePassword(password)) {
+            int ID = generateId(customers);
+            Customer customer = new Customer(ID, name, password);
+            customers.put(ID, customer);
+            return ID;
+        }
+        return 0;
     }//patrik, labi, julia erik
+
+    public int createEmployeeCustomer(String name, String password){
+        if(validateName(name) && validatePassword(password)) {
+            int ID = generateId(customers);
+            Customer customer = new EmployeeCustomer(ID, name, password);
+            customers.put(ID, customer);
+            return ID;
+        }
+        return 0;
+    }
+
+    public boolean validateName(String name){ //Labi
+        return !name.isEmpty();
+    } //Labi
+
+    public boolean validatePassword(String password){ //Julia
+        Pattern checkPattern = Pattern.compile("[^a-zA-Z0-9]"); //regex, checks everything that is not a special case character
+        Pattern checkNumberPattern = Pattern.compile("[0-9]"); //check numbers
+        Matcher match = checkPattern.matcher(password);
+        Matcher matchNumber = checkNumberPattern.matcher(password);
+        if(!password.isEmpty() && password.length() >= 8 && !password.toUpperCase().equals(password) && !password.toLowerCase().equals(password) && match.find() && matchNumber.find()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public boolean CheckIfCustomerExists(int ID){
         if(customers.containsKey(ID)){
@@ -101,14 +131,14 @@ public class Facade {
     } //patrik, labi, julia
 
     public int createAccount(int customerId){ // adds an account to a given customer
-        Account account = new Account(generateId(customers.get(customerId).getAccounts()), false);
+        Account account = new Account(generateId(customers.get(customerId).getAccounts()), customerId, false);
         customers.get(customerId).addAccount(account);
         accounts.put(account.getID(), account);
         return account.getID();
     } //patrik, labi
 
     public int createSavingsAccount(int customerId){
-        Account account = new Account(generateId(customers.get(customerId).getAccounts()), true);
+        Account account = new Account(generateId(customers.get(customerId).getAccounts()), customerId, true);
         customers.get(customerId).addAccount(account);
         accounts.put(account.getID(), account);
         return account.getID();
@@ -137,7 +167,8 @@ public class Facade {
 
     public boolean deposit(int accountID, double amount){ //add amount, return true if the transaction is valid, or false if it is invald
         if(amount>0){
-            accounts.get(accountID).setBalance(accounts.get(accountID).getBalance() + amount*0.99);
+            Account account = loadAccount(accountID);
+            account.setBalance(account.getBalance() + (amount - loadCustomer(account.getCustomerId()).calculateFee(amount)));
             accounts.get(accountID).addTransaction(new DepositTransaction(amount, accountID));
             return true;
         }
@@ -149,7 +180,7 @@ public class Facade {
             Account account = accounts.get(accountID);
             WithdrawalTransaction transaction = new WithdrawalTransaction(amount, accountID);
             account.addTransaction(transaction);
-            account.setBalance(account.getBalance() - generateFee(accountID, transaction, amount));
+            account.setBalance(account.getBalance() - (amount + loadCustomer(account.getCustomerId()).calculateFee(amount)));
             return true;
         }
         return false;
@@ -160,7 +191,7 @@ public class Facade {
     } //Erik
 
     public boolean resetPassword(int customerId, String originalPassword, String newPassword){ //returns a boolean indicating whether the change went through
-        if(checkLogin(customerId, originalPassword)) {
+        if(checkLogin(customerId, originalPassword) && validatePassword(newPassword)) {
             Customer customer = customers.get(customerId);
             customer.setPassword(newPassword);
             return true;
@@ -188,7 +219,7 @@ public class Facade {
     }  //Labi
 
     public int createEmployeeAccount(int employeeID){ // adds an account to a given customer
-        Account account = new Account(generateId(employees.get(employeeID).getAccounts()), false);
+        Account account = new Account(generateId(employees.get(employeeID).getAccounts()), employeeID, false);
         customers.get(employeeID).addAccount(account);
         accounts.put(account.getID(), account);
         return account.getID();
@@ -204,27 +235,4 @@ public class Facade {
         } while (hashMap.containsKey(ID));//ensure the id is not in use
         return ID;
     } //patrik
-
-    public double generateFee(int accountID, Transaction transaction, double amount){
-
-        double generatedFee = 0;
-
-        //Customer
-        if(accounts.containsKey(accountID) && transaction instanceof WithdrawalTransaction){
-            double customerFee = 1.01;
-            generatedFee += customerFee * amount;
-        } else if (accounts.containsKey(accountID) && transaction instanceof DepositTransaction){
-            double customerFee = 0.99;
-            generatedFee += customerFee * amount;
-        }
-        //Employee
-        if(employeeAccounts.containsKey(accountID) && transaction instanceof WithdrawalTransaction){
-            double employeeFee = 1.005;
-            generatedFee += employeeFee * amount;
-        } else if(employeeAccounts.containsKey(accountID) && transaction instanceof DepositTransaction){
-            double employeeFee = 0.995;
-            generatedFee += employeeFee * amount;
-        }
-        return generatedFee;
-    }
 }

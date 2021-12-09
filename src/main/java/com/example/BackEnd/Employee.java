@@ -13,6 +13,14 @@ public class Employee {
 
     }
 
+    public Transaction[] viewCustomerInfo(int customerId){
+        Transaction[] latestTransactions = new Transaction[10];
+        // see customer id, and the last 10 transaction
+
+
+        return  latestTransactions;
+    }
+
     public int getID() {
         return ID;
     }
