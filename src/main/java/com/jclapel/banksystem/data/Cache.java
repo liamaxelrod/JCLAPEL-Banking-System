@@ -124,7 +124,7 @@ public class Cache implements Serializable {
 	public void saveData() {
 		// Serializes and sends data to database
 		// TODO: Send data with this string
-		//String serializedData = gson.toJson(dataCache);
+		String serializedData = gson.toJson(dataCache);
 
 		if (USE_LOCAL_STORAGE) {
 			// Save data locally
@@ -134,7 +134,7 @@ public class Cache implements Serializable {
 			// Save data on database
 		}
 
-		//System.out.println(serializedData); // Needs further testing
+		System.out.println(serializedData); // Needs further testing
 	}
 
 	public void loadData(String serializedData) {
