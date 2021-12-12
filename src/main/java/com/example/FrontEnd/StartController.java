@@ -69,14 +69,23 @@ public class StartController extends Listener {//Albin worked on this, Liam work
 
     @FXML
     void switchToManual(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("manual.fxml"));
-        Parent root = loader.load();
-        scene = new Scene(root);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("manual.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        stage = new Stage();
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
+        stage.setTitle("full manual");
+        stage.setScene(new Scene(root1));
         stage.show();
+
+        //old version
+//      FXMLLoader loader = new FXMLLoader();
+//      loader.setLocation(getClass().getResource("manual.fxml"));
+//      Parent root = loader.load();
+//      scene = new Scene(root);
+//
+//      stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//      stage.setScene(scene);
+//      stage.show();
     }
 
     @FXML//on interface button = exit

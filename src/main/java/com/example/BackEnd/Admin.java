@@ -5,7 +5,7 @@ public class Admin extends Employee {
         super(ID,name);
     }
 
-    public void viewCustomerInfo(int customerId){
-        // see customer name, id, password, all transaction, all accounts
-    }
+//    public void viewCustomerInfo(int customerId){
+//        // see customer name, id, password, all transaction, all accounts
+//    }
 }
