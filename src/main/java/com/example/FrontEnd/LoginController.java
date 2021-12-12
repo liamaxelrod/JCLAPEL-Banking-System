@@ -43,8 +43,6 @@ public class LoginController implements Initializable {//Albin worked on this mo
         }
     }
 
-
-
     //all methods below are for switching scenes, or you could say interfaces
 
     @FXML//on interface button = create account

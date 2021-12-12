@@ -181,42 +181,42 @@
                      </font></Button>
                   <Pane layoutX="20.0" layoutY="50.0" prefHeight="150.0" prefWidth="342.0">
                      <children>
-                        <Label layoutY="7.0" prefHeight="26.0" prefWidth="149.0" text="First name">
+                        <Label layoutY="7.0" prefHeight="26.0" prefWidth="149.0" text="First name:">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Label layoutY="33.0" prefHeight="26.0" prefWidth="149.0" text="Last name">
+                        <Label layoutY="33.0" prefHeight="26.0" prefWidth="149.0" text="Last name:">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Label layoutY="59.0" prefHeight="26.0" prefWidth="150.0" text="Current username">
+                        <Label layoutY="59.0" prefHeight="26.0" prefWidth="150.0" text="Current userID:">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Label layoutY="85.0" prefHeight="25.0" prefWidth="149.0" text="Current password">
+                        <Label layoutY="85.0" prefHeight="25.0" prefWidth="149.0" text="Current password:">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Label fx:id="currentPassword" layoutX="160.0" layoutY="85.0" prefHeight="26.0" prefWidth="140.0" text="12345">
+                        <Label fx:id="currentPassword" layoutX="160.0" layoutY="85.0" prefHeight="26.0" prefWidth="140.0">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Label fx:id="currentUsername" layoutX="160.0" layoutY="59.0" prefHeight="26.0" prefWidth="140.0" text="jason">
+                        <Label fx:id="currentUsername" layoutX="160.0" layoutY="59.0" prefHeight="26.0" prefWidth="140.0">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Label fx:id="currentFirstName" layoutX="160.0" layoutY="7.0" prefHeight="26.0" prefWidth="140.0" text="liam">
+                        <Label fx:id="currentFirstName" layoutX="160.0" layoutY="7.0" prefHeight="26.0" prefWidth="140.0">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Label fx:id="currentLasName" layoutX="160.0" layoutY="33.0" prefHeight="26.0" prefWidth="140.0" text="axelrod">
+                        <Label fx:id="currentLasName" layoutX="160.0" layoutY="33.0" prefHeight="26.0" prefWidth="140.0">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>

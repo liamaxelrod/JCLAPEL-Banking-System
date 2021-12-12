@@ -26,16 +26,16 @@ public class ProfileController extends Listener implements Initializable {//Albi
     private Scene scene;
 
 
-    @Override//this method takes effect when the scene is loaded
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
 
     private FileChooser fileChoice;
     private File filePath;
     @FXML//on interface image view = right above upload a user profile image
     private ImageView currentImage;//this is the one actually holds the image for the interface
     private Image theImage;
+
+    @FXML//on interface label = username
+    private TextField userName;
 
     @FXML//on interface Password field = Bottom left corner
     private PasswordField checkCurrentPassword;
@@ -59,6 +59,13 @@ public class ProfileController extends Listener implements Initializable {//Albi
     private TextField newFirstName;
     @FXML
     private TextField newLastName;
+
+    @Override//this method takes effect when the scene is loaded
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        currentFirstName.setText(UserMenuController.name);
+        currentPassword.setText(UserMenuController.password);
+        currentUsername.setText(UserMenuController.numberID);
+    }
 
     @FXML
     private void onActionChangePassword(ActionEvent event) {
