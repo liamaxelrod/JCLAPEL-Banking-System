@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,15 +21,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ProfileController extends Listener implements Initializable {//Albin Worked on this Liam worked more on this
-    public static LoginController object = new LoginController();
+public class ProfileController implements Initializable {//Albin Worked on this Liam worked more on this
+
     private Stage stage;
     private Scene scene;
+    private Customer currentCustomerUse;
 
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        currentCustomerUse = RegisterController.facade.loadCustomer(RegisterController.idNum);
+        currentFirstName.setText(currentCustomerUse.getName());
+        currentLasName.setText(currentCustomerUse.getName());//Need to get lasting here
+        currentPassword.setText(currentCustomerUse.getPassword());
     }
 
     private FileChooser fileChoice;
@@ -49,13 +54,13 @@ public class ProfileController extends Listener implements Initializable {//Albi
     @FXML
     public Label currentLasName;
     @FXML
-    public Label currentUsername;
+    private Label currentID;
     @FXML
     public Label currentPassword;
 
+
+
     @FXML//on interface Text field = Right bottom corner
-    private TextField newUsername;
-    @FXML
     private TextField newFirstName;
     @FXML
     private TextField newLastName;
@@ -81,6 +86,7 @@ public class ProfileController extends Listener implements Initializable {//Albi
         String theNewFirstName = newFirstName.getText();
         currentFirstName.setText(theNewFirstName);
         newFirstName.setText("");
+        currentCustomerUse.setName(theNewFirstName);//This is for testing purposes until can finalize it *****
     }
 
     @FXML
@@ -88,13 +94,6 @@ public class ProfileController extends Listener implements Initializable {//Albi
         String theNewLastName = newLastName.getText();
         currentLasName.setText(theNewLastName);
         newFirstName.setText("");
-    }
-
-    @FXML
-    private void onActionChangeUsername(ActionEvent event) {
-        String theNewUsername = newUsername.getText();
-        currentUsername.setText(theNewUsername);
-        newUsername.setText("");
     }
 
     @FXML//Still trying to figure out save the image

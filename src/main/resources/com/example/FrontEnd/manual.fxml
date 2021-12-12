@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -272,6 +273,11 @@
                         <Glow />
                     </effect>
                 </Button>
+            <TextArea layoutX="32.0" layoutY="27.0" prefHeight="136.0" prefWidth="294.0" text="This is only a placeholder for text we put in&#10;&#10;&#10;&#10;&#10;Mainly because it comes with a scroll in function&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;Is this be really annoying without it">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </TextArea>
          </children>
         </Pane>
     </children>

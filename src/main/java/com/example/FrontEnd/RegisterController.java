@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -67,15 +66,11 @@ public class RegisterController implements Initializable {//Albin worked on this
 
     @FXML
     private void onActionCreateAccount(ActionEvent event) throws IOException {
-
-
         id = facade.createCustomer(firstnameTextField.getText(), setPasswordField.getText());
         idNum = id;
         num = 1;
 
         if (id != 0){
-
-            
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("userMenu.fxml"));

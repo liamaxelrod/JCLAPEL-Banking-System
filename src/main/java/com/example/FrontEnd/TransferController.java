@@ -46,6 +46,8 @@ public class TransferController extends Listener implements Initializable {//Alb
 
         toAccount.setValue("choose account");
         toAccount.setItems(differentAccounts);
+
+
     }
 
     @FXML//on interface button = total
