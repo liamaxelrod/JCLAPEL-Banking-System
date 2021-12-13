@@ -76,11 +76,11 @@
                <children>
                   <Pane layoutX="12.0" layoutY="282.0" prefHeight="247.0" prefWidth="596.0">
                      <children>
-                        <PasswordField fx:id="checkCurrentPassword" layoutY="78.0" promptText="Current Password">
+                        <PasswordField fx:id="checkCurrentPassword" layoutY="52.0" promptText="Current Password">
                            <font>
                               <Font name="Arial" size="12.0" />
                            </font></PasswordField>
-                        <Label layoutY="51.0" prefHeight="25.0" prefWidth="149.0" text="Current password">
+                        <Label layoutY="27.0" prefHeight="25.0" prefWidth="149.0" text="Current password">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
@@ -90,7 +90,7 @@
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
-                        <Label layoutY="179.0" prefHeight="26.0" prefWidth="192.0" text="Confirm new password">
+                        <Label layoutY="179.0" prefHeight="26.0" prefWidth="176.0" text="Confirm new password">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
@@ -107,7 +107,7 @@
                            <font>
                               <Font name="Arial" size="12.0" />
                            </font></Button>
-                        <Label alignment="CENTER" layoutY="25.0" prefHeight="26.0" prefWidth="290.0" text="Change password">
+                        <Label alignment="CENTER" layoutY="1.0" prefHeight="26.0" prefWidth="290.0" text="Change password">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
@@ -173,6 +173,11 @@
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
+                        <Label layoutY="59.0" prefHeight="26.0" prefWidth="150.0" text="Current ID">
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                        </Label>
                         <Label layoutY="85.0" prefHeight="25.0" prefWidth="149.0" text="Current password">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
@@ -183,22 +188,17 @@
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
+                        <Label fx:id="currentID" layoutX="160.0" layoutY="59.0" prefHeight="26.0" prefWidth="140.0" text="jason">
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                        </Label>
                         <Label fx:id="currentFirstName" layoutX="160.0" layoutY="7.0" prefHeight="26.0" prefWidth="140.0" text="liam">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
                         <Label fx:id="currentLasName" layoutX="160.0" layoutY="33.0" prefHeight="26.0" prefWidth="140.0" text="axelrod">
-                           <font>
-                              <Font name="Arial Bold" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutY="62.0" prefHeight="26.0" prefWidth="149.0" text="ID">
-                           <font>
-                              <Font name="Arial Bold" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="currentID" layoutX="160.0" layoutY="62.0" prefHeight="26.0" prefWidth="140.0" text="ID">
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>

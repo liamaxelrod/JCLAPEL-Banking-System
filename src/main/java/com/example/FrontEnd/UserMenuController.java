@@ -119,7 +119,7 @@ public class UserMenuController implements Initializable {//Liam was most respon
     }
     @FXML
     void switchToManual(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("manual.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomer.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         stage = new Stage();
 
@@ -132,7 +132,6 @@ public class UserMenuController implements Initializable {//Liam was most respon
     void handelCloseButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
-
     }
 
 
