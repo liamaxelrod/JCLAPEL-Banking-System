@@ -214,14 +214,44 @@ public class Cache implements Serializable {
 		}
 	}
 
-	public void updateData(String collection, String identifier, String dataId) {
+	public void updateData(Customer customer) {
 		// Updates object to cache
 		try {
 			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
 			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
-			MongoCollection<Document> dataCollection = database.getCollection(collection);
+			MongoCollection<Document> dataCollection = database.getCollection("customers");
 
-			Document targetDocument = dataCollection.find(new Document(identifier, dataId)).first();
+			Document targetDocument = dataCollection.find(new Document("customer_id", customer.getId())).first();
+			// TODO: Update the target document
+		} catch(Exception exception) {
+			// TODO: Error handling
+			exception.printStackTrace();
+		}
+	}
+
+	public void updateData(Account account) {
+		// Updates object to cache
+		try {
+			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
+			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoCollection<Document> dataCollection = database.getCollection("accounts");
+
+			Document targetDocument = dataCollection.find(new Document("account_id", account.getId())).first();
+			// TODO: Update the target document
+		} catch(Exception exception) {
+			// TODO: Error handling
+			exception.printStackTrace();
+		}
+	}
+
+	public void updateData(Transaction transaction) {
+		// Updates object to cache -- WARNING: This is hard to identify!
+		try {
+			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
+			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoCollection<Document> dataCollection = database.getCollection("transactions");
+
+			Document targetDocument = dataCollection.find(new Document("", "")).first(); // TODO: How do we identify this?
 			// TODO: Update the target document
 		} catch(Exception exception) {
 			// TODO: Error handling
