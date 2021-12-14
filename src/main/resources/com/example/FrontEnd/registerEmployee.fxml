@@ -85,7 +85,7 @@
             <font>
                 <Font name="Arial" size="12.0" />
             </font></PasswordField>
-        <Button fx:id="createAccountButton" layoutX="384.0" layoutY="511.0" mnemonicParsing="false" onAction="#onActionCreateAccount" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Create Account" textFill="WHITE">
+        <Button fx:id="createAccountButton" layoutX="384.0" layoutY="511.0" mnemonicParsing="false" onAction="#switchToEmployeeMenu" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Create Account" textFill="WHITE">
             <font>
                 <Font name="Arial" size="13.0" />
             </font>

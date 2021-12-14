@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -27,6 +28,58 @@ public class LoginController implements Initializable {//Albin worked on this mo
 
     @FXML//on interface text field = username
     private TextField usernameTextField;
+
+
+    @FXML
+    private Button cancelButton;
+
+    @FXML
+    private Button createAccount;
+
+    @FXML
+    private Button loginButton;
+
+    @FXML
+    private Button mainMenu;
+
+    @FXML
+    private void confirmHoverInCreAcc() {
+        createAccount.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutCreAcc() {
+        createAccount.setStyle("-fx-background-color: #414D59;");
+    }
+    @FXML
+    private void confirmHoverInMainM() {
+        mainMenu.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutMainM() {
+        mainMenu.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInLogin() {
+        loginButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutLogin() {
+        loginButton.setStyle("-fx-background-color: #474B40;");
+    }
+
+    @FXML
+    private void confirmHoverInCancel() {
+        cancelButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutCancel() {
+        cancelButton.setStyle("-fx-background-color: #474B40;");
+    }
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {

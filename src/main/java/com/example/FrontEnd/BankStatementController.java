@@ -20,9 +20,9 @@ public class BankStatementController {//Albin worked on this, Liam worked a litt
 
 
     @FXML//on interface button = user menu
-    void switchToCustomerMenu(ActionEvent event) throws IOException {
+    void switchToEmployeeMenu(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("userMenu.fxml"));
+        loader.setLocation(getClass().getResource("employeeMenu.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
 

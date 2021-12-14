@@ -81,4 +81,16 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML//on interface button = user menu
+    void switchToEmployeeMenu(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("employeeMenu.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
 }
