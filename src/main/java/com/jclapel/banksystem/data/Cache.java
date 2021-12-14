@@ -1,7 +1,6 @@
 package com.jclapel.banksystem.data;
 
 // Imports
-import com.google.gson.*;
 import com.mongodb.client.*;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -52,8 +51,6 @@ public class Cache implements Serializable {
 	private FileOutputStream cacheTarget;
 
 	private HashMap<String, Object> dataCache;
-	
-	Gson gson = new Gson();
 
 	private Document toBSONDocument(Customer customer) {
 		// Serializes a customer object into a BSON document
