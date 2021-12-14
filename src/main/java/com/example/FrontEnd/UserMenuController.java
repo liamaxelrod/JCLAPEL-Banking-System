@@ -25,6 +25,9 @@ public class UserMenuController implements Initializable {//Liam was most respon
 
     private Stage stage;
     private Scene scene;
+    public static String name;
+    public static String password;
+    public static String numberID;
 
 
     @FXML//on interface button = exit
@@ -59,12 +62,17 @@ public class UserMenuController implements Initializable {//Liam was most respon
 
         if(RegisterController.num == 1){
             userName.setText(String.valueOf(RegisterController.idNum));
+            numberID = String.valueOf(RegisterController.idNum);
         }else{
             userName.setText(String.valueOf(LoginController.logNum));
+            numberID = LoginController.logNum;
         }
-        String name = (RegisterController.facade.loadCustomer(Integer.parseInt(userName.getText())).getName());
+        name = (RegisterController.facade.loadCustomer(Integer.parseInt(userName.getText())).getName());
         fullName.setText(name);
+        password = (RegisterController.facade.loadCustomer(Integer.parseInt(userName.getText())).getPassword());
+
     }
+
 
     ////all methods below are for switching scenes, or you could say interfaces
 

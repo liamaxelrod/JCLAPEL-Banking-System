@@ -43,8 +43,6 @@ public class LoginController implements Initializable {//Albin worked on this mo
         }
     }
 
-
-
     //all methods below are for switching scenes, or you could say interfaces
 
     @FXML//on interface button = create account
@@ -76,7 +74,6 @@ public class LoginController implements Initializable {//Albin worked on this mo
     public void switchToCustomerMenu(ActionEvent event) throws IOException{
         RegisterController.num = 0;
         logNum = usernameTextField.getText();
-        System.out.println(logNum);
         //System.out.println(facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText()));
         if (RegisterController.facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText())){
             FXMLLoader loader = new FXMLLoader();

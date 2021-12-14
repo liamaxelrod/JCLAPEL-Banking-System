@@ -36,11 +36,15 @@ public class ProfileController implements Initializable {//Albin Worked on this 
         currentPassword.setText(currentCustomerUse.getPassword());
     }
 
+
     private FileChooser fileChoice;
     private File filePath;
     @FXML//on interface image view = right above upload a user profile image
     private ImageView currentImage;//this is the one actually holds the image for the interface
     private Image theImage;
+
+    @FXML//on interface label = username
+    private TextField userName;
 
     @FXML//on interface Password field = Bottom left corner
     private PasswordField checkCurrentPassword;
@@ -64,6 +68,8 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     private TextField newFirstName;
     @FXML
     private TextField newLastName;
+
+
 
     @FXML
     private void onActionChangePassword(ActionEvent event) {

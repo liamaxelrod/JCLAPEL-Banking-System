@@ -82,7 +82,7 @@ public class RegisterController implements Initializable {//Albin worked on this
 
         StartApplication.facade.createCustomer(usernameTextField.getText(), setPasswordField.getText());
     }else{
-        warningText.setText("The password is incorrect");
+        warningText.setText("The password must have: \n - At least 8 characters \n - Must consist of 'a-z, A-Z, 0 -9' \n - Special character ex. '!' '&' '?' ");
     }
 
 }
@@ -93,8 +93,6 @@ public class RegisterController implements Initializable {//Albin worked on this
         secondName = lastnameTextField.getText();
         password = setPasswordField.getText();
         }
-
-
 
 
     //all methods below are for switching scenes, or you could say interfaces
