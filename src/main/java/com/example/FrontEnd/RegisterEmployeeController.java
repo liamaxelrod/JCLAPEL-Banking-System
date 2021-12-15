@@ -51,6 +51,65 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
 
     }
 
+
+    @FXML
+    private Button employeeLog;
+
+    @FXML
+    private Button mainMenu;
+
+
+    @FXML
+    private void confirmHoverInEmployeeLog() {
+        employeeLog.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutMainMenu() {
+        mainMenu.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInMainMenu() {
+        mainMenu.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutEmployeeLog() {
+        employeeLog.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInCreAcc() {
+        createAccountButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutCreAcc() {
+        createAccountButton.setStyle("-fx-background-color: #474B40;");
+    }
+
+    @FXML
+    private void confirmHoverInCancel() {
+        cancelButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutCancel() {
+        cancelButton.setStyle("-fx-background-color: #474B40;");
+    }
+
+    @FXML
+    private void confirmHoverInCreBut() {
+        createAccountButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutCreBut() {
+        createAccountButton.setStyle("-fx-background-color: #474B40;");
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         titleChoice.setValue("choose title");
