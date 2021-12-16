@@ -68,21 +68,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="financePort" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="122.0" mnemonicParsing="false" onAction="#switchToFinanceProject" onMouseEntered="#confirmHoverInFin" onMouseExited="#confirmHoverOutFin" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Financial projects Loan, portfolio, etc." textFill="WHITE">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-               <effect>
-                  <Glow />
-               </effect>
-            </Button>
-            <Button fx:id="transferHis" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToBankStatement" onMouseEntered="#confirmHoverInTranHi" onMouseExited="#confirmHoverOutTranHi" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="TRANSFER HISTORY" textFill="WHITE">
+            <Button fx:id="financePort" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="122.0" mnemonicParsing="false" onAction="#switchToFinanceProject" onMouseEntered="#confirmHoverInFin" onMouseExited="#confirmHoverOutFin" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Loans &amp; Portfolio" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -96,7 +82,21 @@
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="manual" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToManual" onMouseEntered="#confirmHoverInMan" onMouseExited="#confirmHoverOutMan" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MANUAL" textFill="WHITE">
+            <Button fx:id="transferHis" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToBankStatement" onMouseEntered="#confirmHoverInTranHi" onMouseExited="#confirmHoverOutTranHi" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Bankstatement " textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="Arial Bold" size="17.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
+            <Button fx:id="manual" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToManual" onMouseEntered="#confirmHoverInMan" onMouseExited="#confirmHoverOutMan" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Manual" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -147,7 +147,7 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="fullName" layoutX="96.0" layoutY="89.0" prefHeight="35.0" prefWidth="319.0" text="Full name" textAlignment="CENTER">
+            <Label fx:id="fullName" layoutX="103.0" layoutY="89.0" prefHeight="35.0" prefWidth="319.0" text="Full name" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>

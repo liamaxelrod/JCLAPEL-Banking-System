@@ -48,8 +48,10 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     public Label currentFirstName;
     @FXML
     public Label currentLasName;
+
     @FXML
     private Label currentID;
+
     @FXML
     public Label currentPassword;
 
@@ -80,8 +82,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
         currentFirstName.setText(currentCustomerUse.getName());
         currentLasName.setText(currentCustomerUse.getName());//Need to get lasting here
         currentPassword.setText(currentCustomerUse.getPassword());
-
-        UserMenuController.numberID; // Consider changing and fixing
+        currentID.setText(String.valueOf(currentCustomerUse.getID()));
     }
 
 
