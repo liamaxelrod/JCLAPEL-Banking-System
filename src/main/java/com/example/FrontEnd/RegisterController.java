@@ -72,46 +72,6 @@ dhfh
     private Button createAccountButton;
 
 
-    @FXML
-    private void confirmHoverInMainMenu() {
-        mainMenuButton.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutMainMenu() {
-        mainMenuButton.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInLogin() {
-        loginButton.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutLogin() {
-        loginButton.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInCancel() {
-        cancelButton.setStyle("-fx-background-color: #676D5E;");
-    }
-
-    @FXML
-    private void confirmHoverOutCancel() {
-        cancelButton.setStyle("-fx-background-color: #474B40;");
-    }
-
-    @FXML
-    private void confirmHoverInCreAcc() {
-        createAccountButton.setStyle("-fx-background-color: #676D5E;");
-    }
-
-    @FXML
-    private void confirmHoverOutCreAcc() {
-        createAccountButton.setStyle("-fx-background-color: #474B40;");
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
@@ -174,6 +134,45 @@ dhfh
         stage.show();
     }
 
+    //Methods to make buttons glow
+    @FXML
+    private void confirmHoverInMainMenu() {
+        mainMenuButton.setStyle("-fx-background-color: #52779C;");
+    }
 
+    @FXML
+    private void confirmHoverOutMainMenu() {
+        mainMenuButton.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInLogin() {
+        loginButton.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutLogin() {
+        loginButton.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInCancel() {
+        cancelButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutCancel() {
+        cancelButton.setStyle("-fx-background-color: #474B40;");
+    }
+
+    @FXML
+    private void confirmHoverInCreAcc() {
+        createAccountButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutCreAcc() {
+        createAccountButton.setStyle("-fx-background-color: #474B40;");
+    }
 
 }

@@ -42,7 +42,7 @@
                         <Glow />
                     </effect>
                 </Button>
-                <Button fx:id="SignOut" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" onMouseEntered="#confirmHoverInSignO" onMouseExited="#confirmHoverOutSignO" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="SIGN OUT" textFill="WHITE">
+                <Button fx:id="SignOut" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" onMouseEntered="#confirmHoverInSignO" onMouseExited="#confirmHoverOutSignO" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Sign Out" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>

@@ -29,7 +29,7 @@
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                     </children>
                 </Pane>
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToCustomerMenu" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="USER MENU" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToCustomerMenu" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="User Menu" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -37,7 +37,7 @@
                         <Insets left="50.0" />
                     </padding>
                     <font>
-                        <Font name="Arial" size="17.0" />
+                        <Font name="Arial Bold" size="17.0" />
                     </font>
                     <effect>
                         <Glow />
@@ -51,7 +51,7 @@
                         <Insets left="50.0" />
                     </padding>
                     <font>
-                        <Font name="Arial" size="17.0" />
+                        <Font name="Arial Bold" size="17.0" />
                     </font>
                     <effect>
                         <Glow />

@@ -79,90 +79,6 @@ gvfgj
     private Button transferHis;
 
 
-    @FXML
-    private void confirmHoverInLogOff() {
-        logoutButton.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutLogOff() {
-        logoutButton.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInTran() {
-        transferButton.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutTran() {
-        transferButton.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInPro() {
-        profileButton.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutPro() {
-        profileButton.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInFin() {
-        financePort.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutFin() {
-        financePort.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInTranHi() {
-        transferHis.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutTranHi() {
-        transferHis.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInMan() {
-        manual.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutMan() {
-        manual.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInExit() {
-        closeButton.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutExit() {
-        closeButton.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInManB() {
-        manualButton.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutManB() {
-        manualButton.setStyle("-fx-background-color: #414D59;");
-    }
-
-
-
-
-
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -249,5 +165,87 @@ gvfgj
         stage.close();
     }
 
+
+    //Methods to make buttons glow
+    
+    @FXML
+    private void confirmHoverInLogOff() {
+        logoutButton.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutLogOff() {
+        logoutButton.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInTran() {
+        transferButton.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutTran() {
+        transferButton.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInPro() {
+        profileButton.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutPro() {
+        profileButton.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInFin() {
+        financePort.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutFin() {
+        financePort.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInTranHi() {
+        transferHis.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutTranHi() {
+        transferHis.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInMan() {
+        manual.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutMan() {
+        manual.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInExit() {
+        closeButton.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutExit() {
+        closeButton.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInManB() {
+        manualButton.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutManB() {
+        manualButton.setStyle("-fx-background-color: #414D59;");
+    }
 
 }
