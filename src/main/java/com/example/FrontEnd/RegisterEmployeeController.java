@@ -26,6 +26,9 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
     private ObservableList<String> differentTitles = FXCollections.observableArrayList("Admin","Manager","Employee");
 
     @FXML
+    private TextField securityKey;
+
+    @FXML
     private Button cancelButton;
 
     @FXML
