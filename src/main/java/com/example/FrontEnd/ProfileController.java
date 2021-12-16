@@ -28,10 +28,6 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     private Scene scene;
     private Customer currentCustomerUse;
 
-
-
-
-
     private FileChooser fileChoice;
     private File filePath;
 
@@ -66,14 +62,15 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     @FXML
     private TextField newLastName;
 
-    @FXML//on interface Text field = Right bottom corner
-    private TextField newUsername;
+
 
 
     @FXML
     private Button SignOut;
     @FXML
     private Button userMenu;
+
+
 
 
 
