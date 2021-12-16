@@ -7,24 +7,19 @@ import com.mongodb.*;
 import com.mongodb.client.*;
 import com.mongodb.client.model.*;
 import com.mongodb.client.result.*;
-import org.bson.Document;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 import org.bson.conversions.Bson;
 import org.bson.json.JsonWriterSettings;
-import org.bson.types.ObjectId;
 import com.google.gson.Gson;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.Serializable;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
-import java.util.Stack;
 
 import static com.mongodb.client.model.Filters.*;
 import static com.mongodb.client.model.Projections.*;
