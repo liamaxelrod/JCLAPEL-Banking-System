@@ -216,8 +216,9 @@ public class Cache implements Serializable {
 		try {
 			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
 			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
-			MongoCollection<Document> dataCollection = database.getCollection("customers");			
+			
 			for (var object : collection.values()) {
+				MongoCollection<Document> dataCollection = database.getCollection("");			
 				// TODO: Sorting this out...
 			}
 			return true;
@@ -319,7 +320,7 @@ public class Cache implements Serializable {
 		return null;
 	}
 
-	public void saveData() {
+	public void saveAllData() {
 		// Serializes and sends data to database
 		// TODO: Send data with this string
 		if (USE_LOCAL_STORAGE) {
