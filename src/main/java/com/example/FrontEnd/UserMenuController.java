@@ -23,7 +23,7 @@ public class UserMenuController implements Initializable {//Liam was most respon
 
     private Stage stage;
     private Scene scene;
-    ghd
+    //
     public static String name;
     public static String password;
     public static String numberID;
@@ -34,14 +34,14 @@ public class UserMenuController implements Initializable {//Liam was most respon
 
     @FXML//on interface image view = upper far right position
     private ImageView imageProfile;
-jhgjhk
+//
     @FXML//on interface label = username
     private TextField userName;
 
 
     @FXML//on interface label = next to name:
     private String fullRealName;
-yg
+//
     @FXML//on interface label = bottom left corner
     private Label CheckingTotal;
     @FXML
@@ -55,7 +55,7 @@ yg
 
     @FXML//on interface text field = username
     private int usernameTextField;
-gvfgj
+//
 
     @FXML
     private Button financePort;
