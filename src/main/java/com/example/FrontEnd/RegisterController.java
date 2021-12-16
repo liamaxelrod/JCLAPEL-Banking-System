@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -37,6 +38,9 @@ public class RegisterController implements Initializable {//Albin worked on this
     private Stage stage;
     private Scene scene;
 
+    @FXML
+    private Label warningText;
+
     @FXML//on interface password field = confirm password
     private PasswordField confirmPasswordField;
 
@@ -52,8 +56,61 @@ public class RegisterController implements Initializable {//Albin worked on this
     @FXML//on interface text field = username
     private TextField usernameTextField;
 
-    @FXML
+  //  @FXML
 //    private Label idNum;??????
+
+    @FXML
+    private Button loginButton;
+
+    @FXML
+    private Button mainMenuButton;
+
+    @FXML
+    private Button cancelButton;
+
+    @FXML
+    private Button createAccountButton;
+
+
+    @FXML
+    private void confirmHoverInMainMenu() {
+        mainMenuButton.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutMainMenu() {
+        mainMenuButton.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInLogin() {
+        loginButton.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutLogin() {
+        loginButton.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInCancel() {
+        cancelButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutCancel() {
+        cancelButton.setStyle("-fx-background-color: #474B40;");
+    }
+
+    @FXML
+    private void confirmHoverInCreAcc() {
+        createAccountButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutCreAcc() {
+        createAccountButton.setStyle("-fx-background-color: #474B40;");
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -66,7 +123,8 @@ public class RegisterController implements Initializable {//Albin worked on this
         id = facade.createCustomer(firstnameTextField.getText(), setPasswordField.getText());
         idNum = id;
         num = 1;
-        System.out.println(id);
+
+        if (id != 0){
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("userMenu.fxml"));
@@ -76,10 +134,12 @@ public class RegisterController implements Initializable {//Albin worked on this
         stage.setScene(scene);
         stage.show();
 
-
-    StartApplication.facade.createCustomer(usernameTextField.getText(), setPasswordField.getText());
-
+        StartApplication.facade.createCustomer(usernameTextField.getText(), setPasswordField.getText());
+    }else{
+        warningText.setText("The password must have: \n - At least 8 characters \n - Must consist of 'a-z, A-Z, 0 -9' \n - Special character ex. '!' '&' '?' ");
     }
+
+}
 
     // Creating Variables for the account For testing purposes
     public void createAccount(){
@@ -87,8 +147,6 @@ public class RegisterController implements Initializable {//Albin worked on this
         secondName = lastnameTextField.getText();
         password = setPasswordField.getText();
         }
-
-
 
 
     //all methods below are for switching scenes, or you could say interfaces

@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -20,22 +22,30 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ProfileController extends Listener implements Initializable {//Albin Worked on this Liam worked more on this
-    public static LoginController object = new LoginController();
+public class ProfileController implements Initializable {//Albin Worked on this Liam worked more on this
+
     private Stage stage;
     private Scene scene;
+    private Customer currentCustomerUse;
 
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        currentCustomerUse = RegisterController.facade.loadCustomer(RegisterController.idNum);
+        currentFirstName.setText(currentCustomerUse.getName());
+        currentLasName.setText(currentCustomerUse.getName());//Need to get lasting here
+        currentPassword.setText(currentCustomerUse.getPassword());
     }
+
 
     private FileChooser fileChoice;
     private File filePath;
     @FXML//on interface image view = right above upload a user profile image
     private ImageView currentImage;//this is the one actually holds the image for the interface
     private Image theImage;
+
+    @FXML//on interface label = username
+    private TextField userName;
 
     @FXML//on interface Password field = Bottom left corner
     private PasswordField checkCurrentPassword;
@@ -49,16 +59,45 @@ public class ProfileController extends Listener implements Initializable {//Albi
     @FXML
     public Label currentLasName;
     @FXML
-    public Label currentUsername;
+    private Label currentID;
     @FXML
     public Label currentPassword;
 
+
+
     @FXML//on interface Text field = Right bottom corner
-    private TextField newUsername;
-    @FXML
     private TextField newFirstName;
     @FXML
     private TextField newLastName;
+
+
+    @FXML
+    private Button SignOut;
+
+    @FXML
+    private Button userMenu;
+
+    @FXML
+    private void confirmHoverInSignO() {
+        SignOut.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutSignO() {
+        SignOut.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInUser() {
+        userMenu.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutUser() {
+        userMenu.setStyle("-fx-background-color: #414D59;");
+    }
+    
+
 
     @FXML
     private void onActionChangePassword(ActionEvent event) {
@@ -81,18 +120,14 @@ public class ProfileController extends Listener implements Initializable {//Albi
         String theNewFirstName = newFirstName.getText();
         currentFirstName.setText(theNewFirstName);
         newFirstName.setText("");
+        currentCustomerUse.setName(theNewFirstName);//This is for testing purposes until can finalize it *****
     }
+
     @FXML
     void onActionChangeLastName(ActionEvent event) {
         String theNewLastName = newLastName.getText();
         currentLasName.setText(theNewLastName);
         newFirstName.setText("");
-    }
-    @FXML
-    private void onActionChangeUsername(ActionEvent event) {
-        String theNewUsername = newUsername.getText();
-        currentUsername.setText(theNewUsername);
-        newUsername.setText("");
     }
 
     @FXML//Still trying to figure out save the image
@@ -104,7 +139,6 @@ public class ProfileController extends Listener implements Initializable {//Albi
         this.filePath = fileChoice.showOpenDialog(stage);
         theImage = new Image(String.valueOf(filePath.toURI()));
         currentImage.setImage(theImage);
-
     }
 
     //all methods below are for switching scenes, or you could say interfaces

@@ -28,7 +28,6 @@ public class loginEmployeeController implements Initializable {//Liam did this
 
     }
 
-
     @FXML//on interface password field = password
     private PasswordField enterPasswordField;
 
@@ -44,6 +43,54 @@ public class loginEmployeeController implements Initializable {//Liam did this
     @FXML//On interface text field = security key
     private TextField employeeSecurityKey;
 
+    @FXML
+    private Button createAcc;
+
+    @FXML
+    private Button cancelButton;
+
+    @FXML
+    private Button mainMenu;
+
+    @FXML
+    private void confirmHoverInMain() {
+        mainMenu.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutMain() {
+        mainMenu.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInCreate() {
+        createAcc.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutCreate() {
+        createAcc.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInLogin() {
+        loginButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutLogin() {
+        loginButton.setStyle("-fx-background-color: #474B40;");
+    }
+
+    @FXML
+    private void confirmHoverInCancel() {
+        cancelButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutCancel() {
+        cancelButton.setStyle("-fx-background-color: #474B40;");
+    }
 
     @FXML//on interface button = create account
     void switchToEmployeeMenu(ActionEvent event)throws IOException {
@@ -53,7 +100,7 @@ public class loginEmployeeController implements Initializable {//Liam did this
 //System.out.println(facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText()));
         if (RegisterController.facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText())){
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("userMenu.fxml"));//Change to employer menu later
+            loader.setLocation(getClass().getResource("employeeMenu.fxml"));
             Parent root = loader.load();
             scene = new Scene(root);
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
