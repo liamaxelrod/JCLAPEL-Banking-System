@@ -30,9 +30,13 @@ public class loginEmployeeController implements Initializable {//Liam did this
 
     @FXML//on interface password field = password
     private PasswordField enterPasswordField;
+    
 
     @FXML
-    private PasswordField enterPasswordField1;
+    private PasswordField confirmPasswordField;
+
+    @FXML
+    private PasswordField setPasswordField;
 
     @FXML
     private Button loginButton;
