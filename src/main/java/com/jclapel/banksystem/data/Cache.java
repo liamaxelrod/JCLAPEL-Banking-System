@@ -47,15 +47,7 @@ public class Cache implements Serializable {
 	https://docs.mongodb.com/manual/reference/bson-types/
 	
 	*/
-	private final boolean USE_LOCAL_STORAGE = true;
-	private final String DATABASE_NAME = "test";
 	private final ConnectionString DATABASE_CONNECTION = new ConnectionString("mongodb+srv://JCLAPEL:IuXyiBQNVp40FVM8@clusterjclapel.5onkg.mongodb.net/test?authSource=admin&replicaSet=atlas-9p5bw4-shard-0&readPreference=primary&ssl=true");
-
-	private FileInputStream cacheSource;
-	private FileOutputStream cacheTarget;
-
-	private HashMap<String, Object> dataCache;
-
 	private final JsonWriterSettings jsonSettings = JsonWriterSettings.builder()
 		.int64Converter((value, writer) -> writer.writeNumber(value.toString()))
 		.build();
@@ -67,6 +59,14 @@ public class Cache implements Serializable {
 		.build();
 	
 	private Gson gson = new Gson();
+
+	private final boolean USE_LOCAL_STORAGE = true;
+	private final String DATABASE_NAME = "test";
+
+	private FileInputStream cacheSource;
+	private FileOutputStream cacheTarget;
+
+	private HashMap<String, Object> dataCache;
 
 	private void setupLocalStorage() throws Exception {
 		// Sets up the local storaging, if applicable
@@ -167,9 +167,9 @@ public class Cache implements Serializable {
 			MongoCollection<Customer> customerCollection = database.getCollection("customers", Customer.class);
 
 			Bson filter = eq("customer_id", customer.getId());
-			ReplaceOptions replaceOptions = new ReplaceOptions().upsert(true);
+			FindOneAndReplaceOptions findOneAndReplaceOptions = new FindOneAndReplaceOptions().upsert(true);
 
-			customerCollection.replaceOne(filter, customer, replaceOptions);
+			customerCollection.findOneAndReplace(filter, customer, findOneAndReplaceOptions);
 		} catch(Exception exception) {
 			exception.printStackTrace();
 		}
@@ -183,9 +183,9 @@ public class Cache implements Serializable {
 			MongoCollection<Account> accountCollection = database.getCollection("accounts", Account.class);
 
 			Bson filter = eq("account_id", account.getId());
-			ReplaceOptions replaceOptions = new ReplaceOptions().upsert(true);
+			FindOneAndReplaceOptions findOneAndReplaceOptions = new FindOneAndReplaceOptions().upsert(true);
 
-			accountCollection.replaceOne(filter, account, replaceOptions);
+			accountCollection.findOneAndReplace(filter, account, findOneAndReplaceOptions);
 		} catch(Exception exception) {
 			exception.printStackTrace();
 		}
@@ -199,9 +199,9 @@ public class Cache implements Serializable {
 			MongoCollection<Transaction> transactionCollection = database.getCollection("transactions", Transaction.class);
 
 			Bson filter = eq("transaction_id", "");
-			ReplaceOptions replaceOptions = new ReplaceOptions().upsert(true);
+			FindOneAndReplaceOptions findOneAndReplaceOptions = new FindOneAndReplaceOptions().upsert(true);
 
-			transactionCollection.replaceOne(filter, transaction, replaceOptions);
+			transactionCollection.findOneAndReplace(filter, transaction, findOneAndReplaceOptions);
 		} catch(Exception exception) {
 			exception.printStackTrace();
 		}
@@ -244,7 +244,7 @@ public class Cache implements Serializable {
 			MongoDatabase database = client.getDatabase(DATABASE_NAME);
 			
 			for (var object : collection.values()) {
-				System.out.println(object.getClass());
+				System.out.println(object.getClass().getName() + "s");
 				// MongoCollection<Document> dataCollection = database.getCollection("");			
 				// TODO: Sorting this out...
 			}
