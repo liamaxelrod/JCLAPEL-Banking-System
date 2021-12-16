@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 
 
 public class RegisterController implements Initializable {//Albin worked on this, Liam partly worked on this
-
+dhfh
 
     //For testing purposes will be removed later
     public static String firstName;

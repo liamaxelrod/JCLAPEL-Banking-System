@@ -26,8 +26,7 @@ public class loginEmployeeController implements Initializable {//Liam did this
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
-
+    }\z
     @FXML//on interface password field = password
     private PasswordField enterPasswordField;
 

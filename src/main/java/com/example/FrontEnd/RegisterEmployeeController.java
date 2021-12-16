@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 public class RegisterEmployeeController implements Initializable{ // Albin worked on this
     private Stage stage;
     private Scene scene;
-
+fggjhf
     private ObservableList<String> differentTitles = FXCollections.observableArrayList("Admin","Manager","Employee");
 
     @FXML

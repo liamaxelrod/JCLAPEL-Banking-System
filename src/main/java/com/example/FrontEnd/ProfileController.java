@@ -35,8 +35,6 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     private ImageView currentImage;//this is the one actually holds the image for the interface
     private Image theImage;
 
-
-
     @FXML//on interface Password field = Bottom left corner
     private PasswordField checkCurrentPassword;
     @FXML
@@ -48,10 +46,8 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     public Label currentFirstName;
     @FXML
     public Label currentLasName;
-
     @FXML
     private Label currentID;
-
     @FXML
     public Label currentPassword;
 
@@ -132,12 +128,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
         currentCustomerUse.setName(theNewFirstName);//This is for testing purposes until can finalize it *****
     }
 
-    @FXML
-    private void onActionChangeUsername(ActionEvent event) {
-        String theNewUsername = newUsername.getText();
-        currentID.setText(theNewUsername);
-        newUsername.setText("");
-    }
+
 
     @FXML
     void onActionChangeLastName(ActionEvent event) {
