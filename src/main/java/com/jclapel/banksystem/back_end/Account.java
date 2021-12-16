@@ -2,6 +2,8 @@ package com.jclapel.banksystem.back_end;
 
 import java.util.Stack;
 
+import org.bson.codecs.pojo.annotations.BsonProperty;
+
 public class Account {
 	/*
 
@@ -13,8 +15,10 @@ public class Account {
 
 	*/
 
+	@BsonProperty(value = "account_id")
 	private final int id;
 	private double balance;
+	@BsonProperty(value = "is_savings")
 	private final boolean isSavings;
 	private Stack<Transaction> transactions = new Stack<>();
 

@@ -3,6 +3,8 @@ package com.jclapel.banksystem.back_end;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.bson.codecs.pojo.annotations.BsonProperty;
+
 public class Customer {
 	/*
 
@@ -12,11 +14,11 @@ public class Customer {
 	Contributor(s):
 
 	*/
-
+	@BsonProperty(value = "customer_id")
 	private final int id;
 	private String name;
 	private String password;
-	private HashMap<Integer, Account> accounts = new HashMap<>();
+	private HashMap<Integer, Account> accounts = new HashMap<>(); // TODO: Considering whether a List should be used instead of a HashMap, you can get the ID from account
 
 	public Customer(int id, String name, String password) {
 		// Constructor for customer, creates a customer account with unique ID, a name and password

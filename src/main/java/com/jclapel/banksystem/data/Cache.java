@@ -3,10 +3,13 @@ package com.jclapel.banksystem.data;
 // Imports
 import com.jclapel.banksystem.back_end.*;
 
+import com.mongodb.*;
 import com.mongodb.client.*;
 import com.mongodb.client.model.*;
 import com.mongodb.client.result.*;
 import org.bson.Document;
+import org.bson.codecs.configuration.CodecRegistry;
+import org.bson.codecs.pojo.PojoCodecProvider;
 import org.bson.conversions.Bson;
 import org.bson.json.JsonWriterSettings;
 import org.bson.types.ObjectId;
@@ -27,6 +30,8 @@ import static com.mongodb.client.model.Filters.*;
 import static com.mongodb.client.model.Projections.*;
 import static com.mongodb.client.model.Sorts.*;
 import static com.mongodb.client.model.Updates.*;
+import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
+import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
 public class Cache implements Serializable {
 	/*
@@ -50,18 +55,24 @@ public class Cache implements Serializable {
 	private final boolean USE_LOCAL_STORAGE = true;
 	private final boolean USE_DATABASE = false;
 	private final String DATABASE_NAME = "test";
-	private final String DATABASE_CONNECTION = "mongodb+srv://JCLAPEL:IuXyiBQNVp40FVM8@clusterjclapel.5onkg.mongodb.net/test?authSource=admin&replicaSet=atlas-9p5bw4-shard-0&readPreference=primary&ssl=true";
-
-	private final JsonWriterSettings jsonSettings = JsonWriterSettings.builder()
-		.int64Converter((value, writer) -> writer.writeNumber(value.toString()))
-		.build();
-	
-	private Gson gson = new Gson();
+	private final ConnectionString DATABASE_CONNECTION = new ConnectionString("mongodb+srv://JCLAPEL:IuXyiBQNVp40FVM8@clusterjclapel.5onkg.mongodb.net/test?authSource=admin&replicaSet=atlas-9p5bw4-shard-0&readPreference=primary&ssl=true");
 
 	private FileInputStream cacheSource;
 	private FileOutputStream cacheTarget;
 
 	private HashMap<String, Object> dataCache;
+
+	private final JsonWriterSettings jsonSettings = JsonWriterSettings.builder()
+		.int64Converter((value, writer) -> writer.writeNumber(value.toString()))
+		.build();
+	private final CodecRegistry pojoCodecRegistry = fromProviders(PojoCodecProvider.builder().automatic(true).build());
+	private final CodecRegistry codecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), pojoCodecRegistry);
+	private final MongoClientSettings clientSettings = MongoClientSettings.builder()
+		.applyConnectionString(DATABASE_CONNECTION)
+		.codecRegistry(codecRegistry)
+		.build();
+	
+	private Gson gson = new Gson();
 
 	private Document toBSONDocument(Customer customer) {
 		// Serializes a customer object into a BSON document
@@ -109,7 +120,7 @@ public class Cache implements Serializable {
 	private Document toBSONDocument(Transaction transaction) {
 		// Serializes a transaction object into a BSON document
 		return new Document("_id", new ObjectId())
-			.append("type", "default")
+			.append("account_id", "")
 			.append("date", transaction.getDate())
 			.append("time", transaction.getTime())
 			.append("amount", transaction.getAmount());
@@ -134,64 +145,54 @@ public class Cache implements Serializable {
 		}
 	}
 
-	public void initialize() throws Exception {
+	public Cache() throws Exception {
 		// Executes initial procedure on program start
 		dataCache = new HashMap<String, Object>();
 
 		if (USE_LOCAL_STORAGE) {
 			setupLocalStorage();
 		}
-
-		if (USE_DATABASE) {
-			// setupDatabase();
-		}
 	}
 
-	public void initialize(Set<String> keySet) throws Exception {
+	public Cache(Set<String> keySet) throws Exception {
 		// Executes initial procedure on program start
 		dataCache = new HashMap<String, Object>();
 
 		if (USE_LOCAL_STORAGE) {
 			setupLocalStorage();
 		}
-
-		if (USE_DATABASE) {
-			// setupDatabase();
-		}
 	}
 
-	public void initialize(HashMap<String, Object> presetCache) throws Exception {
+	public Cache(HashMap<String, Object> presetCache) throws Exception {
 		// Executes initial procedure on program start
 		dataCache = presetCache;
 
 		if (USE_LOCAL_STORAGE) {
 			setupLocalStorage();
 		}
-
-		if (USE_DATABASE) {
-			// setupDatabase();
-		}
 	}
 	
-	public void appendData(Customer customer) {
+	public boolean appendData(Customer customer) {
 		// Creates an entry to the database for one customer
 		try {
-			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
-			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoClient client = MongoClients.create(clientSettings);
+			MongoDatabase database = client.getDatabase(DATABASE_NAME);
 			MongoCollection<Document> dataCollection = database.getCollection("customers");			
 			Document customerDocument = toBSONDocument(customer);
 
 			dataCollection.insertOne(customerDocument);
+			return true;
 		} catch(Exception exception) {
 			exception.printStackTrace();
 		}
+		return false;
 	}
 
 	public boolean appendData(Account account) {
 		// Adds new document of account to accounts collection in database
 		try {
-			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
-			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoClient client = MongoClients.create(clientSettings);
+			MongoDatabase database = client.getDatabase(DATABASE_NAME);
 			MongoCollection<Document> dataCollection = database.getCollection("accounts");			
 			Document accountDocument = toBSONDocument(account);
 
@@ -206,8 +207,8 @@ public class Cache implements Serializable {
 	public boolean appendData(Transaction transaction) {
 		// Adds new document of transaction to transactions collection in database
 		try {
-			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
-			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoClient client = MongoClients.create(clientSettings);
+			MongoDatabase database = client.getDatabase(DATABASE_NAME);
 			MongoCollection<Document> dataCollection = database.getCollection("transactions");			
 			Document transactionDocument = toBSONDocument(transaction);
 
@@ -222,8 +223,8 @@ public class Cache implements Serializable {
 	public boolean updateAll(Map<Integer, ?> collection) {
 		// Creates an entry to the database for one customer
 		try {
-			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
-			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoClient client = MongoClients.create(clientSettings);
+			MongoDatabase database = client.getDatabase(DATABASE_NAME);
 			
 			for (var object : collection.values()) {
 				System.out.println(object.getClass());
@@ -240,8 +241,8 @@ public class Cache implements Serializable {
 	public void updateData(Customer customer) {
 		// Updates object to cache
 		try {
-			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
-			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoClient client = MongoClients.create(clientSettings);
+			MongoDatabase database = client.getDatabase(DATABASE_NAME);
 			MongoCollection<Document> dataCollection = database.getCollection("customers");
 
 			Document customerDocument = toBSONDocument(customer);
@@ -257,8 +258,8 @@ public class Cache implements Serializable {
 	public void updateData(Account account) {
 		// Updates object to cache
 		try {
-			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
-			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoClient client = MongoClients.create(clientSettings);
+			MongoDatabase database = client.getDatabase(DATABASE_NAME);
 			MongoCollection<Document> dataCollection = database.getCollection("accounts");
 
 			Document accountDocument = toBSONDocument(account);
@@ -274,8 +275,8 @@ public class Cache implements Serializable {
 	public void updateData(Transaction transaction) {
 		// Updates object to cache -- WARNING: Do not use!
 		try {
-			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
-			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoClient client = MongoClients.create(clientSettings);
+			MongoDatabase database = client.getDatabase(DATABASE_NAME);
 			MongoCollection<Document> dataCollection = database.getCollection("transactions");
 
 			Document transactionDocument = toBSONDocument(transaction);
@@ -291,8 +292,8 @@ public class Cache implements Serializable {
 	public Customer getCustomerData(String customerId) {
 		// Returns customer object constructed from database
 		try {
-			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
-			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoClient client = MongoClients.create(clientSettings);
+			MongoDatabase database = client.getDatabase(DATABASE_NAME);
 			MongoCollection<Document> dataCollection = database.getCollection("customers");
 
 			Document targetDocument = dataCollection.find(new Document("customer_id", customerId)).first();
@@ -307,8 +308,8 @@ public class Cache implements Serializable {
 	public Account getAccountData(String accountId) {
 		// Returns account object constructed from database
 		try {
-			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
-			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoClient client = MongoClients.create(clientSettings);
+			MongoDatabase database = client.getDatabase(DATABASE_NAME);
 			MongoCollection<Document> dataCollection = database.getCollection("accounts");
 
 			Document targetDocument = dataCollection.find(new Document("account_id", accountId)).first();
@@ -320,30 +321,23 @@ public class Cache implements Serializable {
 		return null;
 	}
 
-	public void saveAllData() {
+	public boolean saveAllData() {
 		// Serializes and sends data to database
 		try {
-			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
-			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoClient client = MongoClients.create(clientSettings);
+			MongoDatabase database = client.getDatabase(DATABASE_NAME);
+			// MongoIterable<String> collectionNameList = database.listCollectionNames();
 			
 			MongoCollection<Document> customerCollection = database.getCollection("customers");
 			MongoCollection<Document> accountCollection = database.getCollection("accounts");
 			MongoCollection<Document> transactionsCollection = database.getCollection("transactions");
 
 			// TODO: Iterate through the cache. Insert to the collections.
+			return true;
 		} catch(Exception exception) {
 			exception.printStackTrace();
 		}
-	}
-
-	public HashMap<Integer, ?> loadDataCollection() {
-		// Deserializes inbound data acquired from database
-		// TODO: Convert the string into a map
-		return null;
-	}
-
-	public void syncData() {
-		// Synchronizes data from database to local
+		return false;
 	}
 
 	public void close() {
