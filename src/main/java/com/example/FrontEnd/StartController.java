@@ -11,12 +11,29 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class StartController extends Listener {//Albin worked on this, Liam worked partly on this
+public class StartController {//Albin worked on this, Liam worked partly on this
     private Stage stage;
     private Scene scene;
 
     @FXML
     public Button closeButton;
+
+    @FXML
+    private Button loginButton;
+
+    @FXML
+    private Button createAccount;
+
+    @FXML
+    private Button createEmployee;
+
+    @FXML
+    private Button loginEmployee;
+
+    @FXML
+    private Button manual;
+
+
 
     //all methods below are for switching scenes, or you could say interfaces
 
@@ -69,19 +86,90 @@ public class StartController extends Listener {//Albin worked on this, Liam work
 
     @FXML
     void switchToManual(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("manual.fxml"));
-        Parent root = loader.load();
-        scene = new Scene(root);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomer.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        stage = new Stage();
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
+        stage.setTitle("full manual");
+        stage.setScene(new Scene(root1));
         stage.show();
+
+        //old version
+//      FXMLLoader loader = new FXMLLoader();
+//      loader.setLocation(getClass().getResource("zManualCustomer.fxml"));
+//      Parent root = loader.load();
+//      scene = new Scene(root);
+//
+//      stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//      stage.setScene(scene);
+//      stage.show();
     }
 
     @FXML//on interface button = exit
     public void handelCloseButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+    }
+
+    //Methods to make the buttons glow
+
+    @FXML
+    private void confirmHoverInLog() {
+        loginButton.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutLog() {
+        loginButton.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInExit() {
+        closeButton.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutExit() {
+        closeButton.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInCreAcc() {
+        createAccount.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutCreAcc() {
+        createAccount.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInLogEmp() {
+        loginEmployee.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutLogEmp() {
+        loginEmployee.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInCreEmp() {
+        createEmployee.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutCreEmp() {
+        createEmployee.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInMan() {
+        manual.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutMan() {
+        manual.setStyle("-fx-background-color: #414D59;");
     }
 }

@@ -51,6 +51,15 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
 
     }
 
+
+    @FXML
+    private Button employeeLog;
+
+    @FXML
+    private Button mainMenu;
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         titleChoice.setValue("choose title");
@@ -80,5 +89,69 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML//on interface button = user menu
+    void switchToEmployeeMenu(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("employeeMenu.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    //Methods to make the buttons glow
+
+    @FXML
+    private void confirmHoverInEmployeeLog() {
+        employeeLog.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutMainMenu() {
+        mainMenu.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInMainMenu() {
+        mainMenu.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutEmployeeLog() {
+        employeeLog.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInCreAcc() {
+        createAccountButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutCreAcc() {
+        createAccountButton.setStyle("-fx-background-color: #474B40;");
+    }
+
+    @FXML
+    private void confirmHoverInCancel() {
+        cancelButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutCancel() {
+        cancelButton.setStyle("-fx-background-color: #474B40;");
+    }
+
+    @FXML
+    private void confirmHoverInCreBut() {
+        createAccountButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutCreBut() {
+        createAccountButton.setStyle("-fx-background-color: #474B40;");
     }
 }

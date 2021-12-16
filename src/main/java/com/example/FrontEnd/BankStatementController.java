@@ -17,8 +17,6 @@ public class BankStatementController {//Albin worked on this, Liam worked a litt
     private Stage stage;
     private Scene scene;
 
-
-
     @FXML//on interface button = user menu
     void switchToCustomerMenu(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -30,6 +28,7 @@ public class BankStatementController {//Albin worked on this, Liam worked a litt
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML//on interface button = bank transfer
     void switchToStart(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -41,5 +40,4 @@ public class BankStatementController {//Albin worked on this, Liam worked a litt
         stage.setScene(scene);
         stage.show();
     }
-
 }

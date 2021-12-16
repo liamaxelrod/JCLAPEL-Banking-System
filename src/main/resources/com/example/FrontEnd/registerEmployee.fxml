@@ -27,7 +27,7 @@
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                     </children>
                 </Pane>
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MAIN MENU" textFill="WHITE">
+                <Button fx:id="mainMenu" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" onMouseEntered="#confirmHoverInMainMenu" onMouseExited="#confirmHoverOutMainMenu" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Main Menu" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -35,13 +35,13 @@
                         <Insets left="50.0" />
                     </padding>
                     <font>
-                        <Font name="Arial" size="17.0" />
+                        <Font name="Arial Bold" size="17.0" />
                     </font>
                     <effect>
                         <Glow />
                     </effect>
                 </Button>
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLoginEmployee" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="EMPLOYEE LOGIN" textFill="WHITE">
+                <Button fx:id="employeeLog" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLoginEmployee" onMouseEntered="#confirmHoverInEmployeeLog" onMouseExited="#confirmHoverOutEmployeeLog" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Employee Login" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -49,7 +49,7 @@
                         <Insets left="50.0" />
                     </padding>
                     <font>
-                        <Font name="Arial" size="17.0" />
+                        <Font name="Arial Bold" size="17.0" />
                     </font>
                     <effect>
                         <Glow />
@@ -85,12 +85,12 @@
             <font>
                 <Font name="Arial" size="12.0" />
             </font></PasswordField>
-        <Button fx:id="createAccountButton" layoutX="384.0" layoutY="511.0" mnemonicParsing="false" onAction="#onActionCreateAccount" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Create Account" textFill="WHITE">
+        <Button fx:id="createAccountButton" layoutX="384.0" layoutY="511.0" mnemonicParsing="false" onAction="#switchToEmployeeMenu" onMouseEntered="#confirmHoverInCreAcc" onMouseExited="#confirmHoverOutCreAcc" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Create Account" textFill="WHITE">
             <font>
                 <Font name="Arial" size="13.0" />
             </font>
         </Button>
-        <Button fx:id="cancelButton" layoutX="384.0" layoutY="551.0" mnemonicParsing="false" onAction="#switchToStart" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Cancel" textFill="WHITE">
+        <Button fx:id="cancelButton" layoutX="384.0" layoutY="551.0" mnemonicParsing="false" onAction="#switchToStart" onMouseEntered="#confirmHoverInCancel" onMouseExited="#confirmHoverOutCancel" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Cancel" textFill="WHITE">
             <font>
                 <Font name="Arial" size="13.0" />
             </font>

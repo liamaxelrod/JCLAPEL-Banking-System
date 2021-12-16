@@ -23,7 +23,21 @@
                   </Label>
                </children>
             </Pane>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLoginCustomer" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="LOGIN" textFill="WHITE">
+            <Button fx:id="loginButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLoginCustomer" onMouseEntered="#confirmHoverInLog" onMouseExited="#confirmHoverOutLog" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="Arial Bold" size="17.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
+            <Button fx:id="createAccount" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToRegisterCustomer" onMouseEntered="#confirmHoverInCreAcc" onMouseExited="#confirmHoverOutCreAcc" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create Account" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -37,7 +51,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToRegisterCustomer" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="CREATE ACCOUNT" textFill="WHITE">
+            <Button fx:id="loginEmployee" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLoginEmployee" onMouseEntered="#confirmHoverInLogEmp" onMouseExited="#confirmHoverOutLogEmp" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login Employee" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -51,7 +65,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLoginEmployee" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="LOGIN EMPLOYEE" textFill="WHITE">
+            <Button fx:id="createEmployee" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToRegisterEmployee" onMouseEntered="#confirmHoverInCreEmp" onMouseExited="#confirmHoverOutCreEmp" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create Employee" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -65,7 +79,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="createEmployee" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToRegisterEmployee" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="CREATE EMPLOYEE" textFill="WHITE">
+            <Button fx:id="manual" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToManual" onMouseEntered="#confirmHoverInMan" onMouseExited="#confirmHoverOutMan" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Manual" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -79,21 +93,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToManual" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MANUAL" textFill="WHITE">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-               <font>
-                  <Font name="Arial" size="17.0" />
-               </font>
-               <effect>
-                  <Glow />
-               </effect>
-            </Button>
-            <Button fx:id="closeButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handelCloseButtonAction" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="EXIT" textFill="WHITE">
+            <Button fx:id="closeButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handelCloseButtonAction" onMouseEntered="#confirmHoverInExit" onMouseExited="#confirmHoverOutExit" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Exit" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

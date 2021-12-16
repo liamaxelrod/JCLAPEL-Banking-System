@@ -26,7 +26,7 @@
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                </children>
             </Pane>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MAIN MENU" textFill="WHITE">
+            <Button fx:id="mainMenu" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" onMouseEntered="#confirmHoverInMainM" onMouseExited="#confirmHoverOutMainM" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Main Menu" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -40,7 +40,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToRegisterCustomer" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="CREATE ACCOUNT" textFill="WHITE">
+            <Button fx:id="createAccount" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToRegisterCustomer" onMouseEntered="#confirmHoverInCreAcc" onMouseExited="#confirmHoverOutCreAcc" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create Account" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -75,12 +75,12 @@
          <font>
             <Font name="Arial" size="12.0" />
          </font></PasswordField>
-      <Button fx:id="loginButton" layoutX="542.0" layoutY="366.0" mnemonicParsing="false" onAction="#switchToCustomerMenu" prefHeight="26.0" prefWidth="173.0" style="-fx-background-color: #474B4D;" text="Login" textFill="WHITE">
+      <Button fx:id="loginButton" layoutX="542.0" layoutY="366.0" mnemonicParsing="false" onAction="#switchToCustomerMenu" onMouseEntered="#confirmHoverInLogin" onMouseExited="#confirmHoverOutLogin" prefHeight="26.0" prefWidth="173.0" style="-fx-background-color: #474B4D;" text="Login" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="542.0" layoutY="405.0" mnemonicParsing="false" onAction="#switchToStart" prefHeight="26.0" prefWidth="173.0" style="-fx-background-color: #474B4D;" text="Cancel" textFill="WHITE">
+      <Button fx:id="cancelButton" layoutX="542.0" layoutY="405.0" mnemonicParsing="false" onAction="#switchToStart" onMouseEntered="#confirmHoverInCancel" onMouseExited="#confirmHoverOutCancel" prefHeight="26.0" prefWidth="173.0" style="-fx-background-color: #474B4D;" text="Cancel" textFill="WHITE">
          <font>
             <Font name="Arial" size="13.0" />
          </font>

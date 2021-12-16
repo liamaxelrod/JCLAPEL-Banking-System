@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.RegisterController">
     <children>
@@ -26,7 +27,7 @@
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                     </children>
                 </Pane>
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MAIN MENU" textFill="WHITE">
+                <Button fx:id="mainMenuButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" onMouseEntered="#confirmHoverInMainMenu" onMouseExited="#confirmHoverOutMainMenu" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Main Menu" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -34,13 +35,13 @@
                         <Insets left="50.0" />
                     </padding>
                     <font>
-                        <Font name="Arial" size="17.0" />
+                        <Font name="Arial Bold" size="17.0" />
                     </font>
                     <effect>
                         <Glow />
                     </effect>
                 </Button>
-                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLoginCustomer" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="LOGIN" textFill="WHITE">
+                <Button fx:id="loginButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLoginCustomer" onMouseEntered="#confirmHoverInLogin" onMouseExited="#confirmHoverOutLogin" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -48,7 +49,7 @@
                         <Insets left="50.0" />
                     </padding>
                     <font>
-                        <Font name="Arial" size="17.0" />
+                        <Font name="Arial Bold" size="17.0" />
                     </font>
                     <effect>
                         <Glow />
@@ -71,25 +72,25 @@
          <font>
             <Font name="Arial" size="12.0" />
          </font></TextField>
-        <PasswordField fx:id="setPasswordField" layoutX="386.0" layoutY="342.0" prefHeight="26.0" prefWidth="232.0" promptText="Password">
+        <PasswordField fx:id="setPasswordField" layoutX="386.0" layoutY="350.0" prefHeight="26.0" prefWidth="232.0" promptText="Password">
          <font>
             <Font name="Arial" size="12.0" />
          </font></PasswordField>
-      <PasswordField fx:id="confirmPasswordField" layoutX="386.0" layoutY="399.0" prefHeight="26.0" prefWidth="232.0" promptText="Confirm Password">
+      <PasswordField fx:id="confirmPasswordField" layoutX="386.0" layoutY="407.0" prefHeight="26.0" prefWidth="232.0" promptText="Confirm Password">
          <font>
             <Font name="Arial" size="12.0" />
          </font></PasswordField>
-        <Button fx:id="createAccountButton" layoutX="384.0" layoutY="450.0" mnemonicParsing="false" onAction="#onActionCreateAccount" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Create Account" textFill="WHITE">
+        <Button fx:id="createAccountButton" layoutX="385.0" layoutY="501.0" mnemonicParsing="false" onAction="#onActionCreateAccount" onMouseEntered="#confirmHoverInCreAcc" onMouseExited="#confirmHoverOutCreAcc" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Create Account" textFill="WHITE">
             <font>
                 <Font name="Arial" size="13.0" />
             </font>
         </Button>
-        <Button fx:id="cancelButton" layoutX="384.0" layoutY="490.0" mnemonicParsing="false" onAction="#switchToStart" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Cancel" textFill="WHITE">
+        <Button fx:id="cancelButton" layoutX="385.0" layoutY="541.0" mnemonicParsing="false" onAction="#switchToStart" onMouseEntered="#confirmHoverInCancel" onMouseExited="#confirmHoverOutCancel" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #474B4D;" text="Cancel" textFill="WHITE">
             <font>
                 <Font name="Arial" size="13.0" />
             </font>
         </Button>
-        <Label layoutX="388.0" layoutY="322.0" text="Password">
+        <Label layoutX="388.0" layoutY="330.0" text="Password">
             <font>
                 <Font name="Arial" size="13.0" />
             </font>
@@ -116,15 +117,17 @@
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="384.0" layoutY="379.0" text="Confirm Password">
+      <Label layoutX="384.0" layoutY="387.0" text="Confirm Password">
          <font>
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="warningText" layoutX="653.0" layoutY="347.0">
+      <Label fx:id="warningText" layoutX="629.0" layoutY="347.0" textFill="RED" />
+      <Text layoutX="388.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Must contain: Minimum 8 characters, a-z, A-Z, 0-9, special character" wrappingWidth="231.9999999999999">
          <font>
-            <Font name="Arial" size="12.0" />
+            <Font name="Arial" size="13.0" />
          </font>
-      </Label>
+
+      </Text>
     </children>
 </AnchorPane>
