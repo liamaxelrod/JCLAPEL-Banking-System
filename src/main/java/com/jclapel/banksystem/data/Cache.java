@@ -1,8 +1,12 @@
 package com.jclapel.banksystem.data;
 
 // Imports
+import com.jclapel.banksystem.back_end.*;
+
 import com.mongodb.client.*;
+import com.mongodb.client.result.*;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 import java.io.FileInputStream;
@@ -15,13 +19,11 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.Stack;
-import java.util.zip.DataFormatException;
-
-import com.jclapel.banksystem.back_end.*;
 
 import static com.mongodb.client.model.Filters.*;
 import static com.mongodb.client.model.Projections.*;
 import static com.mongodb.client.model.Sorts.*;
+import static com.mongodb.client.model.Updates.*;
 
 public class Cache implements Serializable {
 	/*
@@ -76,7 +78,7 @@ public class Cache implements Serializable {
 	private Document toBSONDocument(Account account) {
 		// Serializes an account object into a BSON document
 		return new Document("_id", new ObjectId())
-			.append("type", "default")
+			.append("is_saving", account.isSavings())
 			.append("account_id", account.getId())
 			.append("balance", account.getBalance())
 			.append("transactions", getTransactionsDocumentList(account.getTransactions()));
@@ -175,6 +177,7 @@ public class Cache implements Serializable {
 				dataCollection.insertOne(customerDocument);
 			} catch(Exception exception) {
 				exception.printStackTrace();
+				// TODO: Improving error handling.
 			}
 		}
 	}
@@ -191,6 +194,7 @@ public class Cache implements Serializable {
 				dataCollection.insertOne(accountDocument);
 			} catch(Exception exception) {
 				exception.printStackTrace();
+				// TODO: Improving error handling.
 			}
 		}
 	}
@@ -207,6 +211,7 @@ public class Cache implements Serializable {
 				dataCollection.insertOne(transactionDocument);
 			} catch(Exception exception) {
 				exception.printStackTrace();
+				// TODO: Improving error handling.
 			}
 		}
 	}
@@ -218,11 +223,16 @@ public class Cache implements Serializable {
 			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
 			MongoCollection<Document> dataCollection = database.getCollection("customers");
 
-			Document targetDocument = dataCollection.find(new Document("customer_id", customer.getId())).first();
-			// TODO: Update the target document
+			Bson filter = eq("customer_id", customer.getId());
+			Bson updateName = set("name", customer.getName());
+			Bson updatePassword = set("password", customer.getPassword());
+			Bson updateAccounts = set("accounts", getAccountsDocumentList(customer.getAccounts()));
+			Bson updates = combine(updateName, updatePassword, updateAccounts);
+
+			dataCollection.updateOne(filter, updates);
 		} catch(Exception exception) {
-			// TODO: Error handling
 			exception.printStackTrace();
+			// TODO: Improving error handling.
 		}
 	}
 
@@ -233,16 +243,21 @@ public class Cache implements Serializable {
 			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
 			MongoCollection<Document> dataCollection = database.getCollection("accounts");
 
-			Document targetDocument = dataCollection.find(new Document("account_id", account.getId())).first();
-			// TODO: Update the target document
+			Bson filter = eq("account_id", account.getId());
+			// Bson updateType = set("type", account.getType()); TODO: Needs to retrieve account type.
+			Bson updateBalance = set("balance", account.getBalance());
+			Bson updateTransactions = set("transactions", getTransactionsDocumentList(account.getTransactions()));
+			Bson updates = combine(updateBalance, updateTransactions);
+			
+			dataCollection.updateOne(filter, updates);
 		} catch(Exception exception) {
-			// TODO: Error handling
 			exception.printStackTrace();
+			// TODO: Improving error handling.
 		}
 	}
 
 	public void updateData(Transaction transaction) {
-		// Updates object to cache -- WARNING: This is hard to identify!
+		// Updates object to cache -- WARNING: No identifier is associatable with the transactions, except timestamp!
 		try {
 			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
 			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
@@ -251,9 +266,28 @@ public class Cache implements Serializable {
 			Document targetDocument = dataCollection.find(new Document("", "")).first(); // TODO: How do we identify this?
 			// TODO: Update the target document
 		} catch(Exception exception) {
+			exception.printStackTrace();
+			// TODO: Improving error handling.
+		}
+	}
+
+	public Customer getData(int customerId) {
+		// Returns object from the data map from a key
+		try {
+			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
+			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoCollection<Document> dataCollection = database.getCollection("customers");
+
+			Document targetDocument = dataCollection.find(new Document("customer_id", customerId)).first();
+			Customer customer = new Customer(customerId, (String) targetDocument.get("name"), (String) targetDocument.get("password"));
+			// customer.addAccount(account); Needs to fill accounts
+			return customer;
+		} catch(Exception exception) {
 			// TODO: Error handling
 			exception.printStackTrace();
 		}
+
+		return null;
 	}
 
 	public Object getData(String collection, String identifier, String dataId) {
@@ -264,7 +298,7 @@ public class Cache implements Serializable {
 			MongoCollection<Document> dataCollection = database.getCollection(collection);
 
 			Document targetDocument = dataCollection.find(new Document(identifier, dataId)).first();
-			// TODO: Update the target document
+			return targetDocument;
 		} catch(Exception exception) {
 			// TODO: Error handling
 			exception.printStackTrace();
