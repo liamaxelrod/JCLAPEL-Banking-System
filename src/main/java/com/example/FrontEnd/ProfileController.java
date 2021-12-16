@@ -30,13 +30,6 @@ public class ProfileController implements Initializable {//Albin Worked on this 
 
 
 
-    @Override//this method takes effect when the scene is loaded
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        currentCustomerUse = RegisterController.facade.loadCustomer(RegisterController.idNum);
-        currentFirstName.setText(currentCustomerUse.getName());
-        currentLasName.setText(currentCustomerUse.getName());//Need to get lasting here
-        currentPassword.setText(currentCustomerUse.getPassword());
-    }
 
 
     private FileChooser fileChoice;
@@ -46,8 +39,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     private ImageView currentImage;//this is the one actually holds the image for the interface
     private Image theImage;
 
-    @FXML//on interface label = username
-    private TextField userName;
+
 
     @FXML//on interface Password field = Bottom left corner
     private PasswordField checkCurrentPassword;
@@ -61,34 +53,40 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     @FXML
     public Label currentLasName;
     @FXML
-
     private Label currentID;
     @FXML
-
     public Label currentPassword;
 
 
 
     @FXML//on interface Text field = Right bottom corner
-
     private Label ID;
     @FXML
-
     private TextField newFirstName;
     @FXML
     private TextField newLastName;
+
     @FXML//on interface Text field = Right bottom corner
     private TextField newUsername;
 
 
     @FXML
     private Button SignOut;
-
     @FXML
     private Button userMenu;
 
-    @FXML
-    public Label currentUsername;
+
+
+    @Override//this method takes effect when the scene is loaded
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        currentCustomerUse = RegisterController.facade.loadCustomer(RegisterController.idNum);
+        currentFirstName.setText(currentCustomerUse.getName());
+        currentLasName.setText(currentCustomerUse.getName());//Need to get lasting here
+        currentPassword.setText(currentCustomerUse.getPassword());
+
+        UserMenuController.numberID; // Consider changing and fixing
+    }
+
 
     @FXML
     private void confirmHoverInSignO() {
@@ -139,7 +137,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     @FXML
     private void onActionChangeUsername(ActionEvent event) {
         String theNewUsername = newUsername.getText();
-        currentUsername.setText(theNewUsername);
+        currentID.setText(theNewUsername);
         newUsername.setText("");
     }
 
