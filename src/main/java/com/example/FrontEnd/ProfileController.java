@@ -41,6 +41,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
 
     private FileChooser fileChoice;
     private File filePath;
+
     @FXML//on interface image view = right above upload a user profile image
     private ImageView currentImage;//this is the one actually holds the image for the interface
     private Image theImage;
