@@ -323,37 +323,25 @@ public class Cache implements Serializable {
 	public void saveAllData() {
 		// Serializes and sends data to database
 		// TODO: Send data with this string
-		if (USE_LOCAL_STORAGE) {
-			// Save data locally
-		}
+		
+		try {
+			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
+			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			
+			MongoCollection<Document> customerCollection = database.getCollection("customers");
+			MongoCollection<Document> accountCollection = database.getCollection("accounts");
+			MongoCollection<Document> transactionsCollection = database.getCollection("transactions");
 
-		if (USE_DATABASE) {
-			// Save data on database
-			try {
-				MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
-				MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
-
-				MongoCollection<Document> customerCollection = database.getCollection("customers");
-				MongoCollection<Document> accountCollection = database.getCollection("accounts");
-				MongoCollection<Document> transactionsCollection = database.getCollection("transactions");
-
-				// TODO: Iterate through the cache. Insert to the collections.
-			} catch(Exception exception) {
-				exception.printStackTrace();
-			}
+			// TODO: Iterate through the cache. Insert to the collections.
+		} catch(Exception exception) {
+			exception.printStackTrace();
 		}
 	}
 
-	public void loadData(String serializedData) {
+	public HashMap<Integer, Customer> loadDataCollection() {
 		// Deserializes inbound data acquired from database
 		// TODO: Convert the string into a map
-		if (USE_LOCAL_STORAGE) {
-			// Get data locally
-		}
-
-		if (USE_DATABASE) {
-			// Get data on database
-		}
+		return null;
 	}
 
 	public void syncData() {
