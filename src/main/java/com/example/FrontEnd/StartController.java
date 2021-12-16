@@ -34,66 +34,6 @@ public class StartController {//Albin worked on this, Liam worked partly on this
     private Button manual;
 
 
-    @FXML
-    private void confirmHoverInLog() {
-        loginButton.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutLog() {
-        loginButton.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInExit() {
-        closeButton.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutExit() {
-        closeButton.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInCreAcc() {
-        createAccount.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutCreAcc() {
-        createAccount.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInLogEmp() {
-        loginEmployee.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutLogEmp() {
-        loginEmployee.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInCreEmp() {
-        createEmployee.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutCreEmp() {
-        createEmployee.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInMan() {
-        manual.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutMan() {
-        manual.setStyle("-fx-background-color: #414D59;");
-    }
-
 
     //all methods below are for switching scenes, or you could say interfaces
 
@@ -171,5 +111,65 @@ public class StartController {//Albin worked on this, Liam worked partly on this
         stage.close();
     }
 
+    //Methods to make the buttons glow
 
+    @FXML
+    private void confirmHoverInLog() {
+        loginButton.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutLog() {
+        loginButton.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInExit() {
+        closeButton.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutExit() {
+        closeButton.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInCreAcc() {
+        createAccount.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutCreAcc() {
+        createAccount.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInLogEmp() {
+        loginEmployee.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutLogEmp() {
+        loginEmployee.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInCreEmp() {
+        createEmployee.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutCreEmp() {
+        createEmployee.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInMan() {
+        manual.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutMan() {
+        manual.setStyle("-fx-background-color: #414D59;");
+    }
 }

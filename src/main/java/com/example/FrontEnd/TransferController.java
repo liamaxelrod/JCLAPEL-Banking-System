@@ -46,25 +46,6 @@ public class TransferController implements Initializable {//Albin worked on this
     @FXML
     private Button userMenu;
 
-    @FXML
-    private void confirmHoverInSignO() {
-        SignOut.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutSignO() {
-        SignOut.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInUser() {
-        userMenu.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutUser() {
-        userMenu.setStyle("-fx-background-color: #414D59;");
-    }
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -113,4 +94,24 @@ public class TransferController implements Initializable {//Albin worked on this
         stage.show();
     }
 
+    //Methods to make the buttons glow
+    @FXML
+    private void confirmHoverInSignO() {
+        SignOut.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutSignO() {
+        SignOut.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInUser() {
+        userMenu.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutUser() {
+        userMenu.setStyle("-fx-background-color: #414D59;");
+    }
 }

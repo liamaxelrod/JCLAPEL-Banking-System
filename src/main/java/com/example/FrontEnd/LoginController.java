@@ -45,44 +45,6 @@ public class LoginController implements Initializable {//Albin worked on this mo
     @FXML
     private Button mainMenu;
 
-    @FXML
-    private void confirmHoverInCreAcc() {
-        createAccount.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutCreAcc() {
-        createAccount.setStyle("-fx-background-color: #414D59;");
-    }
-    @FXML
-    private void confirmHoverInMainM() {
-        mainMenu.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutMainM() {
-        mainMenu.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInLogin() {
-        loginButton.setStyle("-fx-background-color: #676D5E;");
-    }
-
-    @FXML
-    private void confirmHoverOutLogin() {
-        loginButton.setStyle("-fx-background-color: #474B40;");
-    }
-
-    @FXML
-    private void confirmHoverInCancel() {
-        cancelButton.setStyle("-fx-background-color: #676D5E;");
-    }
-
-    @FXML
-    private void confirmHoverOutCancel() {
-        cancelButton.setStyle("-fx-background-color: #474B40;");
-    }
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -145,4 +107,44 @@ public class LoginController implements Initializable {//Albin worked on this mo
     //usernameTextField.getText().toString().equals(RegisterController.id) Check ID
     // enterPasswordField.getText().toString().equals(RegisterController.password check password
 
+
+    //Methods to make buttons glow up
+    @FXML
+    private void confirmHoverInCreAcc() {
+        createAccount.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutCreAcc() {
+        createAccount.setStyle("-fx-background-color: #414D59;");
+    }
+    @FXML
+    private void confirmHoverInMainM() {
+        mainMenu.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutMainM() {
+        mainMenu.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInLogin() {
+        loginButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutLogin() {
+        loginButton.setStyle("-fx-background-color: #474B40;");
+    }
+
+    @FXML
+    private void confirmHoverInCancel() {
+        cancelButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutCancel() {
+        cancelButton.setStyle("-fx-background-color: #474B40;");
+    }
 }

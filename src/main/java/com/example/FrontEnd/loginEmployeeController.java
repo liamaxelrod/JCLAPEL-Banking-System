@@ -52,45 +52,7 @@ public class loginEmployeeController implements Initializable {//Liam did this
     @FXML
     private Button mainMenu;
 
-    @FXML
-    private void confirmHoverInMain() {
-        mainMenu.setStyle("-fx-background-color: #52779C;");
-    }
 
-    @FXML
-    private void confirmHoverOutMain() {
-        mainMenu.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInCreate() {
-        createAcc.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutCreate() {
-        createAcc.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInLogin() {
-        loginButton.setStyle("-fx-background-color: #676D5E;");
-    }
-
-    @FXML
-    private void confirmHoverOutLogin() {
-        loginButton.setStyle("-fx-background-color: #474B40;");
-    }
-
-    @FXML
-    private void confirmHoverInCancel() {
-        cancelButton.setStyle("-fx-background-color: #676D5E;");
-    }
-
-    @FXML
-    private void confirmHoverOutCancel() {
-        cancelButton.setStyle("-fx-background-color: #474B40;");
-    }
 
     @FXML//on interface button = create account
     void switchToEmployeeMenu(ActionEvent event)throws IOException {
@@ -134,5 +96,46 @@ public class loginEmployeeController implements Initializable {//Liam did this
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    //Methods to make buttons glow
+    @FXML
+    private void confirmHoverInMain() {
+        mainMenu.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutMain() {
+        mainMenu.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInCreate() {
+        createAcc.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutCreate() {
+        createAcc.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInLogin() {
+        loginButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutLogin() {
+        loginButton.setStyle("-fx-background-color: #474B40;");
+    }
+
+    @FXML
+    private void confirmHoverInCancel() {
+        cancelButton.setStyle("-fx-background-color: #676D5E;");
+    }
+
+    @FXML
+    private void confirmHoverOutCancel() {
+        cancelButton.setStyle("-fx-background-color: #474B40;");
     }
 }

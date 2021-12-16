@@ -89,25 +89,6 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     }
 
 
-    @FXML
-    private void confirmHoverInSignO() {
-        SignOut.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutSignO() {
-        SignOut.setStyle("-fx-background-color: #414D59;");
-    }
-
-    @FXML
-    private void confirmHoverInUser() {
-        userMenu.setStyle("-fx-background-color: #52779C;");
-    }
-
-    @FXML
-    private void confirmHoverOutUser() {
-        userMenu.setStyle("-fx-background-color: #414D59;");
-    }
     
 
 
@@ -135,12 +116,6 @@ public class ProfileController implements Initializable {//Albin Worked on this 
         currentCustomerUse.setName(theNewFirstName);//This is for testing purposes until can finalize it *****
     }
 
-    @FXML
-    private void onActionChangeUsername(ActionEvent event) {
-        String theNewUsername = newUsername.getText();
-        currentID.setText(theNewUsername);
-        newUsername.setText("");
-    }
 
     @FXML
     void onActionChangeLastName(ActionEvent event) {
@@ -183,5 +158,26 @@ public class ProfileController implements Initializable {//Albin Worked on this 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    //Methods to make buttons glow
+    @FXML
+    private void confirmHoverInSignO() {
+        SignOut.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutSignO() {
+        SignOut.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInUser() {
+        userMenu.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutUser() {
+        userMenu.setStyle("-fx-background-color: #414D59;");
     }
 }

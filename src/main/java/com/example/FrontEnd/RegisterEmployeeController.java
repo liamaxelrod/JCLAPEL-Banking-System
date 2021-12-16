@@ -59,6 +59,52 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
     private Button mainMenu;
 
 
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        titleChoice.setValue("choose title");
+        titleChoice.setItems(differentTitles);
+    }
+
+    @FXML//on interface button = main menu
+    public void switchToStart(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("start.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+    @FXML//on interface button = login
+    public void switchToLoginEmployee(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("employeeLogin.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML//on interface button = user menu
+    void switchToEmployeeMenu(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("employeeMenu.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    //Methods to make the buttons glow
+
     @FXML
     private void confirmHoverInEmployeeLog() {
         employeeLog.setStyle("-fx-background-color: #52779C;");
@@ -107,49 +153,5 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
     @FXML
     private void confirmHoverOutCreBut() {
         createAccountButton.setStyle("-fx-background-color: #474B40;");
-    }
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        titleChoice.setValue("choose title");
-        titleChoice.setItems(differentTitles);
-    }
-
-    @FXML//on interface button = main menu
-    public void switchToStart(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("start.fxml"));
-        Parent root = loader.load();
-        scene = new Scene(root);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
-
-    @FXML//on interface button = login
-    public void switchToLoginEmployee(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("employeeLogin.fxml"));
-        Parent root = loader.load();
-        scene = new Scene(root);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML//on interface button = user menu
-    void switchToEmployeeMenu(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("employeeMenu.fxml"));
-        Parent root = loader.load();
-        scene = new Scene(root);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
     }
 }
