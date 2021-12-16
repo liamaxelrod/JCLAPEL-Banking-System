@@ -4,6 +4,7 @@ package com.jclapel.banksystem.data;
 import com.jclapel.banksystem.back_end.*;
 
 import com.mongodb.client.*;
+import com.mongodb.client.model.*;
 import com.mongodb.client.result.*;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -167,52 +168,64 @@ public class Cache implements Serializable {
 	
 	public void appendData(Customer customer) {
 		// Creates an entry to the database for one customer
-		if (USE_DATABASE) {
-			try {
-				MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
-				MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
-				MongoCollection<Document> dataCollection = database.getCollection("customers");			
-				Document customerDocument = toBSONDocument(customer);
+		try {
+			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
+			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoCollection<Document> dataCollection = database.getCollection("customers");			
+			Document customerDocument = toBSONDocument(customer);
 
-				dataCollection.insertOne(customerDocument);
-			} catch(Exception exception) {
-				exception.printStackTrace();
-				// TODO: Improving error handling.
-			}
+			dataCollection.insertOne(customerDocument);
+		} catch(Exception exception) {
+			exception.printStackTrace();
+			// TODO: Improving error handling.
 		}
 	}
 
 	public void appendData(Account account) {
-		// Creates an entry to the database for one account
-		if (USE_DATABASE) {
-			try {
-				MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
-				MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
-				MongoCollection<Document> dataCollection = database.getCollection("accounts");			
-				Document accountDocument = toBSONDocument(account);
+		// Adds new document of account to accounts collection in database
+		try {
+			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
+			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoCollection<Document> dataCollection = database.getCollection("accounts");			
+			Document accountDocument = toBSONDocument(account);
 
-				dataCollection.insertOne(accountDocument);
-			} catch(Exception exception) {
-				exception.printStackTrace();
-				// TODO: Improving error handling.
-			}
+			dataCollection.insertOne(accountDocument);
+		} catch(Exception exception) {
+			exception.printStackTrace();
+			// TODO: Improving error handling.
 		}
 	}
 
 	public void appendData(Transaction transaction) {
-		// Adds object to cache TODO: UPDATE!!!
-		if (USE_DATABASE) {
-			try {
-				MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
-				MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
-				MongoCollection<Document> dataCollection = database.getCollection("transactions");			
-				Document transactionDocument = toBSONDocument(transaction);
+		// Adds new document of transaction to transactions collection in database
+		try {
+			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
+			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoCollection<Document> dataCollection = database.getCollection("transactions");			
+			Document transactionDocument = toBSONDocument(transaction);
 
-				dataCollection.insertOne(transactionDocument);
-			} catch(Exception exception) {
-				exception.printStackTrace();
-				// TODO: Improving error handling.
+			dataCollection.insertOne(transactionDocument);
+		} catch(Exception exception) {
+			exception.printStackTrace();
+			// TODO: Improving error handling.
+		}
+	}
+
+	public boolean updateAll(Map<Integer, ?> collection) {
+		// Creates an entry to the database for one customer
+		try {
+			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
+			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+			MongoCollection<Document> dataCollection = database.getCollection("customers");			
+			for (var object : collection.values()) {
+				// TODO: Sorting this out...
 			}
+			return true;
+		} catch(Exception exception) {
+			exception.printStackTrace();
+			// TODO: Improving error handling.
+
+			return false;
 		}
 	}
 
@@ -223,13 +236,11 @@ public class Cache implements Serializable {
 			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
 			MongoCollection<Document> dataCollection = database.getCollection("customers");
 
+			Document customerDocument = toBSONDocument(customer);
 			Bson filter = eq("customer_id", customer.getId());
-			Bson updateName = set("name", customer.getName());
-			Bson updatePassword = set("password", customer.getPassword());
-			Bson updateAccounts = set("accounts", getAccountsDocumentList(customer.getAccounts()));
-			Bson updates = combine(updateName, updatePassword, updateAccounts);
+			ReplaceOptions replaceOptions = new ReplaceOptions().upsert(true);
 
-			dataCollection.updateOne(filter, updates);
+			dataCollection.replaceOne(filter, customerDocument, replaceOptions);
 		} catch(Exception exception) {
 			exception.printStackTrace();
 			// TODO: Improving error handling.
@@ -243,13 +254,11 @@ public class Cache implements Serializable {
 			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
 			MongoCollection<Document> dataCollection = database.getCollection("accounts");
 
+			Document accountDocument = toBSONDocument(account);
 			Bson filter = eq("account_id", account.getId());
-			// Bson updateType = set("type", account.getType()); TODO: Needs to retrieve account type.
-			Bson updateBalance = set("balance", account.getBalance());
-			Bson updateTransactions = set("transactions", getTransactionsDocumentList(account.getTransactions()));
-			Bson updates = combine(updateBalance, updateTransactions);
-			
-			dataCollection.updateOne(filter, updates);
+			ReplaceOptions replaceOptions = new ReplaceOptions().upsert(true);
+
+			dataCollection.replaceOne(filter, accountDocument, replaceOptions);
 		} catch(Exception exception) {
 			exception.printStackTrace();
 			// TODO: Improving error handling.
@@ -263,8 +272,11 @@ public class Cache implements Serializable {
 			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
 			MongoCollection<Document> dataCollection = database.getCollection("transactions");
 
-			Document targetDocument = dataCollection.find(new Document("", "")).first(); // TODO: How do we identify this?
-			// TODO: Update the target document
+			Document transactionDocument = toBSONDocument(transaction);
+			Bson filter = eq("transaction_id", "");
+			ReplaceOptions replaceOptions = new ReplaceOptions().upsert(true);
+
+			dataCollection.replaceOne(filter, transactionDocument, replaceOptions);
 		} catch(Exception exception) {
 			exception.printStackTrace();
 			// TODO: Improving error handling.
