@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,9 +23,20 @@ import java.util.ResourceBundle;
 
 public class ProfileController implements Initializable {//Albin Worked on this Liam worked more on this
 
-    public static LoginController object = new LoginController();
     private Stage stage;
     private Scene scene;
+    private Customer currentCustomerUse;
+
+
+
+    @Override//this method takes effect when the scene is loaded
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        currentCustomerUse = RegisterController.facade.loadCustomer(RegisterController.idNum);
+        currentFirstName.setText(currentCustomerUse.getName());
+        currentLasName.setText(currentCustomerUse.getName());//Need to get lasting here
+        currentPassword.setText(currentCustomerUse.getPassword());
+    }
+
 
     private FileChooser fileChoice;
     private File filePath;
@@ -44,20 +56,22 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     @FXML
     public Label currentLasName;
     @FXML
+
+    private Label currentID;
+    @FXML
+
     public Label currentPassword;
 
+
+
     @FXML//on interface Text field = Right bottom corner
+
     private Label ID;
     @FXML
+
     private TextField newFirstName;
     @FXML
     private TextField newLastName;
-
-
-    @Override//this method takes effect when the scene is loaded
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
 
     @FXML
     private void onActionChangePassword(ActionEvent event) {
@@ -80,7 +94,9 @@ public class ProfileController implements Initializable {//Albin Worked on this 
         String theNewFirstName = newFirstName.getText();
         currentFirstName.setText(theNewFirstName);
         newFirstName.setText("");
+        currentCustomerUse.setName(theNewFirstName);//This is for testing purposes until can finalize it *****
     }
+
     @FXML
     void onActionChangeLastName(ActionEvent event) {
         String theNewLastName = newLastName.getText();
@@ -97,7 +113,6 @@ public class ProfileController implements Initializable {//Albin Worked on this 
         this.filePath = fileChoice.showOpenDialog(stage);
         theImage = new Image(String.valueOf(filePath.toURI()));
         currentImage.setImage(theImage);
-
     }
 
     //all methods below are for switching scenes, or you could say interfaces

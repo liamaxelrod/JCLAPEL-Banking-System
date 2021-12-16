@@ -37,6 +37,9 @@ public class RegisterController implements Initializable {//Albin worked on this
     private Stage stage;
     private Scene scene;
 
+    @FXML
+    private Label warningText;
+
     @FXML//on interface password field = confirm password
     private PasswordField confirmPasswordField;
 
@@ -66,7 +69,8 @@ public class RegisterController implements Initializable {//Albin worked on this
         id = facade.createCustomer(firstnameTextField.getText(), setPasswordField.getText());
         idNum = id;
         num = 1;
-        System.out.println(id);
+
+        if (id != 0){
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("userMenu.fxml"));
@@ -76,10 +80,12 @@ public class RegisterController implements Initializable {//Albin worked on this
         stage.setScene(scene);
         stage.show();
 
-
-    StartApplication.facade.createCustomer(usernameTextField.getText(), setPasswordField.getText());
-
+        StartApplication.facade.createCustomer(usernameTextField.getText(), setPasswordField.getText());
+    }else{
+        warningText.setText("The password is incorrect");
     }
+
+}
 
     // Creating Variables for the account For testing purposes
     public void createAccount(){

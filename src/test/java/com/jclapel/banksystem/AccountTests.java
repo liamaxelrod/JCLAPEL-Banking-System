@@ -63,10 +63,10 @@ public class AccountTests { //By Erik Lindmaa
     public void checkIfAccountExists(){
         //given
         int accountID = facade.createAccount(ID);
+        HashMap<Integer, Account> facadeAccounts = johnSmith.getAccounts();
+        Account testAccount = facadeAccounts.get(accountID);
         //then
-        boolean testAccount = facade.CheckIfAccountExists(accountID);
-
-        assertThat(!testAccount);
+        facade.CheckIfAccountExists(accountID);
         assertThat(testAccount);
 
     }

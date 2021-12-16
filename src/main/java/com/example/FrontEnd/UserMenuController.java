@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,7 @@ public class UserMenuController implements Initializable {//Liam was most respon
     private Stage stage;
     private Scene scene;
 
+
     @FXML//on interface button = exit
     private Button closeButton;
 
@@ -34,7 +36,7 @@ public class UserMenuController implements Initializable {//Liam was most respon
 
 
     @FXML//on interface label = next to name:
-    private Label fullRealName;
+    private String fullRealName;
 
     @FXML//on interface label = bottom left corner
     private Label CheckingTotal;
@@ -44,8 +46,12 @@ public class UserMenuController implements Initializable {//Liam was most respon
     private Label SavingTotal;
 
 
+    @FXML
+    private Label fullName;
+
     @FXML//on interface text field = username
-    private TextField usernameTextField;
+    private int usernameTextField;
+
 
 
     @Override//this method takes effect when the scene is loaded
@@ -56,6 +62,8 @@ public class UserMenuController implements Initializable {//Liam was most respon
         }else{
             userName.setText(String.valueOf(LoginController.logNum));
         }
+        String name = (RegisterController.facade.loadCustomer(Integer.parseInt(userName.getText())).getName());
+        fullName.setText(name);
     }
 
     ////all methods below are for switching scenes, or you could say interfaces
@@ -111,13 +119,12 @@ public class UserMenuController implements Initializable {//Liam was most respon
     }
     @FXML
     void switchToManual(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("manual.fxml"));
-        Parent root = loader.load();
-        scene = new Scene(root);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomer.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        stage = new Stage();
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
+        stage.setTitle("full manual");
+        stage.setScene(new Scene(root1));
         stage.show();
     }
 
@@ -125,7 +132,6 @@ public class UserMenuController implements Initializable {//Liam was most respon
     void handelCloseButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
-
     }
 
 

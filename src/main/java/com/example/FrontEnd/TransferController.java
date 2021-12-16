@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TransferController extends Listener implements Initializable {//Albin worked on this, Liam worked partly on this
+public class TransferController implements Initializable {//Albin worked on this, Liam worked partly on this
     private Stage stage;
     private Scene scene;
 
@@ -46,6 +46,8 @@ public class TransferController extends Listener implements Initializable {//Alb
 
         toAccount.setValue("choose account");
         toAccount.setItems(differentAccounts);
+
+
     }
 
     @FXML//on interface button = total

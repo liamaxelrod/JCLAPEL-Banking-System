@@ -56,7 +56,7 @@ public class TransferTests {
 
         assertThat(account1.getBalance()).isEqualTo(990);
 
-        assertThat(account1.getTransactions().get(0).getAmount()).isEqualTo(990);
+        assertThat(account1.getTransactions().get(0).getAmount()).isEqualTo(990); //Checking whether the first transaction has the correct amount
     } // By Erik Lindmaa
 
     @Test

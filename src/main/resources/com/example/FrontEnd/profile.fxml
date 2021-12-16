@@ -143,7 +143,11 @@
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
+<<<<<<< HEAD
                         <Label alignment="CENTER" layoutX="311.0" layoutY="1.0" prefHeight="26.0" prefWidth="290.0" text="Change First name">
+=======
+                        <Label alignment="CENTER" layoutX="305.0" layoutY="76.0" prefHeight="26.0" prefWidth="290.0" text="Change First name">
+>>>>>>> 358fb283548665d7f89cb03ccdd69e212c2efd39
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
@@ -173,7 +177,11 @@
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
+<<<<<<< HEAD
                         <Label layoutY="59.0" prefHeight="26.0" prefWidth="150.0" text="ID">
+=======
+                        <Label layoutY="59.0" prefHeight="26.0" prefWidth="150.0" text="Current ID">
+>>>>>>> 358fb283548665d7f89cb03ccdd69e212c2efd39
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
@@ -188,7 +196,11 @@
                               <Font name="Arial Bold" size="17.0" />
                            </font>
                         </Label>
+<<<<<<< HEAD
                         <Label layoutX="160.0" layoutY="59.0" prefHeight="26.0" prefWidth="140.0" text="ID">
+=======
+                        <Label fx:id="currentID" layoutX="160.0" layoutY="59.0" prefHeight="26.0" prefWidth="140.0" text="jason">
+>>>>>>> 358fb283548665d7f89cb03ccdd69e212c2efd39
                            <font>
                               <Font name="Arial Bold" size="17.0" />
                            </font>
