@@ -26,11 +26,9 @@ public class ProfileController extends Listener implements Initializable {//Albi
     private Stage stage;
     private Scene scene;
 
-
-
-
     private FileChooser fileChoice;
     private File filePath;
+
     @FXML//on interface image view = right above upload a user profile image
     private ImageView currentImage;//this is the one actually holds the image for the interface
     private Image theImage;
