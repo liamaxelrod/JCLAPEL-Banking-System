@@ -8,7 +8,9 @@ import com.mongodb.client.model.*;
 import com.mongodb.client.result.*;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.bson.json.JsonWriterSettings;
 import org.bson.types.ObjectId;
+import com.google.gson.Gson;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -50,6 +52,12 @@ public class Cache implements Serializable {
 	private final String DATABASE_NAME = "test";
 	private final String DATABASE_CONNECTION = "mongodb+srv://JCLAPEL:IuXyiBQNVp40FVM8@clusterjclapel.5onkg.mongodb.net/test?authSource=admin&replicaSet=atlas-9p5bw4-shard-0&readPreference=primary&ssl=true";
 
+	private final JsonWriterSettings jsonSettings = JsonWriterSettings.builder()
+		.int64Converter((value, writer) -> writer.writeNumber(value.toString()))
+		.build();
+	
+	private Gson gson = new Gson();
+
 	private FileInputStream cacheSource;
 	private FileOutputStream cacheTarget;
 
@@ -69,7 +77,6 @@ public class Cache implements Serializable {
 		List<Document> accountsDocumentList = new ArrayList<Document>();
 
 		for (Account account : accounts.values()) {
-			// TODO: isSavings needs to redefined, could it possibly be more than 1 type? Also transactions.
 			accountsDocumentList.add(new Document("account_id", account.getId()));
 		}
 
@@ -177,11 +184,10 @@ public class Cache implements Serializable {
 			dataCollection.insertOne(customerDocument);
 		} catch(Exception exception) {
 			exception.printStackTrace();
-			// TODO: Improving error handling.
 		}
 	}
 
-	public void appendData(Account account) {
+	public boolean appendData(Account account) {
 		// Adds new document of account to accounts collection in database
 		try {
 			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
@@ -190,13 +196,14 @@ public class Cache implements Serializable {
 			Document accountDocument = toBSONDocument(account);
 
 			dataCollection.insertOne(accountDocument);
+			return true;
 		} catch(Exception exception) {
 			exception.printStackTrace();
-			// TODO: Improving error handling.
 		}
+		return false;
 	}
 
-	public void appendData(Transaction transaction) {
+	public boolean appendData(Transaction transaction) {
 		// Adds new document of transaction to transactions collection in database
 		try {
 			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
@@ -205,10 +212,11 @@ public class Cache implements Serializable {
 			Document transactionDocument = toBSONDocument(transaction);
 
 			dataCollection.insertOne(transactionDocument);
+			return true;
 		} catch(Exception exception) {
 			exception.printStackTrace();
-			// TODO: Improving error handling.
 		}
+		return false;
 	}
 
 	public boolean updateAll(Map<Integer, ?> collection) {
@@ -218,16 +226,15 @@ public class Cache implements Serializable {
 			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
 			
 			for (var object : collection.values()) {
-				MongoCollection<Document> dataCollection = database.getCollection("");			
+				System.out.println(object.getClass());
+				// MongoCollection<Document> dataCollection = database.getCollection("");			
 				// TODO: Sorting this out...
 			}
 			return true;
 		} catch(Exception exception) {
 			exception.printStackTrace();
-			// TODO: Improving error handling.
-
-			return false;
 		}
+		return false;
 	}
 
 	public void updateData(Customer customer) {
@@ -244,7 +251,6 @@ public class Cache implements Serializable {
 			dataCollection.replaceOne(filter, customerDocument, replaceOptions);
 		} catch(Exception exception) {
 			exception.printStackTrace();
-			// TODO: Improving error handling.
 		}
 	}
 
@@ -262,12 +268,11 @@ public class Cache implements Serializable {
 			dataCollection.replaceOne(filter, accountDocument, replaceOptions);
 		} catch(Exception exception) {
 			exception.printStackTrace();
-			// TODO: Improving error handling.
 		}
 	}
 
 	public void updateData(Transaction transaction) {
-		// Updates object to cache -- WARNING: No identifier is associatable with the transactions, except timestamp!
+		// Updates object to cache -- WARNING: Do not use!
 		try {
 			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
 			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
@@ -280,50 +285,43 @@ public class Cache implements Serializable {
 			dataCollection.replaceOne(filter, transactionDocument, replaceOptions);
 		} catch(Exception exception) {
 			exception.printStackTrace();
-			// TODO: Improving error handling.
 		}
 	}
 
-	public Customer getData(int customerId) {
-		// Returns object from the data map from a key
+	public Customer getCustomerData(String customerId) {
+		// Returns customer object constructed from database
 		try {
 			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
 			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
 			MongoCollection<Document> dataCollection = database.getCollection("customers");
 
 			Document targetDocument = dataCollection.find(new Document("customer_id", customerId)).first();
-			Customer customer = new Customer(customerId, (String) targetDocument.get("name"), (String) targetDocument.get("password"));
-			// customer.addAccount(account); Needs to fill accounts
+			Customer customer = gson.fromJson(targetDocument.toJson(jsonSettings), Customer.class);
 			return customer;
 		} catch(Exception exception) {
-			// TODO: Error handling
 			exception.printStackTrace();
 		}
-
 		return null;
 	}
 
-	public Object getData(String collection, String identifier, String dataId) {
-		// Returns object from the data map from a key
+	public Account getAccountData(String accountId) {
+		// Returns account object constructed from database
 		try {
 			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
 			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
-			MongoCollection<Document> dataCollection = database.getCollection(collection);
+			MongoCollection<Document> dataCollection = database.getCollection("accounts");
 
-			Document targetDocument = dataCollection.find(new Document(identifier, dataId)).first();
-			return targetDocument;
+			Document targetDocument = dataCollection.find(new Document("account_id", accountId)).first();
+			Account account = gson.fromJson(targetDocument.toJson(jsonSettings), Account.class);
+			return account;
 		} catch(Exception exception) {
-			// TODO: Error handling
 			exception.printStackTrace();
 		}
-
 		return null;
 	}
 
 	public void saveAllData() {
 		// Serializes and sends data to database
-		// TODO: Send data with this string
-		
 		try {
 			MongoClient mongoClient = MongoClients.create(DATABASE_CONNECTION);
 			MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
@@ -338,7 +336,7 @@ public class Cache implements Serializable {
 		}
 	}
 
-	public HashMap<Integer, Customer> loadDataCollection() {
+	public HashMap<Integer, ?> loadDataCollection() {
 		// Deserializes inbound data acquired from database
 		// TODO: Convert the string into a map
 		return null;
