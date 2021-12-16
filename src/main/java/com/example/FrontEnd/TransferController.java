@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -38,6 +39,32 @@ public class TransferController extends Listener implements Initializable {//Alb
 
     @FXML//on interface text field = below to account
     private TextField transferAmount;
+
+    @FXML
+    private Button SignOut;
+
+    @FXML
+    private Button userMenu;
+
+    @FXML
+    private void confirmHoverInSignO() {
+        SignOut.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutSignO() {
+        SignOut.setStyle("-fx-background-color: #414D59;");
+    }
+
+    @FXML
+    private void confirmHoverInUser() {
+        userMenu.setStyle("-fx-background-color: #52779C;");
+    }
+
+    @FXML
+    private void confirmHoverOutUser() {
+        userMenu.setStyle("-fx-background-color: #414D59;");
+    }
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
