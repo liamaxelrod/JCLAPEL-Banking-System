@@ -27,6 +27,9 @@ public class LoginController implements Initializable {//Albin worked on this mo
     private PasswordField enterPasswordField;
 
     @FXML//on interface text field = username
+    private TextField IDTextField;
+
+    @FXML
     private TextField usernameTextField;
 
 
@@ -129,6 +132,7 @@ public class LoginController implements Initializable {//Albin worked on this mo
         logNum = usernameTextField.getText();
         //System.out.println(facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText()));
         if (RegisterController.facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText())){
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("userMenu.fxml"));
             Parent root = loader.load();

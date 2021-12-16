@@ -29,6 +29,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     private Customer currentCustomerUse;
 
 
+
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
         currentCustomerUse = RegisterController.facade.loadCustomer(RegisterController.idNum);
@@ -59,16 +60,24 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     @FXML
     public Label currentLasName;
     @FXML
+
     private Label currentID;
     @FXML
+
     public Label currentPassword;
 
 
 
     @FXML//on interface Text field = Right bottom corner
+
+    private Label ID;
+    @FXML
+
     private TextField newFirstName;
     @FXML
     private TextField newLastName;
+    @FXML//on interface Text field = Right bottom corner
+    private TextField newUsername;
 
 
     @FXML
@@ -76,6 +85,9 @@ public class ProfileController implements Initializable {//Albin Worked on this 
 
     @FXML
     private Button userMenu;
+
+    @FXML
+    public Label currentUsername;
 
     @FXML
     private void confirmHoverInSignO() {
@@ -124,6 +136,13 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     }
 
     @FXML
+    private void onActionChangeUsername(ActionEvent event) {
+        String theNewUsername = newUsername.getText();
+        currentUsername.setText(theNewUsername);
+        newUsername.setText("");
+    }
+
+    @FXML
     void onActionChangeLastName(ActionEvent event) {
         String theNewLastName = newLastName.getText();
         currentLasName.setText(theNewLastName);
@@ -165,5 +184,4 @@ public class ProfileController implements Initializable {//Albin Worked on this 
         stage.setScene(scene);
         stage.show();
     }
-
 }

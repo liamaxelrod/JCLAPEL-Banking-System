@@ -18,10 +18,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
-
-
 public class UserMenuController implements Initializable {//Liam was most responsible for this, Albin Worked on this
+
 
     private Stage stage;
     private Scene scene;
@@ -39,6 +37,7 @@ public class UserMenuController implements Initializable {//Liam was most respon
     @FXML//on interface label = username
     private TextField userName;
 
+
     @FXML//on interface label = next to name:
     private String fullRealName;
 
@@ -48,6 +47,7 @@ public class UserMenuController implements Initializable {//Liam was most respon
     private Label OtherTotal;
     @FXML
     private Label SavingTotal;
+
 
     @FXML
     private Label fullName;
@@ -233,7 +233,7 @@ public class UserMenuController implements Initializable {//Liam was most respon
     }
     @FXML
     void switchToManual(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("manual.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomer.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         stage = new Stage();
 
@@ -246,7 +246,6 @@ public class UserMenuController implements Initializable {//Liam was most respon
     void handelCloseButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
-
     }
 
 

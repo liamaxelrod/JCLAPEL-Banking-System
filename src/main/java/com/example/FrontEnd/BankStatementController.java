@@ -17,7 +17,17 @@ public class BankStatementController {//Albin worked on this, Liam worked a litt
     private Stage stage;
     private Scene scene;
 
+    @FXML//on interface button = user menu
+    void switchToCustomerMenu(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("userMenu.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
 
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML//on interface button = user menu
     void switchToEmployeeMenu(ActionEvent event) throws IOException {

@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class StartController extends Listener {//Albin worked on this, Liam worked partly on this
+public class StartController {//Albin worked on this, Liam worked partly on this
     private Stage stage;
     private Scene scene;
 
@@ -146,7 +146,7 @@ public class StartController extends Listener {//Albin worked on this, Liam work
 
     @FXML
     void switchToManual(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("manual.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomer.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         stage = new Stage();
 
@@ -156,7 +156,7 @@ public class StartController extends Listener {//Albin worked on this, Liam work
 
         //old version
 //      FXMLLoader loader = new FXMLLoader();
-//      loader.setLocation(getClass().getResource("manual.fxml"));
+//      loader.setLocation(getClass().getResource("zManualCustomer.fxml"));
 //      Parent root = loader.load();
 //      scene = new Scene(root);
 //
