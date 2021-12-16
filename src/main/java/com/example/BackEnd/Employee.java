@@ -1,6 +1,9 @@
 package com.example.BackEnd;
 
 import java.util.HashMap;
+import java.util.Stack;
+
+import static com.example.FrontEnd.StartApplication.facade;
 
 public class Employee {
     private final int ID;
@@ -11,14 +14,6 @@ public class Employee {
         this.ID=ID;
         this.name=name;
 
-    }
-
-    public Transaction[] viewCustomerInfo(int customerId){
-        Transaction[] latestTransactions = new Transaction[10];
-        // see customer id, and the last 10 transaction
-
-
-        return  latestTransactions;
     }
 
     public int getID() {
