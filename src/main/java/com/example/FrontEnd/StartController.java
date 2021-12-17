@@ -3,6 +3,7 @@ package com.example.FrontEnd;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,10 +11,14 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class StartController {//Albin worked on this, Liam worked partly on this
     private Stage stage;
     private Scene scene;
+
 
     @FXML
     public Button closeButton;
@@ -32,7 +37,6 @@ public class StartController {//Albin worked on this, Liam worked partly on this
 
     @FXML
     private Button manual;
-
 
 
     //all methods below are for switching scenes, or you could say interfaces
@@ -172,4 +176,5 @@ public class StartController {//Albin worked on this, Liam worked partly on this
     private void confirmHoverOutMan() {
         manual.setStyle("-fx-background-color: #414D59;");
     }
+
 }

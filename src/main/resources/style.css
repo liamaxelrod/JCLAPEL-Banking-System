@@ -1,0 +1,30 @@
+.root1{
+    -fx-background-image: url("com/example/FrontEnd/image/business.png");
+}
+
+.backgroundColor{
+    -fx-background-color: linear-gradient(to left, #215E9B, #FFFFFF);
+}
+
+.backgroundColor4{
+    -fx-background-color: linear-gradient(to top, #FFFFFF, #3F5869);
+}
+
+.p1{
+    -fx-font-family: Garamond;
+    -fx-font-size: 40;
+}
+.p2{
+     -fx-font-family: Garamond;
+     -fx-font-size: 15;
+ }
+.p3{
+    -fx-font-family: Garamond;
+    -fx-font-size: 25;
+}
+.backgroundColor1{
+    -fx-background-color: linear-gradient(to right, #FFFFFF, #3F5869);
+}
+.backgroundColor2{
+    -fx-background-color: #FFFFFF;
+}

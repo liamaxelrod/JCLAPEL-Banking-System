@@ -1,3 +1,4 @@
+/*
 package com.example.BackEnd;
 
 public class AdminReport extends ManagerReport {
@@ -6,11 +7,5 @@ public class AdminReport extends ManagerReport {
 
 
 
-
-
-
-
-
-
-
 }
+*/
