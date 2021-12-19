@@ -99,20 +99,6 @@
                                         <Glow />
                                     </effect>
                                 </Button>
-                                <Button fx:id="switchintCAMButton" alignment="BASELINE_LEFT" layoutY="359.0" mnemonicParsing="false" onAction="#switchToManualCreateAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create account manual " textFill="WHITE">
-                                    <opaqueInsets>
-                                        <Insets />
-                                    </opaqueInsets>
-                                    <padding>
-                                        <Insets left="50.0" />
-                                    </padding>
-                                    <font>
-                                        <Font name="Arial Bold" size="17.0" />
-                                    </font>
-                                    <effect>
-                                        <Glow />
-                                    </effect>
-                                </Button>
                                 <Button fx:id="switchintLMButton" alignment="BASELINE_LEFT" layoutY="414.0" mnemonicParsing="false" onAction="#switchToManualLogin" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login manual " textFill="WHITE">
                                     <opaqueInsets>
                                         <Insets />
@@ -218,20 +204,6 @@
                                                 <Glow />
                                             </effect>
                                         </Button>
-                                        <Button fx:id="openCAMButton" alignment="BASELINE_LEFT" layoutY="358.0" mnemonicParsing="false" onAction="#OpenToManualCreateAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create account manual " textFill="WHITE">
-                                            <opaqueInsets>
-                                                <Insets />
-                                            </opaqueInsets>
-                                            <padding>
-                                                <Insets left="50.0" />
-                                            </padding>
-                                            <font>
-                                                <Font name="Arial Bold" size="17.0" />
-                                            </font>
-                                            <effect>
-                                                <Glow />
-                                            </effect>
-                                        </Button>
                                         <Button fx:id="openLMButton" alignment="BASELINE_LEFT" layoutY="413.0" mnemonicParsing="false" onAction="#OpenToManualLogin" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login manual " textFill="WHITE">
                                             <opaqueInsets>
                                                 <Insets />
@@ -275,7 +247,7 @@
         </VBox>
         <Pane layoutX="336.0" prefHeight="112.0" prefWidth="604.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label layoutX="57.0" layoutY="40.0" prefHeight="32.0" prefWidth="507.0" text="The user manual for your convenience" textAlignment="CENTER" textFill="WHITE">
+                <Label layoutX="57.0" layoutY="40.0" prefHeight="32.0" prefWidth="507.0" text="The user manual for create account" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="Arial Bold" size="27.0" />
                     </font>

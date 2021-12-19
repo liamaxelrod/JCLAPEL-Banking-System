@@ -132,20 +132,6 @@
                                         <Font name="Arial Bold" size="20.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="switchintMMMButton" alignment="BASELINE_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#switchToManualMainMenu" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Main menu manual " textFill="WHITE">
-                                    <opaqueInsets>
-                                        <Insets />
-                                    </opaqueInsets>
-                                    <padding>
-                                        <Insets left="50.0" />
-                                    </padding>
-                                    <font>
-                                        <Font name="Arial Bold" size="17.0" />
-                                    </font>
-                                    <effect>
-                                        <Glow />
-                                    </effect>
-                                </Button>
                                 <AnchorPane layoutY="469.0" prefHeight="459.0" prefWidth="304.0" style="-fx-background-color: #414D59;">
                                     <children>
                                         <Button fx:id="openUMButton" alignment="BASELINE_LEFT" layoutY="83.0" mnemonicParsing="false" onAction="#OpenToManualUser" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="User manual " textFill="WHITE">
@@ -251,20 +237,6 @@
                                                 <Font name="Arial Bold" size="20.0" />
                                             </font>
                                         </Label>
-                                        <Button fx:id="openMMMButton" alignment="BASELINE_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#OpenToManualMainMenu" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Main menu manual " textFill="WHITE">
-                                            <opaqueInsets>
-                                                <Insets />
-                                            </opaqueInsets>
-                                            <padding>
-                                                <Insets left="50.0" />
-                                            </padding>
-                                            <font>
-                                                <Font name="Arial Bold" size="17.0" />
-                                            </font>
-                                            <effect>
-                                                <Glow />
-                                            </effect>
-                                        </Button>
                                     </children>
                                 </AnchorPane>
                             </children>
@@ -275,7 +247,7 @@
         </VBox>
         <Pane layoutX="336.0" prefHeight="112.0" prefWidth="604.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label layoutX="57.0" layoutY="40.0" prefHeight="32.0" prefWidth="507.0" text="The user manual for your convenience" textAlignment="CENTER" textFill="WHITE">
+                <Label layoutX="57.0" layoutY="40.0" prefHeight="32.0" prefWidth="507.0" text="The user manual for main menu" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="Arial Bold" size="27.0" />
                     </font>
