@@ -1,4 +1,4 @@
-/*
+
 package com.example.BackEnd;
 
 public class Admin extends Employee {
@@ -6,4 +6,4 @@ public class Admin extends Employee {
         super(ID,name, password);
     }
 }
-*/
+
