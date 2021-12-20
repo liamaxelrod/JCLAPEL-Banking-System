@@ -1,10 +1,9 @@
 package com.example.FrontEnd;
 
-import com.example.BackEnd.Facade;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,92 +14,69 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 
-public class RegisterController implements Initializable {//Albin worked on this, Liam partly worked on this
-//
+public class RegisterController {//Albin worked on this, Liam partly worked on this
 
-    //For testing purposes will be removed later
-    public static String firstName;
-    public static String secondName;
-    public static int iD;
-
-    public static String password;
-    public static double money = 10000.00;
-    public static int idNum;
-    public int id;
-    public static int num;
-
-    static Facade facade = new Facade();
 
     private Stage stage;
     private Scene scene;
 
-    @FXML
-    private Label warningText;
-
-    @FXML//on interface password field = confirm password
-    private PasswordField confirmPasswordField;
-
-    @FXML//on interface text field = Firstname
+    @FXML//on interface text field = First and last name
     private TextField firstnameTextField;
-
-    @FXML//on interface text field = Lastname
+    @FXML
     private TextField lastnameTextField;
 
-    @FXML//on interface password field = password
+    @FXML//on interface password field = confirm password
     private PasswordField setPasswordField;
+    @FXML
+    private PasswordField confirmPasswordField;
 
-    @FXML//on interface text field = username
-    private TextField usernameTextField;
+    @FXML//On the interface = pops up if you put in the wrong thing
+    private Label warningText;
 
-  //  @FXML
-//    private Label idNum;??????
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
-
-    //Upon pressing the button "create account" you save all data
 
     @FXML
-    private void onActionCreateAccount(ActionEvent event) throws IOException {
-        id = facade.createCustomer(firstnameTextField.getText(), setPasswordField.getText());
-        idNum = id;
-        num = 1;
+    void onActionCreateAccount(ActionEvent event) throws IOException {
+        int theID;
+        if (    StartApplication.facade.validatePassword(setPasswordField.getText()) &&
+                StartApplication.facade.validatePassword(confirmPasswordField.getText()) &&
+                StartApplication.facade.validateName(firstnameTextField.getText()) &&
+                StartApplication.facade.validateName(lastnameTextField.getText())) {
 
-        if (id != 0){
+            theID = StartApplication.facade.createCustomer(firstnameTextField.getText(), setPasswordField.getText());
 
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("userMenu.fxml"));
-        Parent root = loader.load();
-        scene = new Scene(root);
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+            UserMenuController.activeID = theID;//resets the user
 
-        StartApplication.facade.createCustomer(usernameTextField.getText(), setPasswordField.getText());
-    }else{
-        warningText.setText("The password must have: \n - At least 8 characters \n - Must consist of 'a-z, A-Z, 0 -9' \n - Special character ex. '!' '&' '?' ");
-    }
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("userMenu.fxml"));
+            Parent root = loader.load();
+            scene = new Scene(root);
 
-}
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
 
-    // Creating Variables for the account For testing purposes
-    public void createAccount(){
-        firstName = firstnameTextField.getText();
-        secondName = lastnameTextField.getText();
-        password = setPasswordField.getText();
+            //This is for testing will be deleted later
+        } else if (!StartApplication.facade.validatePassword(setPasswordField.getText())) {
+            theID = StartApplication.facade.createCustomer("liam", "!Q1qaaaaa");
+            UserMenuController.activeID = theID;//resets the user
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("userMenu.fxml"));
+            Parent root = loader.load();
+            scene = new Scene(root);
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            //It will be deleted down to hear
+        } else {
+            warningText.setText("The password must have: \n - At least 8 characters \n - Must consist of 'a-z, A-Z, 0 -9' \n - Special character ex. '!' '&' '?' ");
         }
 
+    }
 
-    //all methods below are for switching scenes, or you could say interfaces
-
-    @FXML//on interface button = login
-    public void switchToLoginCustomer(ActionEvent event) throws IOException {
+    @FXML
+    void switchToLoginCustomer(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("loginCustomer.fxml"));
         Parent root = loader.load();
@@ -110,8 +86,9 @@ public class RegisterController implements Initializable {//Albin worked on this
         stage.setScene(scene);
         stage.show();
     }
-    @FXML//on interface button = main menu
-    public void switchToStart(ActionEvent event) throws IOException {
+
+    @FXML
+    void switchToStart(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("start.fxml"));
         Parent root = loader.load();

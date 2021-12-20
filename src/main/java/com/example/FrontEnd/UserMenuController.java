@@ -1,6 +1,7 @@
 package com.example.FrontEnd;
 
 
+import com.example.BackEnd.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,29 +20,23 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UserMenuController implements Initializable {//Liam was most responsible for this, Albin Worked on this
-
-
     private Stage stage;
     private Scene scene;
-    //
-    public static String name;
-    public static String password;
-    public static String numberID;
 
+    public static int activeID;
+    private Customer currentCustomerUse;
 
-    @FXML//on interface button = exit
-    private Button closeButton;
 
     @FXML//on interface image view = upper far right position
     private ImageView imageProfile;
-//
+
     @FXML//on interface label = username
-    private TextField userName;
+    private TextField userID;
 
 
     @FXML//on interface label = next to name:
-    private String fullRealName;
-//
+    private Label fullName;
+
     @FXML//on interface label = bottom left corner
     private Label CheckingTotal;
     @FXML
@@ -49,53 +44,13 @@ public class UserMenuController implements Initializable {//Liam was most respon
     @FXML
     private Label SavingTotal;
 
-
-    @FXML
-    private Label fullName;
-
-    @FXML//on interface text field = username
-    private int usernameTextField;
-//
-
-    @FXML
-    private Button financePort;
-
-    @FXML
-    private Button logoutButton;
-
-    @FXML
-    private Button manual;
-
-    @FXML
-    private Button manualButton;
-
-    @FXML
-    private Button profileButton;
-
-    @FXML
-    private Button transferButton;
-
-    @FXML
-    private Button transferHis;
-
-
-
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        if(RegisterController.num == 1){
-            userName.setText(String.valueOf(RegisterController.idNum));
-            numberID = String.valueOf(RegisterController.idNum);
-        }else{
-            userName.setText(String.valueOf(LoginController.logNum));
-            numberID = LoginController.logNum;
-        }
-        name = (RegisterController.facade.loadCustomer(Integer.parseInt(userName.getText())).getName());
-        fullName.setText(name);
-        password = (RegisterController.facade.loadCustomer(Integer.parseInt(userName.getText())).getPassword());
+        currentCustomerUse = StartApplication.facade.loadCustomer(activeID);
+        userID.setText(String.valueOf(activeID));
+        fullName.setText(currentCustomerUse.getName());
 
     }
-
 
     ////all methods below are for switching scenes, or you could say interfaces
 
@@ -160,6 +115,8 @@ public class UserMenuController implements Initializable {//Liam was most respon
     }
 
     @FXML//on interface button = exit
+    private Button closeButton;
+    @FXML
     void handelCloseButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
@@ -167,6 +124,26 @@ public class UserMenuController implements Initializable {//Liam was most respon
 
 
     //Methods to make buttons glow
+    @FXML
+    private Button financePort;
+
+    @FXML
+    private Button logoutButton;
+
+    @FXML
+    private Button manual;
+
+    @FXML
+    private Button manualButton;
+
+    @FXML
+    private Button profileButton;
+
+    @FXML
+    private Button transferButton;
+
+    @FXML
+    private Button transferHis;
     
     @FXML
     private void confirmHoverInLogOff() {

@@ -59,12 +59,12 @@ public class TransferController implements Initializable {//Albin worked on this
     }
 
     @FXML//on interface button = total
-    private void onActionButtonTotal(ActionEvent event) {
+    private void onActionButtonTotal(/*ActionEvent event*/) {
         fromAccountCurrentBalance.setText(fromAccount.getValue());
     }
 //
     @FXML//on interface button = transfer
-    private void onActionTransfer(ActionEvent event) {
+    private void onActionTransfer(/*ActionEvent event*/) {
 
     }
 
