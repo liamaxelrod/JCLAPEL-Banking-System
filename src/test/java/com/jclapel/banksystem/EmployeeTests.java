@@ -16,7 +16,7 @@ public class EmployeeTests {
     @BeforeEach
     public void testSetup() {
         facade = new Facade();
-        ID = facade.createEmployee("John Smith"); //setting up test Employee
+        ID = facade.createEmployee("John Smith", "Password80!"); //setting up test Employee
         johnSmith = facade.employees.get(ID);
     }
 
@@ -24,12 +24,12 @@ public class EmployeeTests {
     public void testEmployeeCreation(){
 
         //given
-        int ID = facade.createEmployee("John Smith");
+        int ID = facade.createEmployee("John Smith", "Password80!");
         Employee johnSmith = facade.employees.get(ID);
 
         //then
         assertThat(johnSmith.getName()).isEqualTo("John Smith");
-        assertThat(facade.createEmployee("")).isEqualTo(0);
+        assertThat(facade.createEmployee("", "")).isEqualTo(0);
         //We want to make sure the name is not empty?????
 
         facade.removeEmployee(ID); //testing employee removal
