@@ -36,7 +36,7 @@ public class TransferController implements Initializable {//Albin worked on this
 
     @FXML//to interface label = next to current balance
     private Label fromAccountCurrentBalance; //(to be connected with the account)
-
+//
     @FXML//on interface text field = below to account
     private TextField transferAmount;
 
@@ -62,7 +62,7 @@ public class TransferController implements Initializable {//Albin worked on this
     private void onActionButtonTotal(ActionEvent event) {
         fromAccountCurrentBalance.setText(fromAccount.getValue());
     }
-
+//
     @FXML//on interface button = transfer
     private void onActionTransfer(ActionEvent event) {
 

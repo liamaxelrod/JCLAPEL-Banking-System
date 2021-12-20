@@ -3,7 +3,6 @@ package com.example.FrontEnd;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,12 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 //import static com.example.FrontEnd.StartApplication.facade;
 
-public class LoginController implements Initializable {//Albin worked on this more Liam Partly worked on this
+public class LoginController {//Albin worked on this more Liam Partly worked on this
     private Stage stage;
     private Scene scene;
     public static String logNum;
@@ -27,29 +24,7 @@ public class LoginController implements Initializable {//Albin worked on this mo
     private PasswordField enterPasswordField;
 
     @FXML//on interface text field = username
-    private TextField IDTextField;
-
-    @FXML
-    private TextField usernameTextField;
-
-
-    @FXML
-    private Button cancelButton;
-
-    @FXML
-    private Button createAccount;
-
-    @FXML
-    private Button loginButton;
-
-    @FXML
-    private Button mainMenu;
-
-
-    @Override//this method takes effect when the scene is loaded
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
+    private TextField ID;
 
     public void createAccountStageForm(){
         try{
@@ -62,6 +37,26 @@ public class LoginController implements Initializable {//Albin worked on this mo
     }
 
     //all methods below are for switching scenes, or you could say interfaces
+
+    // Successfully made the code look for the username and password created
+    @FXML//on interface button = login  //Need the unique version is your logging into your profile for the first time
+    public void switchToCustomerMenu(ActionEvent event) throws IOException{
+        RegisterController.num = 0;
+        logNum = ID.getText();
+        //System.out.println(facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText()));
+        if (RegisterController.facade.checkLogin(Integer.parseInt(ID.getText()), enterPasswordField.getText())){
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("userMenu.fxml"));
+            Parent root = loader.load();
+            scene = new Scene(root);
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+    //usernameTextField.getText().toString().equals(RegisterController.id) Check ID
+    // enterPasswordField.getText().toString().equals(RegisterController.password check password
 
     @FXML//on interface button = create account
     public void switchToRegisterCustomer(ActionEvent event) throws IOException {
@@ -87,28 +82,19 @@ public class LoginController implements Initializable {//Albin worked on this mo
         stage.show();
     }
 
-// Successfully made the code look for the username and password created
-    @FXML//on interface button = login  //Need the unique version is your logging into your profile for the first time
-    public void switchToCustomerMenu(ActionEvent event) throws IOException{
-        RegisterController.num = 0;
-        logNum = usernameTextField.getText();
-        //System.out.println(facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText()));
-        if (RegisterController.facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText())){
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("userMenu.fxml"));
-            Parent root = loader.load();
-            scene = new Scene(root);
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        }
-    }
-    //usernameTextField.getText().toString().equals(RegisterController.id) Check ID
-    // enterPasswordField.getText().toString().equals(RegisterController.password check password
-
-
     //Methods to make buttons glow up
+    @FXML
+    private Button cancelButton;
+
+    @FXML
+    private Button createAccount;
+
+    @FXML
+    private Button loginButton;
+
+    @FXML
+    private Button mainMenu;
+
     @FXML
     private void confirmHoverInCreAcc() {
         createAccount.setStyle("-fx-background-color: #52779C;");

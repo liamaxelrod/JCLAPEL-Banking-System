@@ -28,18 +28,12 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     private Scene scene;
     private Customer currentCustomerUse;
 
-
-
-
-
     private FileChooser fileChoice;
     private File filePath;
 
     @FXML//on interface image view = right above upload a user profile image
     private ImageView currentImage;//this is the one actually holds the image for the interface
     private Image theImage;
-
-
 
     @FXML//on interface Password field = Bottom left corner
     private PasswordField checkCurrentPassword;
@@ -52,10 +46,8 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     public Label currentFirstName;
     @FXML
     public Label currentLasName;
-
     @FXML
     private Label currentID;
-
     @FXML
     public Label currentPassword;
 
@@ -68,14 +60,15 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     @FXML
     private TextField newLastName;
 
-    @FXML//on interface Text field = Right bottom corner
-    private TextField newUsername;
+
 
 
     @FXML
     private Button SignOut;
     @FXML
     private Button userMenu;
+
+
 
 
 
@@ -115,6 +108,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
         newFirstName.setText("");
         currentCustomerUse.setName(theNewFirstName);//This is for testing purposes until can finalize it *****
     }
+
 
 
     @FXML

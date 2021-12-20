@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 
 
 public class RegisterController implements Initializable {//Albin worked on this, Liam partly worked on this
-
+//
 
     //For testing purposes will be removed later
     public static String firstName;
@@ -58,18 +58,6 @@ public class RegisterController implements Initializable {//Albin worked on this
 
   //  @FXML
 //    private Label idNum;??????
-
-    @FXML
-    private Button loginButton;
-
-    @FXML
-    private Button mainMenuButton;
-
-    @FXML
-    private Button cancelButton;
-
-    @FXML
-    private Button createAccountButton;
 
 
     @Override
@@ -135,6 +123,18 @@ public class RegisterController implements Initializable {//Albin worked on this
     }
 
     //Methods to make buttons glow
+    @FXML
+    private Button loginButton;
+
+    @FXML
+    private Button mainMenuButton;
+
+    @FXML
+    private Button cancelButton;
+
+    @FXML
+    private Button createAccountButton;
+
     @FXML
     private void confirmHoverInMainMenu() {
         mainMenuButton.setStyle("-fx-background-color: #52779C;");

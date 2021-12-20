@@ -96,7 +96,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="manual" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToManual" onMouseEntered="#confirmHoverInMan" onMouseExited="#confirmHoverOutMan" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Manual" textFill="WHITE">
+            <Button fx:id="manual" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToManual" onMouseEntered="#confirmHoverInMan" onMouseExited="#confirmHoverOutMan" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Manual / About us" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -188,13 +188,10 @@
             </Pane>
             <Pane layoutX="350.0" layoutY="402.0" prefHeight="147.0" prefWidth="257.0">
                <children>
-                  <Button fx:id="manualButton" alignment="BASELINE_LEFT" layoutX="42.0" layoutY="73.0" mnemonicParsing="false" onAction="#switchToManual" onMouseEntered="#confirmHoverInManB" onMouseExited="#confirmHoverOutManB" prefHeight="55.0" prefWidth="166.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MANUAL" textFill="WHITE">
+                  <Button fx:id="manualButton" contentDisplay="CENTER" layoutX="18.0" layoutY="73.0" mnemonicParsing="false" onAction="#switchToManual" onMouseEntered="#confirmHoverInManB" onMouseExited="#confirmHoverOutManB" prefHeight="55.0" prefWidth="230.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MANUAL / About us" textFill="WHITE">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
-                     <padding>
-                        <Insets left="50.0" />
-                     </padding>
                      <font>
                         <Font name="Arial Bold" size="17.0" />
                      </font>

@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="675.0" prefWidth="939.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.ZManualCustomerStart">
     <children>
-        <VBox prefHeight="679.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;">
+        <VBox prefHeight="679.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Pane prefHeight="112.0" prefWidth="319.0">
                     <children>
@@ -25,11 +25,11 @@
                         </Label>
                     </children>
                 </Pane>
-                <ScrollPane prefHeight="567.0" prefWidth="286.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;">
+                <ScrollPane prefHeight="567.0" prefWidth="286.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" VBox.vgrow="ALWAYS">
                     <content>
                         <AnchorPane prefHeight="810.0" prefWidth="304.0" style="-fx-background-color: #414D59;">
                             <children>
-                                <Button alignment="BASELINE_LEFT" layoutY="28.0" mnemonicParsing="false" onAction="#switchToManualUser" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="User manual " textFill="WHITE">
+                                <Button fx:id="switchintUSButton" alignment="BASELINE_LEFT" layoutY="84.0" mnemonicParsing="false" onAction="#switchToManualUser" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="User manual " textFill="WHITE">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
@@ -43,7 +43,7 @@
                                         <Glow />
                                     </effect>
                                 </Button>
-                                <Button alignment="BASELINE_LEFT" layoutY="83.0" mnemonicParsing="false" onAction="#switchToManualTransfer" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Transfer manual " textFill="WHITE">
+                                <Button fx:id="switchintTMButton" alignment="BASELINE_LEFT" layoutY="139.0" mnemonicParsing="false" onAction="#switchToManualTransfer" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Transfer manual " textFill="WHITE">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
@@ -57,7 +57,7 @@
                                         <Glow />
                                     </effect>
                                 </Button>
-                                <Button alignment="BASELINE_LEFT" layoutY="138.0" mnemonicParsing="false" onAction="#switchToManualProfile" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Profile manual " textFill="WHITE">
+                                <Button fx:id="switchintProfileMButton" alignment="BASELINE_LEFT" layoutY="194.0" mnemonicParsing="false" onAction="#switchToManualProfile" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Profile manual " textFill="WHITE">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
@@ -71,7 +71,7 @@
                                         <Glow />
                                     </effect>
                                 </Button>
-                                <Button alignment="BASELINE_LEFT" layoutY="193.0" mnemonicParsing="false" onAction="#switchToManualProject" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Projects manual " textFill="WHITE">
+                                <Button fx:id="switchintProjectMButton" alignment="BASELINE_LEFT" layoutY="249.0" mnemonicParsing="false" onAction="#switchToManualProject" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Projects manual " textFill="WHITE">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
@@ -85,7 +85,7 @@
                                         <Glow />
                                     </effect>
                                 </Button>
-                                <Button alignment="BASELINE_LEFT" layoutY="248.0" mnemonicParsing="false" onAction="#switchToManualBankStatement" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Bank statement manual " textFill="WHITE">
+                                <Button fx:id="switchintBSMButton" alignment="BASELINE_LEFT" layoutY="304.0" mnemonicParsing="false" onAction="#switchToManualBankStatement" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Bank statement manual " textFill="WHITE">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
@@ -99,7 +99,7 @@
                                         <Glow />
                                     </effect>
                                 </Button>
-                                <Button alignment="BASELINE_LEFT" layoutY="304.0" mnemonicParsing="false" onAction="#switchToManualCreateAccount" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create account manual " textFill="WHITE">
+                                <Button fx:id="switchintCAMButton" alignment="BASELINE_LEFT" layoutY="359.0" mnemonicParsing="false" onAction="#switchToManualCreateAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create account manual " textFill="WHITE">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
@@ -113,7 +113,7 @@
                                         <Glow />
                                     </effect>
                                 </Button>
-                                <Button alignment="BASELINE_LEFT" layoutY="359.0" mnemonicParsing="false" onAction="#switchToManualLogin" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login manual " textFill="WHITE">
+                                <Button fx:id="switchintLMButton" alignment="BASELINE_LEFT" layoutY="414.0" mnemonicParsing="false" onAction="#switchToManualLogin" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login manual " textFill="WHITE">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
@@ -132,9 +132,9 @@
                                         <Font name="Arial Bold" size="20.0" />
                                     </font>
                                 </Label>
-                                <AnchorPane layoutY="414.0" prefHeight="417.0" prefWidth="304.0" style="-fx-background-color: #414D59;">
+                                <AnchorPane layoutY="469.0" prefHeight="459.0" prefWidth="304.0" style="-fx-background-color: #414D59;">
                                     <children>
-                                        <Button alignment="BASELINE_LEFT" layoutY="28.0" mnemonicParsing="false" onAction="#OpenToManualUser" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="User manual " textFill="WHITE">
+                                        <Button fx:id="openUMButton" alignment="BASELINE_LEFT" layoutY="83.0" mnemonicParsing="false" onAction="#OpenToManualUser" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="User manual " textFill="WHITE">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
@@ -148,7 +148,7 @@
                                                 <Glow />
                                             </effect>
                                         </Button>
-                                        <Button alignment="BASELINE_LEFT" layoutY="83.0" mnemonicParsing="false" onAction="#OpenToManualTransfer" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Transfer manual " textFill="WHITE">
+                                        <Button fx:id="openTMButton" alignment="BASELINE_LEFT" layoutY="138.0" mnemonicParsing="false" onAction="#OpenToManualTransfer" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Transfer manual " textFill="WHITE">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
@@ -162,7 +162,7 @@
                                                 <Glow />
                                             </effect>
                                         </Button>
-                                        <Button alignment="BASELINE_LEFT" layoutY="138.0" mnemonicParsing="false" onAction="#OpenToManualProfile" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Profile manual " textFill="WHITE">
+                                        <Button fx:id="openProfileMButton" alignment="BASELINE_LEFT" layoutY="193.0" mnemonicParsing="false" onAction="#OpenToManualProfile" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Profile manual " textFill="WHITE">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
@@ -176,7 +176,7 @@
                                                 <Glow />
                                             </effect>
                                         </Button>
-                                        <Button alignment="BASELINE_LEFT" layoutY="193.0" mnemonicParsing="false" onAction="#OpenToManualProjects" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Projects manual " textFill="WHITE">
+                                        <Button fx:id="openProjectMButton" alignment="BASELINE_LEFT" layoutY="248.0" mnemonicParsing="false" onAction="#OpenToManualProjects" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Projects manual " textFill="WHITE">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
@@ -190,7 +190,7 @@
                                                 <Glow />
                                             </effect>
                                         </Button>
-                                        <Button alignment="BASELINE_LEFT" layoutY="248.0" mnemonicParsing="false" onAction="#OpenToManualBankStatements" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Bank statement manual " textFill="WHITE">
+                                        <Button fx:id="openBSMButton" alignment="BASELINE_LEFT" layoutY="303.0" mnemonicParsing="false" onAction="#OpenToManualBankStatements" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Bank statement manual " textFill="WHITE">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
@@ -204,7 +204,7 @@
                                                 <Glow />
                                             </effect>
                                         </Button>
-                                        <Button alignment="BASELINE_LEFT" layoutY="304.0" mnemonicParsing="false" onAction="#OpenToManualCreateAccount" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create account manual " textFill="WHITE">
+                                        <Button fx:id="openCAMButton" alignment="BASELINE_LEFT" layoutY="358.0" mnemonicParsing="false" onAction="#OpenToManualCreateAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create account manual " textFill="WHITE">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
@@ -218,7 +218,7 @@
                                                 <Glow />
                                             </effect>
                                         </Button>
-                                        <Button alignment="BASELINE_LEFT" layoutY="359.0" mnemonicParsing="false" onAction="#OpenToManualLogin" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login manual " textFill="WHITE">
+                                        <Button fx:id="openLMButton" alignment="BASELINE_LEFT" layoutY="413.0" mnemonicParsing="false" onAction="#OpenToManualLogin" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login manual " textFill="WHITE">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
@@ -245,9 +245,9 @@
                 </ScrollPane>
             </children>
         </VBox>
-        <Pane layoutX="336.0" prefHeight="112.0" prefWidth="604.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.bottomAnchor="567.0" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+        <Pane layoutX="336.0" prefHeight="112.0" prefWidth="604.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label layoutX="57.0" layoutY="40.0" prefHeight="32.0" prefWidth="507.0" text="The user manual for your convenience" textAlignment="CENTER" textFill="WHITE">
+                <Label layoutX="57.0" layoutY="40.0" prefHeight="32.0" prefWidth="507.0" text="The user manual for main menu" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="Arial Bold" size="27.0" />
                     </font>
@@ -257,9 +257,18 @@
                 </Label>
             </children>
         </Pane>
-        <Pane layoutX="318.0" layoutY="111.0" prefHeight="568.0" prefWidth="622.0">
+        <Pane layoutX="318.0" layoutY="111.0" prefHeight="565.0" prefWidth="621.0">
             <children>
-                <Button fx:id="closeButton" alignment="BASELINE_LEFT" layoutX="489.0" layoutY="513.0" mnemonicParsing="false" onAction="#handelCloseButtonAction" prefHeight="55.0" prefWidth="133.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Exit" textFill="WHITE">
+                <TextArea layoutX="14.0" layoutY="14.0" prefHeight="136.0" prefWidth="294.0" text="This is only a placeholder for text we put in&#10;&#10;&#10;&#10;&#10;Mainly because it comes with a scroll in function&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;Is this be really annoying without it">
+                    <font>
+                        <Font name="Arial" size="12.0" />
+                    </font>
+                </TextArea>
+            </children>
+        </Pane>
+        <Pane layoutX="807.0" layoutY="620.0" prefHeight="56.0" prefWidth="132.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <Button fx:id="closeButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handelCloseButtonAction" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="133.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Exit" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -273,11 +282,6 @@
                         <Glow />
                     </effect>
                 </Button>
-                <TextArea layoutX="32.0" layoutY="27.0" prefHeight="136.0" prefWidth="294.0" text="This is only a placeholder for text we put in&#10;&#10;&#10;&#10;&#10;Mainly because it comes with a scroll in function&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;Is this be really annoying without it">
-                    <font>
-                        <Font name="Arial" size="12.0" />
-                    </font>
-                </TextArea>
             </children>
         </Pane>
     </children>
