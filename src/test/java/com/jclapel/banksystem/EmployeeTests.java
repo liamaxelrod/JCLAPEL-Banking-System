@@ -1,7 +1,7 @@
 package com.jclapel.banksystem;
 
-import com.example.BackEnd.Employee;
-import com.example.BackEnd.Facade;
+import com.jclapel.banksystem.back_end.Employee;
+import com.jclapel.banksystem.back_end.Facade;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;

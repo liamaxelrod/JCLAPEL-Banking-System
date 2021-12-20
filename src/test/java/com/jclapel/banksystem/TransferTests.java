@@ -1,8 +1,8 @@
 package com.jclapel.banksystem;
 
-import com.example.BackEnd.Account;
-import com.example.BackEnd.Customer;
-import com.example.BackEnd.Facade;
+import com.jclapel.banksystem.back_end.Account;
+import com.jclapel.banksystem.back_end.Customer;
+import com.jclapel.banksystem.back_end.Facade;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
@@ -78,23 +78,23 @@ public class TransferTests {
     public void testBetweenAccounts(){
         account1.setBalance(1000);
 
-        assertThat(!facade.transferBetweenAccounts(accountId1, accountId2, -100)); //invalid transfers
-        assertThat(!facade.transferBetweenAccounts(accountId1, accountId2, 0));
-        assertThat(!facade.transferBetweenAccounts(accountId1, accountId2, 1000));
+        assertThat(!facade.transfer(accountId1, accountId2, -100)); //invalid transfers
+        assertThat(!facade.transfer(accountId1, accountId2, 0));
+        assertThat(!facade.transfer(accountId1, accountId2, 1000));
 
-        assertThat(facade.transferBetweenAccounts(accountId1, accountId2, 800));//valid transfer
+        assertThat(facade.transfer(accountId1, accountId2, 800));//valid transfer
 
         assertThat(account1.getBalance()).isEqualTo(192);
         assertThat(account2.getBalance()).isEqualTo(800);
 
-        assertThat(!facade.transferBetweenAccounts(accountId2, savingsAccountId, 100));//can't transfer to savings account from other persons account
-        assertThat(facade.transferBetweenAccounts(accountId1, savingsAccountId, 100));
+        assertThat(!facade.transfer(accountId2, savingsAccountId, 100));//can't transfer to savings account from other persons account
+        assertThat(facade.transfer(accountId1, savingsAccountId, 100));
 
         assertThat(account1.getBalance()).isEqualTo(91);
         assertThat(savingsAccount.getBalance()).isEqualTo(100);
 
-        assertThat(!facade.transferBetweenAccounts(savingsAccountId, accountId2, 10));//can't transfer from savings to another account
-        assertThat(facade.transferBetweenAccounts(savingsAccountId, accountId1, 10));
+        assertThat(!facade.transfer(savingsAccountId, accountId2, 10));//can't transfer from savings to another account
+        assertThat(facade.transfer(savingsAccountId, accountId1, 10));
 
         assertThat(account1.getBalance()).isEqualTo(101); //final balances
         assertThat(savingsAccount.getBalance()).isEqualTo(89);

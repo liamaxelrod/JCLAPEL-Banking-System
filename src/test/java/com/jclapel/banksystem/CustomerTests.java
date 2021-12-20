@@ -1,14 +1,14 @@
 package com.jclapel.banksystem;
 
-import com.example.BackEnd.Customer;
-import com.example.BackEnd.EmployeeCustomer;
-import com.example.BackEnd.Facade;
-import org.assertj.core.api.ObjectAssert;
+import com.jclapel.banksystem.back_end.Customer;
+import com.jclapel.banksystem.back_end.EmployeeCustomer;
+import com.jclapel.banksystem.back_end.Facade;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.assertj.core.api.ObjectAssert;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 
 public class CustomerTests { //By patrik and Labi
 
@@ -19,7 +19,7 @@ public class CustomerTests { //By patrik and Labi
     @BeforeEach
     public void testSetup() {
         facade = new Facade();
-        ID = facade.createCustomer("John Smith", "Password80!"); //setting up test customer
+        ID = facade.createCustomer("John Smith", "Password"); //setting up test customer
         johnSmith = facade.customers.get(ID);
     }
 
@@ -62,12 +62,6 @@ public class CustomerTests { //By patrik and Labi
         assertThat(facade.resetPassword(ID,"Password80!","Pass80!")).isEqualTo(false);
         assertThat(facade.resetPassword(ID,"Password80!","Passw80!")).isEqualTo(true);
         assertThat(facade.resetPassword(ID,"Password80!","PASSWORD80!")).isEqualTo(false);
-
-
-
-
-
-
         assertThat(facade.resetPassword(ID, "Password80!", "New Password80!")).isEqualTo(true);
 
         assertThat(facade.checkLogin(ID, "New Password80!")).isEqualTo(true);//checking changed password

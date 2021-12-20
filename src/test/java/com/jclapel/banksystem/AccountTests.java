@@ -1,8 +1,8 @@
 package com.jclapel.banksystem;
 
-import com.example.BackEnd.Account;
-import com.example.BackEnd.Customer;
-import com.example.BackEnd.Facade;
+import com.jclapel.banksystem.back_end.Account;
+import com.jclapel.banksystem.back_end.Customer;
+import com.jclapel.banksystem.back_end.Facade;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -66,7 +66,7 @@ public class AccountTests { //By Erik Lindmaa
         HashMap<Integer, Account> facadeAccounts = johnSmith.getAccounts();
         Account testAccount = facadeAccounts.get(accountID);
         //then
-        facade.CheckIfAccountExists(accountID);
+        facade.accountExists(accountID);
         assertThat(testAccount);
 
     }
