@@ -11,7 +11,7 @@ public class Facade {
     public HashMap<Integer, Customer> customers = new HashMap<>();
     public HashMap<Integer, Account> accounts = new HashMap<>();
     public HashMap<Integer, Account> employeeAccounts = new HashMap<>();
-    public HashMap<Integer, Employee> employees=new HashMap<>();
+    public HashMap<Integer, Employee> employees = new HashMap<>();
 
     final static String customersOutputFilePath = "F:/Serialisation/customers.txt";
     final static String accountsOutputFilePath = "F:/Serialisation/accounts.txt";
@@ -131,8 +131,8 @@ public class Facade {
     } //patrik, labi, julia
 
     public int createAccount(int customerId){ // adds an account to a given customer
-        Account account = new Account(generateId(customers.get(customerId).getAccounts()), customerId, false);
-        customers.get(customerId).addAccount(account);
+        Account account = new Account(generateId(accounts), customerId, false);
+        loadCustomer(customerId).addAccount(account);
         accounts.put(account.getID(), account);
         return account.getID();
     } //patrik, labi
@@ -199,15 +199,27 @@ public class Facade {
         return false;
     } // By Julia Ayvazian
 
-    public void retrieveUserStatistics(){
-        //retrieve data to be displayed by user statistics
+    public Report generateReport(int customerID, int employeeId) {
+        //load employee
+        Employee employee = loadEmployee(employeeId);
+        if (employee instanceof Admin) {
+            return new AdminReport(customerID);
+        }else if (employee instanceof Manager){
+            return new ManagerReport(customerID);
+        }else{
+            return new EmployeeReport(customerID);
+        }
     }
 
-    public int createEmployee(String name){
+    public int createEmployee(String name, String password){
         int ID = generateId(employees);
-        Employee employee = new Employee(ID, name);
-        employees.put(ID, employee);
-        return ID; //changed void to int, returned ID
+        if(validateName(name) && validatePassword(password)) {
+            Employee employee = new Employee(ID, name, password);
+            employees.put(ID, employee);
+            return ID; //changed void to int, returned ID
+        } else {
+            return 0;
+        }
     }
 
     public void removeEmployee(int ID){
@@ -235,4 +247,26 @@ public class Facade {
         } while (hashMap.containsKey(ID));//ensure the id is not in use
         return ID;
     } //patrik
+
+    public int createManager(String name, String password){
+        if(validateName(name) && validatePassword(password)){
+            int ID= generateId(employees);
+            Employee manager = new Employee(ID,name, password);
+            employees.put(ID,manager);
+            return ID;
+        }else{
+            return 0;
+        }
+    } //Labi and Erik
+    //Julia
+    public int createAdmin(String name, String password){
+        if(validateName(name) && validatePassword(password)){
+            int ID = generateId(employees);
+            Employee admin = new Admin(ID, name, password);
+            employees.put(ID,admin);
+            return ID;
+        }else{
+            return 0;
+        }
+    }
 }
