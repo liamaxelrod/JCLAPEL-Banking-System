@@ -87,30 +87,42 @@ public class Cache implements Serializable {
 		}
 	}
 
-	public Cache() throws Exception {
+	public Cache() {
 		// Executes initial procedure on program start
 		dataCache = new HashMap<String, Object>();
 
 		if (USE_LOCAL_STORAGE) {
-			setupLocalStorage();
+			try {
+				setupLocalStorage();
+			} catch(Exception exception) {
+				exception.printStackTrace();
+			}
 		}
 	}
 
-	public Cache(Set<String> keySet) throws Exception {
+	public Cache(Set<String> keySet) {
 		// Executes initial procedure on program start
 		dataCache = new HashMap<String, Object>();
 
 		if (USE_LOCAL_STORAGE) {
-			setupLocalStorage();
+			try {
+				setupLocalStorage();
+			} catch(Exception exception) {
+				exception.printStackTrace();
+			}
 		}
 	}
 
-	public Cache(HashMap<String, Object> presetCache) throws Exception {
+	public Cache(HashMap<String, Object> presetCache) {
 		// Executes initial procedure on program start
 		dataCache = presetCache;
 
 		if (USE_LOCAL_STORAGE) {
-			setupLocalStorage();
+			try {
+				setupLocalStorage();
+			} catch(Exception exception) {
+				exception.printStackTrace();
+			}
 		}
 	}
 	
