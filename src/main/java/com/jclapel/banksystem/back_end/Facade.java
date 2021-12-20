@@ -7,6 +7,8 @@ import java.util.Stack;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
+import com.jclapel.banksystem.data.*;
+
 public class Facade {
 	/*
 
@@ -26,11 +28,13 @@ public class Facade {
 	final static String accountsOutputFilePath = "F:/Serialisation/accounts.txt";
 	final static String employeesOutputFilePath = "F:/Serialisation/employees.txt";
 
+	Cache cache = new Cache();
+
 	File customersFile = new File(customersOutputFilePath); //File to save customer data
 	File accountsFile = new File(accountsOutputFilePath); //File to save account data
 	File employeesFile = new File(employeesOutputFilePath); //File to save employee data
 
-	private int generateId(HashMap hashMap) {
+	private int generateId(HashMap<?, ?> hashMap) {
 		// Generates a random six-digit number as an ID for a hashmap, if the ID already exists, retry until successful 
 		int id;
 		Random rn = new Random();
@@ -154,7 +158,7 @@ public class Facade {
 		Matcher matchNumber = checkNumberPattern.matcher(password);
 		if (!password.isEmpty() && password.length() >= 8 && !password.toUpperCase().equals(password) && !password.toLowerCase().equals(password) && match.find() && matchNumber.find()){
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 	}
@@ -263,9 +267,10 @@ public class Facade {
 		return employees.get(id);
 	} //Labi
 
-	public int createEmployeeAccount(int employeeID) { // adds an account to a given customer
-		Account account = new Account(generateId(employees.get(employeeID).getAccounts()), employeeID, false);
-		customers.get(employeeID).addAccount(account);
+	public int createEmployeeAccount(int employeeId) { 
+		// Adds an account to a given employee
+		Account account = new Account(generateId(employees.get(employeeId).getAccounts()), employeeId, false);
+		customers.get(employeeId).addAccount(account);
 		accounts.put(account.getId(), account);
 		return account.getId();
 	} //patrik, labi

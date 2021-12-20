@@ -10,7 +10,7 @@ import static com.jclapel.banksystem.front_end.StartApplication.facade;
 public class Employee {
 	/*
 
-	Employee class, similiar to customers, for internal handling of the bank.
+	Employee class for internal handling of the bank.
 
 	Main Contributor(s):
 	Contributor(s): 
