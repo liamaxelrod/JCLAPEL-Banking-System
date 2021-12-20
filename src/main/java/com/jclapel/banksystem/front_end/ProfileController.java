@@ -1,6 +1,6 @@
 package com.jclapel.banksystem.front_end;
 
-import com.example.BackEnd.Customer;
+import com.jclapel.banksystem.back_end.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,11 +54,11 @@ public class ProfileController extends Listener implements Initializable {
     @FXML
     public Label currentLasName;
     @FXML
-    private Label currentID;
+    private Label currentId;
     @FXML
     public Label currentPassword;
     @FXML//on interface Text field = Right bottom corner
-    private Label ID;
+    private Label id;
     @FXML
     private TextField newFirstName;
     @FXML
@@ -76,7 +76,7 @@ public class ProfileController extends Listener implements Initializable {
         currentFirstName.setText(currentCustomerUse.getName());
         currentLasName.setText(currentCustomerUse.getName());//Need to get lasting here
         currentPassword.setText(currentCustomerUse.getPassword());
-        currentID.setText(String.valueOf(currentCustomerUse.getID()));
+        currentId.setText(String.valueOf(currentCustomerUse.getId()));
     }
 
     @FXML

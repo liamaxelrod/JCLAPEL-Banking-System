@@ -159,9 +159,13 @@ public class Facade {
 		}
 	}
 
+	public Account loadAccount(int accountId){
+        return accounts.get(accountId);
+    }
+
 	public int createAccount(int customerId) {
 		// Creates and adds an account to a given customer from ID
-		Account account = new Account(generateId(customers.get(customerId).getAccounts()), false);
+		Account account = new Account(generateId(customers.get(customerId).getAccounts()), customerId, false);
 		customers.get(customerId).addAccount(account);
 		accounts.put(account.getId(), account);
 		return account.getId();
@@ -169,7 +173,7 @@ public class Facade {
 
 	public int createSavingsAccount(int customerId) {
 		// Creates and adds a savings account to a given customer from ID
-		Account account = new Account(generateId(customers.get(customerId).getAccounts()), true);
+		Account account = new Account(generateId(customers.get(customerId).getAccounts()), customerId, true);
 		customers.get(customerId).addAccount(account);
 		accounts.put(account.getId(), account);
 		return account.getId();
@@ -240,11 +244,13 @@ public class Facade {
 		// Returns data to be displayed for user statistics
 	}
 
-	public void createEmployee(String name) {
+	public int createEmployee(String name) {
 		// Creates an employee with a name
 		int employeeId = generateId(employees);
 		Employee employee = new Employee(employeeId, name);
 		employees.put(employeeId, employee);
+
+		return employeeId;
 	}
 
 	public void removeEmployee(int id) {
