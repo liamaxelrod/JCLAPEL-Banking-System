@@ -9,10 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,14 +25,10 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
     @FXML
     private TextField securityKey;
 
-    @FXML
-    private Button cancelButton;
+
 
     @FXML
     private PasswordField confirmPasswordField;
-
-    @FXML
-    private Button createAccountButton;
 
     @FXML
     private TextField firstnameTextField;
@@ -50,23 +43,55 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
     private PasswordField setPasswordField;
 
     @FXML
-    void onActionCreateAccount(ActionEvent event) {
-
-    }
-
-
-    @FXML
-    private Button employeeLog;
-
-    @FXML
-    private Button mainMenu;
-
+    private Label warningText;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         titleChoice.setValue("choose title");
         titleChoice.setItems(differentTitles);
+    }
+
+    //all methods below are for switching scenes, or you could say interfaces
+
+    @FXML//on interface button = Employee menu
+    void switchToEmployeeMenu(ActionEvent event) throws IOException {
+        int theID;
+        if (    StartApplication.facade.validatePassword(setPasswordField.getText()) &&
+                StartApplication.facade.validatePassword(confirmPasswordField.getText()) &&
+                StartApplication.facade.validateName(firstnameTextField.getText()) &&
+                StartApplication.facade.validateName(lastnameTextField.getText()))
+        //*Input valid key and valid position at a later date
+            {
+        //*Only the first name is required to create an employee???
+            theID = StartApplication.facade.createEmployee(firstnameTextField.getText()/*, setPasswordField.getText()*/);
+
+            EmployeeMenuController.activeID = theID;//resets the Employee
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("employeeMenu.fxml"));
+            Parent root = loader.load();
+            scene = new Scene(root);
+
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+            //This is for testing will be deleted later
+        } else if (!StartApplication.facade.validatePassword(setPasswordField.getText())) {
+            theID = StartApplication.facade.createEmployee("liam"/*, "!Q1qaaaaa"*/);
+            EmployeeMenuController.activeID = theID;//resets the user
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("employeeMenu.fxml"));
+            Parent root = loader.load();
+            scene = new Scene(root);
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            //It will be deleted down to hear
+        } else {
+            warningText.setText("The password must have: \n - At least 8 characters \n - Must consist of 'a-z, A-Z, 0 -9' \n - Special character ex. '!' '&' '?' \n You must also Enter: \n - enter your security key \n - enter your position" );
+        }
     }
 
     @FXML//on interface button = main menu
@@ -94,19 +119,15 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
         stage.show();
     }
 
-    @FXML//on interface button = user menu
-    void switchToEmployeeMenu(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("employeeMenu.fxml"));
-        Parent root = loader.load();
-        scene = new Scene(root);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
     //Methods to make the buttons glow
+    @FXML
+    private Button createAccountButton;
+    @FXML
+    private Button cancelButton;
+    @FXML
+    private Button employeeLog;
+    @FXML
+    private Button mainMenu;
 
     @FXML
     private void confirmHoverInEmployeeLog() {

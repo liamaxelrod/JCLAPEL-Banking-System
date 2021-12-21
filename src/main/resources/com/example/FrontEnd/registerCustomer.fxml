@@ -122,7 +122,10 @@
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="warningText" layoutX="629.0" layoutY="347.0" textFill="RED" />
+      <Label fx:id="warningText" layoutX="629.0" layoutY="347.0" prefHeight="149.0" prefWidth="156.0" textFill="RED">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></Label>
       <Text layoutX="388.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Must contain: Minimum 8 characters, a-z, A-Z, 0-9, special character" wrappingWidth="231.9999999999999">
          <font>
             <Font name="Arial" size="13.0" />

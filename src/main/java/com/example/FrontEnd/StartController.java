@@ -15,23 +15,7 @@ public class StartController {//Albin worked on this, Liam worked partly on this
     private Stage stage;
     private Scene scene;
 
-    @FXML
-    public Button closeButton;
 
-    @FXML
-    private Button loginButton;
-
-    @FXML
-    private Button createAccount;
-
-    @FXML
-    private Button createEmployee;
-
-    @FXML
-    private Button loginEmployee;
-
-    @FXML
-    private Button manual;
 
 
 
@@ -102,6 +86,23 @@ public class StartController {//Albin worked on this, Liam worked partly on this
     }
 
     //Methods to make the buttons glow
+    @FXML
+    public Button closeButton;
+
+    @FXML
+    private Button loginButton;
+
+    @FXML
+    private Button createAccount;
+
+    @FXML
+    private Button createEmployee;
+
+    @FXML
+    private Button loginEmployee;
+
+    @FXML
+    private Button manual;
 
     @FXML
     private void confirmHoverInLog() {

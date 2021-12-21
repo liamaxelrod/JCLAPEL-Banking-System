@@ -85,14 +85,19 @@ public class ProfileController implements Initializable {//Albin Worked on this 
 
     @FXML//On interface button = change username, first name, and last name
     void onActionChangeFirstName(/*ActionEvent event*/) {
-        String theNewFirstName = newFirstName.getText();
-        currentFirstName.setText(theNewFirstName);
-        newFirstName.setText("");
-        currentCustomerUse.setName(theNewFirstName);//This is for testing purposes until can finalize it *****
+        if (StartApplication.facade.validateName(newFirstName.getText())){
+            String theNewFirstName = newFirstName.getText();
+            currentFirstName.setText(theNewFirstName);
+            newFirstName.setText("");
+            currentCustomerUse.setName(theNewFirstName);//This is for testing purposes until can finalize it *****
+        } else {
+            newFirstName.setText("This cannot be blank");
+        }
+
     }
 
     @FXML
-    void onActionChangeLastName(/*ActionEvent event*/) {
+    void onActionChangeLastName(/*ActionEvent event*/) {//Not finished yet
         String theNewLastName = newLastName.getText();
         currentLasName.setText(theNewLastName);
         newFirstName.setText("");
