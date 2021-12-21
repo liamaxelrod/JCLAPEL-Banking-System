@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.UserMenuController">
    <children>
-      <VBox layoutX="-14.0" prefHeight="679.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;">
+      <VBox layoutX="-7.0" prefHeight="679.0" prefWidth="312.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane prefHeight="112.0" prefWidth="319.0">
                <children>
@@ -206,7 +206,7 @@
                   </Label>
                </children>
             </Pane>
-            <TextField fx:id="userName" layoutX="195.0" layoutY="32.0" />
+            <TextField fx:id="userID" layoutX="195.0" layoutY="32.0" />
             <Label layoutX="96.0" layoutY="33.0" text="USER ID:">
                <font>
                   <Font name="Arial Bold" size="20.0" />

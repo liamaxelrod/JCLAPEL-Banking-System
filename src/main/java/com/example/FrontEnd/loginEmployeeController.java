@@ -59,11 +59,11 @@ public class loginEmployeeController implements Initializable {//Liam did this
 
     @FXML//on interface button = create account
     void switchToEmployeeMenu(ActionEvent event)throws IOException {
-        RegisterController.num = 0;
+//        RegisterController.num = 0; liam Did this
         logNum = usernameTextField.getText();
         System.out.println(logNum);
 //System.out.println(facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText()));
-        if (RegisterController.facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText())){
+        if (StartApplication.facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText())){
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("employeeMenu.fxml"));
             Parent root = loader.load();

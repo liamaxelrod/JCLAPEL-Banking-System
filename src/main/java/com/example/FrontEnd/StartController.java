@@ -85,28 +85,18 @@ public class StartController {//Albin worked on this, Liam worked partly on this
     }
 
     @FXML
-    void switchToManual(ActionEvent event) throws IOException {
+    void switchToManual() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomer.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
+        Parent root1 = fxmlLoader.load();
         stage = new Stage();
 
         stage.setTitle("full manual");
         stage.setScene(new Scene(root1));
         stage.show();
-
-        //old version
-//      FXMLLoader loader = new FXMLLoader();
-//      loader.setLocation(getClass().getResource("zManualCustomer.fxml"));
-//      Parent root = loader.load();
-//      scene = new Scene(root);
-//
-//      stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//      stage.setScene(scene);
-//      stage.show();
     }
 
     @FXML//on interface button = exit
-    public void handelCloseButtonAction(ActionEvent event) throws IOException {
+    public void handelCloseButtonAction(/*ActionEvent event*/) throws IOException {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }

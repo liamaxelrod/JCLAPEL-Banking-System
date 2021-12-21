@@ -28,7 +28,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     private Scene scene;
     private Customer currentCustomerUse;
 
-    private FileChooser fileChoice;
+    private FileChooser fileChoice;//*It is possible to get rid of the three yellow warning lights but for now I'm to leave To be safe
     private File filePath;
 
     @FXML//on interface image view = right above upload a user profile image
@@ -51,46 +51,28 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     @FXML
     public Label currentPassword;
 
-
-
     @FXML//on interface Text field = Right bottom corner
-    private Label ID;
-    @FXML
     private TextField newFirstName;
     @FXML
     private TextField newLastName;
 
 
-
-
-    @FXML
-    private Button SignOut;
-    @FXML
-    private Button userMenu;
-
-
-
-
-
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        currentCustomerUse = RegisterController.facade.loadCustomer(RegisterController.idNum);
+        currentCustomerUse = StartApplication.facade.loadCustomer(UserMenuController.activeID);
         currentFirstName.setText(currentCustomerUse.getName());
-        currentLasName.setText(currentCustomerUse.getName());//Need to get lasting here
+        currentLasName.setText(currentCustomerUse.getName());//*Need to get lasting here
         currentPassword.setText(currentCustomerUse.getPassword());
         currentID.setText(String.valueOf(currentCustomerUse.getID()));
     }
 
-
-    
-
-
     @FXML
-    private void onActionChangePassword(ActionEvent event) {
-        String theCurrentPassword = currentPassword.getText();// This one's the label
-        String theCheckOldPassword = checkCurrentPassword.getText();// The rest Are passwordFeel
+    private void onActionChangePassword(/*ActionEvent event*/) {
+        String theCurrentPassword = currentPassword.getText();//This one's the label
+        String theCheckOldPassword = checkCurrentPassword.getText();//The rest Are passwordFeel
         String theNewPassword = newPassword.getText();
         String theConfirmNewPassword = confirmNewPassword.getText();
+
         if (theCurrentPassword.equals(theCheckOldPassword)){
             if (theNewPassword.equals(theConfirmNewPassword)){
                 currentPassword.setText(theConfirmNewPassword);
@@ -102,24 +84,22 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     }
 
     @FXML//On interface button = change username, first name, and last name
-    void onActionChangeFirstName(ActionEvent event) {
+    void onActionChangeFirstName(/*ActionEvent event*/) {
         String theNewFirstName = newFirstName.getText();
         currentFirstName.setText(theNewFirstName);
         newFirstName.setText("");
         currentCustomerUse.setName(theNewFirstName);//This is for testing purposes until can finalize it *****
     }
 
-
-
     @FXML
-    void onActionChangeLastName(ActionEvent event) {
+    void onActionChangeLastName(/*ActionEvent event*/) {
         String theNewLastName = newLastName.getText();
         currentLasName.setText(theNewLastName);
         newFirstName.setText("");
     }
 
     @FXML//Still trying to figure out save the image
-    public void onActionChangeProfileImage(ActionEvent event) throws IOException {
+    public void onActionChangeProfileImage(ActionEvent event) {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         fileChoice = new FileChooser();
         fileChoice.setTitle("by the power of God Liam you humble peasant may choose your profile picture");
@@ -142,6 +122,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML//on interface button = sign out
     public void switchToStart(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -155,6 +136,11 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     }
 
     //Methods to make buttons glow
+    @FXML
+    private Button SignOut;
+    @FXML
+    private Button userMenu;
+
     @FXML
     private void confirmHoverInSignO() {
         SignOut.setStyle("-fx-background-color: #52779C;");

@@ -18,7 +18,6 @@ import java.io.IOException;
 public class LoginController {//Albin worked on this more Liam Partly worked on this
     private Stage stage;
     private Scene scene;
-    public static String logNum;
 
     @FXML//on interface password field = password
     private PasswordField enterPasswordField;
@@ -26,25 +25,15 @@ public class LoginController {//Albin worked on this more Liam Partly worked on 
     @FXML//on interface text field = username
     private TextField ID;
 
-    public void createAccountStageForm(){
-        try{
-            Parent root;
 
-        }catch(Exception e){
-            e.printStackTrace();
-            e.getCause();
-        }
-    }
 
     //all methods below are for switching scenes, or you could say interfaces
 
-    // Successfully made the code look for the username and password created
-    @FXML//on interface button = login  //Need the unique version is your logging into your profile for the first time
+    @FXML//on interface button = login
     public void switchToCustomerMenu(ActionEvent event) throws IOException{
-        RegisterController.num = 0;
-        logNum = ID.getText();
-        //System.out.println(facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText()));
-        if (RegisterController.facade.checkLogin(Integer.parseInt(ID.getText()), enterPasswordField.getText())){
+        if (StartApplication.facade.checkLogin(Integer.parseInt(ID.getText()), enterPasswordField.getText())){
+
+            UserMenuController.activeID = Integer.parseInt(ID.getText());//Resets the user
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("userMenu.fxml"));
@@ -55,8 +44,6 @@ public class LoginController {//Albin worked on this more Liam Partly worked on 
             stage.show();
         }
     }
-    //usernameTextField.getText().toString().equals(RegisterController.id) Check ID
-    // enterPasswordField.getText().toString().equals(RegisterController.password check password
 
     @FXML//on interface button = create account
     public void switchToRegisterCustomer(ActionEvent event) throws IOException {
