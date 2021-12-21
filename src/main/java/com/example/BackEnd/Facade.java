@@ -131,7 +131,7 @@ public class Facade {
     } //patrik, labi, julia
 
     public int createAccount(int customerId){ // adds an account to a given customer
-        Account account = new Account(generateId(accounts), customerId, false);
+        Account account = new Account(generateId(customers.get(customerId).getAccounts()), customerId, false);
         loadCustomer(customerId).addAccount(account);
         accounts.put(account.getID(), account);
         return account.getID();
@@ -168,19 +168,21 @@ public class Facade {
     public boolean deposit(int accountID, double amount){ //add amount, return true if the transaction is valid, or false if it is invald
         if(amount>0){
             Account account = loadAccount(accountID);
-            account.setBalance(account.getBalance() + (amount - loadCustomer(account.getCustomerId()).calculateFee(amount)));
-            accounts.get(accountID).addTransaction(new DepositTransaction(amount, accountID));
+            double amountWithFee = (amount - loadCustomer(account.getCustomerId()).calculateFee(amount));
+            account.setBalance(account.getBalance() + (amountWithFee));
+            accounts.get(accountID).addTransaction(new DepositTransaction(amountWithFee, accountID));
             return true;
         }
         return false;
     } //patrik, labi, julia, erik
 
     public boolean withdraw(int accountID, double amount) {//subtracts amount from balance, returns true for a valid transaction, false for an invalid one
-        if (amount > 0 && accounts.get(accountID).getBalance() >= amount) {
+        if (amount > 0 && accounts.get(accountID).getBalance() > amount) {
             Account account = accounts.get(accountID);
-            WithdrawalTransaction transaction = new WithdrawalTransaction(amount, accountID);
+            double amountWithFee = (amount + loadCustomer(account.getCustomerId()).calculateFee(amount));
+            WithdrawalTransaction transaction = new WithdrawalTransaction(amountWithFee, accountID);
             account.addTransaction(transaction);
-            account.setBalance(account.getBalance() - (amount + loadCustomer(account.getCustomerId()).calculateFee(amount)));
+            account.setBalance(account.getBalance() - amountWithFee);
             return true;
         }
         return false;
