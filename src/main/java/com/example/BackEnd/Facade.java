@@ -33,8 +33,8 @@ public class Facade {
         try{
             MongoClient client = MongoClients.create();
             customersDatabase = client.getDatabase("customers");
-            MongoClient account = (MongoClient) client.getDatabase("account");
-            MongoClient employees = (MongoClient) client.getDatabase("employees");
+            //MongoClient account = (MongoClient) client.getDatabase("account");
+            //MongoClient employees = (MongoClient) client.getDatabase("employees");
 
 
         }catch(Exception e){
@@ -90,7 +90,8 @@ public class Facade {
 
     public Customer loadCustomer(int customerId){
         MongoCollection<Document> collection = customersDatabase.getCollection("test");
-        Document customer = (Document) collection.find(eq("ID", customerId));
+        Document customer = collection.find().first();
+        //Document customer = (Document) collection.find(eq("ID", customerId));
         return new Customer(customer.getInteger("ID"), customer.getString("name"), customer.getString("password"));
         //return customers.get(customerId);
     }
