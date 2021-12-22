@@ -155,12 +155,12 @@ public class Facade {
     }
 
     public boolean checkLogin(int ID, String password){
-        if(customers.containsKey(ID)){
-            if(customers.get(ID).getPassword().equals(password)) {
+        //if(customers.containsKey(ID)){
+            if(loadCustomer(ID).getPassword().equals(password)) {
                 //checks if the id exists, and the password of the customer with that id is equal to the input password
                 return true;
             }
-        }
+        //}
         return false;
     } //patrik, labi, julia
 
