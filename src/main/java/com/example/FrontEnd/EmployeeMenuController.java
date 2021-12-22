@@ -28,49 +28,48 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
     public static int activeID;
     private Employee currentEmployeeUse;
 
-    @FXML
-    private ImageView ImageProfile;
-
-    @FXML
-    private ListView<String> ListOfCustomers;
-
-    @FXML
-    private ListView<String> ListOfEmployee;
-
-    @FXML
-    private ChoiceBox<String> chooseActiveCustomer;
-
-    @FXML
-    private ChoiceBox<String> chooseActiveEmployee;
-
-
-
+    @FXML//on the interface text field and label = upper left corner
+    private TextField userID;
     @FXML
     private Label fullName;
-
     @FXML
     private Label position;
 
+    @FXML//on the interface image view = upper right corner
+    private ImageView ImageProfile;
+
+    @FXML//on the interface label = select customer and employee
+    private Label SelectedCustomer;
     @FXML
-    private TextField userID;
+    private Label SelectedEmployee;
+
+    @FXML//on the interface list view = right below select customer and employee
+    private ListView<String> listOfCustomers;
+    @FXML
+    private ListView<String> listOfEmployee;
 
     private ObservableList<String> differentCustomers = FXCollections.observableArrayList();
+    private ObservableList<String> differentEmployees = FXCollections.observableArrayList();
 
-    private Customer listOfCustomers(){//This is still being worked on
+    private void generatorListOfCustomers(){
         HashMap<Integer, Customer> currentList = StartApplication.facade.customers;
-        for (Customer currentCustomer: currentList.values()){
-            System.out.println(currentCustomer);
+        for (Customer currentCustomer: currentList.values()) {
+            differentCustomers.add(currentCustomer.getName() + " / " + currentCustomer.getID());
         }
-        return currentList.get(0);
+    }
+    private void generatorlistOfEmployees(){
+        HashMap<Integer, Employee> currentList = StartApplication.facade.employees;
+        for (Employee employees: currentList.values()) {
+            differentEmployees.add(employees.getName() + " / " + employees.getID());
+        }
     }
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Customer a = listOfCustomers();
-        chooseActiveCustomer.setValue("choose title");
-        chooseActiveCustomer.setItems(differentCustomers);
-
-
+        generatorListOfCustomers();//set up customers
+        listOfCustomers.setItems(differentCustomers);
+        generatorlistOfEmployees();//set up employees
+        listOfEmployee.setItems(differentEmployees);
 
         currentEmployeeUse = StartApplication.facade.loadEmployee(activeID);
         userID.setText(String.valueOf(activeID));
@@ -78,6 +77,16 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
     }
 
     //all methods below are for On action, or you could say on interfaces
+
+    @FXML
+    void onActionChooseCustomer(ActionEvent event) {
+        SelectedCustomer.setText(listOfCustomers.getSelectionModel().getSelectedItem());
+    }
+
+    @FXML
+    void onActionChooseEmployee(ActionEvent event) {
+        SelectedEmployee.setText(listOfEmployee.getSelectionModel().getSelectedItem());
+    }
 
     @FXML//On the interface button = delete customer
     void onActionDeleteCustomer(ActionEvent event) {
