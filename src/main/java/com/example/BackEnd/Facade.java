@@ -1,17 +1,26 @@
 package com.example.BackEnd;
 
 import java.io.*;
+//import com.mongodb.*;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
+
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Stack;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import static com.mongodb.client.model.Filters.eq;
 
 public class Facade {
     public HashMap<Integer, Customer> customers = new HashMap<>();
     public HashMap<Integer, Account> accounts = new HashMap<>();
     public HashMap<Integer, Account> employeeAccounts = new HashMap<>();
     public HashMap<Integer, Employee> employees=new HashMap<>();
+    MongoDatabase customersDatabase;
 
     final static String customersOutputFilePath = "F:/Serialisation/customers.txt";
     final static String accountsOutputFilePath = "F:/Serialisation/accounts.txt";
@@ -19,6 +28,21 @@ public class Facade {
     File customersFile = new File(customersOutputFilePath); //File to save customer data
     File accountsFile = new File(accountsOutputFilePath); //File to save account data
     File employeesFile = new File(employeesOutputFilePath); //File to save employee data
+
+    public Facade(){
+        try{
+            MongoClient client = MongoClients.create();
+            customersDatabase = client.getDatabase("customers");
+            MongoClient account = (MongoClient) client.getDatabase("account");
+            MongoClient employees = (MongoClient) client.getDatabase("employees");
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+
+    }
 
     public void storeData() { //stores data to file when the app is closed.
         try {
@@ -65,7 +89,10 @@ public class Facade {
     } // Done by Julia Ayvazian, temporary solution until the database works
 
     public Customer loadCustomer(int customerId){
-        return customers.get(customerId);
+        MongoCollection<Document> collection = customersDatabase.getCollection("test");
+        Document customer = (Document) collection.find(eq("ID", customerId));
+        return new Customer(customer.getInteger("ID"), customer.getString("name"), customer.getString("password"));
+        //return customers.get(customerId);
     }
 
     public Account loadAccount(int accountId){
@@ -76,6 +103,12 @@ public class Facade {
         if(validateName(name) && validatePassword(password)) {
             int ID = generateId(customers);
             Customer customer = new Customer(ID, name, password);
+            Document employee = new Document();
+            employee.append("ID", ID)
+                    .append("name", name)
+                    .append("password", password);
+            MongoCollection<Document> collection = customersDatabase.getCollection("test");
+            collection.insertOne(employee);
             customers.put(ID, customer);
             return ID;
         }
