@@ -132,8 +132,8 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
     }
 
     @FXML//On interface Button = MANUAL
-    void switchToManual(ActionEvent event) throws IOException {//Still being worked on
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomer.fxml"));//Needs to change to employee manual
+    void switchToManual(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ZZManualEmployee.fxml"));
         Parent root1 = fxmlLoader.load();
         stage = new Stage();
 
