@@ -40,6 +40,20 @@
                         <Glow />
                     </effect>
                 </Button>
+            <Button fx:id="Refresh" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToTheSameSceneRefresh" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Refresh / For Changes made" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="Arial Bold" size="17.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
                 <Button fx:id="manualButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToManual" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MANUAL" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
@@ -191,7 +205,7 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="SelectedCustomer" layoutX="252.0" layoutY="228.0" prefHeight="35.0" prefWidth="376.0" text="Select Customer" textAlignment="CENTER">
+            <Label fx:id="selectedCustomerID" layoutX="250.0" layoutY="228.0" prefHeight="35.0" prefWidth="112.0" text="Select ID" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
@@ -206,7 +220,17 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="SelectedEmployee" layoutX="252.0" layoutY="263.0" prefHeight="35.0" prefWidth="376.0" text="Select employee" textAlignment="CENTER">
+            <Label fx:id="selectedEmployeeID" layoutX="250.0" layoutY="263.0" prefHeight="35.0" prefWidth="112.0" text="Select ID" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="customerInfo" layoutX="362.0" layoutY="228.0" prefHeight="35.0" prefWidth="266.0" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="employeeInfo" layoutX="362.0" layoutY="263.0" prefHeight="35.0" prefWidth="260.0" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>

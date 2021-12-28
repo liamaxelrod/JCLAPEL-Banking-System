@@ -66,7 +66,7 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
         //*Only the first name is required to create an employee???
             theID = StartApplication.facade.createEmployee(firstnameTextField.getText()/*, setPasswordField.getText()*/);
 
-            EmployeeMenuController.activeID = theID;//resets the Employee
+            EmployeeMenuController.inUseEmployeeActiveID = theID;//resets the Employee
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("employeeMenu.fxml"));
@@ -80,7 +80,7 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
             //This is for testing will be deleted later
         } else if (!StartApplication.facade.validatePassword(setPasswordField.getText())) {
             theID = StartApplication.facade.createEmployee("liam"/*, "!Q1qaaaaa"*/);
-            EmployeeMenuController.activeID = theID;//resets the user
+            EmployeeMenuController.inUseEmployeeActiveID = theID;//resets the user
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("employeeMenu.fxml"));
             Parent root = loader.load();
