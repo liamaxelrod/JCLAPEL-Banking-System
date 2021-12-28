@@ -22,7 +22,6 @@ public class Customer {
 
 	public Customer(int id, String name, String password) {
 		// Constructor for customer, creates a customer account with unique ID, a name and password
-		// TODO: No duplicate IDs should exist within the system.
 		this.id = id;
 		this.name = name;
 		this.password = password;

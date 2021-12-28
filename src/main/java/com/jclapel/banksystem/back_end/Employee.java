@@ -23,7 +23,6 @@ public class Employee {
 
 	public Employee(int id, String name) {
 		// Creates employee from ID and name
-		// TODO: Avoid duplicate ID! 
 		this.id = id;
 		this.name = name;
 	}

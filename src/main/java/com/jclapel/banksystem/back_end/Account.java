@@ -55,7 +55,6 @@ public class Account {
 
 	public void setBalance(double balance) {
 		// Sets the balance of the account object
-		// TODO: Balance may end up negative. Figure something out!
 		this.balance = balance;
 	}
 
