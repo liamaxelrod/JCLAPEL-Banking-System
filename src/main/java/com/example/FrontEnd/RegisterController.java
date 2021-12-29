@@ -2,6 +2,7 @@ package com.example.FrontEnd;
 
 
 import com.example.BackEnd.Account;
+import com.example.BackEnd.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -68,8 +69,8 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
             StartApplication.facade.removeAccount(savingAccountID);
 
             UserMenuController.activeID = customerID;//resets the user
-            UserMenuController.checkingID = checkingAccountID;
-            UserMenuController.savingID = savingAccountID;
+//            UserMenuController.checkingID = checkingAccountID;
+//            UserMenuController.savingID = savingAccountID;
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("userMenu.fxml"));
@@ -100,8 +101,16 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
             StartApplication.facade.removeAccount(savingAccountID);
 
             UserMenuController.activeID = customerID;//resets the user
-            UserMenuController.checkingID = checkingAccountID;
-            UserMenuController.savingID = savingAccountID;
+
+            Customer theCustomer = StartApplication.facade.loadCustomer(customerID);
+            int[] allAccounts = new int[theCustomer.getAccounts().size()];
+            int loop = 0;
+
+            for (Account accounts : theCustomer.getAccounts().values()){
+                allAccounts[loop] = accounts.getID();
+                loop = 0 + 1;
+            }
+            UserMenuController.Account = allAccounts;
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("userMenu.fxml"));

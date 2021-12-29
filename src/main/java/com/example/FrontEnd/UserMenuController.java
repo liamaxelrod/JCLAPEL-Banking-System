@@ -2,6 +2,8 @@ package com.example.FrontEnd;
 
 
 import com.example.BackEnd.Customer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,12 +13,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class UserMenuController implements Initializable {//Liam was most responsible for this, Albin Worked on this
@@ -25,9 +29,6 @@ public class UserMenuController implements Initializable {//Liam was most respon
 
     public static int activeID;
     private Customer currentCustomerUse;
-    public static int savingID;
-    public static int checkingID;
-
     public static int[] Account;
 
 
@@ -41,10 +42,20 @@ public class UserMenuController implements Initializable {//Liam was most respon
     @FXML//on interface label = next to name:
     private Label fullName;
 
-    @FXML//on interface label = bottom left corner
-    private Label checkingBalance;
-    @FXML
-    private Label savingBalance;
+    @FXML//on interface ListView = Middle of interface
+    private ListView<String> loadListOfAccount;
+
+    private ObservableList<String> differentAccount = FXCollections.observableArrayList();
+    private void generatorListOfAccount(){
+        HashMap<Integer, com.example.BackEnd.Account> currentList = currentCustomerUse.getAccounts();
+        for (com.example.BackEnd.Account currentAccount: currentList.values()) {
+            String type = "Checking";
+            if (currentAccount.isSavings()){
+                type = "Saving";
+            }
+            differentAccount.add(type + ": " + currentAccount.getBalance() + " ID:" + currentAccount.getID());
+        }
+    }
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -53,8 +64,8 @@ public class UserMenuController implements Initializable {//Liam was most respon
 
         fullName.setText(currentCustomerUse.getName());
 
-        checkingBalance.setText(String.valueOf(currentCustomerUse.getAccounts().get(checkingID).getBalance()));
-        savingBalance.setText(String.valueOf(currentCustomerUse.getAccounts().get(savingID).getBalance()));
+        generatorListOfAccount();//set up Accounts
+        loadListOfAccount.setItems(differentAccount);
     }
 
     //all methods below are for switching scenes, or you could say interfaces
