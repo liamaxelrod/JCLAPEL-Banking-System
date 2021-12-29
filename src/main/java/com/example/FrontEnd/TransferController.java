@@ -40,11 +40,7 @@ public class TransferController implements Initializable {//Albin worked on this
     @FXML//on interface text field = below to account
     private TextField transferAmount;
 
-    @FXML
-    private Button SignOut;
 
-    @FXML
-    private Button userMenu;
 
 
     @Override//this method takes effect when the scene is loaded
@@ -96,6 +92,11 @@ public class TransferController implements Initializable {//Albin worked on this
 
     //Methods to make the buttons glow
     @FXML
+    private Button SignOut;
+
+    @FXML
+    private Button userMenu;
+    @FXML
     private void confirmHoverInSignO() {
         SignOut.setStyle("-fx-background-color: #52779C;");
     }
@@ -114,4 +115,5 @@ public class TransferController implements Initializable {//Albin worked on this
     private void confirmHoverOutUser() {
         userMenu.setStyle("-fx-background-color: #414D59;");
     }
+
 }

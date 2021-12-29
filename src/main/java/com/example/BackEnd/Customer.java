@@ -14,7 +14,7 @@ public class Customer {
         this.name=name;
         this.password=password;
 
-    }
+    } //Labi
 
     public void addAccount(Account account){
         accounts.put(account.getID(), account);

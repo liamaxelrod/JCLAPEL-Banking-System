@@ -98,16 +98,31 @@ public class Facade {
     } //Labi
     //more validation on the name, by checking whether it is multiple words,
     // and make it so that if they don't start with a capital, they are changed to start with it when they are saved.
-    public boolean ValidateName(String name){
+    /*public String CheckName(String name){
         if(validateName(name) && name.length()>0){  //checks if name is not empty and name has more than 0 words
+            name = name.toLowerCase();
+            //Character.toUpperCase(name.charAt(0));
+            name = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
+            name.trim();
             if (Character.isUpperCase(name.charAt(0))){   //check if name already starts with capital letter
                 return true;
         }else if (name.charAt(0) == name.charAt(0).toUpperCase()) {   //make first letter of name capital
                 return true;
         }
         }
-        return false;
+        return name;
+    }*/
+
+    public String getValidName(String name){
+        if(validateName(name) && name.length()>0){
+           name =  name.trim();
+           String[] nameArray = name.split("//s+");
+           if(nameArray.length<2){
+               return null;
+           }
+        }
     }
+
 
     public boolean validatePassword(String password){ //Julia
         Pattern checkPattern = Pattern.compile("[^a-zA-Z0-9]"); //regex, checks everything that is not a special case character

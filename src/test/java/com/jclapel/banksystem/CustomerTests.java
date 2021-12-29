@@ -33,7 +33,7 @@ public class CustomerTests { //By patrik and Labi
 
         assertThat(facade.createCustomer("", "Password80!")).isEqualTo(0); //checking validation of non-empty password and name
 
-        assertThat(facade.createCustomer("John Smith", "password80!")).isEqualTo(0); //no uppercase //Labi
+        assertThat(facade.createCustomer("John Smith", "password80!")).isEqualTo(0); //no uppercase
         assertThat(facade.createCustomer("John Smith", "Password80")).isEqualTo(0); //no symbol
         assertThat(facade.createCustomer("John Smith", "Password!")).isEqualTo(0); //no number
         assertThat(facade.createCustomer("John Smith", "Pass80!")).isEqualTo(0); //no 8 characters
@@ -43,7 +43,7 @@ public class CustomerTests { //By patrik and Labi
         facade.removeCustomer(ID); //testing account deletion
         johnSmith = facade.loadCustomer(ID);
         assertThat(johnSmith).isEqualTo(null);
-    }
+    } //Labi
 
     @Test
     public void testLogin(){
@@ -53,7 +53,7 @@ public class CustomerTests { //By patrik and Labi
         assertThat(facade.checkLogin(0, "Password")).isEqualTo(false);
 
         assertThat(facade.resetPassword(ID, "Wrong Password", "New Password80!")).isEqualTo(false);//checking password change
-        assertThat(facade.resetPassword(0, "Password80!", "New Password80!")).isEqualTo(false);   //Labi
+        assertThat(facade.resetPassword(0, "Password80!", "New Password80!")).isEqualTo(false);
         assertThat(facade.resetPassword(ID, "Password80!", "New Password80!")).isEqualTo(false);
 
         assertThat(facade.resetPassword(ID,"Password80!","password80!")).isEqualTo(false);
@@ -62,6 +62,7 @@ public class CustomerTests { //By patrik and Labi
         assertThat(facade.resetPassword(ID,"Password80!","Pass80!")).isEqualTo(false);
         assertThat(facade.resetPassword(ID,"Password80!","Passw80!")).isEqualTo(true);
         assertThat(facade.resetPassword(ID,"Password80!","PASSWORD80!")).isEqualTo(false);
+        //Labi
 
 
 
