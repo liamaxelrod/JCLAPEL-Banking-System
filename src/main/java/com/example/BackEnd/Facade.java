@@ -64,15 +64,16 @@ public class Facade {
         }
     } // Done by Julia Ayvazian, temporary solution until the database works
 
-    public Customer loadCustomer(int customerId){
+    public Customer loadCustomer(int customerId){ //with a given customer id, return the customer with the same id from customer hashmap
         return customers.get(customerId);
     }
 
-    public Account loadAccount(int accountId){
+    public Account loadAccount(int accountId){ //same as above
         return accounts.get(accountId);
     }
 
-    public int createCustomer(String name, String password){
+    public int createCustomer(String name, String password){ //given valid name and password, generate a random id to
+        // create a customer with those and put it in the general customers hashmap
         if(validateName(name) && validatePassword(password)) {
             int ID = generateId(customers);
             Customer customer = new Customer(ID, name, password);
@@ -82,7 +83,7 @@ public class Facade {
         return 0;
     }//patrik, labi, julia erik
 
-    public int createEmployeeCustomer(String name, String password){
+    public int createEmployeeCustomer(String name, String password){ //same as above
         if(validateName(name) && validatePassword(password)) {
             int ID = generateId(customers);
             Customer customer = new EmployeeCustomer(ID, name, password);
@@ -92,9 +93,21 @@ public class Facade {
         return 0;
     }
 
-    public boolean validateName(String name){ //Labi
+    public boolean validateName(String name){ //Labi  //checks by returning true if the name is non-empty else returns false
         return !name.isEmpty();
     } //Labi
+    //more validation on the name, by checking whether it is multiple words,
+    // and make it so that if they don't start with a capital, they are changed to start with it when they are saved.
+    public boolean ValidateName(String name){
+        if(validateName(name) && name.length()>0){  //checks if name is not empty and name has more than 0 words
+            if (Character.isUpperCase(name.charAt(0))){   //check if name already starts with capital letter
+                return true;
+        }else if (name.charAt(0) == name.charAt(0).toUpperCase()) {   //make first letter of name capital
+                return true;
+        }
+        }
+        return false;
+    }
 
     public boolean validatePassword(String password){ //Julia
         Pattern checkPattern = Pattern.compile("[^a-zA-Z0-9]"); //regex, checks everything that is not a special case character
@@ -120,7 +133,9 @@ public class Facade {
         customers.remove(ID);
     }
 
-    public boolean checkLogin(int ID, String password){
+    public boolean checkLogin(int ID, String password){ //given id and password, checks if the customer with that id exists and
+        // if so checks that if customers password (accesses c.password through customers.get(ID) matches the provided password,
+        // returns true if so else false
         if(customers.containsKey(ID)){
             if(customers.get(ID).getPassword().equals(password)) {
                 //checks if the id exists, and the password of the customer with that id is equal to the input password
@@ -132,12 +147,12 @@ public class Facade {
 
     public int createAccount(int customerId){ // adds an account to a given customer
         Account account = new Account(generateId(customers.get(customerId).getAccounts()), customerId, false);
-        customers.get(customerId).addAccount(account);
-        accounts.put(account.getID(), account);
-        return account.getID();
+        customers.get(customerId).addAccount(account); //adding an account to the customer with the provided c.id
+        accounts.put(account.getID(), account); //putting the account in the customers hashmap for accounts
+        return account.getID(); //returning the account id
     } //patrik, labi
 
-    public int createSavingsAccount(int customerId){
+    public int createSavingsAccount(int customerId){  //same as above
         Account account = new Account(generateId(customers.get(customerId).getAccounts()), customerId, true);
         customers.get(customerId).addAccount(account);
         accounts.put(account.getID(), account);
@@ -157,7 +172,8 @@ public class Facade {
     } //Erik
 
     public boolean transferBetweenAccounts(int senderId, int receiverId, double amount) {
-        if (withdraw(senderId, amount) && deposit(receiverId, amount)) {
+        if (withdraw(senderId, amount) && deposit(receiverId, amount)) {  // if withdraw and deposit is true, add a new transaction to the account with the
+            // account id same as sender/receiver id and return boolean value
             accounts.get(senderId).addTransaction(new TransferTransaction(amount, senderId, receiverId));
             accounts.get(receiverId).addTransaction(new TransferTransaction(amount, senderId, receiverId));
             return true;
@@ -165,7 +181,9 @@ public class Facade {
         return false;
     } //patrik, labi, julia, erik
 
-    public boolean deposit(int accountID, double amount){ //add amount, return true if the transaction is valid, or false if it is invald
+    public boolean deposit(int accountID, double amount){ //given accountID and amount, retrieves account matching the account id,
+        // add amount to accounts balance(also deposit fee) and sets it,
+        // add a transaction to the account , return true if the process works else false
         if(amount>0){
             Account account = loadAccount(accountID);
             account.setBalance(account.getBalance() + (amount - loadCustomer(account.getCustomerId()).calculateFee(amount)));
@@ -175,7 +193,9 @@ public class Facade {
         return false;
     } //patrik, labi, julia, erik
 
-    public boolean withdraw(int accountID, double amount) {//subtracts amount from balance, returns true for a valid transaction, false for an invalid one
+    public boolean withdraw(int accountID, double amount) {//given accountID and amount, retrieves account matching the account id,
+        // subtracts amount from balance(also withdrawal fee)and sets it,
+        // add a transaction to the account , return true if the process works else false
         if (amount > 0 && accounts.get(accountID).getBalance() >= amount) {
             Account account = accounts.get(accountID);
             WithdrawalTransaction transaction = new WithdrawalTransaction(amount, accountID);
@@ -210,7 +230,7 @@ public class Facade {
         return ID; //changed void to int, returned ID
     }
 
-    public void removeEmployee(int ID){
+    public void removeEmployee(int ID){ //given an id, removes the employee matching that id from the hashmap
         employees.remove(ID);
     } //Erik and Labi
 
@@ -225,6 +245,13 @@ public class Facade {
         return account.getID();
 
     } //patrik, labi
+
+
+
+
+
+
+
 
     public int generateId(HashMap hashMap){ //takes the hashmap in which the resulting object will be stored as an argument
         int ID;
