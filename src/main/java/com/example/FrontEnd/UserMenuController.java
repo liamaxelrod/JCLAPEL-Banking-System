@@ -25,6 +25,10 @@ public class UserMenuController implements Initializable {//Liam was most respon
 
     public static int activeID;
     private Customer currentCustomerUse;
+    public static int savingID;
+    public static int checkingID;
+
+    public static int[] Account;
 
 
     @FXML//on interface image view = upper far right position
@@ -38,21 +42,22 @@ public class UserMenuController implements Initializable {//Liam was most respon
     private Label fullName;
 
     @FXML//on interface label = bottom left corner
-    private Label CheckingTotal;
+    private Label checkingBalance;
     @FXML
-    private Label OtherTotal;
-    @FXML
-    private Label SavingTotal;
+    private Label savingBalance;
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
         currentCustomerUse = StartApplication.facade.loadCustomer(activeID);
         userID.setText(String.valueOf(activeID));
+
         fullName.setText(currentCustomerUse.getName());
 
+        checkingBalance.setText(String.valueOf(currentCustomerUse.getAccounts().get(checkingID).getBalance()));
+        savingBalance.setText(String.valueOf(currentCustomerUse.getAccounts().get(savingID).getBalance()));
     }
 
-    ////all methods below are for switching scenes, or you could say interfaces
+    //all methods below are for switching scenes, or you could say interfaces
 
     @FXML//on interface button = transfer
     void switchToTransfer(ActionEvent event) throws IOException {
