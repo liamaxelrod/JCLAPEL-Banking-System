@@ -37,12 +37,9 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
     @FXML//On the interface = pops up if you put in the wrong thing
     private Label warningText;
 
-//    private Customer CreateFullCustomer(){
-//
-//    }
+    //All methods below are on action do something on the interface
 
-
-    @FXML
+    @FXML//Still needed to be perfected
     void onActionCreateAccount(ActionEvent event) throws IOException {
         int customerID;
         int checkingAccountID;
@@ -97,11 +94,7 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
             StartApplication.facade.loadCustomer(customerID).addAccount(checkingAccount);
             StartApplication.facade.loadCustomer(customerID).addAccount(savingAccount);
 
-            StartApplication.facade.removeAccount(checkingAccountID);
-            StartApplication.facade.removeAccount(savingAccountID);
-
             UserMenuController.activeID = customerID;//resets the user
-
             Customer theCustomer = StartApplication.facade.loadCustomer(customerID);
             int[] allAccounts = new int[theCustomer.getAccounts().size()];
             int loop = 0;
@@ -110,7 +103,7 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
                 allAccounts[loop] = accounts.getID();
                 loop = 0 + 1;
             }
-            UserMenuController.Account = allAccounts;
+            UserMenuController.Account = allAccounts;//Resets and here
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("userMenu.fxml"));
@@ -126,6 +119,8 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
         }
 
     }
+
+    //All methods below switch to a different interfacing
 
     @FXML
     void switchToLoginCustomer(ActionEvent event) throws IOException {

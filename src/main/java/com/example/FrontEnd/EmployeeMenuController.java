@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.Account;
 import com.example.BackEnd.Customer;
 import com.example.BackEnd.Employee;
 import javafx.collections.FXCollections;
@@ -65,7 +66,7 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
             differentCustomers.add(currentCustomer.getID() + " / " + currentCustomer.getName());
         }
     }
-    private void generatorlistOfEmployees(){
+    private void generatorListOfEmployees(){
         HashMap<Integer, Employee> currentList = StartApplication.facade.employees;
         for (Employee employees: currentList.values()) {
             differentEmployees.add(employees.getID() + " / " + employees.getName());
@@ -76,7 +77,7 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
     public void initialize(URL url, ResourceBundle resourceBundle) {
         generatorListOfCustomers();//set up customers
         listOfCustomers.setItems(differentCustomers);
-        generatorlistOfEmployees();//set up employees
+        generatorListOfEmployees();//set up employees
         listOfEmployee.setItems(differentEmployees);
 
         currentEmployeeUse = StartApplication.facade.loadEmployee(inUseEmployeeActiveID);
@@ -105,7 +106,15 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
     @FXML//On the interface button = delete customer
     void onActionDeleteCustomer(ActionEvent event) throws IOException {
         if (selectedCustomerID.getText().length() == 6){
+
+            Customer theCustomer = StartApplication.facade.loadCustomer(Integer.parseInt(selectedCustomerID.getText()));
+
+            for (Account accounts : theCustomer.getAccounts().values()){
+                int accountID = accounts.getID();
+                StartApplication.facade.removeAccount(accountID);
+            }
             StartApplication.facade.removeCustomer(Integer.parseInt(selectedCustomerID.getText()));
+
             switchToTheSameSceneRefresh(event);
         } else {
             customerInfo.setText("select a customer");

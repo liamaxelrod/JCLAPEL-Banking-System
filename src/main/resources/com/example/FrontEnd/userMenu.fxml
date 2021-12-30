@@ -24,10 +24,9 @@
                         <Font name="Arial Bold" size="20.0" />
                      </font>
                   </Label>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                </children>
             </Pane>
-            <Button fx:id="logoutButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" onMouseEntered="#confirmHoverInLogOff" onMouseExited="#confirmHoverOutLogOff" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Logout" textFill="WHITE">
+            <Button fx:id="logoutButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Logout" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -41,7 +40,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="transferButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="122.0" mnemonicParsing="false" onAction="#switchToTransfer" onMouseEntered="#confirmHoverInTran" onMouseExited="#confirmHoverOutTran" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Transfer" textFill="WHITE">
+            <Button fx:id="transferButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="122.0" mnemonicParsing="false" onAction="#switchToTransfer" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Transfer" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -55,7 +54,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="profileButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="122.0" mnemonicParsing="false" onAction="#switchToProfile" onMouseEntered="#confirmHoverInPro" onMouseExited="#confirmHoverOutPro" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Profile" textFill="WHITE">
+            <Button fx:id="profileButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="122.0" mnemonicParsing="false" onAction="#switchToProfile" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Profile" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -69,7 +68,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="financePort" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="122.0" mnemonicParsing="false" onAction="#switchToFinanceProject" onMouseEntered="#confirmHoverInFin" onMouseExited="#confirmHoverOutFin" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Loans &amp; Portfolio" textFill="WHITE">
+            <Button fx:id="financePort" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="122.0" mnemonicParsing="false" onAction="#switchToFinanceProject" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Loans &amp; Portfolio" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -83,7 +82,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="transferHis" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToBankStatement" onMouseEntered="#confirmHoverInTranHi" onMouseExited="#confirmHoverOutTranHi" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Bankstatement " textFill="WHITE">
+            <Button fx:id="transferHis" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToBankStatement" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Bankstatement " textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -97,7 +96,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="manual" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToManual" onMouseEntered="#confirmHoverInMan" onMouseExited="#confirmHoverOutMan" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Manual / About us" textFill="WHITE">
+            <Button fx:id="manual" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToManual" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Manual / About us" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -111,7 +110,40 @@
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="closeButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handelCloseButtonAction" onMouseEntered="#confirmHoverInExit" onMouseExited="#confirmHoverOutExit" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Exit" textFill="WHITE">
+            <Button fx:id="closeButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handelCloseButtonAction" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Exit" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="Arial Bold" size="17.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
+            <Label alignment="CENTER" prefHeight="35.0" prefWidth="318.0" text="Create accounts" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="makeCheckingAccountButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onActionMakeCheckingAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Creative checking account" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="Arial Bold" size="17.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
+            <Button fx:id="makeSavingAccountButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onActionMakeSavingAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create a saving account" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -139,11 +171,59 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="319.0" layoutY="116.0" prefHeight="563.0" prefWidth="620.0">
+      <Pane layoutX="312.0" layoutY="112.0" prefHeight="568.0" prefWidth="627.0">
          <children>
+            <Label fx:id="warningLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="424.0" prefHeight="35.0" prefWidth="312.0" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="deleteAccountButton" contentDisplay="CENTER" layoutX="184.0" layoutY="476.0" mnemonicParsing="false" onAction="#onActionDeleteAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="149.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Delete account" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="Arial Bold" size="17.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
+            <Button fx:id="selectAccountButton" contentDisplay="CENTER" layoutX="22.0" layoutY="476.0" mnemonicParsing="false" onAction="#onActionSelectAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="149.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Select account" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="Arial Bold" size="17.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
+            <ListView fx:id="loadListOfAccount" layoutX="17.0" layoutY="208.0" prefHeight="200.0" prefWidth="587.0" />
+            <Label fx:id="selectedAccount" layoutX="236.0" layoutY="159.0" prefHeight="35.0" prefWidth="368.0" text="None selected" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="159.0" prefHeight="35.0" prefWidth="212.0" text="Selected account:" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="15.0" layoutY="124.0" prefHeight="35.0" prefWidth="88.0" text="Name: " textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="103.0" layoutY="124.0" prefHeight="35.0" prefWidth="319.0" text="Last name?" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
             <ImageView fx:id="ImageProfile" fitHeight="147.0" fitWidth="166.0" layoutX="441.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
 
-            <Label alignment="CENTER_RIGHT" layoutX="13.0" layoutY="89.0" prefHeight="35.0" prefWidth="90.0" text="Name: " textAlignment="CENTER">
+            <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="89.0" prefHeight="35.0" prefWidth="88.0" text="Name: " textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
@@ -153,9 +233,9 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Pane layoutX="350.0" layoutY="402.0" prefHeight="147.0" prefWidth="257.0">
+            <Pane layoutX="350.0" layoutY="402.0" prefHeight="134.0" prefWidth="257.0">
                <children>
-                  <Button fx:id="manualButton" contentDisplay="CENTER" layoutX="18.0" layoutY="73.0" mnemonicParsing="false" onAction="#switchToManual" onMouseEntered="#confirmHoverInManB" onMouseExited="#confirmHoverOutManB" prefHeight="55.0" prefWidth="230.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MANUAL / About us" textFill="WHITE">
+                  <Button fx:id="manualButton" contentDisplay="CENTER" layoutX="18.0" layoutY="73.0" mnemonicParsing="false" onAction="#switchToManual" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="230.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MANUAL / About us" textFill="WHITE">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -179,7 +259,6 @@
                   <Font name="Arial Bold" size="20.0" />
                </font>
             </Label>
-            <ListView fx:id="loadListOfAccount" layoutX="14.0" layoutY="161.0" prefHeight="200.0" prefWidth="587.0" />
          </children>
       </Pane>
    </children>
