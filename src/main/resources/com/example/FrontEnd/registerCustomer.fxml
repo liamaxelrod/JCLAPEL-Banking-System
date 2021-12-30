@@ -13,9 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.RegisterController">
+<AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.RegisterController">
     <children>
-        <VBox prefHeight="675.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;">
+        <VBox prefHeight="675.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Pane prefHeight="112.0" prefWidth="319.0">
                     <children>
@@ -100,7 +100,7 @@
                 <Font name="Arial" size="47.0" />
             </font>
         </Label>
-        <Pane layoutX="319.0" prefHeight="112.0" prefWidth="620.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.bottomAnchor="563.0" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+        <Pane layoutX="319.0" prefHeight="112.0" prefWidth="620.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label layoutX="144.0" layoutY="40.0" text="THE BANK YOU DESERVE" textAlignment="CENTER" textFill="WHITE">
                     <font>
@@ -122,7 +122,10 @@
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="warningText" layoutX="629.0" layoutY="347.0" textFill="RED" />
+      <Label fx:id="warningText" layoutX="629.0" layoutY="347.0" prefHeight="149.0" prefWidth="156.0" textFill="RED">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></Label>
       <Text layoutX="388.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Must contain: Minimum 8 characters, a-z, A-Z, 0-9, special character" wrappingWidth="231.9999999999999">
          <font>
             <Font name="Arial" size="13.0" />
