@@ -59,15 +59,21 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
             checkingAccount = StartApplication.facade.loadAccount(checkingAccountID);
             savingAccount = StartApplication.facade.loadAccount(savingAccountID);
 
+            //Will have no balance right now
+
             StartApplication.facade.loadCustomer(customerID).addAccount(checkingAccount);
             StartApplication.facade.loadCustomer(customerID).addAccount(savingAccount);
 
-            StartApplication.facade.removeAccount(checkingAccountID);
-            StartApplication.facade.removeAccount(savingAccountID);
-
             UserMenuController.activeID = customerID;//resets the user
-//            UserMenuController.checkingID = checkingAccountID;
-//            UserMenuController.savingID = savingAccountID;
+            Customer theCustomer = StartApplication.facade.loadCustomer(customerID);
+            int[] allAccounts = new int[theCustomer.getAccounts().size()];
+            int loop = 0;
+
+            for (Account accounts : theCustomer.getAccounts().values()){
+                allAccounts[loop] = accounts.getID();
+                loop = 0 + 1;
+            }
+            UserMenuController.accounts = allAccounts;//Resets and here
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("userMenu.fxml"));

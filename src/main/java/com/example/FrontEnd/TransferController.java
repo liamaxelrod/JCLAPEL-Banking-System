@@ -63,7 +63,11 @@ public class TransferController implements Initializable {//Albin worked on this
     private void generatorListOfAllAccounts(){
         HashMap<Integer, Account> currentList = StartApplication.facade.accounts;
         for (com.example.BackEnd.Account currentAccount: currentList.values()) {
-            differentAllAccounts.add("ID: " + currentAccount.getID());
+            String type = "Checking";
+            if (currentAccount.isSavings()){
+                type = "Saving";
+            }
+            differentAllAccounts.add("ID: " + currentAccount.getID() + " " + type);
         }
     }
 

@@ -38,7 +38,6 @@ public class LoginController {//Albin worked on this more Liam Partly worked on 
 
             UserMenuController.activeID = Integer.parseInt(ID.getText());//Resets the user
             Customer theCustomer = StartApplication.facade.loadCustomer(Integer.parseInt(ID.getText()));
-
             int[] allAccounts = new int[theCustomer.getAccounts().size()];
             int loop = 0;
 
@@ -46,10 +45,7 @@ public class LoginController {//Albin worked on this more Liam Partly worked on 
                 allAccounts[loop] = accounts.getID();
                 loop = 0 + 1;
             }
-            UserMenuController.accounts = allAccounts;
-
-
-
+            UserMenuController.accounts = allAccounts;//Reset user ends here
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("userMenu.fxml"));
