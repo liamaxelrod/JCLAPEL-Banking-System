@@ -30,7 +30,7 @@ public class UserMenuController implements Initializable {//Liam was most respon
 
     public static int activeID;
     private Customer currentCustomerUse;
-    public static int[] Account;
+    public static int[] accounts;
 
 
     @FXML//on interface image view = upper far right position
@@ -163,14 +163,22 @@ public class UserMenuController implements Initializable {//Liam was most respon
 
     @FXML//on interface button = transfer history
     void switchToBankStatement(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("bankStatment.fxml"));
-        Parent root = loader.load();
-        scene = new Scene(root);
+        if (selectedAccount.getText().length() == 6){
+            BankStatementController.account = Integer.parseInt(selectedAccount.getText());
 
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("bankStatment.fxml"));
+            Parent root = loader.load();
+            scene = new Scene(root);
+
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+        } else {
+            warningLabel.setText("Must select account");
+        }
+
     }
     @FXML
     void switchToManual(/*ActionEvent event*/) throws IOException {

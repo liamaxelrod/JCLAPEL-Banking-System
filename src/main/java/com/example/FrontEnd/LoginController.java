@@ -46,7 +46,7 @@ public class LoginController {//Albin worked on this more Liam Partly worked on 
                 allAccounts[loop] = accounts.getID();
                 loop = 0 + 1;
             }
-            UserMenuController.Account = allAccounts;
+            UserMenuController.accounts = allAccounts;
 
 
 

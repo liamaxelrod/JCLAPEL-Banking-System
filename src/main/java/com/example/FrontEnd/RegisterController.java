@@ -103,7 +103,7 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
                 allAccounts[loop] = accounts.getID();
                 loop = 0 + 1;
             }
-            UserMenuController.Account = allAccounts;//Resets and here
+            UserMenuController.accounts = allAccounts;//Resets and here
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("userMenu.fxml"));
