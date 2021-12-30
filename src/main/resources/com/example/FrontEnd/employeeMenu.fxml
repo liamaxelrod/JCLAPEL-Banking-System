@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.EmployeeMenuController">
+<AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.EmployeeMenuController">
     <children>
         <VBox prefHeight="679.0" prefWidth="305.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -162,7 +162,7 @@
                 </Label>
             </children>
         </Pane>
-        <Pane layoutX="305.0" layoutY="112.0" prefHeight="560.0" prefWidth="636.0" AnchorPane.leftAnchor="305.0">
+        <Pane layoutX="305.0" layoutY="112.0" prefHeight="560.0" prefWidth="636.0" stylesheets="@../../../style.css" AnchorPane.leftAnchor="305.0">
             <children>
                 <ImageView fx:id="ImageProfile" fitHeight="147.0" fitWidth="166.0" layoutX="441.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                 <Label alignment="CENTER_RIGHT" layoutX="19.0" layoutY="89.0" prefHeight="35.0" prefWidth="84.0" text="Name: " textAlignment="CENTER">
