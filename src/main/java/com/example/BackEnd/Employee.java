@@ -8,12 +8,13 @@ import static com.example.FrontEnd.StartApplication.facade;
 public class Employee {
     private final int ID;
     private String name;
+    private String password;
     private HashMap<Integer, Account> accounts = new HashMap<>();
 
-    public Employee(int ID, String name){
+    public Employee(int ID, String name, String password){
         this.ID=ID;
         this.name=name;
-
+        this.password=password;
     }
 
     public int getID() {

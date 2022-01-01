@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 
-public class ManagerReport {
+public class ManagerReport implements Report{
     // see customer name, and all transactions and accounts
     Facade facade = new Facade();
     private String name;
