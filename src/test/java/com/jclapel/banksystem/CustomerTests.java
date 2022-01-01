@@ -63,11 +63,6 @@ public class CustomerTests { //By patrik and Labi
         assertThat(facade.resetPassword(ID,"Password80!","Passw80!")).isEqualTo(true);
         assertThat(facade.resetPassword(ID,"Password80!","PASSWORD80!")).isEqualTo(false);
 
-
-
-
-
-
         assertThat(facade.resetPassword(ID, "Password80!", "New Password80!")).isEqualTo(true);
 
         assertThat(facade.checkLogin(ID, "New Password80!")).isEqualTo(true);//checking changed password

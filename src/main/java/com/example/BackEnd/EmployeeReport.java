@@ -4,7 +4,7 @@ import java.util.Stack;
 
 import static com.example.FrontEnd.StartApplication.facade;
 
-public class EmployeeReport {
+public class EmployeeReport implements Report {
     Transaction[] latestTransactions = new Transaction[10];
 
     public EmployeeReport(int customerId){
