@@ -3,19 +3,15 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.BankStatementController">
+<AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.BankStatementController">
     <children>
         <VBox prefHeight="675.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;">
             <children>
@@ -26,7 +22,6 @@
                                 <Font name="System Bold" size="20.0" />
                             </font>
                         </Label>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                     </children>
                 </Pane>
                 <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToCustomerMenu" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="User Menu" textFill="WHITE">
@@ -59,7 +54,6 @@
                 </Button>
             </children>
         </VBox>
-        <Pane layoutX="10.0" layoutY="2.0" prefHeight="120.0" prefWidth="319.0" />
         <Label layoutX="384.0" layoutY="122.0" prefHeight="79.0" prefWidth="383.0" text="Bank Statement" textFill="#5d84a4">
             <font>
                 <Font name="Arial Bold" size="47.0" />
@@ -77,33 +71,11 @@
                 </Label>
             </children>
         </Pane>
-      <GridPane layoutX="341.0" layoutY="301.0" prefHeight="360.0" prefWidth="578.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="175.60001220703126" minHeight="10.0" prefHeight="34.800024414062506" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="333.1999877929687" minHeight="10.0" prefHeight="325.9999755859375" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <TableView onSort="#switchToCustomerMenu" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-              <columns>
-
-
-                <TableColumn prefWidth="67.20001220703125" style="-fx-background-color: #81A1C3;" text="ID:" />
-
-                <TableColumn prefWidth="104.0" style="-fx-background-color: #81A1C3;" styleClass="Arial Bold" text="Date:" />
-                  <TableColumn prefWidth="110.4000244140625" style="-fx-background-color: #81A1C3;" text="Source:" />
-                  <TableColumn prefWidth="140.7999267578125" style="-fx-background-color: #81A1C3;" text="Transfer:" />
-                  <TableColumn prefWidth="156.800048828125" style="-fx-background-color: #81A1C3;" text="Total:" />
-              </columns>
-            </TableView>
-            <Label text="Transfer history of 30 days:">
-               <font>
-                  <Font name="Arial Bold" size="12.0" />
-               </font>
-            </Label>
-         </children>
-      </GridPane>
+      <Label fx:id="selectedAccount" layoutX="384.0" layoutY="188.0" prefHeight="27.0" prefWidth="357.0" text="Selected account">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Label>
+      <ListView fx:id="listOfTransactions" layoutX="384.0" layoutY="256.0" prefHeight="385.0" prefWidth="499.0" />
     </children>
 </AnchorPane>

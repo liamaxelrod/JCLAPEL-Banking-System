@@ -1,6 +1,8 @@
 package com.example.FrontEnd;
 
 
+import com.example.BackEnd.Account;
+import com.example.BackEnd.Customer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,60 +13,112 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class TransferController implements Initializable {//Albin worked on this, Liam worked partly on this
     private Stage stage;
     private Scene scene;
 
+    private Customer currentCustomerUse;
+
     //list of the different values the choice box can have
-    private ObservableList<String> differentAccounts = FXCollections
-            .observableArrayList("saving","checking","other");
+    private ObservableList<String> differentCustomerAccounts = FXCollections.observableArrayList();
+    private ObservableList<String> differentAllAccounts = FXCollections.observableArrayList();
 
-    @FXML//on interface choice box = below from account
-    private ChoiceBox<String> fromAccount;
+    @FXML//On interface list view + Label = The label Goes with list of you box on the interface
+    private Label selectedFromAccountLabel;
+    @FXML
+    private ListView<String> fromAccount;
+    @FXML
+    private Label selectedToAccountLabel;
+    @FXML
+    private ListView<String> toAccount;
 
-    @FXML//on interface choice box = below to account
-    private ChoiceBox<String> toAccount;
 
-    @FXML//to interface label = next to current balance
-    private Label fromAccountCurrentBalance; //(to be connected with the account)
-//
     @FXML//on interface text field = below to account
     private TextField transferAmount;
 
+    @FXML//On the interface label = above the text field about the amount of money your transfer
+    private Label warningLabel;
 
 
+    private void generatorListOfCustomerAccounts(){
+        HashMap<Integer, Account> currentList = currentCustomerUse.getAccounts();
+        for (com.example.BackEnd.Account currentAccount: currentList.values()) {
+            String type = "Checking";
+            if (currentAccount.isSavings()){
+                type = "Saving";
+            }
+            differentCustomerAccounts.add("ID: " + currentAccount.getID() + " " + type + ": " + currentAccount.getBalance());
+        }
+    }
+    private void generatorListOfAllAccounts(){
+        HashMap<Integer, Account> currentList = StartApplication.facade.accounts;
+        for (com.example.BackEnd.Account currentAccount: currentList.values()) {
+            String type = "Checking";
+            if (currentAccount.isSavings()){
+                type = "Saving";
+            }
+            differentAllAccounts.add("ID: " + currentAccount.getID() + " " + type);
+        }
+    }
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fromAccount.setValue("choose account");//not working don't know how to make it show?????????
-        fromAccount.setItems(differentAccounts);
+        currentCustomerUse = StartApplication.facade.loadCustomer(UserMenuController.activeID);
 
-        toAccount.setValue("choose account");
-        toAccount.setItems(differentAccounts);
-
-
+        generatorListOfCustomerAccounts();
+        fromAccount.setItems(differentCustomerAccounts);
+        generatorListOfAllAccounts();
+        toAccount.setItems(differentAllAccounts);
     }
 
-    @FXML//on interface button = total
-    private void onActionButtonTotal(/*ActionEvent event*/) {
-        fromAccountCurrentBalance.setText(fromAccount.getValue());
+
+    @FXML
+    void onActionSelectAccounFrom(ActionEvent event) {
+        String ID = fromAccount.getSelectionModel().getSelectedItem().substring(4,10);
+        selectedFromAccountLabel.setText(ID);
     }
-//
+
+    @FXML
+    void onActionSelectAccountTo(ActionEvent event) {
+        String ID = toAccount.getSelectionModel().getSelectedItem().substring(4,10);
+        selectedToAccountLabel.setText(ID);
+    }
+
     @FXML//on interface button = transfer
-    private void onActionTransfer(/*ActionEvent event*/) {
-
+    private void onActionTransfer(ActionEvent event) throws IOException {
+//        if (){
+//
+//        }
+        int fromAccount = Integer.parseInt(selectedFromAccountLabel.getText());
+        int toAccount = Integer.parseInt(selectedToAccountLabel.getText());
+        double amount = Double.parseDouble(transferAmount.getText());
+        StartApplication.facade.withdraw(fromAccount, amount);
+        StartApplication.facade.deposit(toAccount, amount);
+        refresh(event);
     }
 
     //all methods below are for switching scenes, or you could say interfaces
+
+    private void refresh(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("transferCustomer.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML//on interface button = user menu
     void switchToCustomerMenu(ActionEvent event) throws IOException {
@@ -93,9 +147,12 @@ public class TransferController implements Initializable {//Albin worked on this
     //Methods to make the buttons glow
     @FXML
     private Button SignOut;
-
     @FXML
     private Button userMenu;
+    @FXML
+    private Button selectedAccountFromButton;
+    @FXML
+    private Button selectedAccountToButton;
     @FXML
     private void confirmHoverInSignO() {
         SignOut.setStyle("-fx-background-color: #52779C;");

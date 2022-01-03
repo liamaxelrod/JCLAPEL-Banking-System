@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.Account;
 import com.example.BackEnd.Customer;
 import com.example.BackEnd.Employee;
 import javafx.collections.FXCollections;
@@ -11,7 +12,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -25,73 +29,127 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
     private Stage stage;
     private Scene scene;
 
-    public static int activeID;
+    public static int inUseEmployeeActiveID;
     private Employee currentEmployeeUse;
 
-    @FXML
-    private ImageView ImageProfile;
-
-    @FXML
-    private ListView<String> ListOfCustomers;
-
-    @FXML
-    private ListView<String> ListOfEmployee;
-
-    @FXML
-    private ChoiceBox<String> chooseActiveCustomer;
-
-    @FXML
-    private ChoiceBox<String> chooseActiveEmployee;
-
-
-
+    @FXML//on the interface text field and label = upper left corner
+    private TextField userID;
     @FXML
     private Label fullName;
-
     @FXML
     private Label position;
 
+    @FXML//on the interface image view = upper right corner
+    private ImageView ImageProfile;
+
+    @FXML//on the interface label = select customer and employee
+    private Label selectedCustomerID;
     @FXML
-    private TextField userID;
+    private Label selectedEmployeeID;
+    @FXML
+    private Label customerInfo;
+    @FXML
+    private Label employeeInfo;
+
+
+    @FXML//on the interface list view = right below select customer and employee
+    private ListView<String> listOfCustomers;
+    @FXML
+    private ListView<String> listOfEmployee;
 
     private ObservableList<String> differentCustomers = FXCollections.observableArrayList();
+    private ObservableList<String> differentEmployees = FXCollections.observableArrayList();
 
-    private Customer listOfCustomers(){//This is still being worked on
+    private void generatorListOfCustomers(){
         HashMap<Integer, Customer> currentList = StartApplication.facade.customers;
-        for (Customer currentCustomer: currentList.values()){
-            System.out.println(currentCustomer);
+        for (Customer currentCustomer: currentList.values()) {
+            differentCustomers.add(currentCustomer.getID() + " / " + currentCustomer.getName());
         }
-        return currentList.get(0);
+    }
+    private void generatorListOfEmployees(){
+        HashMap<Integer, Employee> currentList = StartApplication.facade.employees;
+        for (Employee employees: currentList.values()) {
+            differentEmployees.add(employees.getID() + " / " + employees.getName());
+        }
     }
 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Customer a = listOfCustomers();
-        chooseActiveCustomer.setValue("choose title");
-        chooseActiveCustomer.setItems(differentCustomers);
+        generatorListOfCustomers();//set up customers
+        listOfCustomers.setItems(differentCustomers);
+        generatorListOfEmployees();//set up employees
+        listOfEmployee.setItems(differentEmployees);
 
-
-
-        currentEmployeeUse = StartApplication.facade.loadEmployee(activeID);
-        userID.setText(String.valueOf(activeID));
+        currentEmployeeUse = StartApplication.facade.loadEmployee(inUseEmployeeActiveID);
+        userID.setText(String.valueOf(inUseEmployeeActiveID));
         fullName.setText(currentEmployeeUse.getName());
     }
 
     //all methods below are for On action, or you could say on interfaces
 
-    @FXML//On the interface button = delete customer
-    void onActionDeleteCustomer(ActionEvent event) {
+    @FXML
+    void onActionChooseCustomer(ActionEvent event) {
+        String ID = listOfCustomers.getSelectionModel().getSelectedItem().substring(0,6);
+        String name = listOfCustomers.getSelectionModel().getSelectedItem().substring(9);
+        selectedCustomerID.setText(ID);
+        customerInfo.setText(name);
+    }
 
+    @FXML
+    void onActionChooseEmployee(ActionEvent event) {
+        String ID = listOfEmployee.getSelectionModel().getSelectedItem().substring(0,6);
+        String name = listOfEmployee.getSelectionModel().getSelectedItem().substring(9);
+        selectedEmployeeID.setText(ID);
+        employeeInfo.setText(name);
+    }
+
+    @FXML//On the interface button = delete customer
+    void onActionDeleteCustomer(ActionEvent event) throws IOException {
+        if (selectedCustomerID.getText().length() == 6){
+
+            Customer theCustomer = StartApplication.facade.loadCustomer(Integer.parseInt(selectedCustomerID.getText()));
+
+            for (Account accounts : theCustomer.getAccounts().values()){
+                int accountID = accounts.getID();
+                StartApplication.facade.removeAccount(accountID);
+            }
+            StartApplication.facade.removeCustomer(Integer.parseInt(selectedCustomerID.getText()));
+
+            switchToTheSameSceneRefresh(event);
+        } else {
+            customerInfo.setText("select a customer");
+            selectedCustomerID.setText("Select ID");
+        }
     }
 
     @FXML//On the interface button = delete Employee
-    void onActionDeleteEmployee(ActionEvent event) {
+    void onActionDeleteEmployee(ActionEvent event) throws IOException {
+        if (selectedEmployeeID.getText().length() == 6){
+            int employeeID = Integer.parseInt(selectedEmployeeID.getText());
 
+            if (employeeID != inUseEmployeeActiveID){
+                StartApplication.facade.removeEmployee(employeeID);
+                switchToTheSameSceneRefresh(event);
+            } else {
+                employeeInfo.setText("Select someone else");
+                selectedEmployeeID.setText("not you");
+            }
+
+        } else {
+            employeeInfo.setText("Select a employee");
+            selectedEmployeeID.setText("Select ID");
+        }
     }
+
+
 
     @FXML//On the interface button = Promoted to Employee to manager
     void onActionPromoteEmployeeToManager(ActionEvent event) {
+        if (true){
 
+        } else {
+
+        }
     }
 
     @FXML//On interface button = change
@@ -111,20 +169,38 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
     //all methods below are for switching scenes, or you could say on interfaces
 
     @FXML//On interface Button = Open customer
-    void switchToTheCustomer(ActionEvent event) throws IOException {//Still being worked on
-        if (true){}
+    void switchToTheCustomer(ActionEvent event) throws IOException {
+        if (selectedCustomerID.getText().length() == 6){
+            UserMenuController.activeID = Integer.parseInt(selectedCustomerID.getText());
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("userMenu.fxml"));
+            Parent root1 = fxmlLoader.load();
+            stage = new Stage();
+
+            stage.setTitle("full manual");
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } else {
+            customerInfo.setText("select a customer");
+            selectedCustomerID.setText("Select ID");
+        }
+    }
+
+    @FXML
+    void switchToTheSameSceneRefresh(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("userMenu.fxml"));
+        loader.setLocation(getClass().getResource("employeeMenu.fxml"));
         Parent root = loader.load();
         scene = new Scene(root);
+
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
 
     @FXML//On interface Button = MANUAL
-    void switchToManual(ActionEvent event) throws IOException {//Still being worked on
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomer.fxml"));//Needs to change to employee manual
+    void switchToManual(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ZZManualEmployee.fxml"));
         Parent root1 = fxmlLoader.load();
         stage = new Stage();
 
@@ -161,11 +237,12 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
     private Button openCustomerButton;
     @FXML
     private Button promoteEmployeeToManagerButton;
-
     @FXML
     private Button logoutButton;
     @FXML
     private Button manualButton;
+    @FXML
+    private Button Refresh;
 
     public void confirmHoverEntry(MouseEvent event){
         if (deleteCustomerButton == event.getSource()) {
@@ -182,6 +259,8 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
             manualButton.setStyle("-fx-background-color: #52779C;");
         } else if (promoteEmployeeToManagerButton == event.getSource()) {
             promoteEmployeeToManagerButton.setStyle("-fx-background-color: #52779C;");
+        } else if (Refresh == event.getSource()) {
+            Refresh.setStyle("-fx-background-color: #52779C;");
         }
     }
 
@@ -200,9 +279,9 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
             manualButton.setStyle("-fx-background-color: #414D59;");
         } else if (promoteEmployeeToManagerButton == event.getSource()) {
             promoteEmployeeToManagerButton.setStyle("-fx-background-color: #414D59;");
+        } else if (Refresh == event.getSource()) {
+            Refresh.setStyle("-fx-background-color: #414D59;");
         }
     }
-
-
 
 }

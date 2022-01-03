@@ -1,5 +1,7 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.Account;
+import com.example.BackEnd.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,11 +31,21 @@ public class LoginController {//Albin worked on this more Liam Partly worked on 
 
     //all methods below are for switching scenes, or you could say interfaces
 
+
     @FXML//on interface button = login
     public void switchToCustomerMenu(ActionEvent event) throws IOException{
         if (StartApplication.facade.checkLogin(Integer.parseInt(ID.getText()), enterPasswordField.getText())){
 
             UserMenuController.activeID = Integer.parseInt(ID.getText());//Resets the user
+            Customer theCustomer = StartApplication.facade.loadCustomer(Integer.parseInt(ID.getText()));
+            int[] allAccounts = new int[theCustomer.getAccounts().size()];
+            int loop = 0;
+
+            for (Account accounts : theCustomer.getAccounts().values()){
+                allAccounts[loop] = accounts.getID();
+                loop = 0 + 1;
+            }
+            UserMenuController.accounts = allAccounts;//Reset user ends here
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("userMenu.fxml"));

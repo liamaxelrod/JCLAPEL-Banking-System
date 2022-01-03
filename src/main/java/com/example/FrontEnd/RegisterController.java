@@ -1,6 +1,8 @@
 package com.example.FrontEnd;
 
 
+import com.example.BackEnd.Account;
+import com.example.BackEnd.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,18 +37,43 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
     @FXML//On the interface = pops up if you put in the wrong thing
     private Label warningText;
 
+    //All methods below are on action do something on the interface
 
-    @FXML
+    @FXML//Still needed to be perfected
     void onActionCreateAccount(ActionEvent event) throws IOException {
-        int theID;
+        int customerID;
+        int checkingAccountID;
+        int savingAccountID;
+        Account checkingAccount;
+        Account savingAccount;
+
         if (    StartApplication.facade.validatePassword(setPasswordField.getText()) &&
                 StartApplication.facade.validatePassword(confirmPasswordField.getText()) &&
                 StartApplication.facade.validateName(firstnameTextField.getText()) &&
                 StartApplication.facade.validateName(lastnameTextField.getText())) {
 
-            theID = StartApplication.facade.createCustomer(firstnameTextField.getText(), setPasswordField.getText());
+            customerID = StartApplication.facade.createCustomer(firstnameTextField.getText(), setPasswordField.getText());
+            checkingAccountID = StartApplication.facade.createAccount(customerID);
+            savingAccountID = StartApplication.facade.createSavingsAccount(customerID);
 
-            UserMenuController.activeID = theID;//resets the user
+            checkingAccount = StartApplication.facade.loadAccount(checkingAccountID);
+            savingAccount = StartApplication.facade.loadAccount(savingAccountID);
+
+            //Will have no balance right now
+
+            StartApplication.facade.loadCustomer(customerID).addAccount(checkingAccount);
+            StartApplication.facade.loadCustomer(customerID).addAccount(savingAccount);
+
+            UserMenuController.activeID = customerID;//resets the user
+            Customer theCustomer = StartApplication.facade.loadCustomer(customerID);
+            int[] allAccounts = new int[theCustomer.getAccounts().size()];
+            int loop = 0;
+
+            for (Account accounts : theCustomer.getAccounts().values()){
+                allAccounts[loop] = accounts.getID();
+                loop = 0 + 1;
+            }
+            UserMenuController.accounts = allAccounts;//Resets and here
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("userMenu.fxml"));
@@ -59,12 +86,36 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
 
             //This is for testing will be deleted later
         } else if (!StartApplication.facade.validatePassword(setPasswordField.getText())) {
-            theID = StartApplication.facade.createCustomer("liam", "!Q1qaaaaa");
-            UserMenuController.activeID = theID;//resets the user
+
+            customerID = StartApplication.facade.createCustomer("liam", "!Q1qaaaaa");
+            checkingAccountID = StartApplication.facade.createAccount(customerID);
+            savingAccountID = StartApplication.facade.createSavingsAccount(customerID);
+
+            checkingAccount = StartApplication.facade.loadAccount(checkingAccountID);
+            savingAccount = StartApplication.facade.loadAccount(savingAccountID);
+
+            checkingAccount.setBalance(1000000);
+            savingAccount.setBalance(1000000000);
+
+            StartApplication.facade.loadCustomer(customerID).addAccount(checkingAccount);
+            StartApplication.facade.loadCustomer(customerID).addAccount(savingAccount);
+
+            UserMenuController.activeID = customerID;//resets the user
+            Customer theCustomer = StartApplication.facade.loadCustomer(customerID);
+            int[] allAccounts = new int[theCustomer.getAccounts().size()];
+            int loop = 0;
+
+            for (Account accounts : theCustomer.getAccounts().values()){
+                allAccounts[loop] = accounts.getID();
+                loop = 0 + 1;
+            }
+            UserMenuController.accounts = allAccounts;//Resets and here
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("userMenu.fxml"));
             Parent root = loader.load();
             scene = new Scene(root);
+
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
@@ -74,6 +125,8 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
         }
 
     }
+
+    //All methods below switch to a different interfacing
 
     @FXML
     void switchToLoginCustomer(ActionEvent event) throws IOException {

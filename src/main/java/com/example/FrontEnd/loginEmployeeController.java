@@ -42,7 +42,7 @@ public class loginEmployeeController {//Liam did this
     void switchToEmployeeMenu(ActionEvent event)throws IOException {
         if (StartApplication.facade.checkLogin(Integer.parseInt(ID.getText()), enterPasswordField.getText())){//*There is no employee check for login
 
-            EmployeeMenuController.activeID = Integer.parseInt(ID.getText());//Resets the Employee
+            EmployeeMenuController.inUseEmployeeActiveID = Integer.parseInt(ID.getText());//Resets the Employee
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("employeeMenu.fxml"));

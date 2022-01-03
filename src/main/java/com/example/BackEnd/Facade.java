@@ -11,7 +11,7 @@ public class Facade {
     public HashMap<Integer, Customer> customers = new HashMap<>();
     public HashMap<Integer, Account> accounts = new HashMap<>();
     public HashMap<Integer, Account> employeeAccounts = new HashMap<>();
-    public HashMap<Integer, Employee> employees=new HashMap<>();
+    public HashMap<Integer, Employee> employees = new HashMap<>();
 
     final static String customersOutputFilePath = "F:/Serialisation/customers.txt";
     final static String accountsOutputFilePath = "F:/Serialisation/accounts.txt";
@@ -154,9 +154,9 @@ public class Facade {
 
     public int createAccount(int customerId){ // adds an account to a given customer
         Account account = new Account(generateId(customers.get(customerId).getAccounts()), customerId, false);
-        customers.get(customerId).addAccount(account); //adding an account to the customer with the provided c.id
-        accounts.put(account.getID(), account); //putting the account in the customers hashmap for accounts
-        return account.getID(); //returning the account id
+        loadCustomer(customerId).addAccount(account);
+        accounts.put(account.getID(), account);
+        return account.getID();
     } //patrik, labi
 
     public int createSavingsAccount(int customerId){  //same as above
@@ -193,21 +193,21 @@ public class Facade {
         // add a transaction to the account , return true if the process works else false
         if(amount>0){
             Account account = loadAccount(accountID);
-            account.setBalance(account.getBalance() + (amount - loadCustomer(account.getCustomerId()).calculateFee(amount)));
-            accounts.get(accountID).addTransaction(new DepositTransaction(amount, accountID));
+            double amountWithFee = (amount - loadCustomer(account.getCustomerId()).calculateFee(amount));
+            account.setBalance(account.getBalance() + (amountWithFee));
+            accounts.get(accountID).addTransaction(new DepositTransaction(amountWithFee, accountID));
             return true;
         }
         return false;
     } //patrik, labi, julia, erik
 
-    public boolean withdraw(int accountID, double amount) {//given accountID and amount, retrieves account matching the account id,
-        // subtracts amount from balance(also withdrawal fee)and sets it,
-        // add a transaction to the account , return true if the process works else false
-        if (amount > 0 && accounts.get(accountID).getBalance() >= amount) {
+    public boolean withdraw(int accountID, double amount) {//subtracts amount from balance, returns true for a valid transaction, false for an invalid one
+        if (amount > 0 && accounts.get(accountID).getBalance() > amount) {
             Account account = accounts.get(accountID);
-            WithdrawalTransaction transaction = new WithdrawalTransaction(amount, accountID);
+            double amountWithFee = (amount + loadCustomer(account.getCustomerId()).calculateFee(amount));
+            WithdrawalTransaction transaction = new WithdrawalTransaction(amountWithFee, accountID);
             account.addTransaction(transaction);
-            account.setBalance(account.getBalance() - (amount + loadCustomer(account.getCustomerId()).calculateFee(amount)));
+            account.setBalance(account.getBalance() - amountWithFee);
             return true;
         }
         return false;
@@ -226,15 +226,27 @@ public class Facade {
         return false;
     } // By Julia Ayvazian
 
-    public void retrieveUserStatistics(){
-        //retrieve data to be displayed by user statistics
+    public Report generateReport(int customerID, int employeeId) {
+        //load employee
+        Employee employee = loadEmployee(employeeId);
+        if (employee instanceof Admin) {
+            return new AdminReport(customerID);
+        }else if (employee instanceof Manager){
+            return new ManagerReport(customerID);
+        }else{
+            return new EmployeeReport(customerID);
+        }
     }
 
-    public int createEmployee(String name){
+    public int createEmployee(String name, String password){
         int ID = generateId(employees);
-        Employee employee = new Employee(ID, name);
-        employees.put(ID, employee);
-        return ID; //changed void to int, returned ID
+        if(validateName(name) && validatePassword(password)) {
+            Employee employee = new Employee(ID, name, password);
+            employees.put(ID, employee);
+            return ID; //changed void to int, returned ID
+        } else {
+            return 0;
+        }
     }
 
     public void removeEmployee(int ID){ //given an id, removes the employee matching that id from the hashmap
@@ -262,4 +274,26 @@ public class Facade {
         } while (hashMap.containsKey(ID));//ensure the id is not in use
         return ID;
     } //patrik
+
+    public int createManager(String name, String password){
+        if(validateName(name) && validatePassword(password)){
+            int ID= generateId(employees);
+            Employee manager = new Employee(ID,name, password);
+            employees.put(ID,manager);
+            return ID;
+        }else{
+            return 0;
+        }
+    } //Labi and Erik
+    //Julia
+    public int createAdmin(String name, String password){
+        if(validateName(name) && validatePassword(password)){
+            int ID = generateId(employees);
+            Employee admin = new Admin(ID, name, password);
+            employees.put(ID,admin);
+            return ID;
+        }else{
+            return 0;
+        }
+    }
 }
