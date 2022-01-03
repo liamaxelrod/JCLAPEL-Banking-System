@@ -65,10 +65,6 @@ public class CustomerTests { //By patrik and Labi
         //Labi
 
 
-
-
-
-
         assertThat(facade.resetPassword(ID, "Password80!", "New Password80!")).isEqualTo(true);
 
         assertThat(facade.checkLogin(ID, "New Password80!")).isEqualTo(true);//checking changed password
@@ -91,4 +87,30 @@ public class CustomerTests { //By patrik and Labi
         assertTrue(janeDoe instanceof EmployeeCustomer);
         assertTrue(johnSmith instanceof Customer);
     }
+
+
+    @Test
+    public void getValidNameTest(){  //Labi,Conny
+    String name = "thOMAs j. ANDeRson";
+
+        System.out.println(getValidName(name));
+}
+
+    public static String getValidName(String name) {
+        name = name.trim();
+        String[] nameArray = name.split("\\s+");
+        if (nameArray.length < 2) {
+            return "";
+        }
+
+        String validName = "";
+        for (String sub : nameArray) {
+            sub = sub.substring(0, 1).toUpperCase() + sub.substring(1).toLowerCase();
+            validName += sub + " ";
+        }
+        validName.trim();
+        return validName;
+    }
+
+
 }

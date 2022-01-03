@@ -96,31 +96,23 @@ public class Facade {
     public boolean validateName(String name){ //Labi  //checks by returning true if the name is non-empty else returns false
         return !name.isEmpty();
     } //Labi
+
     //more validation on the name, by checking whether it is multiple words,
     // and make it so that if they don't start with a capital, they are changed to start with it when they are saved.
-    /*public String CheckName(String name){
-        if(validateName(name) && name.length()>0){  //checks if name is not empty and name has more than 0 words
-            name = name.toLowerCase();
-            //Character.toUpperCase(name.charAt(0));
-            name = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
-            name.trim();
-            if (Character.isUpperCase(name.charAt(0))){   //check if name already starts with capital letter
-                return true;
-        }else if (name.charAt(0) == name.charAt(0).toUpperCase()) {   //make first letter of name capital
-                return true;
+    public String getValidName(String name) {   //Labi, Conny
+        name = name.trim();
+        String[] nameArray = name.split("\\s+");
+        if (nameArray.length < 2) {
+            return "";
         }
-        }
-        return name;
-    }*/
 
-    public String getValidName(String name){
-        if(validateName(name) && name.length()>0){
-           name =  name.trim();
-           String[] nameArray = name.split("//s+");
-           if(nameArray.length<2){
-               return null;
-           }
+        String validName = "";
+        for (String sub : nameArray) {
+            sub = sub.substring(0, 1).toUpperCase() + sub.substring(1).toLowerCase();
+            validName += sub + " ";
         }
+        validName.trim();
+        return validName;
     }
 
 
@@ -260,13 +252,6 @@ public class Facade {
         return account.getID();
 
     } //patrik, labi
-
-
-
-
-
-
-
 
     public int generateId(HashMap hashMap){ //takes the hashmap in which the resulting object will be stored as an argument
         int ID;
