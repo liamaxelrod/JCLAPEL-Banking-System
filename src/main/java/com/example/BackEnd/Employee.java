@@ -1,9 +1,6 @@
 package com.example.BackEnd;
 
 import java.util.HashMap;
-import java.util.Stack;
-
-import static com.example.FrontEnd.StartApplication.facade;
 
 public class Employee {
     private final int ID;
@@ -20,6 +17,10 @@ public class Employee {
     public int getID() {
         return ID;
     }
+
+    public String getPassword() {
+        return password;
+    } //Liam I needed this
 
     public String getName() {
         return name;

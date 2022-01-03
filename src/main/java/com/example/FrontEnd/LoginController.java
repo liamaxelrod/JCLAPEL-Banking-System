@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -27,6 +28,9 @@ public class LoginController {//Albin worked on this more Liam Partly worked on 
     @FXML//on interface text field = username
     private TextField ID;
 
+    @FXML
+    private Label warningLabel;
+
 
 
     //all methods below are for switching scenes, or you could say interfaces
@@ -34,7 +38,18 @@ public class LoginController {//Albin worked on this more Liam Partly worked on 
 
     @FXML//on interface button = login
     public void switchToCustomerMenu(ActionEvent event) throws IOException{
-        if (StartApplication.facade.checkLogin(Integer.parseInt(ID.getText()), enterPasswordField.getText())){
+
+        if (ID.getText().isBlank() || enterPasswordField.getText().isBlank()) {
+            warningLabel.setText("You must insert: \n - integer in ID \n - Insert your password");
+//        } else if (!ID.getText().contains("0")) {
+//            warningLabel.setText("The idea can only be numbers");
+        } else if (ID.getText().length() != 6){
+            warningLabel.setText("Must be six digits");
+        } else if (!StartApplication.facade.validatePassword(enterPasswordField.getText())){
+            warningLabel.setText("Invalid password: \n - At least 8 characters \n - Must consist of 'a-z, A-Z, 0 -9' \n - Special character ex. '!' '&' '?' \n You must also Enter: \n - enter your security key \n - enter your position");
+        } else if (!StartApplication.facade.CheckIfCustomerExists(Integer.parseInt(ID.getText()))){
+            warningLabel.setText("This account does not exist");
+        } else if (StartApplication.facade.checkLogin(Integer.parseInt(ID.getText()), enterPasswordField.getText())) {
 
             UserMenuController.activeID = Integer.parseInt(ID.getText());//Resets the user
             Customer theCustomer = StartApplication.facade.loadCustomer(Integer.parseInt(ID.getText()));
@@ -45,6 +60,7 @@ public class LoginController {//Albin worked on this more Liam Partly worked on 
                 allAccounts[loop] = accounts.getID();
                 loop = 0 + 1;
             }
+
             UserMenuController.accounts = allAccounts;//Reset user ends here
 
             FXMLLoader loader = new FXMLLoader();
@@ -54,6 +70,8 @@ public class LoginController {//Albin worked on this more Liam Partly worked on 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
+        } else {
+            warningLabel.setText(" The ID has to be all digits \n with no spaces");
         }
     }
 

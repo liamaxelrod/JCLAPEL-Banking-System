@@ -103,5 +103,10 @@
             </Label>
          </children>
       </Pane>
+      <Label fx:id="warningLabel" layoutX="335.0" layoutY="485.0" textFill="RED">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

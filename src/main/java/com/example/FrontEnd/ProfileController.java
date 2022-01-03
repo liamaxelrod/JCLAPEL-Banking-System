@@ -73,6 +73,8 @@ public class ProfileController implements Initializable {//Albin Worked on this 
         String theNewPassword = newPassword.getText();
         String theConfirmNewPassword = confirmNewPassword.getText();
 
+        currentCustomerUse.setPassword(theConfirmNewPassword);
+
         if (theCurrentPassword.equals(theCheckOldPassword)){
             if (theNewPassword.equals(theConfirmNewPassword)){
                 currentPassword.setText(theConfirmNewPassword);

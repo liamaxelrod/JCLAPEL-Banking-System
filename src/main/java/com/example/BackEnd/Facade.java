@@ -116,6 +116,24 @@ public class Facade {
         }
     } //Erik
 
+    public boolean CheckIfEmployeeExists(int ID){
+        if (employees.containsKey(ID)){
+            return true;
+        } else {
+            return false;
+        }
+    }//Liam I needed this
+
+    public boolean checkEmployeeLogin(int ID, String password){
+        if(employees.containsKey(ID)){
+            if(employees.get(ID).getPassword().equals(password)) {
+                //checks if the id exists, and the password of the Employee with that id is equal to the input password
+                return true;
+            }
+        }
+        return false;
+    } //Liam I needed this
+
     public void removeCustomer(int ID){
         customers.remove(ID);
     }

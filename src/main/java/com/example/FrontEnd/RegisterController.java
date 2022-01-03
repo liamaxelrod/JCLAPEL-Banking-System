@@ -59,7 +59,7 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
             checkingAccount = StartApplication.facade.loadAccount(checkingAccountID);
             savingAccount = StartApplication.facade.loadAccount(savingAccountID);
 
-            //Will have no balance right now
+            //Will have no balance
 
             StartApplication.facade.loadCustomer(customerID).addAccount(checkingAccount);
             StartApplication.facade.loadCustomer(customerID).addAccount(savingAccount);

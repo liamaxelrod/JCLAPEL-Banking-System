@@ -35,12 +35,21 @@ public class loginEmployeeController {//Liam did this
     @FXML//on interface text field = ID
     private TextField ID;
 
-    @FXML//On interface text field = security key
-    private TextField employeeSecurityKey;
+
 
     @FXML//on interface button = create account
     void switchToEmployeeMenu(ActionEvent event)throws IOException {
-        if (StartApplication.facade.checkLogin(Integer.parseInt(ID.getText()), enterPasswordField.getText())){//*There is no employee check for login
+        if (ID.getText().isBlank() || enterPasswordField.getText().isBlank()) {
+            warningText.setText("You must insert: \n - integer in ID \n - Insert your password");
+//        } else if (!ID.getText().contains("0")) {
+//            warningLabel.setText("The idea can only be numbers");
+        } else if (ID.getText().length() != 6){
+            warningText.setText("Must be six digits");
+        } else if (!StartApplication.facade.validatePassword(enterPasswordField.getText())){
+            warningText.setText("Invalid password: \n - At least 8 characters \n - Must consist of 'a-z, A-Z, 0 -9' \n - Special character ex. '!' '&' '?' \n You must also Enter: \n - enter your security key \n - enter your position");
+        } else if (!StartApplication.facade.CheckIfEmployeeExists(Integer.parseInt(ID.getText()))){
+            warningText.setText("This account does not exist");
+        } else if (StartApplication.facade.checkEmployeeLogin(Integer.parseInt(ID.getText()), enterPasswordField.getText())) {
 
             EmployeeMenuController.inUseEmployeeActiveID = Integer.parseInt(ID.getText());//Resets the Employee
 
@@ -52,7 +61,7 @@ public class loginEmployeeController {//Liam did this
             stage.setScene(scene);
             stage.show();
         } else {
-            warningText.setText("The password must have: \n - At least 8 characters \n - Must consist of 'a-z, A-Z, 0 -9' \n - Special character ex. '!' '&' '?' \n You must also Enter: \n - enter your security key \n - enter your position" );
+            warningText.setText(" The ID has to be all digits \n with no spaces");
         }
     }
 
