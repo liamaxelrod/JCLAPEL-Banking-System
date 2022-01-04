@@ -105,7 +105,16 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
 
     @FXML//On the interface button = delete customer
     void onActionDeleteCustomer(ActionEvent event) throws IOException {
-        if (selectedCustomerID.getText().length() == 6){
+        if (customerInfo.getText() == ""){
+            customerInfo.setText("select a customer");
+            selectedCustomerID.setText("Select ID");
+        } else if (StartApplication.facade.CheckIfEmployeeExists(Integer.parseInt(selectedCustomerID.getText()))){
+            customerInfo.setText("Employee version");
+            selectedCustomerID.setText("Delete");
+        } else if (StartApplication.facade.loadCustomer(Integer.parseInt(selectedCustomerID.getText())).getAccounts().size() != 0){
+            customerInfo.setText("Attached accounts");
+            selectedCustomerID.setText("Delete");
+        } else if (selectedCustomerID.getText().length() == 6){
 
             Customer theCustomer = StartApplication.facade.loadCustomer(Integer.parseInt(selectedCustomerID.getText()));
 
@@ -116,28 +125,37 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
             StartApplication.facade.removeCustomer(Integer.parseInt(selectedCustomerID.getText()));
 
             switchToTheSameSceneRefresh(event);
-        } else {
-            customerInfo.setText("select a customer");
-            selectedCustomerID.setText("Select ID");
         }
     }
 
     @FXML//On the interface button = delete Employee
     void onActionDeleteEmployee(ActionEvent event) throws IOException {
-        if (selectedEmployeeID.getText().length() == 6){
+        if (employeeInfo.getText() == ""){
+            employeeInfo.setText("Select a employee");
+            selectedEmployeeID.setText("Select ID");
+        } else if (Integer.parseInt(selectedEmployeeID.getText()) == currentEmployeeUse.getID()){
+            employeeInfo.setText("Select someone else");
+            selectedEmployeeID.setText("not you");
+        } else if (StartApplication.facade.loadCustomer(Integer.parseInt(selectedEmployeeID.getText())).getAccounts().size() != 0){
+            employeeInfo.setText("Attached accounts");
+            selectedEmployeeID.setText("Delete");
+        } else if (selectedEmployeeID.getText().length() == 6){
+
             int employeeID = Integer.parseInt(selectedEmployeeID.getText());
 
             if (employeeID != inUseEmployeeActiveID){
+
+                Customer theCustomer = StartApplication.facade.loadCustomer(employeeID);
+
+                for (Account accounts : theCustomer.getAccounts().values()){
+                    int accountID = accounts.getID();
+                    StartApplication.facade.removeAccount(accountID);
+                }
+                StartApplication.facade.removeCustomer(employeeID);
+
                 StartApplication.facade.removeEmployee(employeeID);
                 switchToTheSameSceneRefresh(event);
-            } else {
-                employeeInfo.setText("Select someone else");
-                selectedEmployeeID.setText("not you");
             }
-
-        } else {
-            employeeInfo.setText("Select a employee");
-            selectedEmployeeID.setText("Select ID");
         }
     }
 
@@ -152,19 +170,8 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
         }
     }
 
-    @FXML//On interface button = change
-    private TextField changeIDTextField;
-    @FXML
-    void onActionChangeName(ActionEvent event) {
-        if (StartApplication.facade.validateName(changeIDTextField.getText())){
-            String theNewFirstName = changeIDTextField.getText();
-            fullName.setText(theNewFirstName);
-            changeIDTextField.setText("");
-            currentEmployeeUse.setName(theNewFirstName);//This is for testing purposes until can finalize it *****
-        } else {
-            changeIDTextField.setText("This cannot be blank");
-        }
-    }
+
+    
 
     //all methods below are for switching scenes, or you could say on interfaces
 

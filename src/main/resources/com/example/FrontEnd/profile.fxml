@@ -183,26 +183,31 @@
                                         <Font name="Arial Bold" size="17.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="currentPassword" layoutY="110.0" prefHeight="26.0" prefWidth="342.0">
+                                <Label fx:id="currentPassword" alignment="CENTER_RIGHT" layoutX="156.0" layoutY="85.0" prefHeight="26.0" prefWidth="176.0">
                                     <font>
                                         <Font name="Arial Bold" size="17.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="currentID" layoutX="188.0" layoutY="59.0" prefHeight="26.0" prefWidth="140.0">
+                                <Label fx:id="currentID" alignment="CENTER_RIGHT" layoutX="128.0" layoutY="59.0" prefHeight="26.0" prefWidth="200.0">
                                     <font>
                                         <Font name="Arial Bold" size="17.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="currentFirstName" layoutX="188.0" layoutY="7.0" prefHeight="26.0" prefWidth="140.0">
+                                <Label fx:id="currentFirstName" alignment="CENTER_RIGHT" layoutX="94.0" layoutY="7.0" prefHeight="26.0" prefWidth="234.0">
                                     <font>
                                         <Font name="Arial Bold" size="17.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="currentLasName" layoutX="188.0" layoutY="33.0" prefHeight="26.0" prefWidth="140.0">
+                                <Label fx:id="currentLasName" alignment="CENTER_RIGHT" layoutX="94.0" layoutY="33.0" prefHeight="26.0" prefWidth="234.0">
                                     <font>
                                         <Font name="Arial Bold" size="17.0" />
                                     </font>
                                 </Label>
+                        <Label fx:id="warningLabel" alignment="CENTER" layoutY="110.0" textFill="RED">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
                             </children>
                         </Pane>
                     </children>

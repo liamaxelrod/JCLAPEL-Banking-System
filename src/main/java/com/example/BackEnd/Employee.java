@@ -30,6 +30,10 @@ public class Employee {
         this.name = name;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }//Liam Axelrod I made this, so I can change the password
+
     public HashMap<Integer, Account> getAccounts(){
         return accounts;
     }

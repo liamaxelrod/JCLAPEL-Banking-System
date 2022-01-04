@@ -52,7 +52,9 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
                 StartApplication.facade.validateName(firstnameTextField.getText()) &&
                 StartApplication.facade.validateName(lastnameTextField.getText())) {
 
-            customerID = StartApplication.facade.createCustomer(firstnameTextField.getText(), setPasswordField.getText());
+            String fillName = firstnameTextField.getText() + "-" + lastnameTextField.getText();
+
+            customerID = StartApplication.facade.createCustomer(fillName, setPasswordField.getText());
             checkingAccountID = StartApplication.facade.createAccount(customerID);
             savingAccountID = StartApplication.facade.createSavingsAccount(customerID);
 
@@ -87,15 +89,17 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
             //This is for testing will be deleted later
         } else if (!StartApplication.facade.validatePassword(setPasswordField.getText())) {
 
-            customerID = StartApplication.facade.createCustomer("liam", "!Q1qaaaaa");
+            String fillName = "liam" + " " + "axelrod";
+
+            customerID = StartApplication.facade.createCustomer(fillName, "!Q1qaaaaa");
             checkingAccountID = StartApplication.facade.createAccount(customerID);
             savingAccountID = StartApplication.facade.createSavingsAccount(customerID);
 
             checkingAccount = StartApplication.facade.loadAccount(checkingAccountID);
             savingAccount = StartApplication.facade.loadAccount(savingAccountID);
 
-            checkingAccount.setBalance(1000000);
-            savingAccount.setBalance(1000000000);
+//            checkingAccount.setBalance(1000000);
+//            savingAccount.setBalance(1000000000);
 
             StartApplication.facade.loadCustomer(customerID).addAccount(checkingAccount);
             StartApplication.facade.loadCustomer(customerID).addAccount(savingAccount);

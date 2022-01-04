@@ -50,6 +50,8 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     private Label currentID;
     @FXML
     public Label currentPassword;
+    @FXML
+    private Label warningLabel;
 
     @FXML//on interface Text field = Right bottom corner
     private TextField newFirstName;
@@ -60,49 +62,113 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
         currentCustomerUse = StartApplication.facade.loadCustomer(UserMenuController.activeID);
-        currentFirstName.setText(currentCustomerUse.getName());
-        currentLasName.setText(currentCustomerUse.getName());//*Need to get lasting here
+        currentFirstName.setText(currentCustomerUse.getName().substring(0 , currentCustomerUse.getName().indexOf(" ")));
+        currentLasName.setText(currentCustomerUse.getName().substring(currentCustomerUse.getName().lastIndexOf(" ")+1));
         currentPassword.setText(currentCustomerUse.getPassword());
         currentID.setText(String.valueOf(currentCustomerUse.getID()));
     }
 
     @FXML
     private void onActionChangePassword(/*ActionEvent event*/) {
-        String theCurrentPassword = currentPassword.getText();//This one's the label
-        String theCheckOldPassword = checkCurrentPassword.getText();//The rest Are passwordFeel
+        String theCurrentPassword = currentPassword.getText();
+        String theCheckOldPassword = checkCurrentPassword.getText();
         String theNewPassword = newPassword.getText();
         String theConfirmNewPassword = confirmNewPassword.getText();
 
-        currentCustomerUse.setPassword(theConfirmNewPassword);
-
-        if (theCurrentPassword.equals(theCheckOldPassword)){
-            if (theNewPassword.equals(theConfirmNewPassword)){
-                currentPassword.setText(theConfirmNewPassword);
-                checkCurrentPassword.setText("");
-                newPassword.setText("");
-                confirmNewPassword.setText("");
+        if (!theCurrentPassword.isBlank() && !theNewPassword.isBlank() && !theConfirmNewPassword.isBlank()){
+            if (theCurrentPassword.equals(theCheckOldPassword)){
+                if (theNewPassword.equals(theConfirmNewPassword)){
+                    if (StartApplication.facade.validatePassword(newPassword.getText()) && StartApplication.facade.validatePassword(confirmNewPassword.getText())){
+                        if (StartApplication.facade.CheckIfEmployeeExists(currentCustomerUse.getID())){
+                            currentPassword.setText(theConfirmNewPassword);
+                            currentCustomerUse.setPassword(theConfirmNewPassword);
+                            StartApplication.facade.loadEmployee(currentCustomerUse.getID()).setPassword(theConfirmNewPassword);
+                            checkCurrentPassword.setText("");
+                            newPassword.setText("");
+                            confirmNewPassword.setText("");
+                        } else {
+                            currentPassword.setText(theConfirmNewPassword);
+                            currentCustomerUse.setPassword(theConfirmNewPassword);
+                            checkCurrentPassword.setText("");
+                            newPassword.setText("");
+                            confirmNewPassword.setText("");
+                        }
+                    } else {
+                        warningLabel.setText("The password must have: \n - At least 8 characters \n - Must consist of 'a-z, A-Z, 0 -9' \n - Special character ex. '!' '&' '?' \n You must also Enter: \n - enter your security key \n - enter your position");
+                    }
+                } else {
+                    warningLabel.setText("does not match: \n - new and confirm password our different");
+                }
+            } else {
+                warningLabel.setText("Does not match: \n - The old password does not match what you inputted");
             }
+        } else {
+            warningLabel.setText("some or all: \n - of the input boxes are blank");
         }
     }
 
     @FXML//On interface button = change username, first name, and last name
     void onActionChangeFirstName(/*ActionEvent event*/) {
-        if (StartApplication.facade.validateName(newFirstName.getText())){
-            String theNewFirstName = newFirstName.getText();
-            currentFirstName.setText(theNewFirstName);
-            newFirstName.setText("");
-            currentCustomerUse.setName(theNewFirstName);//This is for testing purposes until can finalize it *****
+        if (!newFirstName.getText().isBlank()){
+            if (!newFirstName.getText().contains(" ")){
+                if (newFirstName.getText().length() < 13 && newFirstName.getText().length() > 3){
+                    if (StartApplication.facade.CheckIfEmployeeExists(currentCustomerUse.getID())){
+                        String theNewFirstName = newFirstName.getText();
+                        String firstPart = theNewFirstName;
+                        String secondPart = currentCustomerUse.getName().substring(currentCustomerUse.getName().lastIndexOf(" ")+1);
+                        currentFirstName.setText(theNewFirstName);
+                        newFirstName.setText("");
+                        StartApplication.facade.loadEmployee(currentCustomerUse.getID()).setName(firstPart + " " + secondPart);
+                        currentCustomerUse.setName(firstPart + " " + secondPart);
+                    } else {
+                        String theNewFirstName = newFirstName.getText();
+                        String firstPart = theNewFirstName;
+                        String secondPart = currentCustomerUse.getName().substring(currentCustomerUse.getName().lastIndexOf(" ")+1);
+                        currentFirstName.setText(theNewFirstName);
+                        newFirstName.setText("");
+                        currentCustomerUse.setName(firstPart + " " + secondPart);
+                    }
+                } else {
+                    warningLabel.setText("it cannot be longer than 13 or less than 3 characters");
+                }
+            } else {
+                warningLabel.setText("it cannot contain any spaces");
+            }
         } else {
-            newFirstName.setText("This cannot be blank");
+            warningLabel.setText("the box for new name is blank");
         }
-
     }
 
     @FXML
     void onActionChangeLastName(/*ActionEvent event*/) {//Not finished yet
-        String theNewLastName = newLastName.getText();
-        currentLasName.setText(theNewLastName);
-        newFirstName.setText("");
+        if (!newLastName.getText().isBlank()){
+            if (!newLastName.getText().contains(" ")){
+                if (newLastName.getText().length() < 13 && newLastName.getText().length() > 3){
+                    if (StartApplication.facade.CheckIfEmployeeExists(currentCustomerUse.getID())){
+                        String theNewLastName = newLastName.getText();
+                        String firstPart = theNewLastName;
+                        String secondPart = currentCustomerUse.getName().substring(0 , currentCustomerUse.getName().indexOf(" "));
+                        currentLasName.setText(theNewLastName);
+                        newLastName.setText("");
+                        StartApplication.facade.loadEmployee(currentCustomerUse.getID()).setName(firstPart + " " + secondPart);
+                        currentCustomerUse.setName(firstPart + " " + secondPart);
+                    } else {
+                        String theNewLastName = newLastName.getText();
+                        String firstPart = theNewLastName;
+                        String secondPart = currentCustomerUse.getName().substring(0 , currentCustomerUse.getName().indexOf(" "));
+                        currentLasName.setText(theNewLastName);
+                        newLastName.setText("");
+                        currentCustomerUse.setName(firstPart + " " + secondPart);
+                    }
+                } else {
+                    warningLabel.setText("it cannot be longer than 13 or less than 3 characters");
+                }
+            } else {
+                warningLabel.setText("it cannot contain any spaces");
+            }
+        } else {
+            warningLabel.setText("the box for new name is blank");
+        }
     }
 
     @FXML//Still trying to figure out save the image

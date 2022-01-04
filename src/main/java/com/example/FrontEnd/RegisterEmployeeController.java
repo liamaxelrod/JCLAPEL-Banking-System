@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.Account;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -56,17 +57,30 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
 
     @FXML//on interface button = Employee menu
     void switchToEmployeeMenu(ActionEvent event) throws IOException {
-        int theID;
+        int employeeID;
+        int customerID;
+        int checkingAccountID;
+        Account checkingAccount;
+
         if (    StartApplication.facade.validatePassword(setPasswordField.getText()) &&
                 StartApplication.facade.validatePassword(confirmPasswordField.getText()) &&
                 StartApplication.facade.validateName(firstnameTextField.getText()) &&
-                StartApplication.facade.validateName(lastnameTextField.getText()))
-        //*Input valid key and valid position at a later date
-            {
-        //*Only the first name is required to create an employee???
-            theID = StartApplication.facade.createEmployee(firstnameTextField.getText(), setPasswordField.getText());
+                StartApplication.facade.validateName(lastnameTextField.getText())){//*Input valid key and valid position at a later date
 
-            EmployeeMenuController.inUseEmployeeActiveID = theID;//resets the Employee
+            String fillName = firstnameTextField.getText()+ " " + lastnameTextField.getText();
+            employeeID = StartApplication.facade.createEmployee(fillName, setPasswordField.getText());
+
+            customerID = StartApplication.facade.createEmployeeCustomer(firstnameTextField.getText(), setPasswordField.getText());
+            checkingAccountID = StartApplication.facade.createEmployeeAccount(customerID);
+
+            checkingAccount = StartApplication.facade.loadAccount(checkingAccountID);
+
+            checkingAccount.setBalance(1000);
+
+            StartApplication.facade.loadCustomer(customerID).addAccount(checkingAccount);
+
+
+            EmployeeMenuController.inUseEmployeeActiveID = employeeID;//resets the Employee
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("employeeMenu.fxml"));
@@ -79,8 +93,15 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
 
             //This is for testing will be deleted later
         } else if (!StartApplication.facade.validatePassword(setPasswordField.getText())) {
-            theID = StartApplication.facade.createEmployee("liam", "!Q1qaaaaa");
-            EmployeeMenuController.inUseEmployeeActiveID = theID;//resets the user
+            String fillName = "liam" + " " + "axelrod";
+
+            employeeID = StartApplication.facade.createEmployee(fillName, "!Q1qaaaaa");
+            customerID = StartApplication.facade.createEmployeeCustomer2(fillName, "!Q1qaaaaa",employeeID);
+            checkingAccountID = StartApplication.facade.createEmployeeAccount(customerID);
+            checkingAccount = StartApplication.facade.loadAccount(checkingAccountID);
+//            checkingAccount.setBalance(1000);
+            StartApplication.facade.loadCustomer(customerID).addAccount(checkingAccount);
+            EmployeeMenuController.inUseEmployeeActiveID = employeeID;//resets the user
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("employeeMenu.fxml"));
             Parent root = loader.load();
