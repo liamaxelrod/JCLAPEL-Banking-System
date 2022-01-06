@@ -102,6 +102,7 @@ public class Facade {
     }//Liam Axelrod I needed to be able have the perimeter of the ID
     //so the customer and employee would have the same ID
 
+
     public boolean validateName(String name){ //Labi
         return !name.isEmpty();
     } //Labi
@@ -281,7 +282,7 @@ public class Facade {
     public int createManager(String name, String password){
         if(validateName(name) && validatePassword(password)){
             int ID= generateId(employees);
-            Employee manager = new Employee(ID,name, password);
+            Employee manager = new Manager(ID,name, password);
             employees.put(ID,manager);
             return ID;
         }else{

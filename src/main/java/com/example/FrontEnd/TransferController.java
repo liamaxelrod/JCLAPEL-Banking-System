@@ -96,15 +96,16 @@ public class TransferController implements Initializable {//Albin worked on this
 
     @FXML//on interface button = transfer
     private void onActionTransfer(ActionEvent event) throws IOException {
-//        if (){
-//
-//        }
         int fromAccount = Integer.parseInt(selectedFromAccountLabel.getText());
         int toAccount = Integer.parseInt(selectedToAccountLabel.getText());
         double amount = Double.parseDouble(transferAmount.getText());
-        StartApplication.facade.withdraw(fromAccount, amount);
-        StartApplication.facade.deposit(toAccount, amount);
-        refresh(event);
+        if (fromAccount >= amount){
+            StartApplication.facade.withdraw(fromAccount, amount);
+            StartApplication.facade.deposit(toAccount, amount);
+            refresh(event);
+        } else {
+            warningLabel.setText("not enough money in your account");
+        }
     }
 
     //all methods below are for switching scenes, or you could say interfaces

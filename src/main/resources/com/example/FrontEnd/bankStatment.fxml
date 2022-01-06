@@ -71,11 +71,16 @@
                 </Label>
             </children>
         </Pane>
-      <Label fx:id="selectedAccount" layoutX="384.0" layoutY="188.0" prefHeight="27.0" prefWidth="357.0" text="Selected account">
+      <Label fx:id="selectedAccount" layoutX="515.0" layoutY="188.0" prefHeight="27.0" prefWidth="188.0" text="Selected account">
          <font>
             <Font name="Arial" size="24.0" />
          </font>
       </Label>
-      <ListView fx:id="listOfTransactions" layoutX="384.0" layoutY="256.0" prefHeight="385.0" prefWidth="499.0" />
+      <ListView fx:id="listOfTransactions" layoutX="354.0" layoutY="228.0" prefHeight="413.0" prefWidth="550.0" />
+      <Label layoutX="384.0" layoutY="188.0" prefHeight="27.0" prefWidth="131.0" text="Account ID: ">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

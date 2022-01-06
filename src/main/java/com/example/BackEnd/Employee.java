@@ -6,13 +6,21 @@ public class Employee {
     private final int ID;
     private String name;
     private String password;
+    private String position;
     private HashMap<Integer, Account> accounts = new HashMap<>();
 
     public Employee(int ID, String name, String password){
         this.ID=ID;
         this.name=name;
         this.password=password;
+        this.position="Employee";
+
     }
+
+    public String getPosition() {
+        return position;
+    }
+
 
     public int getID() {
         return ID;

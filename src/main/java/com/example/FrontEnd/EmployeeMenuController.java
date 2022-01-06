@@ -35,9 +35,20 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
     @FXML//on the interface text field and label = upper left corner
     private TextField userID;
     @FXML
+    private Label warningLabel;
+    @FXML
     private Label fullName;
     @FXML
     private Label position;
+    @FXML
+    private Label securityKey1;
+    @FXML
+    private Label securityKey2;
+    @FXML
+    private Label securityKey3;
+    @FXML
+    private TextField changeKey;
+
 
     @FXML//on the interface image view = upper right corner
     private ImageView ImageProfile;
@@ -81,14 +92,76 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
         listOfEmployee.setItems(differentEmployees);
 
         currentEmployeeUse = StartApplication.facade.loadEmployee(inUseEmployeeActiveID);
+        position.setText(currentEmployeeUse.getPosition());
         userID.setText(String.valueOf(inUseEmployeeActiveID));
         fullName.setText(currentEmployeeUse.getName());
+        String checkPosition = position.getText();
+        if (checkPosition == "Employee"){
+            securityKey1.setText("don't have access");
+            securityKey2.setText("don't have access");
+            securityKey3.setText("don't have access");
+        } else if (checkPosition == "Manager") {
+            securityKey1.setText(String.valueOf(StartApplication.securityKey1));
+            securityKey2.setText("don't have access");
+            securityKey3.setText("don't have access");
+        } else if (checkPosition == "Admin") {
+            securityKey1.setText(String.valueOf(StartApplication.securityKey1));
+            securityKey2.setText(String.valueOf(StartApplication.securityKey2));
+            securityKey3.setText(String.valueOf(StartApplication.securityKey3));
+        }
     }
 
     //all methods below are for On action, or you could say on interfaces
 
     @FXML
-    void onActionChooseCustomer(ActionEvent event) {
+    void onActionChangeSecurityKey1(ActionEvent event) throws IOException {
+        String checkPosition = position.getText();
+        if (!changeKey.getText().isEmpty()){
+            if (checkPosition == "Admin" || checkPosition == "Manager"){
+                int key = Integer.parseInt(changeKey.getText());
+                StartApplication.securityKey1 = key;
+                switchToTheSameSceneRefresh(event);
+            } else {
+                warningLabel.setText("Not high enough position");
+            }
+        } else {
+            warningLabel.setText("Change key is empty");
+        }
+    }
+    @FXML
+    void onActionChangeSecurityKey2(ActionEvent event) throws IOException {
+        String checkPosition = position.getText();
+        if (!changeKey.getText().isEmpty()){
+            if (checkPosition == "Admin"){
+                int key = Integer.parseInt(changeKey.getText());
+                StartApplication.securityKey2 = key;
+                switchToTheSameSceneRefresh(event);
+            } else {
+                warningLabel.setText("Not high enough position");
+            }
+        } else {
+            warningLabel.setText("Change key is empty");
+        }
+    }
+
+    @FXML
+    void onActionChangeSecurityKey3(ActionEvent event) throws IOException {
+        String checkPosition = position.getText();
+        if (!changeKey.getText().isEmpty()){
+            if (checkPosition == "Admin"){
+                int key = Integer.parseInt(changeKey.getText());
+                StartApplication.securityKey3 = key;
+                switchToTheSameSceneRefresh(event);
+            } else {
+                warningLabel.setText("Not high enough position");
+            }
+        } else {
+            warningLabel.setText("Change key is empty");
+        }
+    }
+
+    @FXML
+    void onActionChooseCustomer(/*ActionEvent event*/) {
         String ID = listOfCustomers.getSelectionModel().getSelectedItem().substring(0,6);
         String name = listOfCustomers.getSelectionModel().getSelectedItem().substring(9);
         selectedCustomerID.setText(ID);
@@ -96,7 +169,7 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
     }
 
     @FXML
-    void onActionChooseEmployee(ActionEvent event) {
+    void onActionChooseEmployee(/*ActionEvent event*/) {
         String ID = listOfEmployee.getSelectionModel().getSelectedItem().substring(0,6);
         String name = listOfEmployee.getSelectionModel().getSelectedItem().substring(9);
         selectedEmployeeID.setText(ID);
@@ -159,24 +232,69 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
         }
     }
 
+    @FXML
+    void onActionDeleteCustomerLevel2(ActionEvent event) throws IOException {
+        String checkPosition = position.getText();
+        if (customerInfo.getText() == ""){
+            customerInfo.setText("select a customer");
+            selectedCustomerID.setText("Select ID");
+        } else if (StartApplication.facade.CheckIfEmployeeExists(Integer.parseInt(selectedCustomerID.getText()))){
+            customerInfo.setText("Employee version");
+            selectedCustomerID.setText("Delete");
+        } else if (selectedCustomerID.getText().length() == 6 && checkPosition == "Manager" || checkPosition == "Admin"){
 
+            Customer theCustomer = StartApplication.facade.loadCustomer(Integer.parseInt(selectedCustomerID.getText()));
 
-    @FXML//On the interface button = Promoted to Employee to manager
-    void onActionPromoteEmployeeToManager(ActionEvent event) {
-        if (true){
+            for (Account accounts : theCustomer.getAccounts().values()){
+                int accountID = accounts.getID();
+                StartApplication.facade.removeAccount(accountID);
+            }
+            StartApplication.facade.removeCustomer(Integer.parseInt(selectedCustomerID.getText()));
 
+            switchToTheSameSceneRefresh(event);
         } else {
-
+            customerInfo.setText("Need higher position");
+            selectedCustomerID.setText("Denied");
         }
     }
 
 
-    
+    @FXML
+    void onActionDeleteEmployeeLevel2(ActionEvent event) throws IOException {
+        String checkPosition = position.getText();
+        if (employeeInfo.getText() == ""){
+            employeeInfo.setText("Select a employee");
+            selectedEmployeeID.setText("Select ID");
+        } else if (Integer.parseInt(selectedEmployeeID.getText()) == currentEmployeeUse.getID()){
+            employeeInfo.setText("Select someone else");
+            selectedEmployeeID.setText("not you");
+        } else if (selectedEmployeeID.getText().length() == 6 && checkPosition == "Manager" || checkPosition == "Admin"){
+
+            int employeeID = Integer.parseInt(selectedEmployeeID.getText());
+
+            if (employeeID != inUseEmployeeActiveID){
+
+                Customer theCustomer = StartApplication.facade.loadCustomer(employeeID);
+
+                for (Account accounts : theCustomer.getAccounts().values()){
+                    int accountID = accounts.getID();
+                    StartApplication.facade.removeAccount(accountID);
+                }
+                StartApplication.facade.removeCustomer(employeeID);
+
+                StartApplication.facade.removeEmployee(employeeID);
+                switchToTheSameSceneRefresh(event);
+            }
+        } else {
+            employeeInfo.setText("Need higher position");
+            selectedEmployeeID.setText("Denied");
+        }
+    }
 
     //all methods below are for switching scenes, or you could say on interfaces
 
     @FXML//On interface Button = Open customer
-    void switchToTheCustomer(ActionEvent event) throws IOException {
+    void switchToTheCustomer(/*ActionEvent event*/) throws IOException {
         if (selectedCustomerID.getText().length() == 6){
             UserMenuController.activeID = Integer.parseInt(selectedCustomerID.getText());
 
@@ -206,7 +324,7 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
     }
 
     @FXML//On interface Button = MANUAL
-    void switchToManual(ActionEvent event) throws IOException {
+    void switchToManual(/*ActionEvent event*/) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ZZManualEmployee.fxml"));
         Parent root1 = fxmlLoader.load();
         stage = new Stage();
@@ -231,8 +349,9 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
     @FXML//On interface Button = EXIT
     private Button closeButton;
     @FXML
-    void handelCloseButtonAction(ActionEvent event) {
-
+    void handelCloseButtonAction(/*ActionEvent event*/) {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 
     //Methods to make the buttons glow
@@ -243,13 +362,23 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
     @FXML
     private Button openCustomerButton;
     @FXML
-    private Button promoteEmployeeToManagerButton;
+    private Button deleteCustomerButton2;
+    @FXML
+    private Button deleteEmployeeButton2;
     @FXML
     private Button logoutButton;
     @FXML
     private Button manualButton;
     @FXML
     private Button Refresh;
+    @FXML
+    private Button changeSecurityKeyButton1;
+    @FXML
+    private Button changeSecurityKeyButton2;
+    @FXML
+    private Button changeSecurityKeyButton3;
+    @FXML
+    private Button changeSecurityKeyButton11;
 
     public void confirmHoverEntry(MouseEvent event){
         if (deleteCustomerButton == event.getSource()) {
@@ -264,10 +393,20 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
             logoutButton.setStyle("-fx-background-color: #52779C;");
         } else if (manualButton == event.getSource()) {
             manualButton.setStyle("-fx-background-color: #52779C;");
-        } else if (promoteEmployeeToManagerButton == event.getSource()) {
-            promoteEmployeeToManagerButton.setStyle("-fx-background-color: #52779C;");
+        } else if (deleteCustomerButton2 == event.getSource()) {
+            deleteCustomerButton2.setStyle("-fx-background-color: #52779C;");
         } else if (Refresh == event.getSource()) {
             Refresh.setStyle("-fx-background-color: #52779C;");
+        } else if (deleteEmployeeButton2 == event.getSource()) {
+            deleteEmployeeButton2.setStyle("-fx-background-color: #52779C;");
+        } else if (changeSecurityKeyButton1 == event.getSource()) {
+            changeSecurityKeyButton1.setStyle("-fx-background-color: #52779C;");
+        }  else if (changeSecurityKeyButton2 == event.getSource()) {
+            changeSecurityKeyButton2.setStyle("-fx-background-color: #52779C;");
+        } else if (changeSecurityKeyButton3 == event.getSource()) {
+            changeSecurityKeyButton3.setStyle("-fx-background-color: #52779C;");
+        } else if (changeSecurityKeyButton11 == event.getSource()) {
+            changeSecurityKeyButton11.setStyle("-fx-background-color: #52779C;");
         }
     }
 
@@ -284,10 +423,20 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
             logoutButton.setStyle("-fx-background-color: #414D59;");
         } else if (manualButton == event.getSource()) {
             manualButton.setStyle("-fx-background-color: #414D59;");
-        } else if (promoteEmployeeToManagerButton == event.getSource()) {
-            promoteEmployeeToManagerButton.setStyle("-fx-background-color: #414D59;");
+        } else if (deleteCustomerButton2 == event.getSource()) {
+            deleteCustomerButton2.setStyle("-fx-background-color: #414D59;");
         } else if (Refresh == event.getSource()) {
             Refresh.setStyle("-fx-background-color: #414D59;");
+        } else if (deleteEmployeeButton2 == event.getSource()) {
+            deleteEmployeeButton2.setStyle("-fx-background-color: #414D59;");
+        } else if (changeSecurityKeyButton1 == event.getSource()) {
+            changeSecurityKeyButton1.setStyle("-fx-background-color: #414D59;");
+        } else if (changeSecurityKeyButton2 == event.getSource()) {
+            changeSecurityKeyButton2.setStyle("-fx-background-color: #414D59;");
+        } else if (changeSecurityKeyButton3 == event.getSource()) {
+            changeSecurityKeyButton3.setStyle("-fx-background-color: #414D59;");
+        } else if (changeSecurityKeyButton11 == event.getSource()) {
+            changeSecurityKeyButton11.setStyle("-fx-background-color: #414D59;");
         }
     }
 

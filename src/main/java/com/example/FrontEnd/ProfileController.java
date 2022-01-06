@@ -86,12 +86,14 @@ public class ProfileController implements Initializable {//Albin Worked on this 
                             checkCurrentPassword.setText("");
                             newPassword.setText("");
                             confirmNewPassword.setText("");
+                            warningLabel.setText("");
                         } else {
                             currentPassword.setText(theConfirmNewPassword);
                             currentCustomerUse.setPassword(theConfirmNewPassword);
                             checkCurrentPassword.setText("");
                             newPassword.setText("");
                             confirmNewPassword.setText("");
+                            warningLabel.setText("");
                         }
                     } else {
                         warningLabel.setText("The password must have: \n - At least 8 characters \n - Must consist of 'a-z, A-Z, 0 -9' \n - Special character ex. '!' '&' '?' \n You must also Enter: \n - enter your security key \n - enter your position");
@@ -111,7 +113,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     void onActionChangeFirstName(/*ActionEvent event*/) {
         if (!newFirstName.getText().isBlank()){
             if (!newFirstName.getText().contains(" ")){
-                if (newFirstName.getText().length() < 13 && newFirstName.getText().length() > 3){
+                if (newFirstName.getText().length() < 13 && newFirstName.getText().length() > 2){
                     if (StartApplication.facade.CheckIfEmployeeExists(currentCustomerUse.getID())){
                         String theNewFirstName = newFirstName.getText();
                         String firstPart = theNewFirstName;
@@ -120,6 +122,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
                         newFirstName.setText("");
                         StartApplication.facade.loadEmployee(currentCustomerUse.getID()).setName(firstPart + " " + secondPart);
                         currentCustomerUse.setName(firstPart + " " + secondPart);
+                        warningLabel.setText("");
                     } else {
                         String theNewFirstName = newFirstName.getText();
                         String firstPart = theNewFirstName;
@@ -127,6 +130,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
                         currentFirstName.setText(theNewFirstName);
                         newFirstName.setText("");
                         currentCustomerUse.setName(firstPart + " " + secondPart);
+                        warningLabel.setText("");
                     }
                 } else {
                     warningLabel.setText("it cannot be longer than 13 or less than 3 characters");
@@ -138,12 +142,12 @@ public class ProfileController implements Initializable {//Albin Worked on this 
             warningLabel.setText("the box for new name is blank");
         }
     }
-
+//firstName.length() > 13 || firstName.length() < 3  || lastName.length() < 3 || lastName.length() > 13
     @FXML
     void onActionChangeLastName(/*ActionEvent event*/) {//Not finished yet
         if (!newLastName.getText().isBlank()){
             if (!newLastName.getText().contains(" ")){
-                if (newLastName.getText().length() < 13 && newLastName.getText().length() > 3){
+                if (newLastName.getText().length() < 13 && newLastName.getText().length() > 2){
                     if (StartApplication.facade.CheckIfEmployeeExists(currentCustomerUse.getID())){
                         String theNewLastName = newLastName.getText();
                         String firstPart = theNewLastName;
@@ -152,6 +156,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
                         newLastName.setText("");
                         StartApplication.facade.loadEmployee(currentCustomerUse.getID()).setName(firstPart + " " + secondPart);
                         currentCustomerUse.setName(firstPart + " " + secondPart);
+                        warningLabel.setText("");
                     } else {
                         String theNewLastName = newLastName.getText();
                         String firstPart = theNewLastName;
@@ -159,6 +164,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
                         currentLasName.setText(theNewLastName);
                         newLastName.setText("");
                         currentCustomerUse.setName(firstPart + " " + secondPart);
+                        warningLabel.setText("");
                     }
                 } else {
                     warningLabel.setText("it cannot be longer than 13 or less than 3 characters");

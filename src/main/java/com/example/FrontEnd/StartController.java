@@ -16,9 +16,6 @@ public class StartController {//Albin worked on this, Liam worked partly on this
     private Scene scene;
 
 
-
-
-
     //all methods below are for switching scenes, or you could say interfaces
 
     @FXML//on interface button = main menu
