@@ -20,6 +20,8 @@ public class StartApplication extends Application { // Albin worked on this
         //stage.initStyle(StageStyle.UNDECORATED);
         Scene scene = new Scene(fxmlLoader.load(), 938, 675);
         stage.setScene(scene);
+        stage.setTitle("jc.Lapel bank");
+//        stage.getIcons().add(new Image("com/example/FrontEnd/image/lapel.png"));
         stage.show();
     }
 
