@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="939.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.ZManualCustomerBankStatement">
+<AnchorPane prefHeight="675.0" prefWidth="939.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.ZManualCustomerBankStatement">
     <children>
         <VBox prefHeight="679.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -73,7 +73,7 @@
                                         <Glow />
                                     </effect>
                                 </Button>
-                                <Button fx:id="switchintProjectMButton" alignment="BASELINE_LEFT" layoutY="249.0" mnemonicParsing="false" onAction="#switchToManualProject" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Projects manual " textFill="WHITE">
+                                <Button fx:id="switchintCAMButton" alignment="BASELINE_LEFT" layoutY="304.0" mnemonicParsing="false" onAction="#switchToManualCreateAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create account manual " textFill="WHITE">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
@@ -87,21 +87,7 @@
                                         <Glow />
                                     </effect>
                                 </Button>
-                                <Button fx:id="switchintCAMButton" alignment="BASELINE_LEFT" layoutY="359.0" mnemonicParsing="false" onAction="#switchToManualCreateAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create account manual " textFill="WHITE">
-                                    <opaqueInsets>
-                                        <Insets />
-                                    </opaqueInsets>
-                                    <padding>
-                                        <Insets left="50.0" />
-                                    </padding>
-                                    <font>
-                                        <Font name="Arial Bold" size="17.0" />
-                                    </font>
-                                    <effect>
-                                        <Glow />
-                                    </effect>
-                                </Button>
-                                <Button fx:id="switchintLMButton" alignment="BASELINE_LEFT" layoutY="414.0" mnemonicParsing="false" onAction="#switchToManualLogin" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login manual " textFill="WHITE">
+                                <Button fx:id="switchintLMButton" alignment="BASELINE_LEFT" layoutY="359.0" mnemonicParsing="false" onAction="#switchToManualLogin" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login manual " textFill="WHITE">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
@@ -134,7 +120,7 @@
                                         <Glow />
                                     </effect>
                                 </Button>
-                                <AnchorPane layoutY="469.0" prefHeight="459.0" prefWidth="304.0" style="-fx-background-color: #414D59;">
+                                <AnchorPane layoutY="414.0" prefHeight="397.0" prefWidth="304.0" style="-fx-background-color: #414D59;">
                                     <children>
                                         <Button fx:id="openUMButton" alignment="BASELINE_LEFT" layoutY="83.0" mnemonicParsing="false" onAction="#OpenToManualUser" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="User manual " textFill="WHITE">
                                             <opaqueInsets>
@@ -178,7 +164,7 @@
                                                 <Glow />
                                             </effect>
                                         </Button>
-                                        <Button fx:id="openProjectMButton" alignment="BASELINE_LEFT" layoutY="248.0" mnemonicParsing="false" onAction="#OpenToManualProjects" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Projects manual " textFill="WHITE">
+                                        <Button fx:id="openCAMButton" alignment="BASELINE_LEFT" layoutY="303.0" mnemonicParsing="false" onAction="#OpenToManualCreateAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create account manual " textFill="WHITE">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
@@ -192,21 +178,7 @@
                                                 <Glow />
                                             </effect>
                                         </Button>
-                                        <Button fx:id="openCAMButton" alignment="BASELINE_LEFT" layoutY="358.0" mnemonicParsing="false" onAction="#OpenToManualCreateAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create account manual " textFill="WHITE">
-                                            <opaqueInsets>
-                                                <Insets />
-                                            </opaqueInsets>
-                                            <padding>
-                                                <Insets left="50.0" />
-                                            </padding>
-                                            <font>
-                                                <Font name="Arial Bold" size="17.0" />
-                                            </font>
-                                            <effect>
-                                                <Glow />
-                                            </effect>
-                                        </Button>
-                                        <Button fx:id="openLMButton" alignment="BASELINE_LEFT" layoutY="413.0" mnemonicParsing="false" onAction="#OpenToManualLogin" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login manual " textFill="WHITE">
+                                        <Button fx:id="openLMButton" alignment="BASELINE_LEFT" layoutY="358.0" mnemonicParsing="false" onAction="#OpenToManualLogin" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login manual " textFill="WHITE">
                                             <opaqueInsets>
                                                 <Insets />
                                             </opaqueInsets>
@@ -247,7 +219,7 @@
                 </ScrollPane>
             </children>
         </VBox>
-        <Pane layoutX="336.0" prefHeight="112.0" prefWidth="604.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+        <Pane layoutX="336.0" prefHeight="112.0" prefWidth="604.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label layoutX="57.0" layoutY="40.0" prefHeight="32.0" prefWidth="507.0" text="The user manual for bank statement" textAlignment="CENTER" textFill="WHITE">
                     <font>

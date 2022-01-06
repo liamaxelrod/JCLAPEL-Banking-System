@@ -109,6 +109,8 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
             securityKey2.setText(String.valueOf(StartApplication.securityKey2));
             securityKey3.setText(String.valueOf(StartApplication.securityKey3));
         }
+
+        ImageProfile.setImage(currentEmployeeUse.getProfile().getImage());
     }
 
     //all methods below are for On action, or you could say on interfaces

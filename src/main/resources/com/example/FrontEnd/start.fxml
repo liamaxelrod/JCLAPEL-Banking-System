@@ -109,7 +109,7 @@
             </Button>
          </children>
       </VBox>
-      <Pane layoutX="319.0" prefHeight="112.0" prefWidth="620.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;">
+      <Pane layoutX="319.0" prefHeight="112.0" prefWidth="620.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="127.0" layoutY="33.0" prefHeight="46.0" prefWidth="366.0" text="THE BANK YOU DESERVE" textFill="WHITE">
                <font>

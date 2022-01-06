@@ -107,7 +107,7 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
         String position = titleChoice.getValue();
         int SecurityKey;
 
-        if (false) {//This is for testing purposes switch to true to activate switch defaults to deactivate
+        if (true) {//This is for testing purposes switch to true to activate switch defaults to deactivate
             test(event);
         }
 

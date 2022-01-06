@@ -27,7 +27,7 @@
                         </Label>
                     </children>
                 </Pane>
-            <ScrollPane prefHeight="563.0" prefWidth="277.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;">
+            <ScrollPane prefHeight="563.0" prefWidth="277.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" VBox.vgrow="ALWAYS">
                <content>
                 <AnchorPane prefHeight="736.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;">
                      <children>

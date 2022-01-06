@@ -1,6 +1,7 @@
 package com.example.FrontEnd;
 
 import com.example.BackEnd.Customer;
+import com.example.BackEnd.Employee;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,12 +29,8 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     private Scene scene;
     private Customer currentCustomerUse;
 
-    private FileChooser fileChoice;//*It is possible to get rid of the three yellow warning lights but for now I'm to leave To be safe
-    private File filePath;
-
     @FXML//on interface image view = right above upload a user profile image
     private ImageView currentImage;//this is the one actually holds the image for the interface
-    private Image theImage;
 
     @FXML//on interface Password field = Bottom left corner
     private PasswordField checkCurrentPassword;
@@ -66,6 +63,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
         currentLasName.setText(currentCustomerUse.getName().substring(currentCustomerUse.getName().lastIndexOf(" ")+1));
         currentPassword.setText(currentCustomerUse.getPassword());
         currentID.setText(String.valueOf(currentCustomerUse.getID()));
+        currentImage.setImage(currentCustomerUse.getProfile().getImage());
     }
 
     @FXML
@@ -116,20 +114,18 @@ public class ProfileController implements Initializable {//Albin Worked on this 
                 if (newFirstName.getText().length() < 13 && newFirstName.getText().length() > 2){
                     if (StartApplication.facade.CheckIfEmployeeExists(currentCustomerUse.getID())){
                         String theNewFirstName = newFirstName.getText();
-                        String firstPart = theNewFirstName;
                         String secondPart = currentCustomerUse.getName().substring(currentCustomerUse.getName().lastIndexOf(" ")+1);
                         currentFirstName.setText(theNewFirstName);
                         newFirstName.setText("");
-                        StartApplication.facade.loadEmployee(currentCustomerUse.getID()).setName(firstPart + " " + secondPart);
-                        currentCustomerUse.setName(firstPart + " " + secondPart);
+                        StartApplication.facade.loadEmployee(currentCustomerUse.getID()).setName(theNewFirstName + " " + secondPart);
+                        currentCustomerUse.setName(theNewFirstName + " " + secondPart);
                         warningLabel.setText("");
                     } else {
                         String theNewFirstName = newFirstName.getText();
-                        String firstPart = theNewFirstName;
                         String secondPart = currentCustomerUse.getName().substring(currentCustomerUse.getName().lastIndexOf(" ")+1);
                         currentFirstName.setText(theNewFirstName);
                         newFirstName.setText("");
-                        currentCustomerUse.setName(firstPart + " " + secondPart);
+                        currentCustomerUse.setName(theNewFirstName + " " + secondPart);
                         warningLabel.setText("");
                     }
                 } else {
@@ -142,7 +138,7 @@ public class ProfileController implements Initializable {//Albin Worked on this 
             warningLabel.setText("the box for new name is blank");
         }
     }
-//firstName.length() > 13 || firstName.length() < 3  || lastName.length() < 3 || lastName.length() > 13
+
     @FXML
     void onActionChangeLastName(/*ActionEvent event*/) {//Not finished yet
         if (!newLastName.getText().isBlank()){
@@ -150,20 +146,18 @@ public class ProfileController implements Initializable {//Albin Worked on this 
                 if (newLastName.getText().length() < 13 && newLastName.getText().length() > 2){
                     if (StartApplication.facade.CheckIfEmployeeExists(currentCustomerUse.getID())){
                         String theNewLastName = newLastName.getText();
-                        String firstPart = theNewLastName;
                         String secondPart = currentCustomerUse.getName().substring(0 , currentCustomerUse.getName().indexOf(" "));
                         currentLasName.setText(theNewLastName);
                         newLastName.setText("");
-                        StartApplication.facade.loadEmployee(currentCustomerUse.getID()).setName(firstPart + " " + secondPart);
-                        currentCustomerUse.setName(firstPart + " " + secondPart);
+                        StartApplication.facade.loadEmployee(currentCustomerUse.getID()).setName(theNewLastName + " " + secondPart);
+                        currentCustomerUse.setName(theNewLastName + " " + secondPart);
                         warningLabel.setText("");
                     } else {
                         String theNewLastName = newLastName.getText();
-                        String firstPart = theNewLastName;
                         String secondPart = currentCustomerUse.getName().substring(0 , currentCustomerUse.getName().indexOf(" "));
                         currentLasName.setText(theNewLastName);
                         newLastName.setText("");
-                        currentCustomerUse.setName(firstPart + " " + secondPart);
+                        currentCustomerUse.setName(theNewLastName + " " + secondPart);
                         warningLabel.setText("");
                     }
                 } else {
@@ -177,15 +171,23 @@ public class ProfileController implements Initializable {//Albin Worked on this 
         }
     }
 
-    @FXML//Still trying to figure out save the image
+    @FXML
     public void onActionChangeProfileImage(ActionEvent event) {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        fileChoice = new FileChooser();
+        FileChooser fileChoice = new FileChooser();
         fileChoice.setTitle("by the power of God Liam you humble peasant may choose your profile picture");
 
-        this.filePath = fileChoice.showOpenDialog(stage);
-        theImage = new Image(String.valueOf(filePath.toURI()));
+        File filePath = fileChoice.showOpenDialog(stage);
+        Image theImage = new Image(String.valueOf(filePath.toURI()));
         currentImage.setImage(theImage);
+        if (StartApplication.facade.employees.containsKey(currentCustomerUse.getID())){
+            Employee employee = StartApplication.facade.employees.get(currentCustomerUse.getID());
+            employee.setProfile(currentImage);
+            currentCustomerUse.setProfile(currentImage);
+        } else {
+            currentCustomerUse.setProfile(currentImage);
+        }
+
     }
 
     //all methods below are for switching scenes, or you could say interfaces

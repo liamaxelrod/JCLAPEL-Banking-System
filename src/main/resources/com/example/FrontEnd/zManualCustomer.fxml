@@ -16,7 +16,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1048.0" prefWidth="1404.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.ZManualCustomer">
+<AnchorPane prefHeight="972.0" prefWidth="1397.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" styleClass="root" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.ZManualCustomer">
     <children>
         <VBox prefHeight="679.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -29,11 +29,11 @@
                         </Label>
                     </children>
                 </Pane>
-            <ScrollPane prefHeight="567.0" prefWidth="286.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" VBox.vgrow="ALWAYS">
+            <ScrollPane prefHeight="826.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" VBox.vgrow="ALWAYS">
                <content>
-                  <AnchorPane prefHeight="810.0" prefWidth="304.0" style="-fx-background-color: #414D59;">
+                  <AnchorPane prefHeight="858.0" prefWidth="317.0" style="-fx-background-color: #414D59;">
                      <children>
-                            <Button fx:id="switchintUSButton" alignment="BASELINE_LEFT" layoutY="84.0" mnemonicParsing="false" onAction="#switchToManualUser" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="User manual " textFill="#00d9ff">
+                            <Button fx:id="switchintUSButton" alignment="BASELINE_LEFT" layoutY="84.0" mnemonicParsing="false" onAction="#switchToManualUser" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="317.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="User manual " textFill="#00d9ff">
                                 <opaqueInsets>
                                     <Insets />
                                 </opaqueInsets>
@@ -47,7 +47,7 @@
                                     <Glow />
                                 </effect>
                             </Button>
-                        <Button fx:id="switchintTMButton" alignment="BASELINE_LEFT" layoutY="139.0" mnemonicParsing="false" onAction="#switchToManualTransfer" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Transfer manual " textFill="#00d9ff">
+                        <Button fx:id="switchintTMButton" alignment="BASELINE_LEFT" layoutY="139.0" mnemonicParsing="false" onAction="#switchToManualTransfer" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="317.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Transfer manual " textFill="#00d9ff">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -61,7 +61,7 @@
                               <Glow />
                            </effect>
                         </Button>
-                        <Button fx:id="switchintProfileMButton" alignment="BASELINE_LEFT" layoutY="194.0" mnemonicParsing="false" onAction="#switchToManualProfile" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Profile manual " textFill="#00d9ff">
+                        <Button fx:id="switchintProfileMButton" alignment="BASELINE_LEFT" layoutY="194.0" mnemonicParsing="false" onAction="#switchToManualProfile" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="317.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Profile manual " textFill="#00d9ff">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -75,7 +75,7 @@
                               <Glow />
                            </effect>
                         </Button>
-                        <Button fx:id="switchintBSMButton" alignment="BASELINE_LEFT" layoutY="249.0" mnemonicParsing="false" onAction="#switchToManualBankStatement" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Bank statement manual " textFill="#00d9ff">
+                        <Button fx:id="switchintBSMButton" alignment="BASELINE_LEFT" layoutY="249.0" mnemonicParsing="false" onAction="#switchToManualBankStatement" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="317.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Bank statement manual " textFill="#00d9ff">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -89,7 +89,7 @@
                               <Glow />
                            </effect>
                         </Button>
-                        <Button fx:id="switchintCAMButton" alignment="BASELINE_LEFT" layoutY="304.0" mnemonicParsing="false" onAction="#switchToManualCreateAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create account manual " textFill="#00d9ff">
+                        <Button fx:id="switchintCAMButton" alignment="BASELINE_LEFT" layoutY="304.0" mnemonicParsing="false" onAction="#switchToManualCreateAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="317.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create account manual " textFill="#00d9ff">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -103,7 +103,7 @@
                               <Glow />
                            </effect>
                         </Button>
-                        <Button fx:id="switchintLMButton" alignment="BASELINE_LEFT" layoutY="359.0" mnemonicParsing="false" onAction="#switchToManualLogin" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login manual " textFill="WHITE">
+                        <Button fx:id="switchintLMButton" alignment="BASELINE_LEFT" layoutY="359.0" mnemonicParsing="false" onAction="#switchToManualLogin" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="317.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login manual " textFill="#00d9ff">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -122,7 +122,7 @@
                               <Font name="Arial Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Button fx:id="switchintMMMButton" alignment="BASELINE_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#switchToManualMainMenu" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Main menu manual " textFill="#00d9ff">
+                        <Button fx:id="switchintMMMButton" alignment="BASELINE_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#switchToManualMainMenu" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="317.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Main menu manual " textFill="#00d9ff">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -136,9 +136,9 @@
                               <Glow />
                            </effect>
                         </Button>
-                        <AnchorPane layoutY="469.0" prefHeight="459.0" prefWidth="304.0" style="-fx-background-color: #414D59;">
+                        <AnchorPane layoutY="414.0" prefHeight="394.0" prefWidth="304.0" style="-fx-background-color: #414D59;">
                            <children>
-                              <Button fx:id="openUMButton" alignment="BASELINE_LEFT" layoutY="83.0" mnemonicParsing="false" onAction="#OpenToManualUser" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="User manual " textFill="WHITE">
+                              <Button fx:id="openUMButton" alignment="BASELINE_LEFT" layoutY="83.0" mnemonicParsing="false" onAction="#OpenToManualUser" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="317.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="User manual " textFill="#00d9ff">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -152,7 +152,7 @@
                                     <Glow />
                                  </effect>
                               </Button>
-                              <Button fx:id="openTMButton" alignment="BASELINE_LEFT" layoutY="138.0" mnemonicParsing="false" onAction="#OpenToManualTransfer" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Transfer manual " textFill="WHITE">
+                              <Button fx:id="openTMButton" alignment="BASELINE_LEFT" layoutY="138.0" mnemonicParsing="false" onAction="#OpenToManualTransfer" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="317.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Transfer manual " textFill="#00d9ff">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -166,7 +166,7 @@
                                     <Glow />
                                  </effect>
                               </Button>
-                              <Button fx:id="openProfileMButton" alignment="BASELINE_LEFT" layoutY="193.0" mnemonicParsing="false" onAction="#OpenToManualProfile" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Profile manual " textFill="WHITE">
+                              <Button fx:id="openProfileMButton" alignment="BASELINE_LEFT" layoutY="193.0" mnemonicParsing="false" onAction="#OpenToManualProfile" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="317.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Profile manual " textFill="#00d9ff">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -180,7 +180,7 @@
                                     <Glow />
                                  </effect>
                               </Button>
-                              <Button fx:id="openProjectMButton" alignment="BASELINE_LEFT" layoutY="248.0" mnemonicParsing="false" onAction="#OpenToManualProjects" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Projects manual " textFill="WHITE">
+                              <Button fx:id="openBSMButton" alignment="BASELINE_LEFT" layoutY="248.0" mnemonicParsing="false" onAction="#OpenToManualBankStatements" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="317.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Bank statement manual " textFill="#00d9ff">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -194,7 +194,7 @@
                                     <Glow />
                                  </effect>
                               </Button>
-                              <Button fx:id="openBSMButton" alignment="BASELINE_LEFT" layoutY="303.0" mnemonicParsing="false" onAction="#OpenToManualBankStatements" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Bank statement manual " textFill="WHITE">
+                              <Button fx:id="openCAMButton" alignment="BASELINE_LEFT" layoutY="303.0" mnemonicParsing="false" onAction="#OpenToManualCreateAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="317.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create account manual " textFill="#00d9ff">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -208,21 +208,7 @@
                                     <Glow />
                                  </effect>
                               </Button>
-                              <Button fx:id="openCAMButton" alignment="BASELINE_LEFT" layoutY="358.0" mnemonicParsing="false" onAction="#OpenToManualCreateAccount" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Create account manual " textFill="WHITE">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                                 <padding>
-                                    <Insets left="50.0" />
-                                 </padding>
-                                 <font>
-                                    <Font name="Arial Bold" size="17.0" />
-                                 </font>
-                                 <effect>
-                                    <Glow />
-                                 </effect>
-                              </Button>
-                              <Button fx:id="openLMButton" alignment="BASELINE_LEFT" layoutY="413.0" mnemonicParsing="false" onAction="#OpenToManualLogin" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login manual " textFill="WHITE">
+                              <Button fx:id="openLMButton" alignment="BASELINE_LEFT" layoutY="358.0" mnemonicParsing="false" onAction="#OpenToManualLogin" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="317.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login manual " textFill="#00d9ff">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -241,7 +227,7 @@
                                     <Font name="Arial Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="openMMMButton" alignment="BASELINE_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#OpenToManualMainMenu" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="304.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Main menu manual " textFill="WHITE">
+                              <Button fx:id="openMMMButton" alignment="BASELINE_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#OpenToManualMainMenu" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="317.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Main menu manual " textFill="#00d9ff">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -275,129 +261,159 @@
                 </Label>
             </children>
         </Pane>
-
-      <ScrollPane layoutX="319.0" layoutY="112.0" prefHeight="936.0" prefWidth="1085.0" stylesheets="@../../../style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="112.0">
-        <content>
-          <AnchorPane prefHeight="936.0" prefWidth="1085.0" styleClass="root" stylesheets="@../../../style.css">
-               <children>
-                  <TextArea layoutX="6.0" layoutY="251.0" prefHeight="180.0" prefWidth="250.0" text="This is only a placeholder for text we put in&#10;&#10;&#10;&#10;&#10;Mainly because it comes with a scroll in function&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;Is this be really annoying without it">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </TextArea>
-                  <ImageView fitHeight="163.0" fitWidth="241.0" layoutX="6.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/Liam2.jpg" />
-                     </image>
-                  </ImageView>
-                      <Button fx:id="closeButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handelCloseButtonAction" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="133.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Exit" textFill="#00d9ff">
-                          <opaqueInsets>
-                              <Insets />
-                          </opaqueInsets>
-                          <padding>
-                              <Insets left="50.0" />
-                          </padding>
-                          <font>
-                              <Font name="Arial Bold" size="17.0" />
-                          </font>
-                          <effect>
-                              <Glow />
-                          </effect>
-                      </Button>
-                  <Label layoutX="147.0" layoutY="12.0" prefHeight="15.0" prefWidth="431.0" text="About the creators of JC. LAPEL">
-                     <font>
-                        <Font name="Arial" size="27.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="154.0" fitWidth="230.0" layoutX="268.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/Albin.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="187.0" fitWidth="189.0" layoutX="43.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/Eric.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="153.0" fitWidth="185.0" layoutX="581.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/Julia.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="210.0" fitWidth="292.0" layoutX="651.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/Patrick.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="866.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/Connie.jpeg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="190.0" fitWidth="119.0" layoutX="352.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@image/labi.jpg" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="259.0" layoutY="452.0" prefHeight="32.0" prefWidth="518.0" text="Testers and backend workers Department ">
-                     <font>
-                        <Font name="Arial" size="27.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="158.0" layoutY="55.0" prefHeight="32.0" prefWidth="213.0" text="GUI department" textFill="#fb00ff">
-                     <font>
-                        <Font name="Arial Bold Italic" size="27.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="WAIT" />
-                     </cursor>
-                     <effect>
-                        <DropShadow>
-                           <color>
-                              <Color red="0.1519184708595276" blue="1.0" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </Label>
-                  <TextArea layoutX="43.0" layoutY="687.0" prefHeight="136.0" prefWidth="292.0" text="This is only a placeholder for text we put in&#10;&#10;&#10;&#10;&#10;Mainly because it comes with a scroll in function&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;Is this be really annoying without it">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </TextArea>
-                  <TextArea layoutX="352.0" layoutY="687.0" prefHeight="136.0" prefWidth="292.0" text="This is only a placeholder for text we put in&#10;&#10;&#10;&#10;&#10;Mainly because it comes with a scroll in function&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;Is this be really annoying without it">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </TextArea>
-                  <TextArea layoutX="268.0" layoutY="251.0" prefHeight="180.0" prefWidth="250.0" text="This is only a placeholder for text we put in&#10;&#10;&#10;&#10;&#10;Mainly because it comes with a scroll in function&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;Is this be really annoying without it">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </TextArea>
-                  <TextArea layoutX="651.0" layoutY="687.0" prefHeight="136.0" prefWidth="292.0" text="This is only a placeholder for text we put in&#10;&#10;&#10;&#10;&#10;Mainly because it comes with a scroll in function&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;Is this be really annoying without it">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </TextArea>
-                  <Label layoutX="669.0" layoutY="55.0" prefHeight="32.0" prefWidth="271.0" text="Database department">
-                     <font>
-                        <Font name="Arial" size="27.0" />
-                     </font>
-                  </Label>
-                  <TextArea layoutX="531.0" layoutY="251.0" prefHeight="180.0" prefWidth="250.0" text="This is only a placeholder for text we put in&#10;&#10;&#10;&#10;&#10;Mainly because it comes with a scroll in function&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;Is this be really annoying without it">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </TextArea>
-                  <TextArea layoutX="797.0" layoutY="251.0" prefHeight="180.0" prefWidth="250.0" text="This is only a placeholder for text we put in&#10;&#10;&#10;&#10;&#10;Mainly because it comes with a scroll in function&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;Is this be really annoying without it">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </TextArea>
-               </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
-
+      <Pane layoutX="319.0" layoutY="112.0" prefHeight="860.0" prefWidth="1079.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="318.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="112.0">
+         <children>
+            <ScrollPane layoutX="1.0" prefHeight="860.0" prefWidth="1079.0" styleClass="root" stylesheets="@../../../style.css">
+              <content>
+                <AnchorPane prefHeight="858.0" prefWidth="1077.0" styleClass="root" stylesheets="@../../../style.css">
+                     <children>
+                        <TextArea layoutX="6.0" layoutY="251.0" prefHeight="180.0" prefWidth="250.0" style="-fx-background-color: #fb00ff;" text="Name: Liam Jason Axelrod&#10;gusaxelrli@student.gu.se&#10;&#10;-Quote&#10;“Madness and genius are two sides to &#10;the same coin.” --&gt; John Hendy&#10;Department GUL&#10;-Titles&#10;--&gt; GUL executive&#10;--&gt; Human resources&#10;--&gt; Project and development&#10;--&gt; Software Architect&#10;--&gt; Software Developer&#10;-Skills&#10;--&gt;Java FX&#10;--&gt;Java&#10;--&gt;Scene builder&#10;--&gt; GUL Implementation&#10;About&#10;26 years old born in California, &#10;dual citizenship with America and &#10;Sweden. Has been developing &#10;for Half year. Most proficient in Java.&#10;Enjoys anime, manga, video games, &#10;web novels. &#10;Goal&#10;to create incredible video games people&#10;will love to play.&#10;PS - and make a lot of money&#10;&#10;&#10;&#10;&#10;&#10;">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color red="0.15294118225574493" blue="1.0" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </TextArea>
+                        <ImageView fitHeight="163.0" fitWidth="241.0" layoutX="6.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/Liam2.jpg" />
+                           </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color red="0.15294118225574493" blue="1.0" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </ImageView>
+                            <Button fx:id="closeButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handelCloseButtonAction" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="133.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Exit" textFill="#00d9ff">
+                                <opaqueInsets>
+                                    <Insets />
+                                </opaqueInsets>
+                                <padding>
+                                    <Insets left="50.0" />
+                                </padding>
+                                <font>
+                                    <Font name="Arial Bold" size="17.0" />
+                                </font>
+                                <effect>
+                                    <Glow />
+                                </effect>
+                            </Button>
+                        <Label layoutX="147.0" layoutY="12.0" prefHeight="15.0" prefWidth="431.0" text="About the creators of JC. LAPEL">
+                           <font>
+                              <Font name="Arial" size="27.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="154.0" fitWidth="230.0" layoutX="268.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/Albin.png" />
+                           </image>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color red="0.15294118225574493" blue="1.0" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="187.0" fitWidth="189.0" layoutX="43.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/Eric.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="153.0" fitWidth="185.0" layoutX="581.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/Julia.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="210.0" fitWidth="292.0" layoutX="651.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/Patrick.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="866.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/Connie.jpeg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="190.0" fitWidth="119.0" layoutX="352.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/labi.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="232.0" layoutY="457.0" prefHeight="32.0" prefWidth="692.0" text="Testers and backend Software development Department ">
+                           <font>
+                              <Font name="Arial" size="27.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="158.0" layoutY="55.0" prefHeight="32.0" prefWidth="213.0" text="GUI department" textFill="#fb00ff">
+                           <font>
+                              <Font name="Arial Bold Italic" size="27.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="WAIT" />
+                           </cursor>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color red="0.15294118225574493" blue="1.0" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </Label>
+                        <TextArea layoutX="43.0" layoutY="687.0" prefHeight="136.0" prefWidth="292.0" text="Name: Erik Lindmaa&#10;&#10;Quote Erik: “I love deadlines. &#10;I love the whooshing noise they make &#10;as they go by.”&#10;- Douglas Adams&#10;&#10;Department tester and backend Software&#10;development&#10;">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                        </TextArea>
+                        <TextArea layoutX="352.0" layoutY="687.0" prefHeight="136.0" prefWidth="292.0" text="Name: Karar Eshaba&#10;&#10;Quote Labiba Karar Eshaba: &#10;“If it isn’t scary it’s probably not &#10;worth your time.”&#10;&#10;Department tester and backend software&#10;Development&#10;&#10;">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                        </TextArea>
+                        <TextArea layoutX="268.0" layoutY="251.0" prefHeight="180.0" prefWidth="250.0" style="-fx-background-color: #fb00ff;" text="Name: Albin Carlsson &#10;&#10;Quote Albin: “Money may not buy &#10;happiness, but I'd rather cry in a Jaguar &#10;than on a bus.”&#10;- Françoise Sagan&#10;&#10;Department GUL">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color red="0.15294118225574493" blue="1.0" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </TextArea>
+                        <TextArea layoutX="651.0" layoutY="687.0" prefHeight="136.0" prefWidth="292.0" text="NAME: Patrik “Bronze Ear” Samcenko&#10;&#10;Quote Patrik: &#10;“I don’t get all the fuss about toilet paper. &#10;It tastes terrible.”&#10;&#10;Department tester and backend software &#10;development&#10;&#10;OCCUPATIONAL HISTORY: &#10;Baiter (Reached “Master” Rank) (2014-2018)&#10;Professional Chimp Tickler (2018-2021)&#10;JC Lapel Bank CEO (2021-Present)&#10;&#10;ADDITIONAL NOTABLE INFORMATION: &#10;Ordained the King of Upper Hungary by the &#10;Pope of the Anglican Church.&#10;Suspected involvement in the plot to &#10;assassinate Julius Caesar.&#10;Can cook minute rice in 57 seconds or less.&#10;Genetic makeup &gt;90% Homo sapiens sapiens.&#10;Is the national bird of Ohio.&#10;">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                        </TextArea>
+                        <Label layoutX="669.0" layoutY="55.0" prefHeight="32.0" prefWidth="271.0" text="Database department">
+                           <font>
+                              <Font name="Arial" size="27.0" />
+                           </font>
+                        </Label>
+                        <TextArea layoutX="531.0" layoutY="251.0" prefHeight="180.0" prefWidth="250.0" text="Name: Julia Ayvazian&#10;&#10;Quote Julia:&#10;“I drink champagne for breakfast. &#10;Not too much though, &#10;I have a sensitive stomach”&#10;&#10;Department database&#10;">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                        </TextArea>
+                        <TextArea layoutX="797.0" layoutY="251.0" prefHeight="180.0" prefWidth="250.0" text="Name: Conny Luong&#10;&#10;Department database">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </Pane>
     </children>
 </AnchorPane>

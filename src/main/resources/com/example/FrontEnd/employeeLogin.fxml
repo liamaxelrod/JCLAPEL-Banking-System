@@ -90,7 +90,7 @@
                 <Font name="Arial Bold" size="47.0" />
             </font>
         </Label>
-        <Pane layoutX="319.0" prefHeight="112.0" prefWidth="620.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.bottomAnchor="563.0" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+        <Pane layoutX="319.0" prefHeight="112.0" prefWidth="620.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                 <Label layoutX="210.0" layoutY="40.0" text="Employee login" textAlignment="CENTER" textFill="WHITE">
