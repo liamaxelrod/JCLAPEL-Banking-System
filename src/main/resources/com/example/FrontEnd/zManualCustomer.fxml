@@ -275,6 +275,7 @@
                 </Label>
             </children>
         </Pane>
+
       <ScrollPane layoutX="319.0" layoutY="112.0" prefHeight="936.0" prefWidth="1085.0" stylesheets="@../../../style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="112.0">
         <content>
           <AnchorPane prefHeight="936.0" prefWidth="1085.0" styleClass="root" stylesheets="@../../../style.css">
@@ -397,5 +398,6 @@
             </AnchorPane>
         </content>
       </ScrollPane>
+
     </children>
 </AnchorPane>

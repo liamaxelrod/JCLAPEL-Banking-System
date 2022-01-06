@@ -7,6 +7,8 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -259,11 +261,21 @@
         </Pane>
         <Pane layoutX="318.0" layoutY="111.0" prefHeight="565.0" prefWidth="621.0">
             <children>
-                <TextArea layoutX="14.0" layoutY="14.0" prefHeight="136.0" prefWidth="294.0" text="This is only a placeholder for text we put in&#10;&#10;&#10;&#10;&#10;Mainly because it comes with a scroll in function&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;Is this be really annoying without it">
+                <TextArea layoutX="14.0" layoutY="239.0" prefHeight="232.0" prefWidth="585.0" text="Login interface: The login interface let's the customer/employee access their account.&#10;&#10;Login Customer interface instructions: &#10;1. The customer needs to first provide their unique ID (8-digit number created by the bank, incase &#10;the customer forgets it,  an employee can fetch it for the customer) and password (password that you created during account creation) in order to log in.&#10;2. Then by clicking the &quot;Login&quot; button, the customer can successfully login to their respective account.&#10;&#10;Login Employee interface instructions: &#10;1. The employee needs to first provide their unique ID (8-digit number created by the bank, in case you forget it an employee can fetch it for you), password (password that you created during account creation) and Employee security key (only applicable for employees working in the bank).&#10;2. Then by clicking the &quot;Login&quot; button, the employee can successfully login to their respective account.&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;">
                     <font>
                         <Font name="Arial" size="12.0" />
                     </font>
                 </TextArea>
+            <ImageView fitHeight="206.0" fitWidth="296.0" layoutX="15.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/Customer%20Login%20.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="210.0" fitWidth="304.0" layoutX="313.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/Employee%20Login.png" />
+               </image>
+            </ImageView>
             </children>
         </Pane>
         <Pane layoutX="807.0" layoutY="620.0" prefHeight="56.0" prefWidth="132.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
