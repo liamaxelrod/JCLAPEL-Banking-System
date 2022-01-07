@@ -1,4 +1,3 @@
-
 package com.example.BackEnd;
 
 public class Manager extends Employee{
@@ -6,4 +5,3 @@ public class Manager extends Employee{
         super(ID, name, password);
     }
 }
-
