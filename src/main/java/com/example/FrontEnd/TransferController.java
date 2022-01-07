@@ -172,4 +172,5 @@ public class TransferController implements Initializable {//Albin worked on this
     private void confirmHoverOutUser() {
         userMenu.setStyle("-fx-background-color: #414D59;");
     }
+
 }
