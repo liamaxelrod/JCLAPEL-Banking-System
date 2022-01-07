@@ -1,17 +1,27 @@
 package com.example.BackEnd;
 
 import java.io.*;
+//import com.mongodb.*;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import org.bson.Document;
+
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Stack;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import static com.mongodb.client.model.Filters.eq;
 
 public class Facade {
     public HashMap<Integer, Customer> customers = new HashMap<>();
     public HashMap<Integer, Account> accounts = new HashMap<>();
     public HashMap<Integer, Account> employeeAccounts = new HashMap<>();
-    public HashMap<Integer, Employee> employees = new HashMap<>();
+    public HashMap<Integer, Employee> employees=new HashMap<>();
+    MongoDatabase database;
 
     final static String customersOutputFilePath = "F:/Serialisation/customers.txt";
     final static String accountsOutputFilePath = "F:/Serialisation/accounts.txt";
@@ -19,6 +29,17 @@ public class Facade {
     File customersFile = new File(customersOutputFilePath); //File to save customer data
     File accountsFile = new File(accountsOutputFilePath); //File to save account data
     File employeesFile = new File(employeesOutputFilePath); //File to save employee data
+
+    public Facade(){
+        try{
+            MongoClient client = MongoClients.create();
+            database = client.getDatabase("database");
+            //MongoClient account = (MongoClient) client.getDatabase("account");
+            //MongoClient employees = (MongoClient) client.getDatabase("employees");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
     public void storeData() { //stores data to file when the app is closed.
         try {
@@ -64,20 +85,33 @@ public class Facade {
         }
     } // Done by Julia Ayvazian, temporary solution until the database works
 
-    public Customer loadCustomer(int customerId){ //with a given customer id, return the customer with the same id from customer hashmap
-        return customers.get(customerId);
+    public Customer loadCustomer(int customerId){
+        MongoCollection<Document> customers = database.getCollection("customers");
+        //Document customer = collection.find().first();
+        Document customer = customers.find(eq("ID", customerId)).first();
+        return new Customer(customer.getInteger("ID"), customer.getString("name"), customer.getString("password"));
+        //return customers.get(customerId);
     }
 
-    public Account loadAccount(int accountId){ //same as above
-        return accounts.get(accountId);
+    public Account loadAccount(int accountId){
+        MongoCollection<Document> accounts = database.getCollection("accounts");
+        Document account = accounts.find(eq("ID", accountId)).first();
+        return new Account(account.getInteger("ID"), account.getInteger("customerId"), account.getBoolean("isSavings"));
+        //return accounts.get(accountId);
     }
 
     public int createCustomer(String name, String password){ //given valid name and password, generate a random id to
         // create a customer with those and put it in the general customers hashmap
         if(validateName(name) && validatePassword(password)) {
             int ID = generateId(customers);
-            Customer customer = new Customer(ID, name, password);
-            customers.put(ID, customer);
+            //Customer customer = new Customer(ID, name, password);
+            Document customer = new Document();
+            customer.append("ID", ID)
+                    .append("name", name)
+                    .append("password", password);
+            MongoCollection<Document> customers = database.getCollection("customers");
+            customers.insertOne(customer);
+            //customers.put(ID, customer);
             return ID;
         }
         return 0;
@@ -88,6 +122,12 @@ public class Facade {
             int ID = generateId(customers);
             Customer customer = new EmployeeCustomer(ID, name, password);
             customers.put(ID, customer);
+            Document employeeCustomer = new Document();
+            employeeCustomer.append("ID", ID)
+                    .append("name", name)
+                    .append("password", password);
+            MongoCollection<Document> customers = database.getCollection("customers");
+            customers.insertOne(employeeCustomer);
             return ID;
         }
         return 0;
@@ -137,7 +177,8 @@ public class Facade {
     } //Erik
 
     public void removeCustomer(int ID){
-        customers.remove(ID);
+        MongoCollection<Document> customers = database.getCollection("customers");
+        customers.deleteOne(Filters.eq("ID", ID));
     }
 
     public boolean checkLogin(int ID, String password){ //given id and password, checks if the customer with that id exists and
@@ -148,26 +189,38 @@ public class Facade {
                 //checks if the id exists, and the password of the customer with that id is equal to the input password
                 return true;
             }
-        }
+        //}
         return false;
     } //patrik, labi, julia
 
     public int createAccount(int customerId){ // adds an account to a given customer
-        Account account = new Account(generateId(customers.get(customerId).getAccounts()), customerId, false);
-        loadCustomer(customerId).addAccount(account);
-        accounts.put(account.getID(), account);
-        return account.getID();
+        //Account account = new Account(generateId(customers.get(customerId).getAccounts()), customerId, false);
+        //customers.get(customerId).addAccount(account);
+        //accounts.put(account.getID(), account);
+        MongoCollection<Document> customers = database.getCollection("accounts");
+        int ID = generateId((HashMap) customers);
+        Document customer = new Document();
+        customer.append("ID", ID)
+                .append("customerId", customerId)
+                .append("isSavings", false);
+        customers.insertOne(customer);
+        return ID;
     } //patrik, labi
 
-    public int createSavingsAccount(int customerId){  //same as above
-        Account account = new Account(generateId(customers.get(customerId).getAccounts()), customerId, true);
-        customers.get(customerId).addAccount(account);
-        accounts.put(account.getID(), account);
-        return account.getID();
+    public int createSavingsAccount(int customerId){
+        MongoCollection<Document> customers = database.getCollection("accounts");
+        int ID = generateId((HashMap) customers);
+        Document customer = new Document();
+        customer.append("ID", ID)
+                .append("customerId", customerId)
+                .append("isSavings", true);
+        customers.insertOne(customer);
+        return ID;
     } //patrik, labi
 
     public void removeAccount(int accountID){
-        accounts.remove(accountID);
+        MongoCollection<Document> accounts = database.getCollection("accounts");
+        accounts.deleteOne(Filters.eq("ID", accountID));
     } //Erik
 
     public boolean CheckIfAccountExists(int ID){
@@ -238,19 +291,26 @@ public class Facade {
         }
     }
 
-    public int createEmployee(String name, String password){
+    public int createEmployee(String name){
+        //int ID = generateId(employees);
+        //Employee employee = new Employee(ID, name);
+        //employees.put(ID, employee);
+        //return ID; //changed void to int, returned ID
+
         int ID = generateId(employees);
-        if(validateName(name) && validatePassword(password)) {
-            Employee employee = new Employee(ID, name, password);
-            employees.put(ID, employee);
-            return ID; //changed void to int, returned ID
-        } else {
-            return 0;
-        }
+        //Customer customer = new Customer(ID, name, password);
+        Document employee = new Document();
+        employee.append("ID", ID)
+                .append("name", name);
+        MongoCollection<Document> customers = database.getCollection("employees");
+        customers.insertOne(employee);
+        //customers.put(ID, customer);
+        return ID;
     }
 
-    public void removeEmployee(int ID){ //given an id, removes the employee matching that id from the hashmap
-        employees.remove(ID);
+    public void removeEmployee(int ID){
+        MongoCollection<Document> employees = database.getCollection("employees");
+        employees.deleteOne(Filters.eq("ID", ID));
     } //Erik and Labi
 
     public Employee loadEmployee(int ID){
