@@ -331,7 +331,7 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
         Parent root1 = fxmlLoader.load();
         stage = new Stage();
 
-        stage.setTitle("full manual");
+        stage.setTitle("Employee manual");
         stage.setScene(new Scene(root1));
         stage.show();
     }

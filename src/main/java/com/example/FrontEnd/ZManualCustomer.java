@@ -104,11 +104,18 @@ public class ZManualCustomer {//Liam created
     }
 
     //all methods below are for Open new scenes, or you could say interfaces
-    /* If there's a problem reinstate this in my fix it
-    void OpenToManualLogin({[{ActionEvent event}]}) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomerLogin.fxml"));
-        Parent root1 = {[{(Parent)}]} fxmlLoader.load();
-     */
+
+    @FXML
+    void openEmployeeManual() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ZZManualEmployee.fxml"));
+        Parent root1 = fxmlLoader.load();
+        stage = new Stage();
+
+        stage.setTitle("Employee manual");
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
+
     @FXML
     void OpenToManualMainMenu() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomerStart.fxml"));
@@ -239,6 +246,9 @@ public class ZManualCustomer {//Liam created
     private Button switchintUSButton;
 
     @FXML
+    private Button EmployeeManual;
+
+    @FXML
     void confirmHoverEntry(MouseEvent event) {
         if (openBSMButton == event.getSource()) {
             openBSMButton.setStyle("-fx-background-color: #52779C;");
@@ -270,6 +280,8 @@ public class ZManualCustomer {//Liam created
             switchintUSButton.setStyle("-fx-background-color: #52779C;");
         } else if (closeButton == event.getSource()) {
             closeButton.setStyle("-fx-background-color: #52779C;");
+        } else if (EmployeeManual == event.getSource()) {
+            EmployeeManual.setStyle("-fx-background-color: #52779C;");
         }
     }
 
@@ -305,6 +317,8 @@ public class ZManualCustomer {//Liam created
             switchintUSButton.setStyle("-fx-background-color: #414D59;");
         } else if (closeButton == event.getSource()) {
             closeButton.setStyle("-fx-background-color: #414D59;");
+        } else if (EmployeeManual == event.getSource()) {
+            EmployeeManual.setStyle("-fx-background-color: #414D59;");
         }
     }
 }

@@ -305,7 +305,7 @@
                                     <Glow />
                                 </effect>
                             </Button>
-                        <Label layoutX="147.0" layoutY="12.0" prefHeight="15.0" prefWidth="431.0" text="About the creators of JC. LAPEL">
+                        <Label layoutX="379.0" layoutY="13.0" prefHeight="15.0" prefWidth="431.0" text="About the creators of JC. LAPEL">
                            <font>
                               <Font name="Arial" size="27.0" />
                            </font>
@@ -409,6 +409,20 @@
                               <Font name="Arial" size="12.0" />
                            </font>
                         </TextArea>
+                        <Button fx:id="EmployeeManual" alignment="BASELINE_LEFT" layoutX="137.0" layoutY="1.0" mnemonicParsing="false" onAction="#openEmployeeManual" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="230.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Employee manual" textFill="#00d9ff">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Button>
                      </children>
                   </AnchorPane>
               </content>

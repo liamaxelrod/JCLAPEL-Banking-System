@@ -68,20 +68,6 @@
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="financePort" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="122.0" mnemonicParsing="false" onAction="#switchToFinanceProject" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Loans &amp; Portfolio" textFill="WHITE">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-               <font>
-                  <Font name="Arial Bold" size="17.0" />
-               </font>
-               <effect>
-                  <Glow />
-               </effect>
-            </Button>
             <Button fx:id="transferHis" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToBankStatement" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Bankstatement " textFill="WHITE">
                <opaqueInsets>
                   <Insets />
