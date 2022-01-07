@@ -73,7 +73,7 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
         Account checkingAccount;
         Account savingAccount;
 
-        String fillName = firstnameTextField.getText() + "-" + lastnameTextField.getText();
+        String fillName = firstnameTextField.getText() + " " + lastnameTextField.getText();
 
         customerID = StartApplication.facade.createCustomer(fillName, setPasswordField.getText());
         checkingAccountID = StartApplication.facade.createAccount(customerID);
