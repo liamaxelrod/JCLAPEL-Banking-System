@@ -1,0 +1,12 @@
+.root {
+    -fx-background-image: url("white.jpg");
+}
+
+.grad{
+    background-image: linear-gradient(to right, #8299AA, #FFFFFF);
+}
+
+.font{
+    -fx-font-family: Garamond;
+    -fx-font-size: 20;
+}

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.loginEmployeeController">
+<AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.loginEmployeeController">
     <children>
         <VBox prefHeight="675.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;">
             <children>
@@ -62,7 +62,7 @@
                 <Font name="Arial Bold" size="13.0" />
             </font>
         </Label>
-        <TextField fx:id="usernameTextField" layoutX="542.0" layoutY="262.0" prefHeight="26.0" prefWidth="173.0" promptText="ID">
+        <TextField fx:id="ID" layoutX="542.0" layoutY="262.0" prefHeight="26.0" prefWidth="173.0" promptText="ID">
             <font>
                 <Font name="Arial" size="12.0" />
             </font></TextField>
@@ -111,6 +111,11 @@
       <Label layoutX="387.0" layoutY="358.0" prefHeight="16.0" prefWidth="144.0" text="Employee security key">
          <font>
             <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="warningText" layoutX="725.0" layoutY="359.0" textFill="RED">
+         <font>
+            <Font name="Arial" size="12.0" />
          </font>
       </Label>
     </children>

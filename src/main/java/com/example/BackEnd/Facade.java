@@ -221,19 +221,21 @@ public class Facade {
     public boolean deposit(int accountID, double amount){ //add amount, return true if the transaction is valid, or false if it is invald
         if(amount>0){
             Account account = loadAccount(accountID);
-            account.setBalance(account.getBalance() + (amount - loadCustomer(account.getCustomerId()).calculateFee(amount)));
-            accounts.get(accountID).addTransaction(new DepositTransaction(amount, accountID));
+            double amountWithFee = (amount - loadCustomer(account.getCustomerId()).calculateFee(amount));
+            account.setBalance(account.getBalance() + (amountWithFee));
+            accounts.get(accountID).addTransaction(new DepositTransaction(amountWithFee, accountID));
             return true;
         }
         return false;
     } //patrik, labi, julia, erik
 
     public boolean withdraw(int accountID, double amount) {//subtracts amount from balance, returns true for a valid transaction, false for an invalid one
-        if (amount > 0 && accounts.get(accountID).getBalance() >= amount) {
+        if (amount > 0 && accounts.get(accountID).getBalance() > amount) {
             Account account = accounts.get(accountID);
-            WithdrawalTransaction transaction = new WithdrawalTransaction(amount, accountID);
+            double amountWithFee = (amount + loadCustomer(account.getCustomerId()).calculateFee(amount));
+            WithdrawalTransaction transaction = new WithdrawalTransaction(amountWithFee, accountID);
             account.addTransaction(transaction);
-            account.setBalance(account.getBalance() - (amount + loadCustomer(account.getCustomerId()).calculateFee(amount)));
+            account.setBalance(account.getBalance() - amountWithFee);
             return true;
         }
         return false;
@@ -252,8 +254,16 @@ public class Facade {
         return false;
     } // By Julia Ayvazian
 
-    public void retrieveUserStatistics(){
-        //retrieve data to be displayed by user statistics
+    public Report generateReport(int customerID, int employeeId) {
+        //load employee
+        Employee employee = loadEmployee(employeeId);
+        if (employee instanceof Admin) {
+            return new AdminReport(customerID);
+        }else if (employee instanceof Manager){
+            return new ManagerReport(customerID);
+        }else{
+            return new EmployeeReport(customerID);
+        }
     }
 
     public int createEmployee(String name){
@@ -299,4 +309,26 @@ public class Facade {
         } while (hashMap.containsKey(ID));//ensure the id is not in use
         return ID;
     } //patrik
+
+    public int createManager(String name, String password){
+        if(validateName(name) && validatePassword(password)){
+            int ID= generateId(employees);
+            Employee manager = new Employee(ID,name, password);
+            employees.put(ID,manager);
+            return ID;
+        }else{
+            return 0;
+        }
+    } //Labi and Erik
+    //Julia
+    public int createAdmin(String name, String password){
+        if(validateName(name) && validatePassword(password)){
+            int ID = generateId(employees);
+            Employee admin = new Admin(ID, name, password);
+            employees.put(ID,admin);
+            return ID;
+        }else{
+            return 0;
+        }
+    }
 }

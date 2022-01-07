@@ -2,8 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.TransferController">
+<AnchorPane prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.TransferController">
     <children>
         <VBox prefHeight="675.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;">
             <children>
@@ -73,13 +73,12 @@
                 </Label>
             </children>
         </Pane>
-      <Label layoutX="384.0" layoutY="225.0" prefHeight="26.0" prefWidth="397.0" text="From Account:">
+      <Label layoutX="384.0" layoutY="188.0" prefHeight="26.0" prefWidth="116.0" text="From Account:">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="fromAccount" layoutX="384.0" layoutY="251.0" prefHeight="26.0" prefWidth="353.0" />
-      <Label layoutX="384.0" layoutY="312.0" prefHeight="26.0" prefWidth="397.0" text="To Acccount:">
+      <Label layoutX="384.0" layoutY="312.0" prefHeight="26.0" prefWidth="116.0" text="To Acccount:">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
@@ -97,24 +96,36 @@
          <font>
             <Font name="Arial" size="12.0" />
          </font></Button>
-      <Button layoutX="571.0" layoutY="568.0" mnemonicParsing="false" onAction="#switchToStart" prefHeight="26.0" prefWidth="166.0" text="Cancel">
+      <Button layoutX="571.0" layoutY="568.0" mnemonicParsing="false" onAction="#switchToCustomerMenu" prefHeight="26.0" prefWidth="166.0" text="Cancel">
          <font>
             <Font name="Arial" size="12.0" />
          </font></Button>
-      <ChoiceBox fx:id="toAccount" layoutX="384.0" layoutY="338.0" prefHeight="26.0" prefWidth="353.0" />
-      <Label layoutX="384.0" layoutY="277.0" prefHeight="26.0" prefWidth="133.0" text="Current balance:">
+      <Label fx:id="warningLabel" layoutX="382.0" layoutY="442.0" prefHeight="26.0" prefWidth="544.0" textFill="RED">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="fromAccountCurrentBalance" layoutX="517.0" layoutY="277.0" prefHeight="26.0" prefWidth="200.0" text="Click to find total balance">
+      <ListView fx:id="fromAccount" layoutX="384.0" layoutY="214.0" prefHeight="94.0" prefWidth="354.0" />
+      <ListView fx:id="toAccount" layoutX="384.0" layoutY="338.0" prefHeight="94.0" prefWidth="354.0" />
+      <Label fx:id="selectedToAccountLabel" layoutX="497.0" layoutY="312.0" prefHeight="26.0" prefWidth="434.0" text="Select account">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Label>
-      <Button layoutX="717.0" layoutY="277.0" mnemonicParsing="false" onAction="#onActionButtonTotal" prefHeight="26.0" prefWidth="46.0" text="Total">
+      <Label fx:id="selectedFromAccountLabel" layoutX="508.0" layoutY="188.0" prefHeight="26.0" prefWidth="416.0" text="Select account">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="selectedAccountToButton" layoutX="751.0" layoutY="372.0" mnemonicParsing="false" onAction="#onActionSelectAccountTo" prefHeight="26.0" prefWidth="166.0" text="Select account">
          <font>
             <Font name="Arial" size="12.0" />
-         </font></Button>
+         </font>
+      </Button>
+      <Button fx:id="selectedAccountFromButton" layoutX="751.0" layoutY="248.0" mnemonicParsing="false" onAction="#onActionSelectAccounFrom" prefHeight="26.0" prefWidth="166.0" text="Select account">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

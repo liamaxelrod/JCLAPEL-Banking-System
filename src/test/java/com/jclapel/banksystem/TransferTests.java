@@ -24,10 +24,10 @@ public class TransferTests {
     @BeforeEach
     public void testSetup() {
         facade = new Facade();
-        johnSmithID = facade.createCustomer("John Smith", "Password"); //setting up test customers
+        johnSmithID = facade.createCustomer("John Smith", "Password80!"); //setting up test customers
         johnSmith = facade.customers.get(johnSmithID);
 
-        janeDoeID = facade.createCustomer("Jane Doe", "Password");
+        janeDoeID = facade.createCustomer("Jane Doe", "Password80!");
         janeDoe = facade.customers.get(janeDoeID);
 
         accountId1 = facade.createAccount(johnSmithID);

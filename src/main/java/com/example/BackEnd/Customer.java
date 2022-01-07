@@ -1,6 +1,5 @@
 package com.example.BackEnd;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Customer {
@@ -18,6 +17,11 @@ public class Customer {
 
     public void addAccount(Account account){
         accounts.put(account.getID(), account);
+    }
+
+    //Liam created this because he needed a way to remove the accounts from the customer and not just from the façade
+    public void RemoveAccount(int ID){
+        accounts.remove(ID);
     }
 
     public double calculateFee(double amount){

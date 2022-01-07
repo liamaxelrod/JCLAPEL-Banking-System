@@ -5,66 +5,45 @@ package com.example.FrontEnd;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class loginEmployeeController implements Initializable {//Liam did this
+public class loginEmployeeController {//Liam did this
     private Stage stage;
     private Scene scene;
     public static String logNum;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-
     @FXML//on interface password field = password
     private PasswordField enterPasswordField;
-    
 
-    @FXML
+    @FXML//On interface next to confirm password = warning
+    private Label warningText;
+
+    @FXML//On either case text field = password And confirm password
     private PasswordField confirmPasswordField;
-
     @FXML
     private PasswordField setPasswordField;
 
-    @FXML
-    private Button loginButton;
-
-    @FXML//on interface text field = username
-    private TextField usernameTextField;
+    @FXML//on interface text field = ID
+    private TextField ID;
 
     @FXML//On interface text field = security key
     private TextField employeeSecurityKey;
 
-    @FXML
-    private Button createAcc;
-
-    @FXML
-    private Button cancelButton;
-
-    @FXML
-    private Button mainMenu;
-
-
-
     @FXML//on interface button = create account
     void switchToEmployeeMenu(ActionEvent event)throws IOException {
-        RegisterController.num = 0;
-        logNum = usernameTextField.getText();
-        System.out.println(logNum);
-//System.out.println(facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText()));
-        if (RegisterController.facade.checkLogin(Integer.parseInt(usernameTextField.getText()), enterPasswordField.getText())){
+        if (StartApplication.facade.checkLogin(Integer.parseInt(ID.getText()), enterPasswordField.getText())){//*There is no employee check for login
+
+            EmployeeMenuController.inUseEmployeeActiveID = Integer.parseInt(ID.getText());//Resets the Employee
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("employeeMenu.fxml"));
             Parent root = loader.load();
@@ -72,10 +51,11 @@ public class loginEmployeeController implements Initializable {//Liam did this
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
+        } else {
+            warningText.setText("The password must have: \n - At least 8 characters \n - Must consist of 'a-z, A-Z, 0 -9' \n - Special character ex. '!' '&' '?' \n You must also Enter: \n - enter your security key \n - enter your position" );
         }
     }
 
-    // Successfully made the code look for the username and password created
     @FXML//on interface button = login  //Need the unique version is your logging into your profile for the first time
     void switchToRegisterEmployee(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -87,8 +67,6 @@ public class loginEmployeeController implements Initializable {//Liam did this
         stage.setScene(scene);
         stage.show();
     }
-    //usernameTextField.getText().toString().equals(RegisterController.id) Check ID
-// enterPasswordField.getText().toString().equals(RegisterController.password check password
 
     @FXML//on interface button = main menu, cancel
     void switchToStart(ActionEvent event) throws IOException {
@@ -103,6 +81,17 @@ public class loginEmployeeController implements Initializable {//Liam did this
     }
 
     //Methods to make buttons glow
+    @FXML
+    private Button loginButton;
+    @FXML
+    private Button createAcc;
+
+    @FXML
+    private Button cancelButton;
+
+    @FXML
+    private Button mainMenu;
+
     @FXML
     private void confirmHoverInMain() {
         mainMenu.setStyle("-fx-background-color: #52779C;");

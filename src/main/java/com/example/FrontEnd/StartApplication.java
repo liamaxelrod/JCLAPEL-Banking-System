@@ -1,16 +1,15 @@
 package com.example.FrontEnd;
 
 import com.example.BackEnd.Facade;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
 public class StartApplication extends Application { // Albin worked on this
+    public static Facade facade = new Facade();//This is where that yellow warning signs coming from??
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -21,11 +20,8 @@ public class StartApplication extends Application { // Albin worked on this
         stage.show();
     }
 
-    public static Facade facade;
+
     public static void main(String[] args) {
         launch();
-
-        facade = new Facade();
-
     }
 }
