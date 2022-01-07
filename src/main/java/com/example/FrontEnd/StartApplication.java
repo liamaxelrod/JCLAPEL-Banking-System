@@ -15,7 +15,7 @@ public class StartApplication extends Application { // Albin worked on this
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("start.fxml"));
-        //stage.initStyle(StageStyle.UNDECORATED);
+        //stage.initStyle(StageStyle.UNDECORATED);  b
         Scene scene = new Scene(fxmlLoader.load(), 938, 675);
         stage.setScene(scene);
         stage.show();
