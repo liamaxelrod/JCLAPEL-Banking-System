@@ -13,8 +13,11 @@ import org.bson.conversions.Bson;
 import org.bson.json.JsonWriterSettings;
 import com.google.gson.Gson;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 import java.util.Map;
@@ -60,70 +63,35 @@ public class Cache implements Serializable {
 	
 	private Gson gson = new Gson();
 
-	private final boolean USE_LOCAL_STORAGE = true;
 	private final String DATABASE_NAME = "test";
 
 	private FileInputStream cacheSource;
 	private FileOutputStream cacheTarget;
 
-	private HashMap<String, Object> dataCache;
+	final static String customersOutputFilePath = "F:/Serialisation/customers.json";
+	final static String accountsOutputFilePath = "F:/Serialisation/accounts.json";
+	final static String employeesOutputFilePath = "F:/Serialisation/employees.json";
+	final static String employeesAccountsOutputFilePath = "F:/Serialisation/employees_accounts.json";
+	File customersFile = new File(customersOutputFilePath); 
+	File accountsFile = new File(accountsOutputFilePath);
+	File employeesFile = new File(employeesOutputFilePath);
+	File employeesAccountFile = new File(employeesAccountsOutputFilePath);
 
-	private void setupLocalStorage() throws Exception {
-		// Sets up the local storaging, if applicable
-		try {
-			cacheSource = new FileInputStream("data.json");
-			cacheTarget = new FileOutputStream("data.json");
-		} catch(Exception exception) {
-			// Error handling here
-			exception.printStackTrace();
-		} finally {
-			if (cacheSource != null) {
-				cacheSource.close();
-			}
-			
-			if (cacheTarget != null) {
-				cacheTarget.close();
-			}
-		}
-	}
+	private HashMap<String, Object> dataCache;
 
 	public Cache() {
 		// Executes initial procedure on program start
 		dataCache = new HashMap<String, Object>();
-
-		if (USE_LOCAL_STORAGE) {
-			try {
-				setupLocalStorage();
-			} catch(Exception exception) {
-				exception.printStackTrace();
-			}
-		}
 	}
 
 	public Cache(Set<String> keySet) {
 		// Executes initial procedure on program start
 		dataCache = new HashMap<String, Object>();
-
-		if (USE_LOCAL_STORAGE) {
-			try {
-				setupLocalStorage();
-			} catch(Exception exception) {
-				exception.printStackTrace();
-			}
-		}
 	}
 
 	public Cache(HashMap<String, Object> presetCache) {
 		// Executes initial procedure on program start
 		dataCache = presetCache;
-
-		if (USE_LOCAL_STORAGE) {
-			try {
-				setupLocalStorage();
-			} catch(Exception exception) {
-				exception.printStackTrace();
-			}
-		}
 	}
 	
 	public boolean appendData(Customer customer) {
@@ -250,7 +218,7 @@ public class Cache implements Serializable {
 	}
 
 	public boolean updateAllData(Map<Integer, ?> collection) {
-		// Creates an entry to the database for one customer
+		// Updates all the entries according to the collection
 		try {
 			MongoClient client = MongoClients.create(clientSettings);
 			MongoDatabase database = client.getDatabase(DATABASE_NAME);
@@ -267,22 +235,133 @@ public class Cache implements Serializable {
 		return false;
 	}
 
-	public boolean saveAllData() {
-		// Serializes and sends data to database
+	public Object getCustomers() {
+		// Returns the customers from the local storage
 		try {
-			MongoClient client = MongoClients.create(clientSettings);
-			MongoDatabase database = client.getDatabase(DATABASE_NAME);
-			// MongoIterable<String> collectionNameList = database.listCollectionNames();
+			FileInputStream customersInput = new FileInputStream(customersFile);
+			ObjectInputStream customersStream = new ObjectInputStream(customersInput); 
+			Object customers = customersStream.readObject();
 			
-			MongoCollection<Customer> customerCollection = database.getCollection("customers", Customer.class);
-			MongoCollection<Account> accountCollection = database.getCollection("accounts", Account.class);
-			MongoCollection<Transaction> transactionCollection = database.getCollection("transactions", Transaction.class);
+			customersStream.close();
 
-			// TODO: Iterate through the cache. Insert to the collections.
+			return customers;
+		} catch(Exception exception) {
+			exception.printStackTrace();
+		}
+		return null;
+	}
+
+	public Object getAccounts() {
+		// Returns the accounts from the local storage
+		try {
+			FileInputStream accountsInput = new FileInputStream(accountsFile);
+			ObjectInputStream accountsStream = new ObjectInputStream(accountsInput); 
+			Object accounts = accountsStream.readObject();
+
+			accountsStream.close();
+			
+			return accounts;
+		} catch(Exception exception) {
+			exception.printStackTrace();
+		}
+		return null;
+	}
+
+	public Object getEmployees() {
+		// Returns the employees from the local storage
+		try {
+			FileInputStream employeesInput = new FileInputStream(employeesFile);
+			ObjectInputStream employeesStream = new ObjectInputStream(employeesInput); 
+			Object employees = employeesStream.readObject();
+			
+			employeesStream.close();
+
+			return employees;
+		} catch(Exception exception) {
+			exception.printStackTrace();
+		}
+		return null;
+	}
+
+	public boolean saveCustomers(Map<Integer, Customer> customers) {
+		try {
+			FileOutputStream customersOutput = new FileOutputStream(customersFile);
+			ObjectOutputStream customersStream = new ObjectOutputStream(customersOutput);
+			customersStream.writeObject(customers);
+
+			customersStream.close();
+
 			return true;
 		} catch(Exception exception) {
 			exception.printStackTrace();
 		}
+		return false;
+	}
+
+	public boolean saveAccounts(Map<Integer, Account> accounts) {
+		try {
+			FileOutputStream accountsOutput = new FileOutputStream(accountsFile);
+			ObjectOutputStream accountsStream = new ObjectOutputStream(accountsOutput);
+			accountsStream.writeObject(accounts);
+
+			accountsStream.close();
+
+			return true;
+		} catch(Exception exception) {
+			exception.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean saveEmployeeAccounts(Map<Integer, Account> accounts) {
+		try {
+			FileOutputStream accountsOutput = new FileOutputStream(accountsFile);
+			ObjectOutputStream accountsStream = new ObjectOutputStream(accountsOutput);
+			accountsStream.writeObject(accounts);
+
+			accountsStream.close();
+
+			return true;
+		} catch(Exception exception) {
+			exception.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean saveEmployees(Map<Integer, Employee> employees) {
+		try {
+			FileOutputStream employeesOutput = new FileOutputStream(employeesFile);
+			ObjectOutputStream employeesStream = new ObjectOutputStream(employeesOutput);
+			employeesStream.writeObject(employees);
+
+			
+
+			employeesStream.close();
+
+			return true;
+		} catch(Exception exception) {
+			exception.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean saveAllData(Map<Integer, ?> collection, File file) {
+		// Saves data locally
+		try {
+		//	FileInputStream inputStream = new FileInputStream(file);
+		//	ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+
+			FileOutputStream outputStream = new FileOutputStream(file);
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+
+			objectOutputStream.writeObject(collection);
+
+			objectOutputStream.close();
+			outputStream.close();
+		} catch(Exception exception) {
+			exception.printStackTrace();
+		}
+		
 		return false;
 	}
 
