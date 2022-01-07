@@ -44,9 +44,9 @@ public class RegisterController {//Albin worked on this, Liam partly worked on t
         String setPassword = setPasswordField.getText();
         String confirmPassword = confirmPasswordField.getText();
 
-        if (firstName.contains("1")){//This is for testing
-            autoCreationTest(event);
-        }
+//        if (firstName.contains("!")){//This is for testing
+//            autoCreationTest(event);
+//        }
 
         if (    StartApplication.facade.validatePassword(setPasswordField.getText()) &&
                 StartApplication.facade.validatePassword(confirmPasswordField.getText()) &&

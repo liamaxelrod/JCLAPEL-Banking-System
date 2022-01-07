@@ -107,12 +107,13 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
         String position = titleChoice.getValue();
         int SecurityKey;
 
-        if (true) {//This is for testing purposes switch to true to activate switch defaults to deactivate
-            test(event);
-        }
+//        if (firstName.contains("!")) {//This is for testing purposes
+//            test(event);
+//        }
 
         if (!securityKey.getText().isEmpty()){
-            SecurityKey = Integer.parseInt(securityKey.getText());
+            SecurityKey = Integer.parseInt((securityKey.getText()));
+
 
 
             if (!StartApplication.facade.validatePassword(setPassword) && !StartApplication.facade.validatePassword(confirmPassword)) {
