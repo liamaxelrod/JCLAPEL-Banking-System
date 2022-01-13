@@ -134,7 +134,18 @@ public class Facade {
         return 0;
     }
 
-    public boolean validateName(String name){ //Labi  //checks by returning true if the name is non-empty else returns false
+    public int createEmployeeCustomer2(String name, String password, int customerID){
+        if(validateName(name) && validatePassword(password)) {
+            Customer customer = new EmployeeCustomer(customerID, name, password);
+            customers.put(customerID, customer);
+            return customerID;
+        }
+        return 0;
+    }//Liam Axelrod I needed to be able have the perimeter of the ID
+    //so the customer and employee would have the same ID
+
+
+    public boolean validateName(String name){ //Labi
         return !name.isEmpty();
     } //Labi
 
@@ -333,7 +344,7 @@ public class Facade {
         //accounts.put(account.getID(), account);
         return account.getID();
 
-    } //patrik, labi
+    } //patrik, labi //Liam I changed it because I'm making a hash map for customers
 
     public int generateId(MongoCollection hashMap){ //takes the hashmap in which the resulting object will be stored as an argument
         int ID;
@@ -393,7 +404,7 @@ public class Facade {
         if(validateName(name) && validatePassword(password)){
             MongoCollection<Document> employees = database.getCollection("employees");
             int ID= generateId(employees);
-            Employee manager = new Employee(ID,name, password);
+            Employee manager = new Manager(ID,name, password);
             employees.put(ID,manager);
             return ID;
         }else{

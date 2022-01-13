@@ -1,5 +1,6 @@
 package com.example.FrontEnd;
 
+import com.example.BackEnd.Account;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,11 +20,14 @@ import java.util.ResourceBundle;
 public class RegisterEmployeeController implements Initializable{ // Albin worked on this
     private Stage stage;
     private Scene scene;
-//
+    private static int creationEmployeeID;
+    private static String customerAndEmployeeName;
+
     private ObservableList<String> differentTitles = FXCollections.observableArrayList("Admin","Manager","Employee");
 
     @FXML
     private TextField securityKey;
+
 
 
 
@@ -52,46 +56,108 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
         titleChoice.setItems(differentTitles);
     }
 
+    private void autoEmployeeCreation() {
+        customerAndEmployeeName = firstnameTextField.getText()+ " " + lastnameTextField.getText();
+        creationEmployeeID = StartApplication.facade.createEmployee(customerAndEmployeeName, setPasswordField.getText());
+    }
+
+    private void autoManagerCreation() {
+        customerAndEmployeeName = firstnameTextField.getText()+ " " + lastnameTextField.getText();
+        creationEmployeeID = StartApplication.facade.createManager(customerAndEmployeeName, setPasswordField.getText());
+    }
+
+    private void autoAdminCreation() {
+        customerAndEmployeeName = firstnameTextField.getText()+ " " + lastnameTextField.getText();
+        creationEmployeeID = StartApplication.facade.createAdmin(customerAndEmployeeName, setPasswordField.getText());
+    }
+
+    private void autoEmployeeCustomerCreation(ActionEvent event) throws IOException {
+        int customerID;
+        int checkingAccountID;
+        Account checkingAccount;
+
+        customerID = StartApplication.facade.createEmployeeCustomer2(customerAndEmployeeName, setPasswordField.getText(), creationEmployeeID);
+        checkingAccountID = StartApplication.facade.createEmployeeAccount(customerID);
+
+        checkingAccount = StartApplication.facade.loadAccount(checkingAccountID);
+        checkingAccount.setBalance(1000);
+
+        StartApplication.facade.loadCustomer(customerID).addAccount(checkingAccount);
+
+        EmployeeMenuController.inUseEmployeeActiveID = creationEmployeeID;//resets the Employee
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("employeeMenu.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
     //all methods below are for switching scenes, or you could say interfaces
 
     @FXML//on interface button = Employee menu
     void switchToEmployeeMenu(ActionEvent event) throws IOException {
-        int theID;
-        if (    StartApplication.facade.validatePassword(setPasswordField.getText()) &&
-                StartApplication.facade.validatePassword(confirmPasswordField.getText()) &&
-                StartApplication.facade.validateName(firstnameTextField.getText()) &&
-                StartApplication.facade.validateName(lastnameTextField.getText()))
-        //*Input valid key and valid position at a later date
-            {
-        //*Only the first name is required to create an employee???
-            theID = StartApplication.facade.createEmployee(firstnameTextField.getText(), setPasswordField.getText());
+        String firstName = firstnameTextField.getText();
+        String lastName = lastnameTextField.getText();
+        String setPassword = setPasswordField.getText();
+        String confirmPassword = confirmPasswordField.getText();
+        String position = titleChoice.getValue();
+        int SecurityKey;
 
-            EmployeeMenuController.inUseEmployeeActiveID = theID;//resets the Employee
+//        if (firstName.contains("!")) {//This is for testing purposes
+//            test(event);
+//        }
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("employeeMenu.fxml"));
-            Parent root = loader.load();
-            scene = new Scene(root);
+        if (!securityKey.getText().isEmpty()){
+            SecurityKey = Integer.parseInt((securityKey.getText()));
 
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
 
-            //This is for testing will be deleted later
-        } else if (!StartApplication.facade.validatePassword(setPasswordField.getText())) {
-            theID = StartApplication.facade.createEmployee("liam", "!Q1qaaaaa");
-            EmployeeMenuController.inUseEmployeeActiveID = theID;//resets the user
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("employeeMenu.fxml"));
-            Parent root = loader.load();
-            scene = new Scene(root);
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-            //It will be deleted down to hear
+
+            if (!StartApplication.facade.validatePassword(setPassword) && !StartApplication.facade.validatePassword(confirmPassword)) {
+                warningText.setText("The password must have: \n - At least 8 characters \n - Must consist of 'a-z, A-Z, 0 -9' \n - Special character ex. '!' '&' '?' \n You must also Enter: \n - enter your security key \n - enter your position");
+            } else if (!setPassword.matches(confirmPassword)) {
+                warningText.setText("the two passwords do not match");
+            } else if (!StartApplication.facade.validateName(firstName) && !StartApplication.facade.validateName(lastName)) {
+                warningText.setText("the first and last name cannot be blank");
+            } else if (firstName.contains(" ") || lastName.contains(" ")){
+                warningText.setText("first and last name cannot contain spaces");
+            } else if (firstName.length() > 13 || firstName.length() < 3  || lastName.length() < 3 || lastName.length() > 13) {
+                warningText.setText("your first and last name must: \n - be between 3 letters to 13 letters");
+            } else if (titleChoice.getValue() != "Admin" && titleChoice.getValue() != "Manager" && titleChoice.getValue() != "Employee" ){
+                warningText.setText("you need to pick a position");
+            } else if (SecurityKey == StartApplication.securityKey1) {
+                if (position == "Employee") {
+                    autoEmployeeCreation();
+                    autoEmployeeCustomerCreation(event);
+                } else {
+                    warningText.setText("wrong key for position");
+                }
+            } else if (SecurityKey == StartApplication.securityKey2){
+                if (position == "Manager"){
+                    autoManagerCreation();
+                    autoEmployeeCustomerCreation(event);
+                } else {
+                    warningText.setText("wrong key for position ");
+                }
+            } else if (SecurityKey == StartApplication.securityKey3){
+                if (position == "Admin"){
+                    autoAdminCreation();
+                    autoEmployeeCustomerCreation(event);
+                } else {
+                    warningText.setText("wrong key for position");
+                }
+            } else {
+                warningText.setText("This does not match any security key");
+            }
         } else {
-            warningText.setText("The password must have: \n - At least 8 characters \n - Must consist of 'a-z, A-Z, 0 -9' \n - Special character ex. '!' '&' '?' \n You must also Enter: \n - enter your security key \n - enter your position" );
+            warningText.setText("Security key is empty");
         }
+
+
+
     }
 
     @FXML//on interface button = main menu
@@ -178,4 +244,33 @@ public class RegisterEmployeeController implements Initializable{ // Albin worke
     private void confirmHoverOutCreBut() {
         createAccountButton.setStyle("-fx-background-color: #474B40;");
     }
+
+    private void test(ActionEvent event) throws IOException {
+        int customerID;
+        int checkingAccountID;
+        Account checkingAccount;
+
+        customerAndEmployeeName = "jason" + " " + "Strand";
+        creationEmployeeID = StartApplication.facade.createAdmin(customerAndEmployeeName, "!Q1qaaaaa");
+
+        customerID = StartApplication.facade.createEmployeeCustomer2(customerAndEmployeeName, "!Q1qaaaaa", creationEmployeeID);
+        checkingAccountID = StartApplication.facade.createEmployeeAccount(customerID);
+
+        checkingAccount = StartApplication.facade.loadAccount(checkingAccountID);
+//        checkingAccount.setBalance(1000);
+
+        StartApplication.facade.loadCustomer(customerID).addAccount(checkingAccount);
+
+        EmployeeMenuController.inUseEmployeeActiveID = creationEmployeeID;//resets the Employee
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("employeeMenu.fxml"));
+        Parent root = loader.load();
+        scene = new Scene(root);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }

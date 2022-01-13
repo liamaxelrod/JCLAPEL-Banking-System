@@ -68,30 +68,6 @@ public class ZManualCustomerBankStatement {
     }
 
     @FXML
-    void switchToManualProject(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("zManualCustomerProject.fxml"));
-        Parent root = loader.load();
-        scene = new Scene(root);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    void switchToManualBankStatement(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("zManualCustomerBankStatement.fxml"));
-        Parent root = loader.load();
-        scene = new Scene(root);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
     void switchToManualCreateAccount(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("zManualCustomerRegisterCustomer.fxml"));
@@ -166,29 +142,6 @@ public class ZManualCustomerBankStatement {
     }
 
     @FXML
-    void OpenToManualProjects() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomerProject.fxml"));
-        Parent root1 = fxmlLoader.load();
-        stage = new Stage();
-
-        stage.setTitle("full manual");
-        stage.setScene(new Scene(root1));
-        stage.show();
-    }
-
-    @FXML
-    void OpenToManualBankStatements() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomerBankStatement.fxml"));
-        Parent root1 = fxmlLoader.load();
-        stage = new Stage();
-
-        stage.setTitle("full manual");
-        stage.setScene(new Scene(root1));
-        stage.show();
-    }
-
-
-    @FXML
     void OpenToManualCreateAccount() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomerRegisterCustomer.fxml"));
         Parent root1 = fxmlLoader.load();
@@ -220,9 +173,6 @@ public class ZManualCustomerBankStatement {
 
     //All methods below are for Special effects On the interface
     @FXML
-    private Button openBSMButton;
-
-    @FXML
     private Button openCAMButton;
 
     @FXML
@@ -235,16 +185,10 @@ public class ZManualCustomerBankStatement {
     private Button openProfileMButton;
 
     @FXML
-    private Button openProjectMButton;
-
-    @FXML
     private Button openTMButton;
 
     @FXML
     private Button openUMButton;
-
-    @FXML
-    private Button switchintBSMButton;
 
     @FXML
     private Button switchintCAMButton;
@@ -259,9 +203,6 @@ public class ZManualCustomerBankStatement {
     private Button switchintProfileMButton;
 
     @FXML
-    private Button switchintProjectMButton;
-
-    @FXML
     private Button switchintTMButton;
 
     @FXML
@@ -269,9 +210,7 @@ public class ZManualCustomerBankStatement {
 
     @FXML
     void confirmHoverEntry(MouseEvent event) {
-        if (openBSMButton == event.getSource()) {
-            openBSMButton.setStyle("-fx-background-color: #52779C;");
-        } else if (openCAMButton == event.getSource()) {
+        if (openCAMButton == event.getSource()) {
             openCAMButton.setStyle("-fx-background-color: #52779C;");
         } else if (openLMButton == event.getSource()) {
             openLMButton.setStyle("-fx-background-color: #52779C;");
@@ -279,14 +218,10 @@ public class ZManualCustomerBankStatement {
             openMMMButton.setStyle("-fx-background-color: #52779C;");
         } else if (openProfileMButton == event.getSource()) {
             openProfileMButton.setStyle("-fx-background-color: #52779C;");
-        } else if (openProjectMButton == event.getSource()) {
-            openProjectMButton.setStyle("-fx-background-color: #52779C;");
         } else if (openTMButton == event.getSource()) {
             openTMButton.setStyle("-fx-background-color: #52779C;");
         } else if (openUMButton == event.getSource()) {
             openUMButton.setStyle("-fx-background-color: #52779C;");
-        } else if (switchintBSMButton == event.getSource()) {
-            switchintBSMButton.setStyle("-fx-background-color: #52779C;");
         } else if (switchintCAMButton == event.getSource()) {
             switchintCAMButton.setStyle("-fx-background-color: #52779C;");
         } else if (switchintLMButton == event.getSource()) {
@@ -295,8 +230,6 @@ public class ZManualCustomerBankStatement {
             switchintMMMButton.setStyle("-fx-background-color: #52779C;");
         } else if (switchintProfileMButton == event.getSource()) {
             switchintProfileMButton.setStyle("-fx-background-color: #52779C;");
-        } else if (switchintProjectMButton == event.getSource()) {
-            switchintProjectMButton.setStyle("-fx-background-color: #52779C;");
         } else if (switchintTMButton == event.getSource()) {
             switchintTMButton.setStyle("-fx-background-color: #52779C;");
         } else if (switchintUSButton == event.getSource()) {
@@ -308,9 +241,7 @@ public class ZManualCustomerBankStatement {
 
     @FXML
     void confirmHoverExit(MouseEvent event) {
-        if (openBSMButton == event.getSource()) {
-            openBSMButton.setStyle("-fx-background-color: #414D59;");
-        } else if (openCAMButton == event.getSource()) {
+        if (openCAMButton == event.getSource()) {
             openCAMButton.setStyle("-fx-background-color: #414D59;");
         } else if (openLMButton == event.getSource()) {
             openLMButton.setStyle("-fx-background-color: #414D59;");
@@ -318,14 +249,10 @@ public class ZManualCustomerBankStatement {
             openMMMButton.setStyle("-fx-background-color: #414D59;");
         } else if (openProfileMButton == event.getSource()) {
             openProfileMButton.setStyle("-fx-background-color: #414D59;");
-        } else if (openProjectMButton == event.getSource()) {
-            openProjectMButton.setStyle("-fx-background-color: #414D59;");
         } else if (openTMButton == event.getSource()) {
             openTMButton.setStyle("-fx-background-color: #414D59;");
         } else if (openUMButton == event.getSource()) {
             openUMButton.setStyle("-fx-background-color: #414D59;");
-        } else if (switchintBSMButton == event.getSource()) {
-            switchintBSMButton.setStyle("-fx-background-color: #414D59;");
         } else if (switchintCAMButton == event.getSource()) {
             switchintCAMButton.setStyle("-fx-background-color: #414D59;");
         } else if (switchintLMButton == event.getSource()) {
@@ -334,8 +261,6 @@ public class ZManualCustomerBankStatement {
             switchintMMMButton.setStyle("-fx-background-color: #414D59;");
         } else if (switchintProfileMButton == event.getSource()) {
             switchintProfileMButton.setStyle("-fx-background-color: #414D59;");
-        } else if (switchintProjectMButton == event.getSource()) {
-            switchintProjectMButton.setStyle("-fx-background-color: #414D59;");
         } else if (switchintTMButton == event.getSource()) {
             switchintTMButton.setStyle("-fx-background-color: #414D59;");
         } else if (switchintUSButton == event.getSource()) {

@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -35,6 +36,7 @@ public class UserMenuController implements Initializable {//Liam was most respon
 
     @FXML//on interface image view = upper far right position
     private ImageView imageProfile;
+    private Image theImage;
 
     @FXML//on interface label = username
     private TextField userID;
@@ -73,7 +75,11 @@ public class UserMenuController implements Initializable {//Liam was most respon
 
         generatorListOfAccount();//set up Accounts
         loadListOfAccount.setItems(differentAccount);
+
+
+        imageProfile.setImage(currentCustomerUse.getProfile().getImage());
     }
+
 
     //All methods below are actions that can be taken in on the interface
     @FXML

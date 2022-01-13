@@ -1,6 +1,7 @@
 package com.example.FrontEnd;
 
 import com.example.BackEnd.Customer;
+import com.example.BackEnd.Employee;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,12 +29,8 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     private Scene scene;
     private Customer currentCustomerUse;
 
-    private FileChooser fileChoice;//*It is possible to get rid of the three yellow warning lights but for now I'm to leave To be safe
-    private File filePath;
-
     @FXML//on interface image view = right above upload a user profile image
     private ImageView currentImage;//this is the one actually holds the image for the interface
-    private Image theImage;
 
     @FXML//on interface Password field = Bottom left corner
     private PasswordField checkCurrentPassword;
@@ -50,6 +47,8 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     private Label currentID;
     @FXML
     public Label currentPassword;
+    @FXML
+    private Label warningLabel;
 
     @FXML//on interface Text field = Right bottom corner
     private TextField newFirstName;
@@ -60,58 +59,135 @@ public class ProfileController implements Initializable {//Albin Worked on this 
     @Override//this method takes effect when the scene is loaded
     public void initialize(URL url, ResourceBundle resourceBundle) {
         currentCustomerUse = StartApplication.facade.loadCustomer(UserMenuController.activeID);
-        currentFirstName.setText(currentCustomerUse.getName());
-        currentLasName.setText(currentCustomerUse.getName());//*Need to get lasting here
+        currentFirstName.setText(currentCustomerUse.getName().substring(0 , currentCustomerUse.getName().indexOf(" ")));
+        currentLasName.setText(currentCustomerUse.getName().substring(currentCustomerUse.getName().lastIndexOf(" ")+1));
         currentPassword.setText(currentCustomerUse.getPassword());
         currentID.setText(String.valueOf(currentCustomerUse.getID()));
+        currentImage.setImage(currentCustomerUse.getProfile().getImage());
     }
 
     @FXML
     private void onActionChangePassword(/*ActionEvent event*/) {
-        String theCurrentPassword = currentPassword.getText();//This one's the label
-        String theCheckOldPassword = checkCurrentPassword.getText();//The rest Are passwordFeel
+        String theCurrentPassword = currentPassword.getText();
+        String theCheckOldPassword = checkCurrentPassword.getText();
         String theNewPassword = newPassword.getText();
         String theConfirmNewPassword = confirmNewPassword.getText();
 
-        if (theCurrentPassword.equals(theCheckOldPassword)){
-            if (theNewPassword.equals(theConfirmNewPassword)){
-                currentPassword.setText(theConfirmNewPassword);
-                checkCurrentPassword.setText("");
-                newPassword.setText("");
-                confirmNewPassword.setText("");
+        if (!theCurrentPassword.isBlank() && !theNewPassword.isBlank() && !theConfirmNewPassword.isBlank()){
+            if (theCurrentPassword.equals(theCheckOldPassword)){
+                if (theNewPassword.equals(theConfirmNewPassword)){
+                    if (StartApplication.facade.validatePassword(newPassword.getText()) && StartApplication.facade.validatePassword(confirmNewPassword.getText())){
+                        if (StartApplication.facade.CheckIfEmployeeExists(currentCustomerUse.getID())){
+                            currentPassword.setText(theConfirmNewPassword);
+                            currentCustomerUse.setPassword(theConfirmNewPassword);
+                            StartApplication.facade.loadEmployee(currentCustomerUse.getID()).setPassword(theConfirmNewPassword);
+                            checkCurrentPassword.setText("");
+                            newPassword.setText("");
+                            confirmNewPassword.setText("");
+                            warningLabel.setText("");
+                        } else {
+                            currentPassword.setText(theConfirmNewPassword);
+                            currentCustomerUse.setPassword(theConfirmNewPassword);
+                            checkCurrentPassword.setText("");
+                            newPassword.setText("");
+                            confirmNewPassword.setText("");
+                            warningLabel.setText("");
+                        }
+                    } else {
+                        warningLabel.setText("The password must have: \n - At least 8 characters \n - Must consist of 'a-z, A-Z, 0 -9' \n - Special character ex. '!' '&' '?' \n You must also Enter: \n - enter your security key \n - enter your position");
+                    }
+                } else {
+                    warningLabel.setText("does not match: \n - new and confirm password our different");
+                }
+            } else {
+                warningLabel.setText("Does not match: \n - The old password does not match what you inputted");
             }
+        } else {
+            warningLabel.setText("some or all: \n - of the input boxes are blank");
         }
     }
 
     @FXML//On interface button = change username, first name, and last name
     void onActionChangeFirstName(/*ActionEvent event*/) {
-        if (StartApplication.facade.validateName(newFirstName.getText())){
-            String theNewFirstName = newFirstName.getText();
-            currentFirstName.setText(theNewFirstName);
-            newFirstName.setText("");
-            currentCustomerUse.setName(theNewFirstName);//This is for testing purposes until can finalize it *****
+        if (!newFirstName.getText().isBlank()){
+            if (!newFirstName.getText().contains(" ")){
+                if (newFirstName.getText().length() < 13 && newFirstName.getText().length() > 2){
+                    if (StartApplication.facade.CheckIfEmployeeExists(currentCustomerUse.getID())){
+                        String theNewFirstName = newFirstName.getText();
+                        String secondPart = currentCustomerUse.getName().substring(currentCustomerUse.getName().lastIndexOf(" ")+1);
+                        currentFirstName.setText(theNewFirstName);
+                        newFirstName.setText("");
+                        StartApplication.facade.loadEmployee(currentCustomerUse.getID()).setName(theNewFirstName + " " + secondPart);
+                        currentCustomerUse.setName(theNewFirstName + " " + secondPart);
+                        warningLabel.setText("");
+                    } else {
+                        String theNewFirstName = newFirstName.getText();
+                        String secondPart = currentCustomerUse.getName().substring(currentCustomerUse.getName().lastIndexOf(" ")+1);
+                        currentFirstName.setText(theNewFirstName);
+                        newFirstName.setText("");
+                        currentCustomerUse.setName(theNewFirstName + " " + secondPart);
+                        warningLabel.setText("");
+                    }
+                } else {
+                    warningLabel.setText("it cannot be longer than 13 or less than 3 characters");
+                }
+            } else {
+                warningLabel.setText("it cannot contain any spaces");
+            }
         } else {
-            newFirstName.setText("This cannot be blank");
+            warningLabel.setText("the box for new name is blank");
         }
-
     }
 
     @FXML
     void onActionChangeLastName(/*ActionEvent event*/) {//Not finished yet
-        String theNewLastName = newLastName.getText();
-        currentLasName.setText(theNewLastName);
-        newFirstName.setText("");
+        if (!newLastName.getText().isBlank()){
+            if (!newLastName.getText().contains(" ")){
+                if (newLastName.getText().length() < 13 && newLastName.getText().length() > 2){
+                    if (StartApplication.facade.CheckIfEmployeeExists(currentCustomerUse.getID())){
+                        String theNewLastName = newLastName.getText();
+                        String secondPart = currentCustomerUse.getName().substring(0 , currentCustomerUse.getName().indexOf(" "));
+                        currentLasName.setText(theNewLastName);
+                        newLastName.setText("");
+                        StartApplication.facade.loadEmployee(currentCustomerUse.getID()).setName(theNewLastName + " " + secondPart);
+                        currentCustomerUse.setName(theNewLastName + " " + secondPart);
+                        warningLabel.setText("");
+                    } else {
+                        String theNewLastName = newLastName.getText();
+                        String secondPart = currentCustomerUse.getName().substring(0 , currentCustomerUse.getName().indexOf(" "));
+                        currentLasName.setText(theNewLastName);
+                        newLastName.setText("");
+                        currentCustomerUse.setName(theNewLastName + " " + secondPart);
+                        warningLabel.setText("");
+                    }
+                } else {
+                    warningLabel.setText("it cannot be longer than 13 or less than 3 characters");
+                }
+            } else {
+                warningLabel.setText("it cannot contain any spaces");
+            }
+        } else {
+            warningLabel.setText("the box for new name is blank");
+        }
     }
 
-    @FXML//Still trying to figure out save the image
+    @FXML
     public void onActionChangeProfileImage(ActionEvent event) {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        fileChoice = new FileChooser();
+        FileChooser fileChoice = new FileChooser();
         fileChoice.setTitle("by the power of God Liam you humble peasant may choose your profile picture");
 
-        this.filePath = fileChoice.showOpenDialog(stage);
-        theImage = new Image(String.valueOf(filePath.toURI()));
+        File filePath = fileChoice.showOpenDialog(stage);
+        Image theImage = new Image(String.valueOf(filePath.toURI()));
         currentImage.setImage(theImage);
+        if (StartApplication.facade.employees.containsKey(currentCustomerUse.getID())){
+            Employee employee = StartApplication.facade.employees.get(currentCustomerUse.getID());
+            employee.setProfile(currentImage);
+            currentCustomerUse.setProfile(currentImage);
+        } else {
+            currentCustomerUse.setProfile(currentImage);
+        }
+
     }
 
     //all methods below are for switching scenes, or you could say interfaces

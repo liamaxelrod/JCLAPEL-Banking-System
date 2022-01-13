@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="938.0" style="-fx-background-color: #DCEBFA; -fx-background-color: #F8FBFF;" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FrontEnd.StartController">
    <children>
-      <VBox prefHeight="675.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox prefHeight="675.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane prefHeight="112.0" prefWidth="319.0">
                <children>
@@ -23,7 +23,7 @@
                   </Label>
                </children>
             </Pane>
-            <Button fx:id="loginButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLoginCustomer" onMouseEntered="#confirmHoverInLog" onMouseExited="#confirmHoverOutLog" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" styleClass="font" stylesheets="@../../../style.css" text="Login" textFill="WHITE">
+            <Button fx:id="loginButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToLoginCustomer" onMouseEntered="#confirmHoverInLog" onMouseExited="#confirmHoverOutLog" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Login" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -31,7 +31,7 @@
                   <Insets left="50.0" />
                </padding>
                <font>
-                  <Font name="Arial Bold" size="20.0" />
+                  <Font name="Arial" size="17.0" />
                </font>
                <effect>
                   <Glow />
@@ -109,7 +109,7 @@
             </Button>
          </children>
       </VBox>
-      <Pane layoutX="319.0" prefHeight="112.0" prefWidth="620.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;">
+      <Pane layoutX="319.0" prefHeight="112.0" prefWidth="620.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.leftAnchor="319.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="127.0" layoutY="33.0" prefHeight="46.0" prefWidth="366.0" text="THE BANK YOU DESERVE" textFill="WHITE">
                <font>

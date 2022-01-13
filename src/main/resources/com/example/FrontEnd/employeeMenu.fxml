@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
@@ -26,131 +27,214 @@
                         </Label>
                     </children>
                 </Pane>
-                <Button fx:id="logoutButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Logout" textFill="WHITE">
-                    <opaqueInsets>
-                        <Insets />
-                    </opaqueInsets>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                    <font>
-                        <Font name="Arial Bold" size="17.0" />
-                    </font>
-                    <effect>
-                        <Glow />
-                    </effect>
-                </Button>
-            <Button fx:id="Refresh" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToTheSameSceneRefresh" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Refresh / For Changes made" textFill="WHITE">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-               <font>
-                  <Font name="Arial Bold" size="17.0" />
-               </font>
-               <effect>
-                  <Glow />
-               </effect>
-            </Button>
-                <Button fx:id="manualButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToManual" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MANUAL" textFill="WHITE">
-                    <opaqueInsets>
-                        <Insets />
-                    </opaqueInsets>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                    <font>
-                        <Font name="Arial Bold" size="17.0" />
-                    </font>
-                    <effect>
-                        <Glow />
-                    </effect>
-                </Button>
-                <Button fx:id="closeButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handelCloseButtonAction" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="319.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Exit" textFill="WHITE">
-                    <opaqueInsets>
-                        <Insets />
-                    </opaqueInsets>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                    <font>
-                        <Font name="Arial Bold" size="17.0" />
-                    </font>
-                    <effect>
-                        <Glow />
-                    </effect>
-                </Button>
-            <Label alignment="CENTER" prefHeight="31.0" prefWidth="311.0" text="Employee: level access" textFill="WHITE">
-               <font>
-                  <Font name="Arial Bold" size="20.0" />
-               </font>
-            </Label>
-            <Button fx:id="openCustomerButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToTheCustomer" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Open customer" textFill="WHITE">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-               <font>
-                  <Font name="Arial Bold" size="17.0" />
-               </font>
-               <effect>
-                  <Glow />
-               </effect>
-            </Button>
-            <Label alignment="CENTER" prefHeight="31.0" prefWidth="311.0" text="Manager: level access" textFill="WHITE">
-               <font>
-                  <Font name="Arial Bold" size="20.0" />
-               </font>
-            </Label>
-            <Button fx:id="deleteCustomerButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onActionDeleteCustomer" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Delete customer" textFill="WHITE">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-               <font>
-                  <Font name="Arial Bold" size="17.0" />
-               </font>
-               <effect>
-                  <Glow />
-               </effect>
-            </Button>
-            <Button fx:id="deleteEmployeeButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onActionDeleteEmployee" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Delete employee" textFill="WHITE">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-               <font>
-                  <Font name="Arial Bold" size="17.0" />
-               </font>
-               <effect>
-                  <Glow />
-               </effect>
-            </Button>
-            <Button fx:id="promoteEmployeeToManagerButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onActionPromoteEmployeeToManager" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="321.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Promote employee to manager" textFill="WHITE">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-               <font>
-                  <Font name="Arial Bold" size="17.0" />
-               </font>
-               <effect>
-                  <Glow />
-               </effect>
-            </Button>
+            <ScrollPane prefHeight="563.0" prefWidth="277.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" VBox.vgrow="ALWAYS">
+               <content>
+                <AnchorPane prefHeight="736.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;">
+                     <children>
+                        <Button fx:id="Refresh" alignment="BASELINE_LEFT" layoutY="55.0" mnemonicParsing="false" onAction="#switchToTheSameSceneRefresh" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Refresh / For Changes made" textFill="WHITE">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Button>
+                            <Button fx:id="logoutButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#switchToStart" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Logout" textFill="WHITE">
+                                <opaqueInsets>
+                                    <Insets />
+                                </opaqueInsets>
+                                <padding>
+                                    <Insets left="50.0" />
+                                </padding>
+                                <font>
+                                    <Font name="Arial Bold" size="17.0" />
+                                </font>
+                                <effect>
+                                    <Glow />
+                                </effect>
+                            </Button>
+                            <Button fx:id="manualButton" alignment="BASELINE_LEFT" layoutY="110.0" mnemonicParsing="false" onAction="#switchToManual" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="MANUAL" textFill="WHITE">
+                                <opaqueInsets>
+                                    <Insets />
+                                </opaqueInsets>
+                                <padding>
+                                    <Insets left="50.0" />
+                                </padding>
+                                <font>
+                                    <Font name="Arial Bold" size="17.0" />
+                                </font>
+                                <effect>
+                                    <Glow />
+                                </effect>
+                            </Button>
+                            <Button fx:id="closeButton" alignment="BASELINE_LEFT" layoutY="165.0" mnemonicParsing="false" onAction="#handelCloseButtonAction" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Exit" textFill="WHITE">
+                                <opaqueInsets>
+                                    <Insets />
+                                </opaqueInsets>
+                                <padding>
+                                    <Insets left="50.0" />
+                                </padding>
+                                <font>
+                                    <Font name="Arial Bold" size="17.0" />
+                                </font>
+                                <effect>
+                                    <Glow />
+                                </effect>
+                            </Button>
+                        <Label alignment="CENTER" layoutY="220.0" prefHeight="31.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Employee: level access" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="openCustomerButton" alignment="BASELINE_LEFT" layoutY="251.0" mnemonicParsing="false" onAction="#switchToTheCustomer" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Open customer" textFill="WHITE">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Button>
+                        <Label alignment="CENTER" layoutY="306.0" prefHeight="31.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Manager: level access" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="deleteCustomerButton" alignment="BASELINE_LEFT" layoutY="337.0" mnemonicParsing="false" onAction="#onActionDeleteCustomer" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Delete customer" textFill="WHITE">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Button>
+                        <Button fx:id="deleteEmployeeButton" alignment="BASELINE_LEFT" layoutY="392.0" mnemonicParsing="false" onAction="#onActionDeleteEmployee" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Delete employee" textFill="WHITE">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Button>
+                        <Label alignment="CENTER" layoutY="502.0" prefHeight="31.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Admin: level access" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="deleteCustomerButton2" alignment="BASELINE_LEFT" layoutY="533.0" mnemonicParsing="false" onAction="#onActionDeleteCustomerLevel2" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Delete customer" textFill="WHITE">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Button>
+                        <Button fx:id="deleteEmployeeButton2" alignment="BASELINE_LEFT" layoutY="588.0" mnemonicParsing="false" onAction="#onActionDeleteEmployeeLevel2" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Delete employee" textFill="WHITE">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Button>
+                        <Button fx:id="changeSecurityKeyButton1" alignment="BASELINE_LEFT" layoutY="643.0" mnemonicParsing="false" onAction="#onActionChangeSecurityKey1" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Change key employee" textFill="WHITE">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Button>
+                        <Button fx:id="changeSecurityKeyButton2" alignment="BASELINE_LEFT" layoutY="698.0" mnemonicParsing="false" onAction="#onActionChangeSecurityKey2" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Change key Manager" textFill="WHITE">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Button>
+                        <Button fx:id="changeSecurityKeyButton3" alignment="BASELINE_LEFT" layoutY="753.0" mnemonicParsing="false" onAction="#onActionChangeSecurityKey3" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Change key Admin" textFill="WHITE">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Button>
+                        <Button fx:id="changeSecurityKeyButton11" alignment="BASELINE_LEFT" layoutY="447.0" mnemonicParsing="false" onAction="#onActionChangeSecurityKey1" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="55.0" prefWidth="290.0" style="-fx-background-color: #52779C; -fx-background-color: #414D59;" text="Change key employee" textFill="WHITE">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
             </children>
         </VBox>
-        <Pane layoutX="304.0" prefHeight="112.0" prefWidth="637.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.leftAnchor="304.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+        <Pane layoutX="304.0" prefHeight="112.0" prefWidth="637.0" style="-fx-background-color: #215E9B; -fx-background-color: #27313A;" AnchorPane.leftAnchor="304.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label layoutX="144.0" layoutY="40.0" text="Thank you for banking with us" textAlignment="CENTER" textFill="WHITE">
                     <font>
@@ -165,12 +249,12 @@
         <Pane layoutX="305.0" layoutY="112.0" prefHeight="560.0" prefWidth="636.0" stylesheets="@../../../style.css" AnchorPane.leftAnchor="305.0">
             <children>
                 <ImageView fx:id="ImageProfile" fitHeight="147.0" fitWidth="166.0" layoutX="441.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                <Label alignment="CENTER_RIGHT" layoutX="19.0" layoutY="89.0" prefHeight="35.0" prefWidth="84.0" text="Name: " textAlignment="CENTER">
+                <Label alignment="TOP_LEFT" layoutX="19.0" layoutY="89.0" prefHeight="27.0" prefWidth="84.0" text="Name: " textAlignment="CENTER">
                     <font>
                         <Font name="Arial Bold" size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="fullName" layoutX="22.0" layoutY="124.0" prefHeight="27.0" prefWidth="390.0" text="Nothing came up" textAlignment="CENTER">
+                <Label fx:id="fullName" layoutX="98.0" layoutY="89.0" prefHeight="27.0" prefWidth="305.0" text="Your name" textAlignment="CENTER">
                     <font>
                         <Font name="Arial Bold" size="24.0" />
                     </font>
@@ -181,60 +265,99 @@
                         <Font name="Arial Bold" size="20.0" />
                     </font>
                 </Label>
-                  <Label fx:id="position" layoutX="132.0" layoutY="192.0" prefHeight="27.0" prefWidth="201.0" text="Nothing came up" textAlignment="CENTER">
+                  <Label fx:id="position" layoutX="131.0" layoutY="120.0" prefHeight="27.0" prefWidth="201.0" textAlignment="CENTER">
                       <font>
                           <Font name="Arial Bold" size="24.0" />
                       </font>
                   </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="24.0" layoutY="188.0" prefHeight="35.0" prefWidth="112.0" text="Position: " textAlignment="CENTER">
+            <Label layoutX="19.0" layoutY="120.0" prefHeight="27.0" prefWidth="112.0" text="Position: " textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <ListView fx:id="listOfCustomers" layoutX="13.0" layoutY="351.0" prefHeight="201.0" prefWidth="307.0" />
-            <ListView fx:id="listOfEmployee" layoutX="320.0" layoutY="351.0" prefHeight="201.0" prefWidth="307.0" />
-            <Button layoutX="97.0" layoutY="96.0" mnemonicParsing="false" onAction="#onActionChangeName" onMouseEntered="#confirmHoverEntry" onMouseExited="#confirmHoverExit" prefHeight="25.0" prefWidth="92.0" text="Change name" />
-            <TextField fx:id="changeIDTextField" layoutX="197.0" layoutY="96.0" prefHeight="25.0" prefWidth="200.0" />
-            <Button layoutX="87.0" layoutY="310.0" mnemonicParsing="false" onAction="#onActionChooseCustomer" text="Select a customer">
+            <ListView fx:id="listOfCustomers" layoutX="13.0" layoutY="362.0" prefHeight="190.0" prefWidth="307.0" />
+            <ListView fx:id="listOfEmployee" layoutX="320.0" layoutY="362.0" prefHeight="190.0" prefWidth="307.0" />
+            <Button layoutX="125.0" layoutY="293.0" mnemonicParsing="false" onAction="#onActionChooseCustomer" text="Select a customer">
                <font>
                   <Font name="Arial" size="17.0" />
                </font>
             </Button>
-            <Label alignment="CENTER_RIGHT" layoutX="24.0" layoutY="228.0" prefHeight="35.0" prefWidth="231.0" text="selected Customer: " textAlignment="CENTER">
+            <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="258.0" prefHeight="35.0" prefWidth="231.0" text="selected Customer: " textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="selectedCustomerID" layoutX="250.0" layoutY="228.0" prefHeight="35.0" prefWidth="112.0" text="Select ID" textAlignment="CENTER">
+            <Label fx:id="selectedCustomerID" layoutX="13.0" layoutY="292.0" prefHeight="35.0" prefWidth="112.0" text="Select ID" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="393.0" layoutY="310.0" mnemonicParsing="false" onAction="#onActionChooseEmployee" text="Select a employee">
+            <Button layoutX="432.0" layoutY="293.0" mnemonicParsing="false" onAction="#onActionChooseEmployee" text="Select a employee">
                <font>
                   <Font name="Arial" size="17.0" />
                </font>
             </Button>
-            <Label alignment="CENTER_RIGHT" layoutX="24.0" layoutY="263.0" prefHeight="35.0" prefWidth="231.0" text="selected Employee: " textAlignment="CENTER">
+            <Label alignment="CENTER_RIGHT" layoutX="358.0" layoutY="258.0" prefHeight="35.0" prefWidth="231.0" text="selected Employee: " textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="selectedEmployeeID" layoutX="250.0" layoutY="263.0" prefHeight="35.0" prefWidth="112.0" text="Select ID" textAlignment="CENTER">
+            <Label fx:id="selectedEmployeeID" layoutX="320.0" layoutY="292.0" prefHeight="35.0" prefWidth="112.0" text="Select ID" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="customerInfo" layoutX="362.0" layoutY="228.0" prefHeight="35.0" prefWidth="266.0" textAlignment="CENTER">
+            <Label fx:id="customerInfo" layoutX="14.0" layoutY="325.0" prefHeight="35.0" prefWidth="266.0" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="employeeInfo" layoutX="362.0" layoutY="263.0" prefHeight="35.0" prefWidth="260.0" textAlignment="CENTER">
+            <Label fx:id="employeeInfo" layoutX="320.0" layoutY="325.0" prefHeight="35.0" prefWidth="260.0" textAlignment="CENTER">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
+            <Label contentDisplay="RIGHT" layoutX="19.0" layoutY="151.0" prefHeight="27.0" prefWidth="175.0" text="Employee key:" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="securityKey1" layoutX="194.0" layoutY="151.0" prefHeight="27.0" prefWidth="231.0" text="Security key" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="securityKey2" layoutX="194.0" layoutY="178.0" prefHeight="27.0" prefWidth="231.0" text="Security key" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label contentDisplay="RIGHT" layoutX="19.0" layoutY="178.0" prefHeight="27.0" prefWidth="175.0" text="Manager key:" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label contentDisplay="RIGHT" layoutX="19.0" layoutY="205.0" prefHeight="27.0" prefWidth="175.0" text="Admin key:" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="securityKey3" layoutX="194.0" layoutY="205.0" prefHeight="27.0" prefWidth="231.0" text="Security key" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="warningLabel" layoutX="19.0" layoutY="62.0" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label contentDisplay="RIGHT" layoutX="19.0" layoutY="233.0" prefHeight="27.0" prefWidth="175.0" text="Change key:" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="changeKey" layoutX="195.0" layoutY="234.0" prefHeight="25.0" prefWidth="143.0" />
             </children>
         </Pane>
     </children>

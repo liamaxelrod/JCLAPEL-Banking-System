@@ -68,18 +68,6 @@ public class ZManualCustomer {//Liam created
     }
 
     @FXML
-    void switchToManualProject(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("zManualCustomerProject.fxml"));
-        Parent root = loader.load();
-        scene = new Scene(root);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
     void switchToManualBankStatement(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("zManualCustomerBankStatement.fxml"));
@@ -116,11 +104,18 @@ public class ZManualCustomer {//Liam created
     }
 
     //all methods below are for Open new scenes, or you could say interfaces
-    /* If there's a problem reinstate this in my fix it
-    void OpenToManualLogin({[{ActionEvent event}]}) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomerLogin.fxml"));
-        Parent root1 = {[{(Parent)}]} fxmlLoader.load();
-     */
+
+    @FXML
+    void openEmployeeManual() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ZZManualEmployee.fxml"));
+        Parent root1 = fxmlLoader.load();
+        stage = new Stage();
+
+        stage.setTitle("Employee manual");
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
+
     @FXML
     void OpenToManualMainMenu() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomerStart.fxml"));
@@ -157,17 +152,6 @@ public class ZManualCustomer {//Liam created
     @FXML
     void OpenToManualProfile() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomerProfile.fxml"));
-        Parent root1 = fxmlLoader.load();
-        stage = new Stage();
-
-        stage.setTitle("full manual");
-        stage.setScene(new Scene(root1));
-        stage.show();
-    }
-
-    @FXML
-    void OpenToManualProjects() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("zManualCustomerProject.fxml"));
         Parent root1 = fxmlLoader.load();
         stage = new Stage();
 
@@ -235,9 +219,6 @@ public class ZManualCustomer {//Liam created
     private Button openProfileMButton;
 
     @FXML
-    private Button openProjectMButton;
-
-    @FXML
     private Button openTMButton;
 
     @FXML
@@ -259,13 +240,13 @@ public class ZManualCustomer {//Liam created
     private Button switchintProfileMButton;
 
     @FXML
-    private Button switchintProjectMButton;
-
-    @FXML
     private Button switchintTMButton;
 
     @FXML
     private Button switchintUSButton;
+
+    @FXML
+    private Button EmployeeManual;
 
     @FXML
     void confirmHoverEntry(MouseEvent event) {
@@ -279,8 +260,6 @@ public class ZManualCustomer {//Liam created
             openMMMButton.setStyle("-fx-background-color: #52779C;");
         } else if (openProfileMButton == event.getSource()) {
             openProfileMButton.setStyle("-fx-background-color: #52779C;");
-        } else if (openProjectMButton == event.getSource()) {
-            openProjectMButton.setStyle("-fx-background-color: #52779C;");
         } else if (openTMButton == event.getSource()) {
             openTMButton.setStyle("-fx-background-color: #52779C;");
         } else if (openUMButton == event.getSource()) {
@@ -295,14 +274,14 @@ public class ZManualCustomer {//Liam created
             switchintMMMButton.setStyle("-fx-background-color: #52779C;");
         } else if (switchintProfileMButton == event.getSource()) {
             switchintProfileMButton.setStyle("-fx-background-color: #52779C;");
-        } else if (switchintProjectMButton == event.getSource()) {
-            switchintProjectMButton.setStyle("-fx-background-color: #52779C;");
         } else if (switchintTMButton == event.getSource()) {
             switchintTMButton.setStyle("-fx-background-color: #52779C;");
         } else if (switchintUSButton == event.getSource()) {
             switchintUSButton.setStyle("-fx-background-color: #52779C;");
         } else if (closeButton == event.getSource()) {
             closeButton.setStyle("-fx-background-color: #52779C;");
+        } else if (EmployeeManual == event.getSource()) {
+            EmployeeManual.setStyle("-fx-background-color: #52779C;");
         }
     }
 
@@ -318,8 +297,6 @@ public class ZManualCustomer {//Liam created
             openMMMButton.setStyle("-fx-background-color: #414D59;");
         } else if (openProfileMButton == event.getSource()) {
             openProfileMButton.setStyle("-fx-background-color: #414D59;");
-        } else if (openProjectMButton == event.getSource()) {
-            openProjectMButton.setStyle("-fx-background-color: #414D59;");
         } else if (openTMButton == event.getSource()) {
             openTMButton.setStyle("-fx-background-color: #414D59;");
         } else if (openUMButton == event.getSource()) {
@@ -334,14 +311,14 @@ public class ZManualCustomer {//Liam created
             switchintMMMButton.setStyle("-fx-background-color: #414D59;");
         } else if (switchintProfileMButton == event.getSource()) {
             switchintProfileMButton.setStyle("-fx-background-color: #414D59;");
-        } else if (switchintProjectMButton == event.getSource()) {
-            switchintProjectMButton.setStyle("-fx-background-color: #414D59;");
         } else if (switchintTMButton == event.getSource()) {
             switchintTMButton.setStyle("-fx-background-color: #414D59;");
         } else if (switchintUSButton == event.getSource()) {
             switchintUSButton.setStyle("-fx-background-color: #414D59;");
         } else if (closeButton == event.getSource()) {
             closeButton.setStyle("-fx-background-color: #414D59;");
+        } else if (EmployeeManual == event.getSource()) {
+            EmployeeManual.setStyle("-fx-background-color: #414D59;");
         }
     }
 }

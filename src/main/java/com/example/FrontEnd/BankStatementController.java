@@ -39,7 +39,7 @@ public class BankStatementController implements Initializable {//Albin worked on
     private void generatorListOfAccountTransactions(){
         Account theAccount = StartApplication.facade.loadAccount(account);
         for (Transaction currentTransaction : theAccount.getTransactions()){
-            String fullTransaction = currentTransaction.getDate() + " / " + currentTransaction.getTime() + " / " + currentTransaction.getAmount();
+            String fullTransaction = "Date: " + currentTransaction.getDate() + " /Time: " + currentTransaction.getTime() + " /Amount " + currentTransaction.getAmount();
             differentTransactions.add(fullTransaction);
         }
     }
