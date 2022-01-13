@@ -189,7 +189,7 @@ public class Facade {
                 //checks if the id exists, and the password of the customer with that id is equal to the input password
                 return true;
             }
-        //}
+        }
         return false;
     } //patrik, labi, julia
 
