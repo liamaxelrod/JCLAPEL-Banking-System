@@ -29,17 +29,17 @@ public class AccountTests { //By Erik Lindmaa
         facade = new Facade();
 
         johnSmithID = facade.createCustomer("John Smith", "Password80!"); //setting up test customers
-        johnSmith = facade.customers.get(johnSmithID);
+        johnSmith = facade.loadCustomer(johnSmithID);
 
         accountId1 = facade.createAccount(johnSmithID);
         accountId2 = facade.createSavingsAccount(johnSmithID);
-        account1 = facade.accounts.get(accountId1);
-        account2 = facade.accounts.get(accountId2);
+        account1 = facade.loadAccount(accountId1);
+        account2 = facade.loadAccount(accountId2);
     }
 
     @Test
     public void testCreation(){
-        Assertions.assertThat(facade.accounts).isNotNull()
+        Assertions.assertThat(facade.getAllAccounts()).isNotNull()
                 .isNotEmpty()
                 .containsValues(account1);//check storage of accounts
     }

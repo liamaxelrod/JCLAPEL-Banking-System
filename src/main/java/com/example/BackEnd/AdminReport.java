@@ -19,4 +19,3 @@ public class AdminReport extends ManagerReport {
 
 }
 
-

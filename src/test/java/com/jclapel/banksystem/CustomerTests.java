@@ -20,20 +20,20 @@ public class CustomerTests { //By patrik and Labi
     public void testSetup() {
         facade = new Facade();
         ID = facade.createCustomer("John Smith", "Password80!"); //setting up test customer
-        johnSmith = facade.customers.get(ID);
+        johnSmith = facade.loadCustomer(ID);
     }
 
     @Test
     public void testCustomerCreation(){ //changed Account to customer
         int ID = facade.createCustomer("John Smith", "Password80!"); //setting up customer
-        Customer johnSmith = facade.customers.get(ID);
+        Customer johnSmith = facade.loadCustomer(ID);
 
         assertThat(johnSmith.getName()).isEqualTo("John Smith"); // checking customer data
         assertThat(johnSmith.getPassword()).isEqualTo("Password80!");
 
         assertThat(facade.createCustomer("", "Password80!")).isEqualTo(0); //checking validation of non-empty password and name
 
-        assertThat(facade.createCustomer("John Smith", "password80!")).isEqualTo(0); //no uppercase //Labi
+        assertThat(facade.createCustomer("John Smith", "password80!")).isEqualTo(0); //no uppercase
         assertThat(facade.createCustomer("John Smith", "Password80")).isEqualTo(0); //no symbol
         assertThat(facade.createCustomer("John Smith", "Password!")).isEqualTo(0); //no number
         assertThat(facade.createCustomer("John Smith", "Pass80!")).isEqualTo(0); //no 8 characters
@@ -43,7 +43,7 @@ public class CustomerTests { //By patrik and Labi
         facade.removeCustomer(ID); //testing account deletion
         johnSmith = facade.loadCustomer(ID);
         assertThat(johnSmith).isEqualTo(null);
-    }
+    } //Labi
 
     @Test
     public void testLogin(){
@@ -53,7 +53,7 @@ public class CustomerTests { //By patrik and Labi
         assertThat(facade.checkLogin(0, "Password")).isEqualTo(false);
 
         assertThat(facade.resetPassword(ID, "Wrong Password", "New Password80!")).isEqualTo(false);//checking password change
-        assertThat(facade.resetPassword(0, "Password80!", "New Password80!")).isEqualTo(false);   //Labi
+        assertThat(facade.resetPassword(0, "Password80!", "New Password80!")).isEqualTo(false);
         assertThat(facade.resetPassword(ID, "Password80!", "New Password80!")).isEqualTo(false);
 
         assertThat(facade.resetPassword(ID,"Password80!","password80!")).isEqualTo(false);
@@ -85,4 +85,30 @@ public class CustomerTests { //By patrik and Labi
         assertTrue(janeDoe instanceof EmployeeCustomer);
         assertTrue(johnSmith instanceof Customer);
     }
+
+
+    @Test
+    public void getValidNameTest(){  //Labi,Conny
+    String name = "thOMAs j. ANDeRson";
+
+        System.out.println(getValidName(name));
+}
+
+    public static String getValidName(String name) {
+        name = name.trim();
+        String[] nameArray = name.split("\\s+");
+        if (nameArray.length < 2) {
+            return "";
+        }
+
+        String validName = "";
+        for (String sub : nameArray) {
+            sub = sub.substring(0, 1).toUpperCase() + sub.substring(1).toLowerCase();
+            validName += sub + " ";
+        }
+        validName.trim();
+        return validName;
+    }
+
+
 }

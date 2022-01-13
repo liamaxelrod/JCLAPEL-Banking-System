@@ -72,13 +72,13 @@ public class EmployeeMenuController implements Initializable {//Liam was most re
     private ObservableList<String> differentEmployees = FXCollections.observableArrayList();
 
     private void generatorListOfCustomers(){
-        HashMap<Integer, Customer> currentList = StartApplication.facade.customers;
+        HashMap<Integer, Customer> currentList = StartApplication.facade.getAllCustomers();
         for (Customer currentCustomer: currentList.values()) {
             differentCustomers.add(currentCustomer.getID() + " / " + currentCustomer.getName());
         }
     }
     private void generatorListOfEmployees(){
-        HashMap<Integer, Employee> currentList = StartApplication.facade.employees;
+        HashMap<Integer, Employee> currentList = StartApplication.facade.getAllEmployees();
         for (Employee employees: currentList.values()) {
             differentEmployees.add(employees.getID() + " / " + employees.getName());
         }

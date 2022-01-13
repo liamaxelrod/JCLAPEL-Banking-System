@@ -25,23 +25,23 @@ public class TransferTests {
     public void testSetup() {
         facade = new Facade();
         johnSmithID = facade.createCustomer("John Smith", "Password80!"); //setting up test customers
-        johnSmith = facade.customers.get(johnSmithID);
+        johnSmith = facade.loadCustomer(johnSmithID);
 
         janeDoeID = facade.createCustomer("Jane Doe", "Password80!");
-        janeDoe = facade.customers.get(janeDoeID);
+        janeDoe = facade.loadCustomer(janeDoeID);
 
         accountId1 = facade.createAccount(johnSmithID);
         accountId2 = facade.createAccount(janeDoeID);
         savingsAccountId = facade.createSavingsAccount(johnSmithID);
 
-        account1 = facade.accounts.get(accountId1);
-        account2 = facade.accounts.get(accountId2);
-        savingsAccount = facade.accounts.get(savingsAccountId);
+        account1 = facade.loadAccount(accountId1);
+        account2 = facade.loadAccount(accountId2);
+        savingsAccount = facade.loadAccount(savingsAccountId);
     } //patrik
 
     @Test
     public void testCreation(){
-        assertThat(facade.accounts).isNotNull()
+        assertThat(facade.getAllAccounts()).isNotNull()
                 .isNotEmpty()
                 .containsValues(account1, account2, savingsAccount);//check storage of accounts
     } // patrik

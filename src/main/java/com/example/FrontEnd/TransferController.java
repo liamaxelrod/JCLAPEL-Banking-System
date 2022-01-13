@@ -51,7 +51,7 @@ public class TransferController implements Initializable {//Albin worked on this
 
 
     private void generatorListOfCustomerAccounts(){
-        HashMap<Integer, Account> currentList = currentCustomerUse.getAccounts();
+        HashMap<Integer, Account> currentList = StartApplication.facade.getCustomerAccounts(currentCustomerUse.getID());
         for (com.example.BackEnd.Account currentAccount: currentList.values()) {
             String type = "Checking";
             if (currentAccount.isSavings()){
@@ -61,7 +61,7 @@ public class TransferController implements Initializable {//Albin worked on this
         }
     }
     private void generatorListOfAllAccounts(){
-        HashMap<Integer, Account> currentList = StartApplication.facade.accounts;
+        HashMap<Integer, Account> currentList = StartApplication.facade.getAllAccounts();
         for (com.example.BackEnd.Account currentAccount: currentList.values()) {
             String type = "Checking";
             if (currentAccount.isSavings()){
@@ -173,4 +173,5 @@ public class TransferController implements Initializable {//Albin worked on this
     private void confirmHoverOutUser() {
         userMenu.setStyle("-fx-background-color: #414D59;");
     }
+
 }
