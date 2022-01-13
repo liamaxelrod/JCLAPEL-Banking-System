@@ -17,7 +17,7 @@ public class EmployeeTests {
     public void testSetup() {
         facade = new Facade();
         ID = facade.createEmployee("John Smith", "Password80!"); //setting up test Employee
-        johnSmith = facade.employees.get(ID);
+        johnSmith = facade.loadEmployee(ID);
     }
 
     @Test
@@ -25,7 +25,7 @@ public class EmployeeTests {
 
         //given
         int ID = facade.createEmployee("John Smith", "Password80!");
-        Employee johnSmith = facade.employees.get(ID);
+        Employee johnSmith = facade.loadEmployee(ID);
 
         //then
         assertThat(johnSmith.getName()).isEqualTo("John Smith");

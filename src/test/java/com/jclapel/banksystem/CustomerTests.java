@@ -20,13 +20,13 @@ public class CustomerTests { //By patrik and Labi
     public void testSetup() {
         facade = new Facade();
         ID = facade.createCustomer("John Smith", "Password80!"); //setting up test customer
-        johnSmith = facade.customers.get(ID);
+        johnSmith = facade.loadCustomer(ID);
     }
 
     @Test
     public void testCustomerCreation(){ //changed Account to customer
         int ID = facade.createCustomer("John Smith", "Password80!"); //setting up customer
-        Customer johnSmith = facade.customers.get(ID);
+        Customer johnSmith = facade.loadCustomer(ID);
 
         assertThat(johnSmith.getName()).isEqualTo("John Smith"); // checking customer data
         assertThat(johnSmith.getPassword()).isEqualTo("Password80!");

@@ -2,14 +2,12 @@ package com.example.BackEnd;
 
 import java.io.*;
 //import com.mongodb.*;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.*;
 import com.mongodb.client.model.Filters;
 import org.bson.Document;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Stack;
 import java.util.regex.Pattern;
@@ -17,10 +15,10 @@ import java.util.regex.Matcher;
 import static com.mongodb.client.model.Filters.eq;
 
 public class Facade {
-    public HashMap<Integer, Customer> customers = new HashMap<>();
-    public HashMap<Integer, Account> accounts = new HashMap<>();
-    public HashMap<Integer, Account> employeeAccounts = new HashMap<>();
-    public HashMap<Integer, Employee> employees=new HashMap<>();
+    //ublic HashMap<Integer, Customer> customers = new HashMap<>();
+    //public HashMap<Integer, Account> accounts = new HashMap<>();
+    //public HashMap<Integer, Account> employeeAccounts = new HashMap<>();
+    //public HashMap<Integer, Employee> employees=new HashMap<>();
     MongoDatabase database;
 
     final static String customersOutputFilePath = "F:/Serialisation/customers.txt";
@@ -41,7 +39,7 @@ public class Facade {
         }
     }
 
-    public void storeData() { //stores data to file when the app is closed.
+    /*public void storeData() { //stores data to file when the app is closed.
         try {
             FileOutputStream customersOutput = new FileOutputStream(customersFile);
             FileOutputStream accountsOutput = new FileOutputStream(accountsFile);
@@ -83,7 +81,7 @@ public class Facade {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-    } // Done by Julia Ayvazian, temporary solution until the database works
+    } // Done by Julia Ayvazian, temporary solution until the database works     */
 
     public Customer loadCustomer(int customerId){
         MongoCollection<Document> customers = database.getCollection("customers");
@@ -92,6 +90,8 @@ public class Facade {
         return new Customer(customer.getInteger("ID"), customer.getString("name"), customer.getString("password"));
         //return customers.get(customerId);
     }
+
+
 
     public Account loadAccount(int accountId){
         MongoCollection<Document> accounts = database.getCollection("accounts");
@@ -109,7 +109,8 @@ public class Facade {
             Document customer = new Document();
             customer.append("ID", ID)
                     .append("name", name)
-                    .append("password", password);
+                    .append("password", password)
+                    .append("accounts", new HashMap<Integer, Account>());
             customers.insertOne(customer);
             //customers.put(ID, customer);
             return ID;
@@ -168,13 +169,15 @@ public class Facade {
         }
     }
 
-    public boolean CheckIfCustomerExists(int ID){
+    /*public boolean CheckIfCustomerExists(int ID){
         if(customers.containsKey(ID)){
             return true;
         }else{
             return false;
         }
     } //Erik
+
+     */
 
     public void removeCustomer(int ID){
         MongoCollection<Document> customers = database.getCollection("customers");
@@ -221,7 +224,7 @@ public class Facade {
         accounts.deleteOne(Filters.eq("ID", accountID));
     } //Erik
 
-    public boolean CheckIfAccountExists(int ID){
+    /*public boolean CheckIfAccountExists(int ID){
         if(accounts.containsKey(ID)){
             return true;
         }else{
@@ -229,11 +232,13 @@ public class Facade {
         }
     } //Erik
 
+     */
+
     public boolean transferBetweenAccounts(int senderId, int receiverId, double amount) {
         if (withdraw(senderId, amount) && deposit(receiverId, amount)) {  // if withdraw and deposit is true, add a new transaction to the account with the
             // account id same as sender/receiver id and return boolean value
-            accounts.get(senderId).addTransaction(new TransferTransaction(amount, senderId, receiverId));
-            accounts.get(receiverId).addTransaction(new TransferTransaction(amount, senderId, receiverId));
+            loadAccount(senderId).addTransaction(new TransferTransaction(amount, senderId, receiverId));
+            loadAccount(receiverId).addTransaction(new TransferTransaction(amount, senderId, receiverId));
             return true;
         }
         return false;
@@ -246,15 +251,15 @@ public class Facade {
             Account account = loadAccount(accountID);
             double amountWithFee = (amount - loadCustomer(account.getCustomerId()).calculateFee(amount));
             account.setBalance(account.getBalance() + (amountWithFee));
-            accounts.get(accountID).addTransaction(new DepositTransaction(amountWithFee, accountID));
+            loadAccount(accountID).addTransaction(new DepositTransaction(amountWithFee, accountID));
             return true;
         }
         return false;
     } //patrik, labi, julia, erik
 
     public boolean withdraw(int accountID, double amount) {//subtracts amount from balance, returns true for a valid transaction, false for an invalid one
-        if (amount > 0 && accounts.get(accountID).getBalance() > amount) {
-            Account account = accounts.get(accountID);
+        if (amount > 0 && loadAccount(accountID).getBalance() > amount) {
+            Account account = loadAccount(accountID);
             double amountWithFee = (amount + loadCustomer(account.getCustomerId()).calculateFee(amount));
             WithdrawalTransaction transaction = new WithdrawalTransaction(amountWithFee, accountID);
             account.addTransaction(transaction);
@@ -265,12 +270,12 @@ public class Facade {
     } //patrik, labi, julia, erik
 
     public Stack<Transaction> loadAllTransactions(int accountID){
-         return accounts.get(accountID).getTransactions();
+         return loadAccount(accountID).getTransactions();
     } //Erik
 
     public boolean resetPassword(int customerId, String originalPassword, String newPassword){ //returns a boolean indicating whether the change went through
         if(checkLogin(customerId, originalPassword) && validatePassword(newPassword)) {
-            Customer customer = customers.get(customerId);
+            Customer customer = loadCustomer(customerId);
             customer.setPassword(newPassword);
             return true;
         }
@@ -317,13 +322,15 @@ public class Facade {
     } //Erik and Labi
 
     public Employee loadEmployee(int ID){
-        return employees.get(ID);
+        MongoCollection<Document> employees = database.getCollection("employees");
+        Document employee = employees.find(eq("ID", ID)).first();
+        return new Employee(employee.getInteger("ID"), employee.getString("name"), employee.getString("password"));
     }  //Labi
 
     public int createEmployeeAccount(int employeeID){ // adds an account to a given customer
         Account account = new Account(generateId(database.getCollection("accounts")), employeeID, false);
-        customers.get(employeeID).addAccount(account);
-        accounts.put(account.getID(), account);
+        loadCustomer(employeeID).addAccount(account);
+        //accounts.put(account.getID(), account);
         return account.getID();
 
     } //patrik, labi
@@ -337,6 +344,50 @@ public class Facade {
         } while (hashMap.find(eq("ID", ID)).first() != null);//ensure the id is not in use
         return ID;
     } //patrik
+
+    public HashMap<Integer, Account> getAllAccounts(){
+        HashMap<Integer, Account> hashMap = new HashMap<>();
+        MongoCollection<Document> accounts = database.getCollection("accounts");
+        FindIterable<Document> allAccounts = accounts.find();
+        for(Document account : allAccounts){
+            int accountId = account.getInteger("ID");
+            hashMap.put(accountId, loadAccount(accountId));
+        }
+        return hashMap;
+    }
+
+    public HashMap<Integer, Account> getCustomerAccounts(int customerID){
+        HashMap<Integer, Account> hashMap = new HashMap<>();
+        MongoCollection<Document> accounts = database.getCollection("accounts");
+        FindIterable<Document> allAccounts = accounts.find(eq("customerId", customerID));
+        for(Document account : allAccounts){
+            int accountId = account.getInteger("ID");
+            hashMap.put(accountId, loadAccount(accountId));
+        }
+        return hashMap;
+    }
+
+    public HashMap<Integer, Customer> getAllCustomers(){
+        HashMap<Integer, Customer> hashMap = new HashMap<>();
+        MongoCollection<Document> customers = database.getCollection("customers");
+        FindIterable<Document> allCustomers = customers.find();
+        for(Document customer : allCustomers){
+            int customerId = customer.getInteger("ID");
+            hashMap.put(customerId, loadCustomer(customerId));
+        }
+        return hashMap;
+    }
+
+    public HashMap<Integer, Employee> getAllEmployees(){
+        HashMap<Integer, Employee> hashMap = new HashMap<>();
+        MongoCollection<Document> employees = database.getCollection("employees");
+        FindIterable<Document> allEmployees = employees.find();
+        for(Document employee : allEmployees){
+            int employeeId = employee.getInteger("ID");
+            hashMap.put(employeeId, loadEmployee(employeeId));
+        }
+        return hashMap;
+    }
 
     /*public int createManager(String name, String password){
         if(validateName(name) && validatePassword(password)){
