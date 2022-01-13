@@ -136,8 +136,12 @@ public class Facade {
 
     public int createEmployeeCustomer2(String name, String password, int customerID){
         if(validateName(name) && validatePassword(password)) {
-            Customer customer = new EmployeeCustomer(customerID, name, password);
-            customers.put(customerID, customer);
+            MongoCollection<Document> customers = database.getCollection("customers");
+            Document employeeCustomer = new Document();
+            employeeCustomer.append("ID", customerID)
+                    .append("name", name)
+                    .append("password", password);
+            customers.insertOne(employeeCustomer);
             return customerID;
         }
         return 0;
@@ -180,15 +184,15 @@ public class Facade {
         }
     }
 
-    /*public boolean CheckIfCustomerExists(int ID){
-        if(customers.containsKey(ID)){
-            return true;
-        }else{
-            return false;
-        }
+    public boolean CheckIfCustomerExists(int ID){
+        MongoCollection<Document> customers = database.getCollection("customers");
+        return customers.find(eq("ID", ID)) != null;
     } //Erik
 
-     */
+    public boolean CheckIfEmployeeExists(int ID){
+        MongoCollection<Document> employees = database.getCollection("employees");
+        return employees.find(eq("ID", ID)) != null;
+    } //Erik
 
     public void removeCustomer(int ID){
         MongoCollection<Document> customers = database.getCollection("customers");
@@ -202,6 +206,16 @@ public class Facade {
                 //checks if the id exists, and the password of the customer with that id is equal to the input password
                 return true;
             }
+        return false;
+    } //patrik, labi, julia
+
+    public boolean checkEmployeeLogin(int ID, String password){ //given id and password, checks if the customer with that id exists and
+        // if so checks that if customers password (accesses c.password through customers.get(ID) matches the provided password,
+        // returns true if so else false
+        if(loadEmployee(ID).getPassword().equals(password)) {
+            //checks if the id exists, and the password of the customer with that id is equal to the input password
+            return true;
+        }
         return false;
     } //patrik, labi, julia
 
@@ -400,27 +414,36 @@ public class Facade {
         return hashMap;
     }
 
-    /*public int createManager(String name, String password){
-        if(validateName(name) && validatePassword(password)){
-            MongoCollection<Document> employees = database.getCollection("employees");
-            int ID= generateId(employees);
-            Employee manager = new Manager(ID,name, password);
-            employees.put(ID,manager);
+    public int createManager(String name, String password){
+        if(validateName(name) && validatePassword(password)) {
+            MongoCollection<Document> customers = database.getCollection("customers");
+            int ID = generateId(customers);
+            Customer customer = new EmployeeCustomer(ID, name, password);
+            //customers.put(ID, customer);
+            Document employeeCustomer = new Document();
+            employeeCustomer.append("ID", ID)
+                    .append("name", name)
+                    .append("password", password);
+            customers.insertOne(employeeCustomer);
             return ID;
-        }else{
-            return 0;
         }
+        return 0;
     } //Labi and Erik
     //Julia
 
     public int createAdmin(String name, String password){
-        if(validateName(name) && validatePassword(password)){
-            int ID = generateId(employees);
-            Employee admin = new Admin(ID, name, password);
-            employees.put(ID,admin);
+        if(validateName(name) && validatePassword(password)) {
+            MongoCollection<Document> customers = database.getCollection("customers");
+            int ID = generateId(customers);
+            Customer customer = new EmployeeCustomer(ID, name, password);
+            //customers.put(ID, customer);
+            Document employeeCustomer = new Document();
+            employeeCustomer.append("ID", ID)
+                    .append("name", name)
+                    .append("password", password);
+            customers.insertOne(employeeCustomer);
             return ID;
-        }else{
-            return 0;
         }
-    }*/
+        return 0;
+    }
 }

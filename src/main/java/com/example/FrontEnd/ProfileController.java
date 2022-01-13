@@ -180,8 +180,8 @@ public class ProfileController implements Initializable {//Albin Worked on this 
         File filePath = fileChoice.showOpenDialog(stage);
         Image theImage = new Image(String.valueOf(filePath.toURI()));
         currentImage.setImage(theImage);
-        if (StartApplication.facade.employees.containsKey(currentCustomerUse.getID())){
-            Employee employee = StartApplication.facade.employees.get(currentCustomerUse.getID());
+        if (StartApplication.facade.getAllEmployees().containsKey(currentCustomerUse.getID())){
+            Employee employee = StartApplication.facade.getAllEmployees().get(currentCustomerUse.getID());
             employee.setProfile(currentImage);
             currentCustomerUse.setProfile(currentImage);
         } else {
