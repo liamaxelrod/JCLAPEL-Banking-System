@@ -102,6 +102,7 @@ public class Facade {
 
     public int createCustomer(String name, String password){ //given valid name and password, generate a random id to
         // create a customer with those and put it in the general customers hashmap
+        MongoCollection<Document> customers = database.getCollection("customers");
         if(validateName(name) && validatePassword(password)) {
             int ID = generateId(customers);
             //Customer customer = new Customer(ID, name, password);
@@ -109,7 +110,6 @@ public class Facade {
             customer.append("ID", ID)
                     .append("name", name)
                     .append("password", password);
-            MongoCollection<Document> customers = database.getCollection("customers");
             customers.insertOne(customer);
             //customers.put(ID, customer);
             return ID;
@@ -119,14 +119,14 @@ public class Facade {
 
     public int createEmployeeCustomer(String name, String password){ //same as above
         if(validateName(name) && validatePassword(password)) {
+            MongoCollection<Document> customers = database.getCollection("customers");
             int ID = generateId(customers);
             Customer customer = new EmployeeCustomer(ID, name, password);
-            customers.put(ID, customer);
+            //customers.put(ID, customer);
             Document employeeCustomer = new Document();
             employeeCustomer.append("ID", ID)
                     .append("name", name)
                     .append("password", password);
-            MongoCollection<Document> customers = database.getCollection("customers");
             customers.insertOne(employeeCustomer);
             return ID;
         }
@@ -184,12 +184,10 @@ public class Facade {
     public boolean checkLogin(int ID, String password){ //given id and password, checks if the customer with that id exists and
         // if so checks that if customers password (accesses c.password through customers.get(ID) matches the provided password,
         // returns true if so else false
-        if(customers.containsKey(ID)){
-            if(customers.get(ID).getPassword().equals(password)) {
+            if(loadCustomer(ID).getPassword().equals(password)) {
                 //checks if the id exists, and the password of the customer with that id is equal to the input password
                 return true;
             }
-        }
         return false;
     } //patrik, labi, julia
 
@@ -198,7 +196,7 @@ public class Facade {
         //customers.get(customerId).addAccount(account);
         //accounts.put(account.getID(), account);
         MongoCollection<Document> customers = database.getCollection("accounts");
-        int ID = generateId((HashMap) customers);
+        int ID = generateId(customers);
         Document customer = new Document();
         customer.append("ID", ID)
                 .append("customerId", customerId)
@@ -209,7 +207,7 @@ public class Facade {
 
     public int createSavingsAccount(int customerId){
         MongoCollection<Document> customers = database.getCollection("accounts");
-        int ID = generateId((HashMap) customers);
+        int ID = generateId(customers);
         Document customer = new Document();
         customer.append("ID", ID)
                 .append("customerId", customerId)
@@ -291,21 +289,26 @@ public class Facade {
         }
     }
 
-    public int createEmployee(String name){
+    public int createEmployee(String name, String password){
         //int ID = generateId(employees);
         //Employee employee = new Employee(ID, name);
         //employees.put(ID, employee);
         //return ID; //changed void to int, returned ID
-
+        MongoCollection<Document> employees = database.getCollection("employees");
         int ID = generateId(employees);
         //Customer customer = new Customer(ID, name, password);
-        Document employee = new Document();
-        employee.append("ID", ID)
-                .append("name", name);
-        MongoCollection<Document> customers = database.getCollection("employees");
-        customers.insertOne(employee);
-        //customers.put(ID, customer);
-        return ID;
+        if(validatePassword(password)) {
+            Document employee = new Document();
+            employee.append("ID", ID)
+                    .append("name", name)
+                    .append("password", password);
+
+            employees.insertOne(employee);
+            //customers.put(ID, customer);
+            return ID;
+        } else {
+            return 0;
+        }
     }
 
     public void removeEmployee(int ID){
@@ -318,25 +321,26 @@ public class Facade {
     }  //Labi
 
     public int createEmployeeAccount(int employeeID){ // adds an account to a given customer
-        Account account = new Account(generateId(employees.get(employeeID).getAccounts()), employeeID, false);
+        Account account = new Account(generateId(database.getCollection("accounts")), employeeID, false);
         customers.get(employeeID).addAccount(account);
         accounts.put(account.getID(), account);
         return account.getID();
 
     } //patrik, labi
 
-    public int generateId(HashMap hashMap){ //takes the hashmap in which the resulting object will be stored as an argument
+    public int generateId(MongoCollection hashMap){ //takes the hashmap in which the resulting object will be stored as an argument
         int ID;
         Random rn = new Random();
         do{ //generate random ID number
             int range = 999999 - 100000 +1; //generate 6 digit random number
             ID = rn.nextInt(range) + 100000;
-        } while (hashMap.containsKey(ID));//ensure the id is not in use
+        } while (hashMap.find(eq("ID", ID)).first() != null);//ensure the id is not in use
         return ID;
     } //patrik
 
-    public int createManager(String name, String password){
+    /*public int createManager(String name, String password){
         if(validateName(name) && validatePassword(password)){
+            MongoCollection<Document> employees = database.getCollection("employees");
             int ID= generateId(employees);
             Employee manager = new Employee(ID,name, password);
             employees.put(ID,manager);
@@ -346,6 +350,7 @@ public class Facade {
         }
     } //Labi and Erik
     //Julia
+
     public int createAdmin(String name, String password){
         if(validateName(name) && validatePassword(password)){
             int ID = generateId(employees);
@@ -355,5 +360,5 @@ public class Facade {
         }else{
             return 0;
         }
-    }
+    }*/
 }
